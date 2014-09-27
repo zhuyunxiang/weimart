@@ -1,8 +1,9 @@
-<?php
-define('THINK_PATH','./ThinkPHP/');
-define('APP_NAME','App');
-define('APP_PATH','./App/');
-define('APP_DEBUG',true);
-//define('SAE_RUNTIME',true);
-define('ENGINE_NAME','sae');
+<?php 
+define('APP_NAME', 'HOME');
+define('APP_PATH', './HOME/');
+define('THINK_PATH', './ThinkPHP/');
+define('APP_DEBUG', true);
+define('ENGINE_NAME', 'cluster');
 require THINK_PATH.'ThinkPHP.php';
+
+ ?>
