@@ -1,0 +1,611 @@
+[ 2014-09-27T14:26:57+08:00 ] 127.0.0.1 /weshop/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000739s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000850s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010812s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010987s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weshop\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 40 行.
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weshop\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 47 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.000432s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000383s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000294s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000431s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001732s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000555s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000629s ]
+
+[ 2014-09-27T14:44:40+08:00 ] 127.0.0.1 /weimart/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001426s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001535s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.002080s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002168s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 40 行.
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 47 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.001522s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.002542s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001362s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.002060s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.007854s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001561s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001643s ]
+
+[ 2014-09-27T14:44:41+08:00 ] 127.0.0.1 /weimart/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001292s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001383s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.001950s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002028s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 40 行.
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 47 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.001127s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001097s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.001128s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001279s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004841s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001328s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001395s ]
+
+[ 2014-09-27T15:07:19+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.017446s ]
+INFO: [ route_check ] --END-- [ RunTime:0.017646s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001578s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001704s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003948s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000651s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:08:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002390s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002533s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.003514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003666s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002616s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000354s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:08:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001776s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001894s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001740s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001851s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003759s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000647s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:08:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001623s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001724s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001375s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001463s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.020273s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000704s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:01+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002508s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002629s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001375s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001468s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002673s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000475s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:02+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001567s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001662s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001341s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001421s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002387s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000391s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:02+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002718s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002883s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001305s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001386s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003771s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000703s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001801s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001929s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001343s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003812s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000917s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001647s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001745s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002007s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002134s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002694s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000792s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001613s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001714s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002019s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002146s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003556s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000366s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:04+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001584s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001679s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001676s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002671s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000428s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:04+08:00 ] 127.0.0.1 /weimart/index.php?s=Login
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001656s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001766s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001649s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001734s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002704s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000835s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:09:08+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001758s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001872s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001303s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001374s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002412s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000419s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:46+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001622s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001724s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001359s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001434s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002568s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000407s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:46+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001528s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001623s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001260s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001331s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002895s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000898s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:47+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001562s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001655s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001779s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001879s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003498s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000557s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:47+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001765s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001884s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001578s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001686s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002699s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001069s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:47+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001556s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001683s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001513s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003293s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000699s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002103s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002245s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002393s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002593s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.004051s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000770s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:14:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001697s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001810s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001430s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.004638s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001210s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:02+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001536s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001646s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001277s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001350s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003796s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001075s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001625s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001730s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001418s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001496s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002749s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000942s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:49+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001962s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002116s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001317s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001390s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003024s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001693s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:49+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001585s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001709s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001886s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002015s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002385s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000243s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:50+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002076s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002239s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001401s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001499s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002648s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000819s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:15:50+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001628s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001731s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001473s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001573s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002893s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000572s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:16:14+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001234s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001330s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001015s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+SQL: SHOW COLUMNS FROM `shuh_user` [ RunTime:0.054521s ]
+SQL: SELECT * FROM `shuh_user`  [ RunTime:0.001406s ]
+
+[ 2014-09-27T15:16:46+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001702s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001810s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002349s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002510s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003129s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000869s ]
+
+[ 2014-09-27T15:16:56+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000741s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000841s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000475s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000541s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002309s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000478s ]
+
+[ 2014-09-27T15:17:41+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001036s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001140s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000977s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001106s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002630s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000612s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:18:22+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001618s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001718s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001292s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001363s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002991s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001127s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:18:23+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001980s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002099s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001852s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001973s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002373s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000353s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:18:23+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002780s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002941s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001381s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001464s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002825s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000689s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:18:52+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001938s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002118s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001074s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001194s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002779s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001239s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:19:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001691s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001805s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001432s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002624s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000591s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:19:04+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001924s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002043s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001719s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001832s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003818s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000968s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:19:04+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001558s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001653s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001348s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001423s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.004145s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.001018s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:19:20+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001662s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001781s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001411s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001499s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.002918s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000848s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:19:20+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001630s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001730s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001610s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001698s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.003358s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `think_user`
+SQL: SELECT * FROM `think_user`  [ RunTime:0.000838s ]
+ERR: 1146:Table 'weimart.think_user' doesn't exist
+ [ SQL语句 ] : SELECT * FROM `think_user` 
+
+[ 2014-09-27T15:20:15+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000826s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000929s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000521s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000591s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002717s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000878s ]
+
+[ 2014-09-27T15:20:55+08:00 ] 127.0.0.1 /weimart/index.php?s=Login/index
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002334s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002504s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001610s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002696s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000653s ]
+
