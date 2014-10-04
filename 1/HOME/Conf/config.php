@@ -9,6 +9,5 @@ return array(
 	'DB_PWD'=> '111111',         // 密码
 	'DB_PORT'=> '3306' ,       // 端口
 	'DB_PREFIX'=>'weimart_',
-	//更改模板替换变量，让普通能在所有平台下显示
 );
 ?>
