@@ -1,0 +1,16 @@
+[ 2014-10-07T20:25:46+08:00 ] 127.0.0.1 /weimart/wechat.php/Index/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.018129s ]
+INFO: [ route_check ] --END-- [ RunTime:0.018269s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001048s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001131s ]
+
+[ 2014-10-07T20:26:13+08:00 ] 127.0.0.1 /weimart/wechat.php/Index/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000793s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000907s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000536s ]
+
