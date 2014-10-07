@@ -9,10 +9,7 @@ class LoginAction extends Action
 	*/
     public function index()
 	{
-		$m = M('user');
-		$userList = $m->select();
-		var_dump($userList);
-		echo "string";
+		A('Login','Service')->loginService1();
 	}
 
 	/**
