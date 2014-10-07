@@ -57,4 +57,9 @@ class IndexAction extends Action {
 		Log::write('一条测试日志');
 		$this->show('日志已记录，请查看日志是否生成');
 	}
+
+	public function test()
+	{
+		echo "Test wechat!";
+	}
 }
