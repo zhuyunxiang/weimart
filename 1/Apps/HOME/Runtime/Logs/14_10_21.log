@@ -1,0 +1,511 @@
+[ 2014-10-21T22:07:53+08:00 ] 127.0.0.1 /weimart/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.024271s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.024400s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.035344s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035466s ]
+INFO: [ view_filter ] --START--
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 40 行.
+NOTIC: [8] Use of undefined constant APP_TMPL_PATH - assumed 'APP_TMPL_PATH' D:\AppServ\www\weimart\ThinkPHP\Lib\Behavior\ContentReplaceBehavior.class.php 第 47 行.
+INFO: ContentReplace Behavior ::run [ RunTime:0.031464s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.034152s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.024446s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.041144s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.131591s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.003156s ]
+INFO: [ view_end ] --END-- [ RunTime:0.003383s ]
+
+[ 2014-10-21T22:08:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.027318s ]
+INFO: [ route_check ] --END-- [ RunTime:0.027444s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001059s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001173s ]
+
+[ 2014-10-21T22:08:10+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002565s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002705s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001370s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001450s ]
+
+[ 2014-10-21T22:08:24+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001224s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001369s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000913s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001077s ]
+
+[ 2014-10-21T22:35:39+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001661s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001763s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002216s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002340s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003638s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:36:00+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002803s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003159s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001474s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001691s ]
+
+[ 2014-10-21T22:36:43+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002548s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002707s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001240s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001383s ]
+
+[ 2014-10-21T22:36:55+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001695s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001850s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001100s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003155s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:37:06+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001678s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002129s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001270s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001345s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002692s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:37:14+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001544s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001645s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001451s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001575s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.004069s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.005668s ]
+
+[ 2014-10-21T22:37:56+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001185s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001329s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000607s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000722s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003092s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:38:47+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001684s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001786s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001674s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001765s ]
+SQL: SHOW COLUMNS FROM `weimart_user_model` [ RunTime:0.004391s ]
+ERR: 1146:Table 'weimart.weimart_user_model' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `weimart_user_model`
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:38:48+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002532s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002693s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001942s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002080s ]
+SQL: SHOW COLUMNS FROM `weimart_user_model` [ RunTime:0.002781s ]
+ERR: 1146:Table 'weimart.weimart_user_model' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `weimart_user_model`
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:39:01+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002037s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002195s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001354s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001497s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002979s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:39:32+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000811s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000928s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000503s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000589s ]
+
+[ 2014-10-21T22:40:20+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001571s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001668s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001548s ]
+SQL: SHOW COLUMNS FROM `weimart_user_model` [ RunTime:0.003344s ]
+ERR: 1146:Table 'weimart.weimart_user_model' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `weimart_user_model`
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:41:36+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001596s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001718s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000922s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000999s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003225s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:43:24+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001639s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001757s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002028s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002202s ]
+
+[ 2014-10-21T22:43:33+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001595s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001856s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001555s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001843s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.004277s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:44:01+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001707s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001873s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001168s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001279s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003335s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:47:19+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002569s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002713s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001517s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001639s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.004377s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:47:34+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001845s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002012s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001093s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001218s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002510s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:47:36+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000877s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000983s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000549s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000626s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003324s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:48:45+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000912s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001023s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000668s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000755s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002507s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T22:49:15+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001741s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001847s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001423s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001511s ]
+
+[ 2014-10-21T22:50:27+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001281s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001385s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001137s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001218s ]
+
+[ 2014-10-21T22:52:15+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.002587s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002758s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001617s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001813s ]
+
+[ 2014-10-21T22:52:33+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001398s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001539s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000984s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001069s ]
+
+[ 2014-10-21T22:56:56+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001329s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001454s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000944s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001020s ]
+
+[ 2014-10-21T22:56:57+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001155s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001305s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000832s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000939s ]
+
+[ 2014-10-21T22:56:58+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001084s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001206s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000502s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000592s ]
+
+[ 2014-10-21T22:58:28+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001668s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001780s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001360s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001460s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002884s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.001064s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003562s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.000838s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T22:59:00+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001372s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001558s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001036s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001149s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003002s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000818s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003007s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.000846s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T23:00:25+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001697s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001807s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001414s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001519s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003394s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000688s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002887s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.000601s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T23:00:26+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001644s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001746s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001344s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001426s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003012s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.002078s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002442s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.002067s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T23:01:54+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001586s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001722s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001232s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001342s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002703s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.001814s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003698s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.001304s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T23:01:56+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000831s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000935s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000511s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000583s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003011s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.001870s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003465s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.001651s ]
+ERR: 1146:Table 'weimart.user_role' doesn't exist
+ [ SQL语句 ] : SELECT b.* FROM user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1'
+
+[ 2014-10-21T23:04:24+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001799s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001912s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001293s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001372s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002688s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000771s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002893s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.001611s ]
+
+[ 2014-10-21T23:05:40+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001281s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001398s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001006s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001110s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003785s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T23:05:53+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001714s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001818s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001456s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001580s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003599s ]
+ERR: Model:relation您所请求的方法不存在！
+
+[ 2014-10-21T23:06:02+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001575s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001680s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001905s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002769s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.002649s ]
+
+[ 2014-10-21T23:06:14+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000829s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000929s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000580s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002434s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.000578s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002457s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.000746s ]
+
+[ 2014-10-21T23:08:03+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001270s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001377s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000981s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001064s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002908s ]
+SQL: SELECT * FROM `weimart_user`  [ RunTime:0.001478s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002046s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_user_role AS a, weimart_role AS b WHERE a.role_id = b.role_id AND a. user_id='1' [ RunTime:0.001162s ]
+
+[ 2014-10-21T23:33:59+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001298s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001411s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001564s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001761s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002267s ]
+SQL: SELECT * FROM `weimart_role`  [ RunTime:0.001044s ]
+SQL: SHOW COLUMNS FROM `weimart_permission` [ RunTime:0.003211s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='1' [ RunTime:0.001309s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='2' [ RunTime:0.000443s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='3' [ RunTime:0.000316s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='4' [ RunTime:0.000615s ]
+
+[ 2014-10-21T23:34:05+08:00 ] 127.0.0.1 /weimart/index.php?s=Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001651s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001753s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001493s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001600s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002528s ]
+SQL: SELECT * FROM `weimart_role`  [ RunTime:0.000759s ]
+SQL: SHOW COLUMNS FROM `weimart_permission` [ RunTime:0.003253s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='1' [ RunTime:0.000937s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='2' [ RunTime:0.001028s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='3' [ RunTime:0.001082s ]
+NOTIC: [8] Undefined index:  mapping_order D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 176 行.
+NOTIC: [8] Undefined index:  mapping_limit D:\AppServ\www\weimart\ThinkPHP\Extend\Model\RelationModel.class.php 第 177 行.
+SQL: SELECT b.* FROM weimart_role_permission AS a, weimart_permission AS b WHERE a.permission_id = b.permission_id AND a. role_id='4' [ RunTime:0.000994s ]
+
