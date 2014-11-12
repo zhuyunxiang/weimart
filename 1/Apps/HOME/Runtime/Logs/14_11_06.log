@@ -1,0 +1,103 @@
+[ 2014-11-06T23:24:32+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.024009s ]
+INFO: [ route_check ] --END-- [ RunTime:0.024429s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.018406s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.018566s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.067390s ]
+SQL: INSERT INTO `weimart_user` (`user_name`,`user_nick_name`,`user_header_img`,`user_pwd`) VALUES ('guoxueying','guo','123','123') [ RunTime:0.058436s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.176416s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003224s ]
+SQL: SELECT * FROM `weimart_role` WHERE ( `role_name` = 'test1112' ) LIMIT 1   [ RunTime:0.015153s ]
+SQL: INSERT INTO weimart_user_role (user_id,role_id) SELECT a.user_id,b.role_id FROM weimart_user AS a ,weimart_role AS b where a.user_id =187 AND  b.role_id IN (13)  [ RunTime:0.098747s ]
+SQL: SHOW COLUMNS FROM `weimart_shop` [ RunTime:0.133225s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_shop` [ RunTime:0.062066s ]
+SQL: SHOW COLUMNS FROM `weimart_product` [ RunTime:0.032144s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_product` [ RunTime:0.041527s ]
+
+[ 2014-11-06T23:30:57+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001304s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001407s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001117s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001251s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003469s ]
+SQL: INSERT INTO `weimart_user` (`user_name`,`user_nick_name`,`user_header_img`,`user_pwd`) VALUES ('guoxueying','guo','123','123') [ RunTime:0.001123s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003307s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.003613s ]
+SQL: SELECT * FROM `weimart_role` WHERE ( `role_name` = 'test1112' ) LIMIT 1   [ RunTime:0.000834s ]
+SQL: INSERT INTO weimart_user_role (user_id,role_id) SELECT a.user_id,b.role_id FROM weimart_user AS a ,weimart_role AS b where a.user_id =188 AND  b.role_id IN (13)  [ RunTime:0.000594s ]
+SQL: SHOW COLUMNS FROM `weimart_shop` [ RunTime:0.003547s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_shop` [ RunTime:0.003157s ]
+SQL: SHOW COLUMNS FROM `weimart_product` [ RunTime:0.003872s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_product` [ RunTime:0.003704s ]
+SQL: INSERT INTO `weimart_user` (`user_name`,`user_nick_name`,`user_header_img`,`user_pwd`) VALUES ('guoxueying','guo','123','123') [ RunTime:0.000698s ]
+SQL: SELECT * FROM `weimart_role` WHERE ( `role_name` = 'test1112' ) LIMIT 1   [ RunTime:0.000314s ]
+SQL: INSERT INTO weimart_user_role (user_id,role_id) SELECT a.user_id,b.role_id FROM weimart_user AS a ,weimart_role AS b where a.user_id =189 AND  b.role_id IN (13)  [ RunTime:0.000287s ]
+
+[ 2014-11-06T23:49:21+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001483s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001626s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000938s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001028s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002927s ]
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+
+[ 2014-11-06T23:49:21+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.000756s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000849s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000496s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000562s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.002687s ]
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+
+[ 2014-11-06T23:50:06+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001199s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001295s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000928s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001003s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003466s ]
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+SQL: INSERT INTO `weimart_user` (`user_name`,`user_nick_name`,`user_header_img`,`user_pwd`,`user_is_deleted`,`user_last_updated`,`user_last_logined`,`user_stage`) VALUES ('guoxueying','guo','123','202cb962ac59075b964b07152d234b70',0,null,null,0) [ RunTime:0.000974s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002679s ]
+SQL: SHOW COLUMNS FROM `weimart_shop` [ RunTime:0.002549s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_shop` [ RunTime:0.002978s ]
+SQL: SHOW COLUMNS FROM `weimart_product` [ RunTime:0.002414s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_product` [ RunTime:0.002191s ]
+
+[ 2014-11-06T23:51:28+08:00 ] 127.0.0.1 /weimart/index.php/Test/test
+INFO: [ route_check ] --START--
+INFO: CheckRoute Behavior ::run [ RunTime:0.001324s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001449s ]
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001041s ]
+SQL: SHOW COLUMNS FROM `weimart_user` [ RunTime:0.003053s ]
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [2] call_user_func_array() [<a href='function.call-user-func-array'>function.call-user-func-array</a>]: First argument is expected to be a valid callback, 'timestamp' was given D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 915 行.
+NOTIC: [8] Undefined offset:  3 D:\AppServ\www\weimart\ThinkPHP\Lib\Core\Model.class.php 第 907 行.
+SQL: INSERT INTO `weimart_user` (`user_name`,`user_nick_name`,`user_header_img`,`user_pwd`,`user_is_deleted`,`user_last_updated`,`user_last_logined`,`user_stage`) VALUES ('guoxueying','guo','123','202cb962ac59075b964b07152d234b70',0,null,null,0) [ RunTime:0.000825s ]
+SQL: SHOW COLUMNS FROM `weimart_role` [ RunTime:0.002681s ]
+SQL: SHOW COLUMNS FROM `weimart_shop` [ RunTime:0.003129s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_shop` [ RunTime:0.002555s ]
+SQL: SHOW COLUMNS FROM `weimart_product` [ RunTime:0.002488s ]
+SQL: SHOW COLUMNS FROM `weimart_user_visit_product` [ RunTime:0.002835s ]
+
