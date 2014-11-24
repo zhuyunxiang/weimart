@@ -8,7 +8,7 @@ class TestService
 	public function test()
 	{
 		$user = array(
-						'user_name'=>"guoxueying2223",
+						'user_name'=>"guoxueying22234",
 						'user_nick_name'=>"guo",
 						'user_header_img'=>"123",
 						'user_pwd'=>"123"
@@ -18,11 +18,11 @@ class TestService
 								'role_name'=>"test1112"
 								)
 						);
-		$a = A("User", "Dao");
-		$condition = array('user_id'=>'252');
-		dump($a->saveUser($user,$condition));
+		$a = A("Shop", "Dao");
+		$condition = array('user_id'=>'256');
+		// dump($a->removeUser($condition));
 
-		dump($a->selectUser());
+		dump($a->select());
 		// dump($a->addUser($user,'roles'));
 	}
 }

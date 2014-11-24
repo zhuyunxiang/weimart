@@ -1,16 +1,16 @@
 <?php 
 /**
-* User dao.
+* Shop dao.
 */
 import('@.Dao.BaseDao');
-class UserDao extends BaseDao
+class ShopDao extends BaseDao
 {
 	public static $tableName;
 
 	// Construct function.
 	function __construct()
 	{
-		$this->tableName = "User";
+		$this->tableName = "Shop";
 	}
 }
 

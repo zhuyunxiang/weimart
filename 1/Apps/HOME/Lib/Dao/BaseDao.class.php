@@ -39,6 +39,30 @@ abstract class BaseDao
 			}
 		}
 	}
+
+	// Add data to database.
+	public function add($data, $condition = null, $rel = null)
+	{
+		return $this->func($this->tableName, 'add', $data, $rel, $condition);
+	}
+
+	// Save data to database.
+	public function save($data, $condition = null, $rel = null)
+	{
+		return $this->func($this->tableName, 'save', $data, $rel, $condition);
+	}
+
+	// Remove data from database.
+	public function remove($condition, $rel = null)
+	{
+		return $this->func($this->tableName, 'delete', '', $rel, $condition);
+	}
+
+	// Search data from database.
+	public function select($condition = null, $rel = null)
+	{
+		return $this->func($this->tableName, 'select', '', $rel, $condition);
+	}
 	
 }
 

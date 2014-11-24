@@ -9,7 +9,6 @@ class LoginAction extends Action
 	*/
     public function home()
 	{
-		// A('Login','Service')->loginService1();
 		$this->display('home');
 	}
 
@@ -19,11 +18,6 @@ class LoginAction extends Action
 	public function do_login()
 	{
 		
-	}
-
-	public function test()
-	{
-		$this->display('test');
 	}
 }
 
