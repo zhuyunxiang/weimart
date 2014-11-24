@@ -16,6 +16,11 @@ class HomeAction extends Action
 	{
 		$this->display();
 	}
+
+	public function test()
+	{
+		echo "string";
+	}
 }
 
  ?>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="HomeApp" lang="zh-cn">
+    <head>
+        <title>Weimart Control Center</title>
+        <script type="text/javascript" src="__PUBLIC__/js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/js/lib/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="__PUBLIC__/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/css/commen/commen.css">
+        <link rel="stylesheet" href="__PUBLIC__/css/home/home.css">
+    </head>
+    <body>
+        <ng-include src="'__PUBLIC__/tpl/commen/header.html'"></ng-include>
+        <div ng-view></div>
+        <ng-include src="'__PUBLIC__/tpl/commen/bottom.html'"></ng-include>
+        <script type="text/javascript" src="__PUBLIC__/js/lib/angular.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/js/lib/angular-route.js"></script>
+        
+        <script type="text/javascript">
+            var publicUrl = '__PUBLIC__/';
+            var appUrl = '__URL__/';
+            var appIndexUrl = '__APP__/';
+        </script>
+        <script type="text/javascript" src="__PUBLIC__/js/home/home.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/js/home/homeCtrls.js"></script>
+    </body>
+</html>
