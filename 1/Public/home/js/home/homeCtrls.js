@@ -19,8 +19,14 @@ HomeCtrls.controller('registerCtrl', ['$scope', '$http',
 
 		$scope.submitInfo = function () {
 			$http({
-        		method: 'GET',
-			    url: appIndexUrl+'Home/test'
+        		method: 'POST',
+			    url: appIndexUrl+'Index/doRegister',
+			    headers: {
+				 	'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+				}, 
+
+	   			data: $scope.userInfo
+
 			}).success(function(data, status, headers, config) {
 			    console.log("success...");
 			    console.log(data);
