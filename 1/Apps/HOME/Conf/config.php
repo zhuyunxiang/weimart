@@ -11,6 +11,6 @@ return array(
 	'DB_PREFIX'=>'weimart_',
 	'APP_GROUP_LIST'=>'Home,Admin',
 	'DEFAULT_GROUP'=>'Home',
-
+	'URL_HTML_SUFFIX'=>''
 );
 ?>
