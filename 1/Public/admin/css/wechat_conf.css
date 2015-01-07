@@ -1,0 +1,6 @@
+body{margin:0;padding:0;border-width:0;}
+.mc-header{height:45px;line-height:45px;background-color:#F3F3F3;}
+.container .menu-container{padding-right:0;}.container .menu-container .menu-header{height:45px;line-height:45px;background-color:#F3F3F3;padding-left:10px;border-width:1px 0 0 1px;border-color:#ddd;border-style:solid;border-radius:5px 0 0 0;}.container .menu-container .menu-header button{margin-left:90px;}
+.container .menu-container .menu-list{padding-left:10px;border-width:0 0 1px 1px;border-color:#ddd;border-style:solid;border-radius:0 0 0 5px;min-height:400px;padding-left:0;}.container .menu-container .menu-list .first-menu{height:25px;line-height:25px;}.container .menu-container .menu-list .first-menu:hover{background-color:#DAE8F8;}
+.container .msg-container{padding-left:0;}.container .msg-container .msg-header{height:45px;line-height:45px;background-color:#F3F3F3;padding-left:10px;border-width:1px 1px 0 1px;border-color:#ddd;border-style:solid;border-radius:0 5px 0 0;}
+.container .msg-container .msg-list{padding-left:10px;border-width:0 1px 1px 1px;border-color:#ddd;border-style:solid;border-radius:0 0 5px 0;min-height:400px;padding-left:0;}

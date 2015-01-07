@@ -2,30 +2,28 @@
 // 本类由系统自动生成，仅供测试用途
 
 class IndexAction extends Action {
-    public function index(){
-	// $this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p></div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
-
-    	// $this->home();
-    	echo "string";
+    public function index()
+    {
+        $this->display('index');
     }
 
-    /**
-	* public function to show views.
-	*/
+    public function do_login()
+    {
+       $postData = $_POST;
+       $userMatch = A('AdminIndex', 'Service')->doLogin($postData);
+       if ($userMatch) {
+        $this->redirect('Index/home');
+       }
+    }
 
     public function home()
     {
-    	$this->display('home');
+      $this->display('home');
     }
 
-
-    /**
-	* public function to do logic.
-	*/
-
-	public function doRegister()
-	{
-		var_dump($_REQUEST);
-	}
+    public function wechat_menu_conf()
+    {
+      $this->display('wechat_menu_conf');
+    }
 
 }
