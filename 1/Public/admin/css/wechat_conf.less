@@ -18,42 +18,78 @@ body{
 	border-radius: @border-radius;
 }
 
-@list-min-height: 400px;
+@list-min-height: 460px;
 
 .container{
-	.menu-container{
-		padding-right: 0;
-		.menu-header{
-			.mc-header;
-			.mc-border(5px 0 0 0,1px 0 0 1px);
-			button{
-				margin-left: 90px;
+	.wechat-menu-conf-container{
+		.menu-container{
+			padding-right: 0;
+			.menu-header{
+				.mc-header;
+				.mc-border(5px 0 0 0,1px 0 0 1px);
+				button{
+					margin-left: 90px;
+				}
 			}
-		}
-		.menu-list{
-			.mc-border(0 0 0 5px,0 0 1px 1px);
-			min-height: @list-min-height;
-			padding-left: 0;
-			.first-menu{
-				height: 25px;
-				line-height: 25px;
-				&:hover{
-					background-color: #DAE8F8;
+			.menu-list{
+				.mc-border(0 0 0 5px,0 0 1px 1px);
+				min-height: @list-min-height;
+				padding-left: 0;
+				.first-menu{
+					display: block;
+					.btn{
+						padding: 2px 4px;
+					}
+					
+					.first-menu-container{
+						display: block;
+						padding-left: 10px;
+						height: 25px;
+						line-height: 25px;
+						.first_tools{
+							display: none;
+						}
+						&:hover{
+							background-color: #DAE8F8;
+							.first_tools{
+								margin-left: 20px;
+								display: inline-block;
+							}
+						}
+					}
+
+					.second-menu-container{
+						display: block;
+						padding-left: 40px;
+						height: 25px;
+						line-height: 25px;
+						.second_tools{
+							display: none;
+						}
+						&:hover{
+							background-color: #DAE8F8;
+							.second_tools{
+								margin-left: 20px;
+								display: inline-block;
+							}
+						}
+					}
 				}
 			}
 		}
-	}
 
-	.msg-container{
-		padding-left: 0;
-		.msg-header{
-			.mc-header;
-			.mc-border(0 5px 0 0,1px 1px 0 1px);
-		}
-		.msg-list{
-			.mc-border(0 0 5px 0,0 1px 1px 1px);
-			min-height: @list-min-height;
+		.msg-container{
 			padding-left: 0;
+			.msg-header{
+				.mc-header;
+				.mc-border(0 5px 0 0,1px 1px 0 1px);
+			}
+			.msg-list{
+				.mc-border(0 0 5px 0,0 1px 1px 1px);
+				min-height: @list-min-height;
+				padding: 10px 0 0 10px;
+			}
 		}
 	}
+	
 }

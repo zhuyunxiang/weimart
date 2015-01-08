@@ -2,8 +2,12 @@
 <html>
 	<head>
 		<title></title>
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="__PUBLIC__/admin/css/wechat_conf.css" type="text/css" media="screen" />
+		
+		
 	</head>
 	<body>
 		<br/>
@@ -18,7 +22,81 @@
 							</div>
 							<div class="menu-list">
 								<div class="first-menu">
-									第一个菜单
+									<div class="first-menu-container">
+										<i class="glyphicon glyphicon-play"></i>
+										<span>第一个菜单</span>
+										<div class="first_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertSecondModal"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
+									<div class="second-menu-container">
+										<i class="glyphicon glyphicon-star"></i>
+										<span>二级菜单</span>
+										<div class="second_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
+									<div class="second-menu-container">
+										<i class="glyphicon glyphicon-star"></i>
+										<span>二级菜单</span>
+										<div class="second_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
+									<div class="second-menu-container">
+										<i class="glyphicon glyphicon-star"></i>
+										<span>二级菜单</span>
+										<div class="second_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
+									<div class="second-menu-container">
+										<i class="glyphicon glyphicon-star"></i>
+										<span>二级菜单</span>
+										<div class="second_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
+									<div class="second-menu-container">
+										<i class="glyphicon glyphicon-star"></i>
+										<span>二级菜单</span>
+										<div class="second_tools">
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+											</a>
+											<a href="#" class="btn">
+												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+											</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -33,6 +111,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
+			<hr>
+			<button class="btn btn-success pull-right">发布</button>
+		</div> 
+		<br/>
+		<br/>
+		<!-- container -->
 	</body>
 </html>
