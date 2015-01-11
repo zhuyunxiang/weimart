@@ -37,12 +37,12 @@
 											</a>
 										</div>
 									</div>
-									<div class="second-menu-container" ng-repeat="secondMenu in firstMenu.secondMenuList">
+									<div class="second-menu-container" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index">
 										<i class="glyphicon glyphicon-star"></i>
 										<span>{{secondMenu.name}}</span>
 										<div class="second_tools">
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
+												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" ng-click="edit_second_munu($parent.$index, $index)"></i>
 											</a>
 											<a href="#" class="btn">
 												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
@@ -50,83 +50,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="first-menu">
-									<div class="first-menu-container">
-										<i class="glyphicon glyphicon-play"></i>
-										<span>第一个菜单</span>
-										<div class="first_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertSecondModal"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-									<div class="second-menu-container">
-										<i class="glyphicon glyphicon-star"></i>
-										<span>二级菜单</span>
-										<div class="second_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-									<div class="second-menu-container">
-										<i class="glyphicon glyphicon-star"></i>
-										<span>二级菜单</span>
-										<div class="second_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-									<div class="second-menu-container">
-										<i class="glyphicon glyphicon-star"></i>
-										<span>二级菜单</span>
-										<div class="second_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-									<div class="second-menu-container">
-										<i class="glyphicon glyphicon-star"></i>
-										<span>二级菜单</span>
-										<div class="second_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-									<div class="second-menu-container">
-										<i class="glyphicon glyphicon-star"></i>
-										<span>二级菜单</span>
-										<div class="second_tools">
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" onclick="update_first_menu_event()"></i>
-											</a>
-											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
-											</a>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 						</div>
 						<div class="msg-container col-xs-9">
@@ -134,7 +58,7 @@
 								<span>设置动作</span>
 							</div>
 							<div class="msg-list">
-								<input type="text" ng-model="editMenuName" name="{{index}}">
+								<input type="text" ng-model="editMenuName" name="{{editMenuId}}">
 							</div>
 						</div>
 					</div>
