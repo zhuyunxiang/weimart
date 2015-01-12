@@ -9,10 +9,11 @@
 		<js file='__PUBLIC__/commen/js/lib/angular.min.js' />
 		<js file='__PUBLIC__/admin/js/wechat.js' />
 		<js file='__PUBLIC__/admin/js/wechatCtrls.js' />
+		<js file='__PUBLIC__/admin/js/wechatServices.js' />
 	</head>
 	<body>
-		<div class="container">
-			<div class="wechat-menu-conf-container" ng-controller="wechatCtrl">
+		<div class="container" ng-controller="wechatCtrl">
+			<div class="wechat-menu-conf-container" >
 				<div class="conf-container">
 					<div class="row">
 						<div class="menu-container col-xs-3">
@@ -33,7 +34,7 @@
 												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" ng-click="edit_first_munu($index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+												<i class="glyphicon glyphicon-trash" ng-click="remove_first_munu($index);"></i>
 											</a>
 										</div>
 									</div>
@@ -45,7 +46,7 @@
 												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" ng-click="edit_second_munu($parent.$index, $index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" onclick="confirm_delete('first');"></i>
+												<i class="glyphicon glyphicon-trash" ng-click="remove_second_munu($parent.$index, $index);"></i>
 											</a>
 										</div>
 									</div>
@@ -65,7 +66,7 @@
 				</div>
 			</div>
 			<hr>
-			<button class="btn btn-success pull-right">发布</button>
+			<button class="btn btn-success pull-right" example-directive>发布</button>
 		</div>
 		<br/>
 		<br/>

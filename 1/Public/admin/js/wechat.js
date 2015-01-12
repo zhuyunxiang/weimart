@@ -1,1 +1,1 @@
-var app = angular.module('WechatApp', ['WechatCtrls']);
+var app = angular.module('WechatApp', ['WechatCtrls', 'WechatServices']);
