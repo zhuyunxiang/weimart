@@ -25,11 +25,19 @@ WechatCtrls.controller('wechatCtrl', ['$scope',
 		$scope.edit_first_munu = function (index) {
 			$scope.editMenuName = $scope.menuList[index].name;	
 			$scope.editMenuId = $scope.menuList[index].id;
-
 		}
+
+		$scope.remove_first_munu = function (index) {
+			$scope.menuList.splice(index, 1);	
+		}
+
 		$scope.edit_second_munu = function (parentIndex,index) {
 			$scope.editMenuName = $scope.menuList[parentIndex].secondMenuList[index].name;
 			$scope.editMenuId = $scope.menuList[parentIndex].secondMenuList[index].id;
+		}
+
+		$scope.remove_second_munu = function (parentIndex,index) {
+			$scope.menuList[parentIndex].secondMenuList.splice(index, 1);
 		}
 	}
 ]);
