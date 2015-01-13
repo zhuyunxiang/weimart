@@ -2,6 +2,7 @@ var WechatCtrls = angular.module('WechatCtrls', []);
 
 WechatCtrls.controller('wechatCtrl', ['$scope',
 	function($scope){
+
 		$scope.menuList = [
 		{
 			id: 111,
@@ -22,7 +23,14 @@ WechatCtrls.controller('wechatCtrl', ['$scope',
 					{id: 117,name: "sm6"}
 				]
 		}];
+		$scope.add_first_munu = function () {
+			$scope.menuModalTitle = "添加一级菜单";
+			$scope.editMenuName = null;	
+			$scope.editMenuId = null;
+		}
+
 		$scope.edit_first_munu = function (index) {
+			$scope.menuModalTitle = "修改一级菜单";
 			$scope.editMenuName = $scope.menuList[index].name;	
 			$scope.editMenuId = $scope.menuList[index].id;
 		}
@@ -32,8 +40,15 @@ WechatCtrls.controller('wechatCtrl', ['$scope',
 		}
 
 		$scope.edit_second_munu = function (parentIndex,index) {
+			$scope.menuModalTitle = "修改二级菜单";
 			$scope.editMenuName = $scope.menuList[parentIndex].secondMenuList[index].name;
 			$scope.editMenuId = $scope.menuList[parentIndex].secondMenuList[index].id;
+		}
+
+		$scope.add_second_munu = function (index) {
+			$scope.menuModalTitle = "添加二级菜单";
+			$scope.editMenuName = null;
+			$scope.editMenuId = null;
 		}
 
 		$scope.remove_second_munu = function (parentIndex,index) {
