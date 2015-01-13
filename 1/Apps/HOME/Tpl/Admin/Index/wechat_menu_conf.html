@@ -11,15 +11,15 @@
 		<js file='__PUBLIC__/admin/js/wechatCtrls.js' />
 		<js file='__PUBLIC__/admin/js/wechatServices.js' />
 	</head>
-	<body>
-		<div class="container" ng-controller="wechatCtrl">
+	<body ng-controller="wechatCtrl">
+		<div class="container">
 			<div class="wechat-menu-conf-container" >
 				<div class="conf-container">
 					<div class="row">
 						<div class="menu-container col-xs-3">
 							<div class="menu-header">
 								<span>菜单管理</span>
-								<button class="btn btn-success btn-xs">添加</button>
+								<button class="btn btn-success btn-xs" show-name-modal-directive ng-click="add_first_munu()">添加</button>
 							</div>
 							<div class="menu-list">
 								<div class="first-menu" ng-repeat="firstMenu in menuList">
@@ -28,10 +28,10 @@
 										<span>{{firstMenu.name}}</span>
 										<div class="first_tools">
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#insertSecondModal"></i>
+												<i class="glyphicon glyphicon-plus" show-name-modal-directive ng-click="add_second_munu($index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" ng-click="edit_first_munu($index)"></i>
+												<i class="glyphicon glyphicon-pencil" show-name-modal-directive ng-click="edit_first_munu($index)"></i>
 											</a>
 											<a href="#" class="btn">
 												<i class="glyphicon glyphicon-trash" ng-click="remove_first_munu($index);"></i>
@@ -43,7 +43,7 @@
 										<span>{{secondMenu.name}}</span>
 										<div class="second_tools">
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#insertFirstModal" ng-click="edit_second_munu($parent.$index, $index)"></i>
+												<i class="glyphicon glyphicon-pencil" show-name-modal-directive ng-click="edit_second_munu($parent.$index, $index)"></i>
 											</a>
 											<a href="#" class="btn">
 												<i class="glyphicon glyphicon-trash" ng-click="remove_second_munu($parent.$index, $index);"></i>
@@ -60,16 +60,41 @@
 							</div>
 							<div class="msg-list">
 								<input type="text" ng-model="editMenuName" name="{{editMenuId}}">
+								<input type="text" class="form-control" ng-model="editMenuName"  placeholder="请输入菜单名称">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<hr>
-			<button class="btn btn-success pull-right" example-directive>发布</button>
+			<button class="btn btn-success pull-right" show-modal-directive>发布</button>
 		</div>
 		<br/>
 		<br/>
 		<!-- container -->
+		<div class="modal fade" id="menuModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title">{{menuModalTitle}}</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="editMenuName" class="col-sm-3 control-label">请输入菜单名称：</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="editMenuName"  placeholder="请输入菜单名称">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
