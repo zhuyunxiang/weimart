@@ -26,4 +26,8 @@ class IndexAction extends Action {
       $this->display('wechat_menu_conf');
     }
 
+    public function test()
+    {
+      dump($_POST) ;
+    }
 }
