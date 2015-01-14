@@ -1,7 +1,7 @@
 var WechatCtrls = angular.module('WechatCtrls', []);
 
-WechatCtrls.controller('wechatCtrl', ['$scope',
-	function($scope){
+WechatCtrls.controller('wechatCtrl', ['$scope','$http',
+	function($scope,$http){
 
 		$scope.menuList = [
 		{
@@ -53,6 +53,28 @@ WechatCtrls.controller('wechatCtrl', ['$scope',
 
 		$scope.remove_second_munu = function (parentIndex,index) {
 			$scope.menuList[parentIndex].secondMenuList.splice(index, 1);
+		}
+
+		$scope.save_menu_name = function (argument) {
+			$scope.formData = {u:"zyx",p:"123"};
+			$http({
+		        method  : 'POST',
+		        url     : test,
+		        data    : $.param($scope.formData),  // pass in data as strings
+		        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+		    })
+		        .success(function(data) {
+		            console.log(data);
+		 
+		            // if (!data.success) {
+		            //     // if not successful, bind errors to error variables
+		            //     $scope.errorName = data.errors.name;
+		            //     $scope.errorSuperhero = data.errors.superheroAlias;
+		            // } else {
+		            //     // if successful, bind success message to message
+		            //     $scope.message = data.message;
+		            // }
+		        });
 		}
 	}
 ]);
