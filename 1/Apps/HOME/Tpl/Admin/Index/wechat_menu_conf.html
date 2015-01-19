@@ -11,7 +11,10 @@
 		<js file='__PUBLIC__/admin/js/wechatCtrls.js' />
 		<js file='__PUBLIC__/admin/js/wechatServices.js' />
 		<script>
-			var test = "{:U('test')}";
+			var getMenuListUrl = "{:U('get_menu_list')}";
+			var saveMenuInfoUrl = "{:U('save_menu_info')}";
+			var removeFirstMenuUrl = "{:U('remove_first_menu')}";
+			var removeSecondMenuUrl = "{:U('remove_second_menu')}";
 		</script>
 	</head>
 	<body ng-controller="wechatCtrl">
@@ -21,35 +24,35 @@
 					<div class="row">
 						<div class="menu-container col-xs-3">
 							<div class="menu-header">
-								<span>菜单管理</span>
-								<button class="btn btn-success btn-xs" show-name-modal-directive ng-click="add_first_munu()">添加</button>
+								<span>菜单管理</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button class="btn btn-success btn-xs" ng-click="add_first_menu()">添加</button>
 							</div>
 							<div class="menu-list">
 								<div class="first-menu" ng-repeat="firstMenu in menuList">
 									<div class="first-menu-container">
 										<i class="glyphicon glyphicon-play"></i>
-										<span>{{firstMenu.name}}</span>
+										<span>{{firstMenu.menu_name}}</span>
 										<div class="first_tools">
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-plus" show-name-modal-directive ng-click="add_second_munu($index)"></i>
+												<i class="glyphicon glyphicon-plus" ng-click="add_second_menu($index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" show-name-modal-directive ng-click="edit_first_munu($index)"></i>
+												<i class="glyphicon glyphicon-pencil" ng-click="edit_first_menu($index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" ng-click="remove_first_munu($index);"></i>
+												<i class="glyphicon glyphicon-trash" ng-click="remove_first_menu($index);"></i>
 											</a>
 										</div>
 									</div>
 									<div class="second-menu-container" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index">
 										<i class="glyphicon glyphicon-star"></i>
-										<span>{{secondMenu.name}}</span>
+										<span>{{secondMenu.menu_name}}</span>
 										<div class="second_tools">
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-pencil" show-name-modal-directive ng-click="edit_second_munu($parent.$index, $index)"></i>
+												<i class="glyphicon glyphicon-pencil" show-name-modal-directive ng-click="edit_second_menu($parent.$index, $index)"></i>
 											</a>
 											<a href="#" class="btn">
-												<i class="glyphicon glyphicon-trash" ng-click="remove_second_munu($parent.$index, $index);"></i>
+												<i class="glyphicon glyphicon-trash" ng-click="remove_second_menu($parent.$index, $index);"></i>
 											</a>
 										</div>
 									</div>
@@ -71,33 +74,57 @@
 			</div>
 			<hr>
 			<button class="btn btn-success pull-right" show-modal-directive>发布</button>
-		</div>
-		<br/>
-		<br/>
-		<!-- container -->
-		<div class="modal fade" id="menuModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-						<h4 class="modal-title">{{menuModalTitle}}</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" role="form">
-							<div class="form-group">
-								<label for="editMenuName" class="col-sm-3 control-label">请输入菜单名称：</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" ng-model="editMenuName"  placeholder="请输入菜单名称">
+			<br/>
+			<br/>
+			<!-- container -->
+			<div class="modal fade" id="menuModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title">{{menuModalTitle}}</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal" role="form">
+								<div class="form-group">
+									<label for="editMenuName" class="col-xs-3 control-label">菜单名称：</label>
+									<div class="col-xs-6">
+										<input type="text" class="form-control" ng-model="editMenuInfo.editMenuName"  placeholder="请输入菜单名称">
+										<input type="hidden" ng-model="editMenuInfo.editMenuType">
+										<input type="hidden" ng-model="editMenuInfo.editMenuId">
+										<input type="hidden" ng-model="editMenuInfo.editMenuParentId">
+									</div>
 								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary" ng-click="save_menu_name()">保存</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save_menu_name()">保存</button>
+						</div>
 					</div>
 				</div>
 			</div>
+			<!-- modal -->
+			<div class="tips" ng-show="tips.errorShow">
+				<div class="alert alert-warning alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<strong>{{tips.Text}}!</strong>
+					<span class="pull-right">还有<strong>{{tips.leftTime}}</strong>秒自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				</div>
+			</div>
+			<div class="tips" ng-show="tips.successShow">
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<strong>{{tips.Text}}!</strong>
+					<span class="pull-right">还有<strong>{{tips.leftTime}}</strong>秒自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				</div>
+			</div>
+
+
 		</div>
+		<!-- error-tips -->
+		<br>
+		<br>
+		<br>
 	</body>
 </html>
