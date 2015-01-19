@@ -29,7 +29,7 @@
 							</div>
 							<div class="menu-list">
 								<div class="first-menu" ng-repeat="firstMenu in menuList">
-									<div class="first-menu-container">
+									<div class="first-menu-container pointer">
 										<i class="glyphicon glyphicon-play"></i>
 										<span>{{firstMenu.menu_name}}</span>
 										<div class="first_tools">
@@ -44,7 +44,7 @@
 											</a>
 										</div>
 									</div>
-									<div class="second-menu-container" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index">
+									<div class="second-menu-container pointer" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index">
 										<i class="glyphicon glyphicon-star"></i>
 										<span>{{secondMenu.menu_name}}</span>
 										<div class="second_tools">
