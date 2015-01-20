@@ -21,6 +21,11 @@ class IndexAction extends Action {
       $this->display('home');
     }
 
+    public function main()
+    {
+      $this->display('main');
+    }
+
     public function wechat_menu_conf()
     {
       $this->display('wechat_menu_conf');

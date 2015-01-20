@@ -29,7 +29,7 @@
 							</div>
 							<div class="menu-list">
 								<div class="first-menu" ng-repeat="firstMenu in menuList">
-									<div class="first-menu-container pointer">
+									<div class="first-menu-container pointer" ng-click="editMenuMsg($index)">
 										<i class="glyphicon glyphicon-play"></i>
 										<span>{{firstMenu.menu_name}}</span>
 										<div class="first_tools">
@@ -44,7 +44,7 @@
 											</a>
 										</div>
 									</div>
-									<div class="second-menu-container pointer" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index">
+									<div class="second-menu-container pointer" ng-repeat="secondMenu in firstMenu.secondMenuList track by $index" ng-click="editMenuMsg($index, $parent.$index)">
 										<i class="glyphicon glyphicon-star"></i>
 										<span>{{secondMenu.menu_name}}</span>
 										<div class="second_tools">
@@ -65,8 +65,26 @@
 								<span>设置动作</span>
 							</div>
 							<div class="msg-list">
-								<input type="text" ng-model="editMenuName" name="{{editMenuId}}">
-								<input type="text" class="form-control" ng-model="editMenuName"  placeholder="请输入菜单名称">
+								<div class="has-child" ng-show="defaultCss.hasChild">
+									<span>对不起，已经有子菜单，不能设置动作</span>
+								</div>
+								<div class="to-choose" ng-show="defaultCss.toChoose">
+									请选择订阅者点击菜单后，公众号做出的相应动作
+									<div class="add-action-group">
+										<div class="to-add-msg">
+											<a href="#">
+												<i class="icon_menu_action send"></i><br>
+												<font>发送消息</font>
+											</a>
+										</div>
+										<div class="to-add-url">
+											<a href="#">
+												<i class="icon_menu_action url"></i><br>
+												<font>跳转到网页</font>
+											</a>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -119,8 +137,6 @@
 					<span class="pull-right">还有<strong>{{tips.leftTime}}</strong>秒自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				</div>
 			</div>
-
-
 		</div>
 		<!-- error-tips -->
 		<br>

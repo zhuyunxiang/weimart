@@ -91,6 +91,45 @@ body{
 				.mc-border(0 0 5px 0,0 1px 1px 1px);
 				min-height: @list-min-height;
 				padding: 10px 0 0 10px;
+				.has-child{
+					text-align: center;
+					padding-top: 26%;
+				}
+
+				.add-action-group{
+					text-align: center;
+					padding-top: 18%;
+					margin-left: 25%; 
+					.to-add-msg{
+						float: left;
+					}
+					.to-add-url{
+						float: left;
+						margin-left: 5%;
+					}
+				}
+
+				.icon_menu_action{
+					width: 144px;
+					height: 144px;
+					vertical-align: middle;
+					display: inline-block;
+				}
+				.icon_menu_action.send{
+					background: url("../../commen/img/ico/advanced_menu_setting_z.png") 0 -154px no-repeat;
+				}
+
+				.icon_menu_action.send:hover{
+					background: url("../../commen/img/ico/advanced_menu_setting_z.png") 0 0px no-repeat;
+				}
+
+				.icon_menu_action.url{
+					background: url("../../commen/img/ico/advanced_menu_setting_z.png") 0 -462px no-repeat;
+				}
+
+				.icon_menu_action.url:hover{
+					background: url("../../commen/img/ico/advanced_menu_setting_z.png") 0 -309px no-repeat;
+				}
 			}
 		}
 	}

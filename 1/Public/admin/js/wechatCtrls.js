@@ -46,6 +46,11 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 			}
 		}
 
+		$scope.defaultCss = {
+			hasChild: false,
+			toChoose: false
+		}
+
 		$scope.closeAllTips = function () {
 			$scope.tips = {
 				errorShow : false,
@@ -140,21 +145,59 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 		}
 
 		$scope.save_menu_name = function (argument) {
+			if ($scope.editMenuInfo.editMenuName != "" && $scope.editMenuInfo.editMenuName != null) {
+				if ($scope.editMenuInfo.editMenuName.length < 6) {
+					$http({
+				        method  : 'POST',
+				        url     : saveMenuInfoUrl,
+				        data    : $.param($scope.editMenuInfo),  // pass in data as strings
+				        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+				    })
+				        .success(function(data) {
+				            if (data.status === 1) {
+				            	showTips('success',data.info);
+				            } else {
+				            	showTips('error',data.info);
+				            }
+				 			getInfo();
+				    });
+				} else {
+					showTips('error',"对不起， 菜单名称不能超过5个字！");
+				}
+			} else {
+				showTips('error',"对不起， 菜单名称不能为空！");
+			}
+		}
 
-			$http({
-		        method  : 'POST',
-		        url     : saveMenuInfoUrl,
-		        data    : $.param($scope.editMenuInfo),  // pass in data as strings
-		        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-		    })
-		        .success(function(data) {
-		            if (data.status === 1) {
-		            	showTips('success',data.info);
-		            } else {
-		            	showTips('error',data.info);
-		            }
-		 			getInfo();
-		    });
+		$scope.editMenuMsg = function (index, parentIndex) {
+			if (parentIndex != null) {
+				if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "" || $scope.menuList[parentIndex].secondMenuList[index].menu_type == null) {
+					$scope.defaultCss = {
+						hasChild: false,
+						toChoose: true
+					}
+				} else {
+					$scope.defaultCss = {
+						hasChild: false,
+						toChoose: false
+					}
+				}
+				
+			} else {
+				// alert("一级菜单");
+				if ($scope.menuList[index].secondMenuList == null) {
+					$scope.defaultCss = {
+						hasChild: false,
+						toChoose: true
+					}
+				} else {
+					$scope.defaultCss = {
+						hasChild: true,
+						toChoose: false
+					}
+				}
+			}
+			
 		}
 	}
 ]);
