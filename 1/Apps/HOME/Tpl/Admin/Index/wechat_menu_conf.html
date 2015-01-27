@@ -65,6 +65,12 @@
 								<span>设置动作</span>
 							</div>
 							<div class="msg-list">
+								<div class="text-msg" ng-show="defaultCss.settedText">
+									你设置的消息内容如下：
+									<div class="text-msg-content">
+										查看
+									</div>
+								</div>
 								<div class="has-child" ng-show="defaultCss.hasChild">
 									<span>对不起，已经有子菜单，不能设置动作</span>
 								</div>
@@ -90,53 +96,15 @@
 					</div>
 				</div>
 			</div>
-			<hr>
-			<button class="btn btn-success pull-right" show-modal-directive>发布</button>
 			<br/>
+			<p>
+			<button class="btn btn-success pull-right" show-modal-directive>发布</button>
+			</p>
 			<br/>
 			<!-- container -->
-			<div class="modal fade" id="menuModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-							<h4 class="modal-title">{{menuModalTitle}}</h4>
-						</div>
-						<div class="modal-body">
-							<form class="form-horizontal" role="form">
-								<div class="form-group">
-									<label for="editMenuName" class="col-xs-3 control-label">菜单名称：</label>
-									<div class="col-xs-6">
-										<input type="text" class="form-control" ng-model="editMenuInfo.editMenuName"  placeholder="请输入菜单名称">
-										<input type="hidden" ng-model="editMenuInfo.editMenuType">
-										<input type="hidden" ng-model="editMenuInfo.editMenuId">
-										<input type="hidden" ng-model="editMenuInfo.editMenuParentId">
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save_menu_name()">保存</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div ng-include="'__PUBLIC__/admin/tpl/wechat_menu_conf/modals.html'"></div>
 			<!-- modal -->
-			<div class="tips" ng-show="tips.errorShow">
-				<div class="alert alert-warning alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<strong>{{tips.Text}}!</strong>
-					<span class="pull-right">还有<strong>{{tips.leftTime}}</strong>秒自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				</div>
-			</div>
-			<div class="tips" ng-show="tips.successShow">
-				<div class="alert alert-success alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<strong>{{tips.Text}}!</strong>
-					<span class="pull-right">还有<strong>{{tips.leftTime}}</strong>秒自动关闭！&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				</div>
-			</div>
+			<div ng-include="'__PUBLIC__/admin/tpl/wechat_menu_conf/tips.html'"></div>
 		</div>
 		<!-- error-tips -->
 		<br>

@@ -170,30 +170,43 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 		}
 
 		$scope.editMenuMsg = function (index, parentIndex) {
+			// 当前为二级菜单
 			if (parentIndex != null) {
 				if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "" || $scope.menuList[parentIndex].secondMenuList[index].menu_type == null) {
+					// 未设置消息
 					$scope.defaultCss = {
 						hasChild: false,
-						toChoose: true
+						toChoose: true,
+						settedText = false
 					}
 				} else {
+					// 已经设置
 					$scope.defaultCss = {
 						hasChild: false,
 						toChoose: false
 					}
+
+					if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "text") {
+						$scope.defaultCss.settedText = true;
+						
+					};
 				}
 				
 			} else {
-				// alert("一级菜单");
+				// 当前("一级菜单");
 				if ($scope.menuList[index].secondMenuList == null) {
+					// 没有子菜单，需设置消息
 					$scope.defaultCss = {
 						hasChild: false,
-						toChoose: true
+						toChoose: true,
+						settedText = false
 					}
 				} else {
+					// 有子节点，不能设置消息
 					$scope.defaultCss = {
 						hasChild: true,
-						toChoose: false
+						toChoose: false,
+						settedText = false
 					}
 				}
 			}
