@@ -177,7 +177,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 					$scope.defaultCss = {
 						hasChild: false,
 						toChoose: true,
-						settedText = false
+						settedText: false
 					}
 				} else {
 					// 已经设置
@@ -199,14 +199,14 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 					$scope.defaultCss = {
 						hasChild: false,
 						toChoose: true,
-						settedText = false
+						settedText: false
 					}
 				} else {
 					// 有子节点，不能设置消息
 					$scope.defaultCss = {
 						hasChild: true,
 						toChoose: false,
-						settedText = false
+						settedText: false
 					}
 				}
 			}
