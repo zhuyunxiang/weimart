@@ -25,7 +25,7 @@ class TestService
 		// dump($a->select());
 		// // dump($a->addUser($user,'roles'));
 
-		$a = D('Admin/FirstMenu');
+		$a = D('Admin/SecondMenu');
 		// $a = new Model('Admin://MenuFirst');
 		$data = $a->relation(true)->select();
 		dump($data);
