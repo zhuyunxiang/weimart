@@ -34,6 +34,15 @@ class IndexService
 		return $this->firstMenuDao->relation(true)->select();
 	}
 
+	public function getSecondMenuInfoById($id = null)
+	{
+		if ($id) {
+			$where = array('menu_id'=>$id);
+			return $this->secondMenuDao->where($where)->relation(true)->find();
+		}
+		return false;
+	}
+
 	public function addFirstMenu($data = null)
 	{
 		if ($data) {

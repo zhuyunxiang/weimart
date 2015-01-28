@@ -15,6 +15,7 @@
 			var saveMenuInfoUrl = "{:U('save_menu_info')}";
 			var removeFirstMenuUrl = "{:U('remove_first_menu')}";
 			var removeSecondMenuUrl = "{:U('remove_second_menu')}";
+			var getSecondMenuInfoUrl = "{:U('get_second_menu_info_by_id')}";
 		</script>
 	</head>
 	<body ng-controller="wechatCtrl">
@@ -68,7 +69,7 @@
 								<div class="text-msg" ng-show="defaultCss.settedText">
 									你设置的消息内容如下：
 									<div class="text-msg-content">
-										查看
+										{{settedTextValue}}
 									</div>
 								</div>
 								<div class="has-child" ng-show="defaultCss.hasChild">

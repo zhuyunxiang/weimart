@@ -102,4 +102,17 @@ class IndexAction extends Action {
       }
     }
 
+    public function get_second_menu_info_by_id()
+    {
+      if (isset($_POST['s_id'])) {
+        $result = A('Admin/Index', 'Service')->getSecondMenuInfoById($_POST['s_id']);
+        if ($result) {
+          $this->ajaxReturn($result, "数据获取成功！", 1);
+        } else {
+          $this->ajaxReturn($result, "数据获取失败！", 0);
+        }
+      } else {
+        $this->ajaxReturn(false, "error", 0);
+      }
+    }
 }

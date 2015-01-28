@@ -187,7 +187,24 @@ WechatCtrls.controller('wechatCtrl', ['$scope','$timeout','$http',
 					}
 
 					if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "text") {
-						$scope.defaultCss.settedText = true;
+						
+						$http({
+					        method  : 'POST',
+					        url     : getSecondMenuInfoUrl,
+					        data    : 's_id=' + $scope.menuList[parentIndex].secondMenuList[index].menu_id,
+					        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+					    })
+				        .success(function(data) {
+				        	$scope.defaultCss.settedText = true;
+				        	if (data.status == 1) {
+				        		$scope.settedTextValue = data.data.msg_items.msg_text;
+				        	} else {
+				        		showTips('error',"对不起，数据获取失败！");
+				        	}
+				        })
+				        .error(function(data) {
+				        	showTips('error',"对不起，连接服务器失败！");
+				        });
 						
 					};
 				}
