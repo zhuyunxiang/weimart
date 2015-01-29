@@ -64,8 +64,36 @@
 						<div class="msg-container col-xs-9">
 							<div class="msg-header">
 								<span>设置动作</span>
+								<span class="pull-right"><button ng-show="defaultCss.settedText" class="btn btn-sm" ng-click="toShowMsgEdit()">修改</button></span>
 							</div>
 							<div class="msg-list">
+								<div class="edit-text-msg" ng-show="defaultCss.toSetTextMsg">
+									你可以先添加一个菜单，然后开始为其设置响应动作
+									<hr>
+									<div class="edit-container">
+										<ul class="nav nav-tabs">
+											<li role="presentation" class="active"><a href="#"><i class="glyphicon glyphicon-pencil" ng-click="remove_second_menu($parent.$index, $index);"></i>文字</a></li>
+											<li role="presentation"><a href="#"><i class="glyphicon glyphicon-picture" ng-click="remove_second_menu($parent.$index, $index);"></i>图文</a></li>
+										</ul>
+										<div class="edit-textarea">
+											<textarea ng-model="editTextMsg.msg_text">
+												
+											</textarea>
+										</div>
+										<div class="left-text-count">
+											<span class="pull-right">还可输入{{600-editTextMsg.msg_text.length}}字</span>
+										</div>
+
+										<div class="btn-group pull-right">
+											<div class="btn-outer">
+												<button class="btn btn-success">保存</button>
+											</div>
+											<div class="btn-outer">
+												<button class="btn btn-default">重新输入</button>
+											</div>
+										</div>
+									</div>
+								</div>
 								<div class="text-msg" ng-show="defaultCss.settedText">
 									你设置的消息内容如下：
 									<div class="text-msg-content">
@@ -79,7 +107,7 @@
 									请选择订阅者点击菜单后，公众号做出的相应动作
 									<div class="add-action-group">
 										<div class="to-add-msg">
-											<a href="#">
+											<a href="#" ng-click="toShowMsgEdit()">
 												<i class="icon_menu_action send"></i><br>
 												<font>发送消息</font>
 											</a>
