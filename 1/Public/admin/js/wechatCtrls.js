@@ -180,51 +180,58 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
         $scope.editMenuMsg = function(index, parentIndex) {
             // 当前为二级菜单
             if (parentIndex != null) {
-                if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "" || $scope.menuList[parentIndex].secondMenuList[index].menu_type == null) {
-                    // 未设置消息
-                    $scope.defaultCss = {
-                        hasChild: false,
-                        toChoose: true,
-                        settedText: false,
-                        toSetTextMsg: false,
-                    }
-                    $scope.editTextMsg = {
-	            		msg_type: 'text',
-	            		msg_key: $scope.menuList[parentIndex].secondMenuList[index].menu_key,
-	            	};
-                } else {
-                    // 已经设置
-                    $scope.defaultCss = {
-                        hasChild: false,
-                        toChoose: false,
-                        toSetTextMsg: false,
-                    }
+                $http({
+                    method: 'POST',
+                    url: getSecondMenuInfoUrl,
+                    data: 's_id=' + $scope.menuList[parentIndex].secondMenuList[index].menu_id,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    } // set the headers so angular passing info as form data (not request payload)
+                })
+                    .success(function(data) {
+                        if (data.status == 1) {
+                            if (data.data.msg_items != null) {
+                                switch (data.data.msg_items.msg_type) {
+                                    case "text":
+                                        $scope.settedTextValue = data.data.msg_items.msg_text;
+                                        $scope.editTextMsg = data.data.msg_items;
+                                        $scope.defaultCss = {
+                                            hasChild: false,
+                                            toChoose: false,
+                                            toSetTextMsg: false,
+                                        }
+                                        $scope.defaultCss.settedText = true;
+                                        break;
+                                    case "media":
+                                        alert("已经设置图文消息！");
+                                        break;
 
-                    if ($scope.menuList[parentIndex].secondMenuList[index].menu_type == "text") {
+                                    case "url":
+                                        alert("已经设置网址！");
+                                        break;
 
-                        $http({
-                            method: 'POST',
-                            url: getSecondMenuInfoUrl,
-                            data: 's_id=' + $scope.menuList[parentIndex].secondMenuList[index].menu_id,
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            } // set the headers so angular passing info as form data (not request payload)
-                        })
-                            .success(function(data) {
-                                $scope.defaultCss.settedText = true;
-                                if (data.status == 1) {
-                                    $scope.settedTextValue = data.data.msg_items.msg_text;
-                                    $scope.editTextMsg = data.data.msg_items;
-                                } else {
-                                    showTips('error', "对不起，数据获取失败！");
+                                    default:
+
+                                        break;
                                 }
-                            })
-                            .error(function(data) {
-                                showTips('error', "对不起，连接服务器失败！");
-                            });
 
-                    };
-                }
+                            } else {
+                                $scope.defaultCss = {
+                                    hasChild: false,
+                                    toChoose: true,
+                                    settedText: false,
+                                    toSetTextMsg: false,
+                                }
+                                $scope.editTextMsg = {
+                                    msg_type: 'text',
+                                    msg_key: $scope.menuList[parentIndex].secondMenuList[index].menu_key,
+                                };
+                            }
+                        }
+                    })
+                    .error(function() {
+                        showTips('error', "对不起，连接服务器失败！");
+                    });
 
             } else {
                 // 当前("一级菜单");
@@ -237,9 +244,9 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                         toSetTextMsg: false,
                     }
                     $scope.editTextMsg = {
-	            		msg_type: 'text',
-	            		msg_key: $scope.menuList[index].menu_key,
-	            	};
+                        msg_type: 'text',
+                        msg_key: $scope.menuList[index].menu_key,
+                    };
                 } else {
                     // 有子节点，不能设置消息
                     $scope.defaultCss = {
@@ -253,7 +260,25 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
         }
 
         $scope.saveEditTextMsgClick = function() {
-            // editTextMsg
+            $http({
+                method: 'POST',
+                url: saveTextMsgUrl,
+                data: $.param($scope.editTextMsg),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                } // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        showTips('success', data.info);
+                        getInfo();
+                    } else {
+                        showTips('error', data.info);
+                    }
+                })
+                .error(function() {
+                    showTips('error', "对不起，连接服务器失败！");
+                });
         }
 
         $scope.toShowMsgEdit = function() {
@@ -264,5 +289,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 toSetTextMsg: true,
             }
         }
+
     }
 ]);
