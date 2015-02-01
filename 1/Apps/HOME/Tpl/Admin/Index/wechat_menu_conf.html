@@ -16,6 +16,7 @@
 			var removeFirstMenuUrl = "{:U('remove_first_menu')}";
 			var removeSecondMenuUrl = "{:U('remove_second_menu')}";
 			var getSecondMenuInfoUrl = "{:U('get_second_menu_info_by_id')}";
+			var saveTextMsgUrl = "{:U('save_text_msg')}";
 		</script>
 	</head>
 	<body ng-controller="wechatCtrl">
@@ -86,7 +87,7 @@
 
 										<div class="btn-group pull-right">
 											<div class="btn-outer">
-												<button class="btn btn-success">保存</button>
+												<button class="btn btn-success" ng-click="saveEditTextMsgClick()">保存</button>
 											</div>
 											<div class="btn-outer">
 												<button class="btn btn-default">重新输入</button>

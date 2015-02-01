@@ -8,6 +8,7 @@ class IndexService
 	public $roleDao;
 	public $firstMenuDao;
 	public $secondMenuDao;
+	public $msgDao;
 
 	function __construct()
 	{
@@ -15,6 +16,7 @@ class IndexService
 		$this->roleDao = D('Role');
 		$this->firstMenuDao = D('Admin/FirstMenu');
 		$this->secondMenuDao = D('Admin/SecondMenu');
+		$this->msgDao = D('Admin/MsgList');
 	}
 
 	public function doLogin($loginData = null)
@@ -95,6 +97,22 @@ class IndexService
 			return $this->secondMenuDao->where($where)->delete();
 		} 
 		return false;
+	}
+
+	public function saveTextMsg($data = null)
+	{
+		if ($data) {
+			if (isset($data['msg_id'])) {
+				$menu_info = array('menu_id'=>$data['menu_id'], 'menu_type'=>'text');
+				$data = $this->msgDao->save($data);
+				return array('data'=>$data, 'info'=>"文本信息修改成功！", 'status'=>1);
+			} else {
+				$data = $this->msgDao->add($data);
+				return array('data'=>$data, 'info'=>"文本信息修改成功！", 'status'=>1);
+			}
+		}
+
+		return array('data'=>false, 'info'=>"保存的内容不能为空！", 'status'=>0);
 	}
 }
  ?>
