@@ -31,6 +31,11 @@ class IndexAction extends Action {
     $this->display('wechat_menu_conf');
   }
 
+  public function set_wechat_info()
+  {
+    $this->display('set_wechat_info');
+  }
+
   public function get_menu_list()
   {
     $menuList = A('Admin/Index','Service')->getMenuList();
