@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="WechatInfoApp">
+	<head>
+		<title>设置</title>
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="__PUBLIC__/admin/css/wechat_info_conf.css" type="text/css" media="screen" />
+		<js file='__PUBLIC__/commen/js/lib/angular.min.js' />
+		<js file='__PUBLIC__/admin/js/wechatInfo.js' />
+		<js file='__PUBLIC__/admin/js/wechatInfoCtrls.js' />
+		<js file='__PUBLIC__/admin/js/wechatInfoServices.js' />
+		<js file='__PUBLIC__/admin/js/wechatInfoDirectives.js' />
+		<script>
+			var getMenuListUrl = "{:U('get_menu_list')}";
+		</script>
+	</head>
+	<body ng-controller="wechatInfoCtrl">
+		<div class="container">
+			<div class="info-container">
+			<br>
+			<br>
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-offset-2 col-sm-2 control-label">公众号名称:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" ng-model="editWechatInfo.name" placeholder="公众号名称">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-offset-2 col-sm-2 control-label">公众号id:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" ng-model="editWechatInfo.id" placeholder="公众号id">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-offset-2 col-sm-2 control-label">APPID:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" ng-model="editWechatInfo.app_id" placeholder="APPID">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-offset-2 col-sm-2 control-label">APPSECRET:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" ng-model="editWechatInfo.app_secret" placeholder="APPSECRET">
+						</div>
+					</div>
+					<div class="form-group">
+						<label  class="col-sm-offset-2 col-sm-2 control-label">TOKEN:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" ng-model="editWechatInfo.token" placeholder="TOKEN">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-2">
+							<button type="submit" class="btn btn-primary">保存信息</button>
+						</div>
+						<div class="col-sm-1">
+							<button type="submit" class="btn btn-default">重置信息</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div ng-include="'__PUBLIC__/admin/tpl/wechat_menu_conf/tips.html'"></div>
+		</div>
+		<br>
+		<br>
+		<br>
+	</body>
+</html>
