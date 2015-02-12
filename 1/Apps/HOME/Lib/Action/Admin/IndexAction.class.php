@@ -11,7 +11,11 @@ class IndexAction extends Action {
   {
      $postData = $_POST;
      $userMatch = A('Admin/Index', 'Service')->doLogin($postData);
+
+     // 判断账户密码是否正确
      if ($userMatch) {
+      unset($userMatch['user_pwd']);
+      $_SESSION['user'] = $userMatch;
       $this->redirect('Index/home');
      }
   }
@@ -40,11 +44,17 @@ class IndexAction extends Action {
   {
     $menuList = A('Admin/Index','Service')->getMenuList();
     $data = array('menuList'=>$menuList);
+
     if ($data) {
-      $this->ajaxReturn($data, "数据获取成功！", 1);
+      $this->ajaxReturn($data, "数据获取成功", 1);
     } else {
-      $this->ajaxReturn($data, "数据获取失败！", 0);
+      $this->ajaxReturn($data, "数据获取失败", 0);
     }
+  }
+
+  public function mulTuwen()
+  {
+    $this->display('mulTuwen');
   }
 
   public function save_menu_info()
@@ -53,19 +63,19 @@ class IndexAction extends Action {
       switch ($_POST['editMenuType']) {
         case 'addFirst':
           $result = A('Admin/Index', 'Service')->addFirstMenu($_POST);
-          $info = "一级菜单添加成功！";
+          $info = "一级菜单添加成功";
           break;
         case 'addSecond':
           $result = A('Admin/Index', 'Service')->addSecondMenu($_POST);
-          $info = "二级菜单添加成功！";
+          $info = "二级菜单添加成功";
           break;
         case 'editFirst':
           $result = A('Admin/Index', 'Service')->editFirstMenu($_POST);
-          $info = "一级菜单修改成功！";
+          $info = "一级菜单修改成功";
           break;
         case 'editSecond':
           $result = A('Admin/Index', 'Service')->editSecondMenu($_POST);
-          $info = "二级菜单修改成功！";
+          $info = "二级菜单修改成功";
           break;
         default:
           $result = false;
@@ -84,9 +94,9 @@ class IndexAction extends Action {
     if ($_POST) {
       $result = A('Admin/Index', 'Service')->removeFirstMenu($_POST);
       if ($result) {
-        $this->ajaxReturn($result, "一级菜单删除成功！", 1);
+        $this->ajaxReturn($result, "一级菜单删除成功", 1);
       } else {
-        $this->ajaxReturn($result, "一级菜单删除失败！", 0);
+        $this->ajaxReturn($result, "一级菜单删除失败", 0);
       }
     } else {
       $this->ajaxReturn(false, "error", 0);
@@ -98,9 +108,9 @@ class IndexAction extends Action {
     if ($_POST) {
       $result = A('Admin/Index', 'Service')->removeSecondMenu($_POST);
       if ($result) {
-        $this->ajaxReturn($result, "二级菜单删除成功！", 1);
+        $this->ajaxReturn($result, "二级菜单删除成功", 1);
       } else {
-        $this->ajaxReturn($result, "二级菜单删除失败！", 0);
+        $this->ajaxReturn($result, "二级菜单删除失败", 0);
       }
     } else {
       $this->ajaxReturn(false, "error", 0);
@@ -112,13 +122,19 @@ class IndexAction extends Action {
     if (isset($_POST['s_id'])) {
       $result = A('Admin/Index', 'Service')->getSecondMenuInfoById($_POST['s_id']);
       if ($result) {
-        $this->ajaxReturn($result, "数据获取成功！", 1);
+        $this->ajaxReturn($result, "数据获取成功", 1);
       } else {
-        $this->ajaxReturn($result, "数据获取失败！", 0);
+        $this->ajaxReturn($result, "数据获取失败", 0);
       }
     } else {
       $this->ajaxReturn(false, "error", 0);
     }
+  }
+
+  public function get_wechat_info()
+  {
+    $result = A('Admin/Index', 'Service')->getWechatInfo();
+    $this->ajaxReturn($result['data'], $result['info'], $result['status']);
   }
 
   function save_data($dataType = null)
@@ -127,12 +143,17 @@ class IndexAction extends Action {
       $result = A('Admin/Index', 'Service')->$dataType($_POST);
       $this->ajaxReturn($result['data'], $result['info'], $result['status']);
     } else {
-      $this->ajaxReturn(false, "内部错误，请联系管理员！", 0);
+      $this->ajaxReturn(false, "内部错误，请联系管理员", 0);
     }
   }
 
   public function save_text_msg()
   {
     $this->save_data("saveTextMsg");
+  }
+
+  public function save_wechat_info()
+  {
+    $this->save_data("saveWechatInfo");
   }
 }
