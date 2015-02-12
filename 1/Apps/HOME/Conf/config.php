@@ -9,7 +9,7 @@ return array(
 	'DB_PWD'=> '111111',         // 密码
 	'DB_PORT'=> '3306' ,       // 端口
 	'DB_PREFIX'=>'weimart_',
-	'APP_GROUP_LIST'=>'Home,Admin',
+	'APP_GROUP_LIST'=>'Home,Admin,Wechat',
 	'DEFAULT_GROUP'=>'Home',
 	'URL_HTML_SUFFIX'=>''
 );

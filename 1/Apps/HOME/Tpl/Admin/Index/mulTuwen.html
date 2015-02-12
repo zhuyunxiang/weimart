@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <title>多图文消息</title>
+        <meta http-equiv="Content-Type" content="text/html ;charset=utf-8" />
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+        <meta charset="utf-8">
+        <!-- // <script src="__PUBLIC__/js/jquery.min.js" type="text/javascript"></script> -->
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.form.min.js"></script>
+        <script src="__PUBLIC__/commen/js/lib/bootstrap.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/admin/css/mulTuwen.css">
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+        <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+        <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+        <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="div_head">
+                <font>新建多图文消息</font>
+            </div>
+            <hr>
+            <div class="main_div">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#word" class="btn" data-toggle="tab">文字</a></li>
+                    <li><a href="#picture" class="btn" data-toggle="tab">图文消息</a></li>
+                </ul>
+                <div class="tab-content main_div1">
+                    <div class="tab-pane active main_left_div1" id="word">
+                        <div style="overflow:hidden;">
+                            <div class="appmsg_content">
+                                <div class="appmsg_edit" id="appmsg_edit">
+                                    <div class="main_picture_div">
+                                        <div class="show_picture" id="uploadimg">
+                                            <div id="uploadimg_div"class="uploadimg_div">
+                                                <!-- 封面图片 -->
+                                                <div id="uploadimg_div_div">封面图片</div>
+                                                <div id="pic_title1" class="main_title_p">标题</div>
+                                            </div>
+                                            <div class="edit_picture" id="edit_picture">
+                                                <a href="#" onclick="find_div(1);" id="lianjie1"><i class="glyphicon glyphicon-pencil" style="font-size:18px;"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small_picture_div" id="small_picture_div">
+                                        <div class="small_pic_title" id="pic_title2">标题</div>
+                                        <div class="small_pic" id="small_pic2">
+                                            缩略图
+                                        </div>
+                                        <div class="edit_small_pic">
+                                            <a href="#" id="lianjie2" onclick="find_div(2);"><i class="glyphicon glyphicon-pencil" style="font-size:18px;"></i></a>&nbsp;&nbsp;&nbsp;
+                                            <a href="#" onclick="del_item(2);"><i class="glyphicon glyphicon-trash" style="font-size:18px;" onclick="remove_div();"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="add_small_pic">
+                                    <div class="btn add_btn" onclick="add_btn_div();">
+                                        <i class="glyphicon glyphicon-plus" style="font-size:25px;color:#CEC9C9;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="main_edit_div" id="main_edit_div">
+                                <div class="edit_inner_div">
+                                    <i class="arrow arrow_out"></i>
+                                    <i class="arrow arrow_in"></i>
+                                    <div class="mask" style="display:none;"></div>
+                                    <div>
+                                        <div class="edit_item_div">
+                                            <p>标题</p>
+                                            <span class="form_box">
+                                            <input type="text" id="main_title_text" class="form_input" onkeyup="javascript:$('#pic_title1').html($('#main_title_text').val());saveEveryContent(1);">
+                                            </span>
+                                        </div>
+                                        <div class="edit_item_div">
+                                            <p>作者<font style="color:#AAA3A3">（选填）</font></p>
+                                            <span class="form_box">
+                                            <input type="text" name="author" id="author" class="form_input" onkeyup="saveEveryContent(1);">
+                                            </span>
+                                        </div>
+                                        <div class="edit_item_div">
+                                            <span>封面</span>
+                                            <span><font style="float:right;color:#AAA3A3">小图片建议尺寸：200像素 * 200像素</font></span>
+                                            <form id="my_imgform" method="post" enctype="multipart/form-data" action="__URL__/mul_upload">
+                                                <div class="form_box" style="margin-top:13px;" >
+                                                    <input type="file" class="form_input" id="uploaded" name="uploaded">
+                                                </div>
+                                            </form>
+                                            
+                                        </div>
+                                        <input onchange="saveEveryContent(1);" type="checkbox" name="is_show_checkbox" id="is_show_checkbox" style="margin-left:20px;" checked /><font style="color:#AAA3A3">封面图片显示在正文中</font>
+                                        <p class="edit_tips_title_p" id="edit_tips_title_p">
+                                        <a href="#" onclick="javascript:$('#edit_tips_textarea_div').removeClass('hidden');$('#edit_tips_title_p').addClass('hidden');">添加摘要</a>
+                                        </p>
+                                        <div class="edit_tips_textarea_div hidden" id="edit_tips_textarea_div">
+                                            <font>摘要</font>
+                                            <textarea name="major" id="major" onkeyup="saveEveryContent(1);"></textarea>
+                                        </div>
+                                        <div class="ueditor_div">
+                                            <font>正文</font>
+                                            <script id="editor" type="text/plain" style="width:700px;height:350px;"></script>
+                                        </div>
+                                        <div class="wailian_div" id="wailian_div">
+                                            <a href="#" onclick="javascript:$('#wailian_edit_div').removeClass('hidden');$('#wailian_div').addClass('hidden');">添加链接</a>
+                                        </div>
+                                        <div class="wailian_edit_div hidden" id="wailian_edit_div">
+                                            <input type="text" name="other_url" id="other_url" class="form_input" placeholder="请直接输入网址" onkeyup="saveEveryContent(1);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main_bottom_div">
+                            <div class="tool_bar">
+                                <button type="button" class="btn btn-success main_btn" >预览</button>&nbsp;
+                                <button type="button" class="btn btn-success main_btn" onclick="saveContent();">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane main_right_div1" id="picture">
+                        <div class="right_head_div">
+                            <input type="file" name="file" class="file_input">&nbsp;&nbsp;&nbsp;
+                            <font style="color:#AAA3A3;">大小：不超过2M，格式: bmp, png, jpeg, jpg, gif</font>
+                        </div>
+                        <div class="right_body_div">
+                            <div class="body_tips">
+                                <font style="color:#AAA3A3;">暂无数据</font>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal fade" id="alertModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">提示</h4>
+                        </div>
+                        <div class="modal-body" id="alert_conetent">
+                            你的数据提交成功！
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        // 修改
+        <if condition="$data['content'] neq 'error'">
+        var AllResult = new Array();
+        AllResult[1] = new Array();
+        AllResult[2] = new Array();
+        
+        </if>
+        // 增加
+        <if condition="$data['content'] eq 'error'">
+        var AllResult = new Array();
+        AllResult[1] = new Array();
+        AllResult[2] = new Array();
+        </if>
+        
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        function saveEveryContent (id) {
+        AllResult[id][0] = $("#main_title_text").val();
+        AllResult[id][1] = $("#author").val();
+        if($("input[name='is_show_checkbox']:checked").val()=="on"){
+        AllResult[id][2] = "yes";
+        }else{
+        AllResult[id][2] = "no";
+        }
+        AllResult[id][3] = $("#major").val();
+        AllResult[id][4] = UE.getEditor('editor').getContent();
+        AllResult[id][5] = $("#other_url").val();
+        }
+        $(document).ready(function() {
+        $('#uploaded').live('change', function() {
+        $("#uploadimg_div_div").html('');
+        
+        $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+        $("#my_imgform").ajaxForm({
+        success:function(data){
+        var  jsonObj = eval("("+data+")");
+        if (jsonObj.state == "ok") {
+        AllResult[1][6] = jsonObj.img_url;
+        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
+        $("#uploadimg_div_div").html(img_html);
+        }else{
+        $("#uploadimg_div_div").html('上传失败！请重试！');
+        }
+        }
+        }).submit();
+        });
+        });
+        UE.getEditor('editor');
+        UE.getEditor('editor').addListener( 'selectionchange', selectionchangefunction);
+        nowId = 1;
+        function selectionchangefunction () {
+        saveEveryContent(nowId);
+        }
+        function saveContent () {
+        var test = JSON.stringify(AllResult);
+        var menu_key = "<{$data.menu_key}>";
+        var action_type = "<{$data.action_type}>";
+        $.ajax({
+        type: 'POST',
+        url: '__URL__/saveMultiMsgContent',
+        data: "content="+test+"&menu_key="+menu_key+"&action_type="+action_type,
+        cache:false,
+        success: function(data){
+        jsObj = eval('('+data+')');
+        $("#alertModal").modal("show");
+        $("#alert_conetent").html(jsObj.tips);
+        }
+        });
+        }
+        function isFocus(e){
+        alert(UE.getEditor('editor').isFocus());
+        UE.dom.domUtils.preventDefault(e)
+        }
+        function setblur(e){
+        UE.getEditor('editor').blur();
+        UE.dom.domUtils.preventDefault(e)
+        }
+        function insertHtml() {
+        var value = prompt('插入html代码', '');
+        UE.getEditor('editor').execCommand('insertHtml', value)
+        }
+        function createEditor() {
+        enableBtn();
+        UE.getEditor('editor');
+        }
+        function getAllHtml() {
+        alert(UE.getEditor('editor').getAllHtml())
+        }
+        function getContent() {
+        var arr = [];
+        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getContent());
+        alert(arr.join("\n"));
+        }
+        function getPlainTxt() {
+        var arr = [];
+        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+        arr.push("内容为：");
+        arr.push(UE.getEditor('editor').getPlainTxt());
+        alert(arr.join('\n'))
+        }
+        function setContent(isAppendTo) {
+        var arr = [];
+        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+        alert(arr.join("\n"));
+        }
+        function setDisabled() {
+        UE.getEditor('editor').setDisabled('fullscreen');
+        disableBtn("enable");
+        }
+        function setEnabled() {
+        UE.getEditor('editor').setEnabled();
+        enableBtn();
+        }
+        function getText() {
+        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+        var range = UE.getEditor('editor').selection.getRange();
+        range.select();
+        var txt = UE.getEditor('editor').selection.getText();
+        alert(txt)
+        }
+        function getContentTxt() {
+        var arr = [];
+        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+        arr.push("编辑器的纯文本内容为：");
+        arr.push(UE.getEditor('editor').getContentTxt());
+        alert(arr.join("\n"));
+        }
+        function hasContent() {
+        var arr = [];
+        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+        arr.push("判断结果为：");
+        arr.push(UE.getEditor('editor').hasContents());
+        alert(arr.join("\n"));
+        }
+        function setFocus() {
+        UE.getEditor('editor').focus();
+        }
+        function deleteEditor() {
+        disableBtn();
+        UE.getEditor('editor').destroy();
+        }
+        function disableBtn(str) {
+        var div = document.getElementById('btns');
+        var btns = domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+        if (btn.id == str) {
+        domUtils.removeAttributes(btn, ["disabled"]);
+        } else {
+        btn.setAttribute("disabled", "true");
+        }
+        }
+        }
+        function enableBtn() {
+        var div = document.getElementById('btns');
+        var btns = domUtils.getElementsByTagName(div, "button");
+        for (var i = 0, btn; btn = btns[i++];) {
+        domUtils.removeAttributes(btn, ["disabled"]);
+        }
+        }
+        function getLocalData () {
+        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
+        }
+        function clearLocalData () {
+        UE.getEditor('editor').execCommand( "clearlocaldata" );
+        alert("已清空草稿箱")
+        }
+        count = 2;
+        imgCount = 2;
+        pencilCount = 2;
+        function add_btn_div(){
+        if (pencilCount<8) {
+        count = count+1;
+        imgCount = imgCount+1;
+        pencilCount = pencilCount+1;
+        var picture_div = '<div class="small_picture_div" id="picture_div'+pencilCount+'"><div class="small_pic_title" id="pic_title'+count+'">标题</div><div class="small_pic" id="small_pic'+imgCount+'">缩略图</div><div class="edit_small_pic"><a href="#" id="lianjie'+pencilCount+'" onclick="find_div('+pencilCount+');"><i class="glyphicon glyphicon-pencil" style="font-size:18px;"></i></a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="del_item('+pencilCount+');"><i class="glyphicon glyphicon-trash" style="font-size:18px;"></i></a></div></div>';
+        $("#appmsg_edit").append(picture_div);
+        AllResult[pencilCount] = new Array();
+        }else{
+        $("#alert_conetent").html("你最多可加入8条图文消息");
+        $("#alertModal").modal("show");
+        }
+        
+        }
+        function del_item(delCount){
+        if (delCount==2) {
+        $("#alert_conetent").html("至少要有2条图文消息！");
+        $("#alertModal").modal("show");
+        }else{
+        $("#picture_div"+delCount).remove();
+        }
+        // alert("ok");
+        }
+        function find_div(pencilCount){
+        // var height_item = $("#")
+        if (pencilCount==1) {
+        $("#main_edit_div").css("margin-top",0+'px');
+        }else if(pencilCount==2){
+        $("#main_edit_div").css("margin-top",215+'px');
+        }else{
+        $("#main_edit_div").css("margin-top",(215+(pencilCount-2)*102)+'px');
+        }
+        $("#main_title_text").val($('#pic_title'+pencilCount).html());
+        $("#author").val("");
+        $("#major").val("");
+        UE.getEditor('editor').setContent('', false);
+        nowId = pencilCount;
+        $("#other_url").val("");
+        $("#main_title_text").attr("onkeyup","javascript:$('#pic_title"+pencilCount+"').html($('#main_title_text').val());saveEveryContent("+pencilCount+");");
+        $("#author").attr("onkeyup","saveEveryContent("+pencilCount+");");
+        $("#is_show_checkbox").attr("onchange","saveEveryContent("+pencilCount+");");
+        $("#major").attr("onkeyup","saveEveryContent("+pencilCount+");");
+        $("#other_url").attr("onkeyup","saveEveryContent("+pencilCount+");");
+        // alert(pencilCount);
+        if (pencilCount==1) {
+        $('#uploaded').die("change");
+        $('#uploaded').live('change', function() {
+        $("#uploadimg_div_div").html('');
+        
+        $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+        $("#my_imgform").ajaxForm({
+        success:function(data){
+        var jsonObj = eval("("+data+")");
+        if (jsonObj.state == "ok") {
+        AllResult[pencilCount][6] = jsonObj.img_url;
+        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
+        $("#uploadimg_div_div").html(img_html);
+        }else{
+        $("#uploadimg_div_div").html('上传失败！请重试！');
+        }
+        }
+        }).submit();
+        });
+        }else{
+        $('#uploaded').die("change");
+        $('#uploaded').live('change', function() {
+        $("#small_pic"+pencilCount).html('');
+        
+        $("#small_pic"+pencilCount).html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+        $("#my_imgform").ajaxForm({
+        // target: "#small_pic"+pencilCount ,
+        success:function(data){
+        var jsonObj = eval("("+data+")");
+        if (jsonObj.state == "ok") {
+        AllResult[pencilCount][6] = jsonObj.img_url;
+        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
+        $("#small_pic"+pencilCount).html(img_html);
+        }else{
+        $("#small_pic"+pencilCount).html('上传失败！请重试！');
+        }
+        }
+        }).submit();
+        });
+        }
+        }
+        </script>
+    </body>
+</html>
