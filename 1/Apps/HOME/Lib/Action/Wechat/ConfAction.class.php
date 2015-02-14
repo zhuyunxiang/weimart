@@ -10,13 +10,13 @@ class ConfAction extends Action
 		// 判断当前用户的微信账户信息是否存在
 		if ($wechat_info) {
 			// 判断access_token缓存是否存在
-			if (S('wechat_access_token')){
+			if (S('wechat_access_token_'.$_SESSION['user']['id'])){
 				// 缓存存在
-				$access_token = S('wechat_access_token');
+				$access_token = S('wechat_access_token_'.$_SESSION['user']['id']);
 			} else{
 				// 缓存不存在
 				$access_token = A('Wechat','Util')->get_access_token($wechat_info['data']['app_id'], $wechat_info['data']['app_secret']);
-				S('wechat_access_token', $access_token, 1000);
+				S('wechat_access_token_'.$_SESSION['user']['id'], $access_token, 1000);
 			}
 
 			$menu_info = A('Admin/Index', 'Service')->getMenuList();
