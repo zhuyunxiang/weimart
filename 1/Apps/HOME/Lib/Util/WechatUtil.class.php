@@ -79,10 +79,9 @@ class WechatUtil
 
 	//创建自定义菜单
 	//【注意:要开启php.ini中的curl扩展】
-	public function createMenu($data, $appid, $secret){
+	public function createMenu($data, $accessToken){
 		// $data是转过格式的json数据
 		// 返回值是json格式的数据
-		$accessToken = self::get_access_token($appid, $secret);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=".$accessToken);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
