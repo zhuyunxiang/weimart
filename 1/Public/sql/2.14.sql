@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50051
 File Encoding         : 65001
 
-Date: 2015-02-14 10:36:44
+Date: 2015-02-15 00:33:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -358,18 +358,19 @@ CREATE TABLE `weimart_wechat_info` (
   `id` int(11) NOT NULL auto_increment,
   `wechat_name` varchar(20) default NULL,
   `wechat_id` varchar(20) default NULL,
-  `app_id` varchar(20) default NULL,
-  `app_secret` varchar(20) default NULL,
+  `app_id` varchar(200) default NULL,
+  `app_secret` varchar(200) default NULL,
   `token` varchar(20) default NULL,
   `user_id` int(11) default NULL,
   `time` timestamp NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weimart_wechat_info
 -- ----------------------------
-INSERT INTO `weimart_wechat_info` VALUES ('1', '122', '444', '555', '66', '77', '1', '2015-02-11 22:36:39');
+INSERT INTO `weimart_wechat_info` VALUES ('1', '122', '444', '555', '66', '77', '2', '2015-02-14 10:40:08');
+INSERT INTO `weimart_wechat_info` VALUES ('2', '校际圈', '111111', 'wx713da7bfd9175724', '101fdc6b6f08f76505b98a84ef0111dc', '11111', '1', '2015-02-14 10:40:21');
 
 -- ----------------------------
 -- Table structure for `weimart_wechat_media_list`
@@ -433,7 +434,7 @@ CREATE TABLE `weimart_wechat_menu_first` (
 -- ----------------------------
 -- Records of weimart_wechat_menu_first
 -- ----------------------------
-INSERT INTO `weimart_wechat_menu_first` VALUES ('1', '12', null, 'a2b080b5636423adddb84f8fcc5fe6af', null, '', '2015-01-20 00:12:13');
+INSERT INTO `weimart_wechat_menu_first` VALUES ('1', '购物', null, 'a2b080b5636423adddb84f8fcc5fe6af', null, '', '2015-02-15 00:10:32');
 INSERT INTO `weimart_wechat_menu_first` VALUES ('7', '你是谁啊啊', null, 'b6727aa14dc5695ffde1b7a5cd01193d', null, '', '2015-01-20 21:50:51');
 
 -- ----------------------------
@@ -449,14 +450,15 @@ CREATE TABLE `weimart_wechat_menu_second` (
   `menu_first_id` int(11) NOT NULL COMMENT '所属一级菜单的id',
   `menu_state` varchar(8) NOT NULL,
   PRIMARY KEY  (`menu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of weimart_wechat_menu_second
 -- ----------------------------
 INSERT INTO `weimart_wechat_menu_second` VALUES ('1', '菜单', 'url', '18af7679535efb8bdf925e9c58878bdc', null, '1', '');
-INSERT INTO `weimart_wechat_menu_second` VALUES ('3', '1123', 'text', '289f1d13de27d7ddffbf529a8339dccf', null, '1', '');
-INSERT INTO `weimart_wechat_menu_second` VALUES ('4', '222', null, 'fbe1400c1b99f2ed6fff8df0c95ab299', null, '1', '');
+INSERT INTO `weimart_wechat_menu_second` VALUES ('3', '看看', 'text', '289f1d13de27d7ddffbf529a8339dccf', null, '1', '');
+INSERT INTO `weimart_wechat_menu_second` VALUES ('4', '逛逛', null, 'fbe1400c1b99f2ed6fff8df0c95ab299', null, '1', '');
+INSERT INTO `weimart_wechat_menu_second` VALUES ('5', '222', null, '357c55fdf87e3bb43fb282825da36677', null, '7', '');
 
 -- ----------------------------
 -- Table structure for `weimart_wechat_msg_list`

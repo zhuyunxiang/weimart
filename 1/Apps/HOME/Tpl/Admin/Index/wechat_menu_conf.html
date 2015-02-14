@@ -18,6 +18,7 @@
 			var removeSecondMenuUrl = "{:U('remove_second_menu')}";
 			var getSecondMenuInfoUrl = "{:U('get_second_menu_info_by_id')}";
 			var saveTextMsgUrl = "{:U('save_text_msg')}";
+			var saveToWechatActionUrl = "{:U('Wechat/Conf/set_menu')}";
 		</script>
 	</head>
 	<body ng-controller="wechatCtrl">
@@ -129,7 +130,7 @@
 			</div>
 			<br/>
 			<p>
-			<button class="btn btn-success pull-right" show-modal-directive>发布</button>
+			<button class="btn btn-success pull-right" ng-click="saveToWechatClick()">发布</button>
 			</p>
 			<br/>
 			<!-- container -->

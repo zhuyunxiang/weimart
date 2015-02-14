@@ -290,5 +290,26 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
             }
         }
 
+        $scope.saveToWechatClick = function (argument) {
+            $http({
+                method: 'POST',
+                url: saveToWechatActionUrl,
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                } // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    if (data.status == 0) {
+                        showTips('success', data.info);
+                        getInfo();
+                    } else {
+                        showTips('error', data.info);
+                    }
+                })
+                .error(function() {
+                    showTips('error', "对不起，连接服务器失败！");
+                });
+        }
     }
 ]);
