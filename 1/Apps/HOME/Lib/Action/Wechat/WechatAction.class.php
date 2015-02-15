@@ -9,7 +9,7 @@ class WechatAction extends Action
 		/* 加载微信SDK */
 		import('@.ORG.Wechat.ThinkWechat');
 
-		$weixin = new ThinkWechat("zyx");
+		$weixin = new ThinkWechat("zyx1");
 
 		/* 获取请求信息 */
 		$data = $weixin->request();
