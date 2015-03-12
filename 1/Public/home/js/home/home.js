@@ -7,12 +7,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: "/home",
-            templateUrl: publicUrl + 'tpl/home/home.html',
+            templateUrl: publicHomeUrl + 'tpl/home/home.html',
             controller: "homeCtrl"
         })
         .state('register', {
             url: "/register",
-            templateUrl: publicUrl + 'tpl/home/register.html',
+            templateUrl: publicHomeUrl + 'tpl/home/register.html',
             controller: "registerCtrl"
         });
 });

@@ -3,6 +3,10 @@ var HomeCtrls = angular.module('HomeCtrls', []);
 HomeCtrls.controller('homeCtrl', ['$scope',
 	function($scope){
 		$scope.userInfo = {email: "tests@qq.com"};
+
+		$scope.imageURLs = {
+			logo: publicUrl+'commen/img/logo-mini.png',
+		};
 	}
 ]);
 
