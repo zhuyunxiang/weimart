@@ -5,7 +5,7 @@ HomeCtrls.controller('homeCtrl', ['$scope',
 		$scope.userInfo = {email: "tests@qq.com"};
 
 		$scope.imageURLs = {
-			logo: commenUrl+'img/logo-mini.png',
+			logoURL: commenUrl+'img/logo-mini.png',
 		};
 	}
 ]);
