@@ -1,0 +1,89 @@
+
+
+.start-prepare{
+	border: solid 1px;
+	margin: 1px;
+}
+
+// 主Container #1
+.home-container{
+	// 头部Logo及搜索Container #2
+	.header-container{
+		height: 85px;
+		// Logo
+		img.logo{
+			width: 100px;
+			margin-left: 105px;
+		}
+		// 搜索Container #3
+		.search-container{
+			display: inline-block;
+			input{
+				margin-left: 159px;
+				width: 350px;
+			}
+
+			button.btn-search{
+
+			}
+		}
+	}
+
+	// 导航Container #4
+	.nav-container{
+		min-height: 35px;
+		
+		// ul container #7
+		.ul-container{
+			overflow: hidden;
+			width: 700px;
+			margin: auto;
+			height: 35px;
+			ul {
+				list-style:none;
+				margin: 5px 0px 5px 0;
+				li{
+					text-align: center;
+					min-width: 100px;
+					float:left;
+				} 
+			} 
+		}
+		
+	}
+
+	// 图片轮换框Container #5
+	.img-show-container{
+		min-height: 200px;
+	}
+
+	// 主Container #6
+	.main-container{
+		min-height: 800px;
+		overflow: auto;
+		
+		// 装左右的Container #8
+		.side-container{
+			overflow: auto;
+			
+			// 左侧Container #9
+			.left-container{
+				float: left;
+				width: 830px;
+				height: 800px;
+			}
+			
+			// 右侧Container #10
+			.right-container{
+				float: right;
+				width: 300px;
+				height: 800px;
+			}
+		}
+		
+		// 底部Container #11
+		.bottom-container{
+			min-height: 400px;
+		}
+	}
+}
