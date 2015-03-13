@@ -5,8 +5,15 @@
 	margin: 1px;
 }
 
+// ========== 常量储存区==========
+@bg-color: #EA768D;
+@active-bg-color: #E4007B;
+@hover-bg-color: #E53E98;;
+// @bg-color: white;
+
 // 主Container #1
 .home-container{
+	width: 1170px;
 	// 头部Logo及搜索Container #2
 	.header-container{
 		height: 85px;
@@ -32,7 +39,7 @@
 	// 导航Container #4
 	.nav-container{
 		min-height: 35px;
-		
+		background-color: @bg-color;
 		// ul container #7
 		.ul-container{
 			overflow: hidden;
@@ -41,12 +48,27 @@
 			height: 35px;
 			ul {
 				list-style:none;
-				margin: 5px 0px 5px 0;
 				li{
 					text-align: center;
 					min-width: 100px;
 					float:left;
+					height: 35px;
+					line-height: 35px;
+					a{
+						color: white;
+						font-weight: bolder;
+					}
+					&:hover{
+						background-color: @hover-bg-color;
+						a{
+							color: white;
+						}
+					}
 				} 
+				// Active li
+				.active{
+					background-color: @active-bg-color;
+				}
 			} 
 		}
 		
@@ -61,18 +83,18 @@
 	.main-container{
 		min-height: 800px;
 		overflow: auto;
-		
+
 		// 装左右的Container #8
 		.side-container{
 			overflow: auto;
-			
+
 			// 左侧Container #9
 			.left-container{
 				float: left;
 				width: 830px;
 				height: 800px;
 			}
-			
+
 			// 右侧Container #10
 			.right-container{
 				float: right;
