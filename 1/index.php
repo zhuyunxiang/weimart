@@ -5,4 +5,7 @@
 	define('APP_DEBUG', true);
 	define('ENGINE_NAME', 'cluster');
 	require THINK_PATH.'ThinkPHP.php';
+
+
+// 
 ?>
