@@ -6,6 +6,5 @@
 	define('ENGINE_NAME', 'cluster');
 	require THINK_PATH.'ThinkPHP.php';
 
-
-// 111
+	// 2222333
 ?>
