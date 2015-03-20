@@ -152,6 +152,12 @@ class IndexAction extends Action {
     $this->save_data("saveTextMsg");
   }
 
+  public function save_url()
+  {
+    $result = $this->save_data("saveURL");
+    echo $result;
+  }
+
   public function save_wechat_info()
   {
     $this->save_data("saveWechatInfo");

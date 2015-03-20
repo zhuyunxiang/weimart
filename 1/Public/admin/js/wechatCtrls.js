@@ -18,6 +18,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 });
         }
 
+
         $scope.tips = {
             errorShow: false,
             successShow: false,
@@ -151,7 +152,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
         }
 
         $scope.save_menu_name = function(argument) {
-            if ($scope.editMenuInfo.editMenuName != "" && $scope.editMenuInfo.editMenuName != null) {
+            if ($scope.editMenuInfo && $scope.editMenuInfo.editMenuName != "" && $scope.editMenuInfo.editMenuName != null) {
                 if ($scope.editMenuInfo.editMenuName.length < 6) {
                     $http({
                         method: 'POST',
@@ -223,6 +224,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                                     toSetTextMsg: false,
                                 }
                                 $scope.editTextMsg = {
+                                    menu_type: 'second',
                                     msg_type: 'text',
                                     msg_key: $scope.menuList[parentIndex].secondMenuList[index].menu_key,
                                 };
@@ -244,6 +246,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                         toSetTextMsg: false,
                     }
                     $scope.editTextMsg = {
+                        menu_type: 'first',
                         msg_type: 'text',
                         msg_key: $scope.menuList[index].menu_key,
                     };
@@ -256,6 +259,15 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                         toSetTextMsg: false,
                     }
                 }
+            }
+        }
+// 需要重新设置
+        $scope.reEditMsg = function () {
+            $scope.defaultCss = {
+                hasChild: false,
+                toChoose: true,
+                settedText: false,
+                toSetTextMsg: false,
             }
         }
 
@@ -281,6 +293,31 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 });
         }
 
+        $scope.saveEditURLClick = function() {
+            $scope.editTextMsg.msg_type = 'url';
+            $http({
+                method: 'POST',
+                url: saveAddressURL,
+                data: $.param($scope.editTextMsg),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                } // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    // if (data.status == 1) {
+                    //     showTips('success', data.info);
+                    //     getInfo();
+                    // } else {
+                    //     showTips('error', data.info);
+                    // }
+
+                    console.log(data);
+                })
+                .error(function() {
+                    showTips('error', "对不起，连接服务器失败！");
+                });
+        }
+
         $scope.toShowMsgEdit = function() {
             $scope.defaultCss = {
                 hasChild: false,
@@ -288,6 +325,11 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 settedText: false,
                 toSetTextMsg: true,
             }
+        }
+
+        $scope.toShowUrlEdit = function () {
+            $scope.menuModalTitle = "设置网址";
+            $("#editUrlModal").modal("show");
         }
 
         $scope.saveToWechatClick = function (argument) {
