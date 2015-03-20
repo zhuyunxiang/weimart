@@ -131,6 +131,23 @@ class IndexService
 		return array('data'=>false, 'info'=>"保存的内容不能为空", 'status'=>0);
 	}
 
+// 
+	public function saveURL($data = null)
+	{
+		// if ($data) {
+		// 	if (isset($data['msg_id'])) {
+		// 		$menu_info = array('menu_id'=>$data['menu_id'], 'menu_type'=>'url');
+		// 		$data = $this->msgDao->save($data);
+		// 		return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
+		// 	} else {
+		// 		$data = $this->msgDao->add($data);
+		// 		return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
+		// 	}
+		// }
+
+		return array('data'=>$data, 'info'=>"保存的内容不能为空", 'status'=>0);
+	}
+
 	public function saveWechatInfo($data = null)
 	{
 		if ($data && $_SESSION['user']) {

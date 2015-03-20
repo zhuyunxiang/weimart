@@ -25,3 +25,31 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="editUrlModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">{{menuModalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="editMenuName" class="col-xs-3 control-label">地址链接：</label>
+						<div class="col-xs-6">
+							<input type="text" class="form-control" ng-model="editTextMsg.tempURL"  placeholder="请输入网址">
+							<input type="hidden" ng-model="editMenuInfo.editMenuType">
+							<input type="hidden" ng-model="editMenuInfo.editMenuId">
+							<input type="hidden" ng-model="editMenuInfo.editMenuParentId">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveEditURLClick()">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
