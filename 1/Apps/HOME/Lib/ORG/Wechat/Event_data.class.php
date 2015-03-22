@@ -84,7 +84,6 @@ class Event_data
             $key = $data['EventKey'];
 
 			// 点击事件
-            //$reply = array("你现在所在的位置\n纬度是：".$data['Latitude']."\n经度是：".$data['Longitude']."\n精度是：".$data['Precision'],'text');
             $reply = $this->clickEventHandler($key);
 			return $reply;
 		}
@@ -95,7 +94,7 @@ class Event_data
 	{
 		if ($key) {
 			// 判断缓存是否存在
-			if (S('tempKey-'.$key)!="") {
+			if (S('tempKey-'.$key) != "") {
 				$result = S('tempKey-'.$key);
 			} else {
 				$msgLstDao = M('wechat_msg_list');
@@ -118,10 +117,8 @@ class Event_data
 					# code...
 					break;
 			}
-			return array('对不起，没有设定此事件回复！','text');
-		} else {
-			return array("本平台正处于开发阶段，更多精彩敬请期待！\n"."点击"."<a href='http://210.29.7.15/wechat_you/index.php?s=Test/test_wechat/wechat_id/".$data['FromUserName']."'>跳转</a>查看你周边的人",'text');
-		}
+		} 
+		return array('对不起，没有设定此事件回复！','text');
 	}
 	
 }
