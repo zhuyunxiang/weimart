@@ -99,7 +99,8 @@ class Event_data
 				$msgLstDao = M('wechat_msg_list');
 				$where = array('msg_key'=>$key);
 				$result = $msgLstDao->where($where)->find();
-				
+				S('tempKey-'.$key, $result, 1);
+			
 
 			switch ($result['msg_type']) {
 				// 回复文本消息
