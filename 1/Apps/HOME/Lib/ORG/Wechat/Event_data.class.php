@@ -81,7 +81,7 @@ class Event_data
 		}
 		
 		if ($data['Event']=="CLICK") {	
-			$key = $data['EventKey'];
+            //$key = $data['EventKey'];
 
 			// 点击事件
             return array($key,'text');
