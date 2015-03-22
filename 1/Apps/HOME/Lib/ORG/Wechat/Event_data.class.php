@@ -96,7 +96,7 @@ class Event_data
 		if ($key) {
 			// 判断缓存是否存在
 			if (isset(S('tempKey-'.$key))) {
-				$result = S('tempKey-'.$key)
+				$result = S('tempKey-'.$key);
 			} else {
 				$msgLstDao = M('wechat_msg_list');
 				$where = array('msg_key'=>$key);
