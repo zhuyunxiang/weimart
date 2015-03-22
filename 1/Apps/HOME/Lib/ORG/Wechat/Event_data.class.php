@@ -85,7 +85,7 @@ class Event_data
 
 			// 点击事件
            $reply = array("你现在所在的位置\n纬度是：".$data['Latitude']."\n经度是：".$data['Longitude']."\n精度是：".$data['Precision'],'text');
-			$reply = $this->clickEventHandler($key);
+            //$reply = $this->clickEventHandler($key);
 			return $reply;
 		}
 		return $reply;
