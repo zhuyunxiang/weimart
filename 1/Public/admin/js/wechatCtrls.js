@@ -78,6 +78,8 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
         }
 
         $scope.edit_first_menu = function(index) {
+            // 阻止冒泡
+            event.stopPropagation();
             $scope.menuModalTitle = "修改一级菜单";
             $scope.editMenuInfo = {
                 editMenuType: 'editFirst',
@@ -88,6 +90,8 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
         }
 
         $scope.remove_first_menu = function(index) {
+            // 阻止冒泡
+            event.stopPropagation();
             // $scope.menuList.splice(index, 1);	
             $http({
                 method: 'POST',
@@ -115,9 +119,14 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 editMenuId: $scope.menuList[parentIndex].secondMenuList[index].menu_id,
                 editMenuParentId: null,
             }
+            // 阻止冒泡
+            event.stopPropagation();
         }
 
         $scope.add_second_menu = function(index) {
+            // 阻止冒泡
+            event.stopPropagation();
+            // 判断二级菜单是否超过5个
             if ($scope.menuList[index].secondMenuList == null || $scope.menuList[index].secondMenuList.length < 5) {
                 $scope.menuModalTitle = "添加二级菜单";
                 $scope.editMenuInfo = {
@@ -190,12 +199,15 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                     } // set the headers so angular passing info as form data (not request payload)
                 })
                     .success(function(data) {
+                        console.log(data);
                         if (data.status == 1) {
-                            if (data.data.msg_items != null) {
-                                switch (data.data.msg_items.msg_type) {
+                            if (data.data.menu_type != null) {
+                                switch (data.data.menu_type) {
                                     case "text":
                                         $scope.settedTextValue = data.data.msg_items.msg_text;
                                         $scope.editTextMsg = data.data.msg_items;
+                                        $scope.editTextMsg.menu_type = 'second';
+                                        $scope.editTextMsg.menu_id = $scope.menuList[parentIndex].secondMenuList[index].menu_id;
                                         $scope.defaultCss = {
                                             hasChild: false,
                                             toChoose: false,
@@ -208,7 +220,13 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                                         break;
 
                                     case "url":
-                                        alert("已经设置网址！");
+                                        // alert("已经设置网址！");
+                                        $scope.editTextMsg = {
+                                            tempURL: data.data.menu_url,
+                                            menu_type: 'second',
+                                            menu_id: $scope.menuList[parentIndex].secondMenuList[index].menu_id,
+                                        };
+                                        $scope.toShowUrlEdit();
                                         break;
 
                                     default:
@@ -225,8 +243,10 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                                 }
                                 $scope.editTextMsg = {
                                     menu_type: 'second',
+                                    menu_id: $scope.menuList[parentIndex].secondMenuList[index].menu_id,
                                     msg_type: 'text',
                                     msg_key: $scope.menuList[parentIndex].secondMenuList[index].menu_key,
+                                    menu_id: $scope.menuList[parentIndex].secondMenuList[index].menu_id,
                                 };
                             }
                         }
@@ -239,17 +259,49 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 // 当前("一级菜单");
                 if ($scope.menuList[index].secondMenuList == null) {
                     // 没有子菜单，需设置消息
-                    $scope.defaultCss = {
-                        hasChild: false,
-                        toChoose: true,
-                        settedText: false,
-                        toSetTextMsg: false,
+                    switch ($scope.menuList[index].menu_type) {
+                        case "text":
+                            $scope.settedTextValue = $scope.menuList[index].msg_items.msg_text;
+                            $scope.editTextMsg = $scope.menuList[index].msg_items;
+                            $scope.editTextMsg.menu_type = 'first';
+                            $scope.editTextMsg.menu_id = $scope.menuList[index].menu_id;
+                            $scope.defaultCss = {
+                                hasChild: false,
+                                toChoose: false,
+                                toSetTextMsg: false,
+                            }
+                            $scope.defaultCss.settedText = true;
+                            break;
+                        case "media":
+                            alert("已经设置图文消息！");
+                            break;
+
+                        case "url":
+                            // alert("已经设置网址！");
+                            $scope.editTextMsg = {
+                                tempURL: $scope.menuList[index].menu_url,
+                                menu_type: 'first',
+                                menu_id: $scope.menuList[index].menu_id,
+                            };
+                            $scope.toShowUrlEdit();
+                            break;
+
+                        default:
+                            $scope.defaultCss = {
+                                hasChild: false,
+                                toChoose: true,
+                                settedText: false,
+                                toSetTextMsg: false,
+                            }
+                            $scope.editTextMsg = {
+                                menu_type: 'first',
+                                msg_type: 'text',
+                                msg_key: $scope.menuList[index].menu_key,
+                                menu_id: $scope.menuList[index].menu_id,
+                            };
+                            break;
                     }
-                    $scope.editTextMsg = {
-                        menu_type: 'first',
-                        msg_type: 'text',
-                        msg_key: $scope.menuList[index].menu_key,
-                    };
+                    
                 } else {
                     // 有子节点，不能设置消息
                     $scope.defaultCss = {
@@ -281,6 +333,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         showTips('success', data.info);
                         getInfo();
@@ -304,12 +357,12 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
-                    // if (data.status == 1) {
-                    //     showTips('success', data.info);
-                    //     getInfo();
-                    // } else {
-                    //     showTips('error', data.info);
-                    // }
+                    if (data.status == 1) {
+                        showTips('success', data.info);
+                        getInfo();
+                    } else {
+                        showTips('error', data.info);
+                    }
 
                     console.log(data);
                 })

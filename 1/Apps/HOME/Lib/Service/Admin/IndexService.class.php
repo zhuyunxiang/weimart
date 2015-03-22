@@ -115,35 +115,57 @@ class IndexService
 		return false;
 	}
 
+	// 保存文字消息
 	public function saveTextMsg($data = null)
 	{
 		if ($data) {
+			// 设置menu类型为文字
+			$menu_info = array(
+				'menu_id'=>$data['menu_id'],
+				'menu_type'=>'text'
+			);
+
+			if ($data['menu_type'] == 'first') {
+				$this->firstMenuDao->save($menu_info);
+			} else {
+				$this->secondMenuDao->save($menu_info);
+			}
+
+			unset($data['menu_type']);
+			unset($data['menu_id']);
+
 			if (isset($data['msg_id'])) {
-				$menu_info = array('menu_id'=>$data['menu_id'], 'menu_type'=>'text');
 				$data = $this->msgDao->save($data);
 				return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
 			} else {
 				$data = $this->msgDao->add($data);
-				return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
+				return array('data'=>$data, 'info'=>"文本信息添加成功", 'status'=>1);
 			}
 		}
 
 		return array('data'=>false, 'info'=>"保存的内容不能为空", 'status'=>0);
 	}
 
-// 
+	// 保存链接地址
 	public function saveURL($data = null)
 	{
-		// if ($data) {
-		// 	if (isset($data['msg_id'])) {
-		// 		$menu_info = array('menu_id'=>$data['menu_id'], 'menu_type'=>'url');
-		// 		$data = $this->msgDao->save($data);
-		// 		return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
-		// 	} else {
-		// 		$data = $this->msgDao->add($data);
-		// 		return array('data'=>$data, 'info'=>"文本信息修改成功", 'status'=>1);
-		// 	}
-		// }
+		if ($data) {
+			if (isset($data['menu_type'])) {
+				$menu_info = array(
+					'menu_id'=>$data['menu_id'], 
+					'menu_type'=>'url', 
+					'menu_url'=>$data['tempURL']
+				);
+				// 当前要设置的是一级菜单
+				if ($data['menu_type'] == 'first') {
+					$data = $this->firstMenuDao->save($menu_info);
+				} else {
+					$data = $this->secondMenuDao->save($menu_info);
+				}
+
+				return array('data'=>$data, 'info'=>"链接地址保存成功！", 'status'=>1);
+			}
+		}
 
 		return array('data'=>$data, 'info'=>"保存的内容不能为空", 'status'=>0);
 	}
