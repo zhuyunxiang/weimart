@@ -91,38 +91,7 @@ class Event_data
 		return $reply;
 	}
 
-	// 点击事件处理
-	function clickEventHandler($key = null)
-	{
-		if ($key) {
-			// 判断缓存是否存在
-			if (isset(S('tempKey-'.$key))) {
-				$result = S('tempKey-'.$key);
-			} else {
-				$msgLstDao = M('wechat_msg_list');
-				$where = array('msg_key'=>$key);
-				$result = $msgLstDao->where($where)->find();
-				S('tempKey-'.$key, $result, 1);
-			}
-
-			switch ($result['msg_type']) {
-				// 回复文本消息
-				case 'text':
-					return array($result['msg_text'],'text');
-					break;
-				// 回复图文消息
-				case 'media':
-					# code...
-					break;
-				
-				default:
-					# code...
-					break;
-			}
-		} else {
-			return array("本平台正处于开发阶段，更多精彩敬请期待！\n"."点击"."<a href='http://210.29.7.15/wechat_you/index.php?s=Test/test_wechat/wechat_id/".$data['FromUserName']."'>跳转</a>查看你周边的人",'text');
-		}
-	}
+	
 	
 }
  ?>
