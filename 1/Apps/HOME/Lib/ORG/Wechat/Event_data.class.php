@@ -104,20 +104,7 @@ class Event_data
 				S('tempKey-'.$key, $result, 1);
 			}
 
-			switch ($result['msg_type']) {
-				// 回复文本消息
-				case 'text':
-					return array($result['msg_text'],'text');
-					break;
-				// 回复图文消息
-				case 'media':
-					# code...
-					break;
-				
-				default:
-					# code...
-					break;
-			}
+			
 			return array('对不起，没有设定此事件回复！','text');
 		} else {
 			return array("本平台正处于开发阶段，更多精彩敬请期待！\n"."点击"."<a href='http://210.29.7.15/wechat_you/index.php?s=Test/test_wechat/wechat_id/".$data['FromUserName']."'>跳转</a>查看你周边的人",'text');
