@@ -1,12 +1,14 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
+// 后台管理Action
 
 class IndexAction extends Action {
+  // 显示主页面
   public function index()
   {
       $this->display('index');
   }
 
+  // 登陆
   public function do_login()
   {
      $postData = $_POST;
@@ -30,16 +32,25 @@ class IndexAction extends Action {
     $this->display('main');
   }
 
+  // 显示自定义菜单设置页
   public function wechat_menu_conf()
   {
     $this->display('wechat_menu_conf');
   }
 
+  // 显示公众账号设置页
   public function set_wechat_info()
   {
     $this->display('set_wechat_info');
   }
 
+  // 显示自定义回复设置页
+  public function custom_return_conf()
+  {
+    $this->display('custom_return_conf');
+  }
+
+  // 获取菜单列表
   public function get_menu_list()
   {
     $menuList = A('Admin/Index','Service')->getMenuList();
@@ -52,11 +63,13 @@ class IndexAction extends Action {
     }
   }
 
+  // 显示图文菜单编辑页面
   public function mulTuwen()
   {
     $this->display('mulTuwen');
   }
 
+  // 保存菜单信息
   public function save_menu_info()
   {
     if ($_POST) {
@@ -89,6 +102,7 @@ class IndexAction extends Action {
     }
   }
 
+  // 删除一级菜单
   public function remove_first_menu()
   {
     if ($_POST) {
@@ -103,6 +117,7 @@ class IndexAction extends Action {
     }
   }
 
+  // 删除二级菜单
   public function remove_second_menu()
   {
     if ($_POST) {
@@ -117,6 +132,7 @@ class IndexAction extends Action {
     }
   }
 
+  // 根据id获取二级菜单信息
   public function get_second_menu_info_by_id()
   {
     if (isset($_POST['s_id'])) {
@@ -131,12 +147,14 @@ class IndexAction extends Action {
     }
   }
 
+  // 获得公众账号信息
   public function get_wechat_info()
   {
     $result = A('Admin/Index', 'Service')->getWechatInfo();
     $this->ajaxReturn($result['data'], $result['info'], $result['status']);
   }
 
+  // 通用保存方法 ===Base Function===
   function save_data($dataType = null)
   {
     if ($dataType != null && $_POST != null) {
@@ -159,6 +177,7 @@ class IndexAction extends Action {
     $this->save_data("saveURL");
   }
 
+  // 保存公众账号信息
   public function save_wechat_info()
   {
     $this->save_data("saveWechatInfo");

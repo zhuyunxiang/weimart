@@ -19,6 +19,7 @@
 			var getSecondMenuInfoUrl = "{:U('get_second_menu_info_by_id')}";
 			var saveTextMsgUrl = "{:U('save_text_msg')}";
 			var saveAddressURL = "{:U('save_url')}";
+			var mulTuwenURL = "{:U('mulTuwen')}";
 			var saveToWechatActionUrl = "{:U('Wechat/Conf/set_menu')}";
 		</script>
 	</head>
@@ -76,8 +77,8 @@
 									<hr>
 									<div class="edit-container">
 										<ul class="nav nav-tabs">
-											<li role="presentation" class="active"><a href="#"><i class="glyphicon glyphicon-pencil" ng-click="remove_second_menu($parent.$index, $index);"></i>文字</a></li>
-											<li role="presentation"><a href="#"><i class="glyphicon glyphicon-picture" ng-click="remove_second_menu($parent.$index, $index);"></i>图文</a></li>
+											<li role="presentation" class="active"><a href="#"><i class="glyphicon glyphicon-pencil" ></i>文字</a></li>
+											<li role="presentation"><a ng-href="{{mulTuwenURL}}" target="_blank"><i class="glyphicon glyphicon-picture" ></i>图文</a></li>
 										</ul>
 										<div class="edit-textarea">
 											<textarea ng-model="editTextMsg.msg_text">
@@ -130,7 +131,7 @@
 			</div>
 			<br/>
 			<p>
-			<button class="btn btn-success pull-right" ng-click="saveToWechatClick()">发布</button>
+				<button class="btn btn-success pull-right" ng-click="saveToWechatClick()">发布</button>
 			</p>
 			<br/>
 			<!-- container -->
