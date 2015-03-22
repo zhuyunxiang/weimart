@@ -84,7 +84,7 @@ class Event_data
             //$key = $data['EventKey'];
 
 			// 点击事件
-            return array($key,'text');
+            return array('aaa','text');
 			$reply = $this->clickEventHandler($key);
 			return $reply;
 		}
