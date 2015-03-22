@@ -147,15 +147,16 @@ class IndexAction extends Action {
     }
   }
 
+  // 保存文字信息
   public function save_text_msg()
   {
     $this->save_data("saveTextMsg");
   }
 
+  // 保存菜单链接地址 
   public function save_url()
   {
-    $result = $this->save_data("saveURL");
-    echo $result;
+    $this->save_data("saveURL");
   }
 
   public function save_wechat_info()
