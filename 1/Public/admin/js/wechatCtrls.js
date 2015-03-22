@@ -2,6 +2,7 @@ var WechatCtrls = angular.module('WechatCtrls', []);
 
 WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
     function($scope, $timeout, $http) {
+        $scope.mulTuwenURL = mulTuwenURL;
         getInfo();
 
         function getInfo() {
