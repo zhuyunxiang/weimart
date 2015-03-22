@@ -91,7 +91,6 @@ class Event_data
 		return $reply;
 	}
 
-	// 点击事件处理
 	function clickEventHandler($key = null)
 	{
 		if ($key) {
@@ -119,6 +118,7 @@ class Event_data
 					# code...
 					break;
 			}
+			return array('对不起，没有设定此事件回复！','text');
 		} else {
 			return array("本平台正处于开发阶段，更多精彩敬请期待！\n"."点击"."<a href='http://210.29.7.15/wechat_you/index.php?s=Test/test_wechat/wechat_id/".$data['FromUserName']."'>跳转</a>查看你周边的人",'text');
 		}
