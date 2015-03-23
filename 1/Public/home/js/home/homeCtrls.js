@@ -4,6 +4,10 @@ HomeCtrls.controller('homeCtrl', ['$scope',
 	function($scope){
 		$scope.userInfo = {email: "tests@qq.com"};
 
+		$scope.tplURLs = {
+			pictureShow: publicUrl+'tpl/home/picture_show.html',
+		};
+
 		$scope.imageURLs = {
 			'publicUrl': publicUrl,
 			'logo': commenUrl+'img/logo-mini.png',
