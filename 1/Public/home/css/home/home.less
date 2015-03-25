@@ -95,15 +95,75 @@
 			// 左侧Container #9
 			.left-container{
 				float: left;
-				width: 830px;
-				height: 800px;
+				width: 900px;
+				min-height: 700px;
+
+				.nav-outer-container{
+					.type-container{
+						display: inline-block;
+						width: 425px;
+						margin-left: 15px;
+						min-height: 300px;
+
+						&.left-top,&.right-top{
+							margin-top: 30px;
+						}
+
+						&.left-bottom,&.right-bottom{
+							margin-top: 20px;
+						}
+
+						.title-container{
+							min-height: 30px;
+							color: #FFFFFF;
+							.title{
+								font-weight: bolder;
+								font-size: large;
+								line-height: 30px;
+								margin-left: 15px;
+							}
+						}
+
+
+						.type-mini-container{
+							.type-text,.type-img{
+								display: inline-block;
+								min-height: 265px;
+							}
+
+							.type-text{
+								width: 300px;
+							}
+							.type-img{
+								width: 110px;
+							}
+						}
+
+						// 头部框的背景色
+						&.left-top .title-container{
+							background-color: #F95F9D;
+						}
+
+						&.right-top .title-container{
+							background-color: #AD71D5;
+						}
+
+						&.left-bottom .title-container{
+							background-color: #97BB1D;
+						}
+
+						&.right-bottom .title-container{
+							background-color: #F2629D;
+						}
+					}
+				}
 			}
 
 			// 右侧Container #10
 			.right-container{
 				float: right;
-				width: 300px;
-				height: 800px;
+				width: 230px;
+				min-height: 700px;
 			}
 		}
 		
