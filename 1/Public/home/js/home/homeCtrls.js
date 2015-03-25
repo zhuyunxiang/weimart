@@ -6,6 +6,7 @@ HomeCtrls.controller('homeCtrl', ['$scope',
 
 		$scope.tplURLs = {
 			pictureShow: publicUrl+'tpl/home/picture_show.html',
+			leftNavOuterContainer: publicUrl+'tpl/home/nav_containers.html',
 		};
 
 		$scope.imageURLs = {
