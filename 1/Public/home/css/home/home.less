@@ -1,7 +1,7 @@
 
 
 .start-prepare{
-	border: solid 1px;
+	border: solid 1px #F6F6F6;
 	margin: 1px;
 }
 
@@ -100,7 +100,7 @@
 
 				.nav-outer-container{
 					.type-container{
-						display: inline-block;
+						float: left;
 						width: 425px;
 						margin-left: 15px;
 						min-height: 300px;
@@ -126,16 +126,32 @@
 
 
 						.type-mini-container{
+							border: solid 1px #F6F6F6;
+							border-width: 0 1px 1px 1px;
+							overflow: hidden;
 							.type-text,.type-img{
-								display: inline-block;
+								float: left;
 								min-height: 265px;
 							}
 
 							.type-text{
+								padding: 20px 20px 0 20px;
 								width: 300px;
+								.mini-item{
+									margin-bottom: 3px;
+									span{
+										font-size: xx-small;
+									}
+									span.type-name{
+										font-weight: bolder;
+										display: inline-block;
+										width: 60px;
+									}
+
+								}
 							}
 							.type-img{
-								width: 110px;
+								width: 115px;
 							}
 						}
 
@@ -168,7 +184,7 @@
 		}
 		
 		// 底部Container #11
-		.bottom-container{
+		.nav-bottom-container{
 			min-height: 400px;
 		}
 	}
