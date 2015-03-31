@@ -13,7 +13,8 @@
 
 // 主Container #1
 .home-container{
-	width: 1350px;
+	width: 1190px;
+	padding: 0px;
 	// 头部Logo及搜索Container #2
 	.header-container{
 		height: 85px;
@@ -38,22 +39,23 @@
 
 	// 导航Container #4
 	.nav-container{
-		min-height: 35px;
+		@nav-container-height: 35px;
+		min-height: @nav-container-height;
 		background-color: @bg-color;
 		// ul container #7
 		.ul-container{
 			overflow: hidden;
 			width: 700px;
 			margin: auto;
-			height: 35px;
+			height: @nav-container-height;
 			ul {
 				list-style:none;
 				li{
 					text-align: center;
 					min-width: 100px;
 					float:left;
-					height: 35px;
-					line-height: 35px;
+					height: @nav-container-height;
+					line-height: @nav-container-height;
 					a{
 						color: white;
 						font-weight: bolder;
@@ -76,10 +78,11 @@
 
 	// 图片轮换框Container #5
 	.img-show-container{
-		min-height: 200px;
+		@show-img-height: 275px;
+		min-height: @show-img-height;
 
 		.item{
-			height: 320px;
+			height: @show-img-height;
 		}
 	}
 
