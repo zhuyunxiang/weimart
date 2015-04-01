@@ -1,7 +1,7 @@
 var customReturnCtrls = angular.module('customReturnCtrls', []);
 
-customReturnCtrls.controller('customReturnCtrl', ['$scope', '$timeout', '$http',
-    function($scope, $timeout, $http) {
+customReturnCtrls.controller('customReturnCtrl', ['foo','$scope', '$timeout', '$http',
+    function(foo,$scope, $timeout, $http) {
         $scope.tips = {
             errorShow: false,
             successShow: false,
@@ -39,7 +39,8 @@ customReturnCtrls.controller('customReturnCtrl', ['$scope', '$timeout', '$http',
                 leftTime: 4
             }
         }
-
+alert(foo.variable);
+foo.getPrivate();
         // getInfo();
 
         // function getInfo() {
