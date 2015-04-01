@@ -1,1 +1,1 @@
-var app = angular.module('customReturnApp', ['customReturnCtrls']);
+var app = angular.module('customReturnApp', ['customReturnCtrls','customReturnServices']);
