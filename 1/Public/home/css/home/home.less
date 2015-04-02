@@ -1,8 +1,10 @@
-
+html{
+	// overflow-x: hidden;
+}
 
 .start-prepare{
-	// border: solid 1px;
-	// margin: 1px;
+	border: solid 1px;
+	margin: 1px;
 }
 
 // ========== 常量储存区==========
@@ -18,8 +20,10 @@
 
 // 主Container #1
 .home-container{
-	width: 1190px;
+	width: 100%;
+	min-width: 1170px;
 	padding: 0px;
+	overflow: hidden;
 	// 头部Logo及搜索Container #2
 	.header-container{
 		height: 85px;
@@ -97,12 +101,27 @@
 		padding: 10px;
 		margin-top: 20px;
 		overflow: hidden;
+		text-align:center;
 		.block-item{
-			float: left;
-			width: 324px;
-			height: 118px;
-			margin-left: 48px;
+			width: 322px;
+			height: 117px;
 			border: solid 1px #CCCCCC;
+			overflow: hidden;
+			display: inline-block;
+			&:first-child{
+				float: left;
+				margin: 0 auto;
+				margin-left: 80px;
+			}
+			&:nth-child(2){
+				// margin: 0 auto;
+			}
+			&:nth-child(3){
+				float: right;
+				margin: 0 auto;
+				margin-right: 80px;
+			}
+			
 			img{
 				width: 100%;
 				height: 100px;
@@ -112,24 +131,25 @@
 
 	// 主Container #6
 	.main-container{
+		
 		min-height: 800px;
-		overflow: auto;
 
 		// 装左右的Container #8
 		.side-container{
+			min-width: 1170px;
 			overflow: auto;
 
 			// 左侧Container #9
 			.left-container{
+				margin: 0 auto;
 				float: left;
-				width: 900px;
+				width: 910px;
 				min-height: 700px;
-
 				.nav-outer-container{
 					.type-container{
 						float: left;
-						width: 425px;
-						margin-left: 15px;
+						width: 435px;
+						margin-left: 18px;
 						min-height: 300px;
 
 						&.left-top,&.right-top{
@@ -158,7 +178,7 @@
 							overflow: hidden;
 							.type-text,.type-img{
 								float: left;
-								min-height: 265px;
+								min-height: 246px;
 							}
 
 							.type-text{
@@ -205,8 +225,10 @@
 			// 右侧Container #10
 			.right-container{
 				float: right;
-				width: 230px;
+				min-width: 240px;
+				margin: 0 auto;
 				min-height: 700px;
+				// margin-left: 20px;
 			}
 		}
 		
