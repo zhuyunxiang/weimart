@@ -3,8 +3,8 @@ html{
 }
 
 .start-prepare{
-	// border: solid 1px;
-	// margin: 1px;
+	border: solid 1px;
+	margin: 1px;
 }
 
 // ========== 常量储存区==========
@@ -138,7 +138,9 @@ html{
 		.side-container{
 			min-width: 1170px;
 			overflow: auto;
-
+			margin-left: 5%;
+			margin-right: 5%;
+			padding-bottom: 20px;
 			// 左侧Container #9
 			.left-container{
 				margin: 0 auto;
@@ -146,19 +148,13 @@ html{
 				width: 910px;
 				min-height: 700px;
 				.nav-outer-container{
+					overflow: hidden;
 					.type-container{
 						float: left;
 						width: 435px;
 						margin-left: 18px;
-						min-height: 300px;
-
-						&.left-top,&.right-top{
-							margin-top: 20px;
-						}
-
-						&.left-bottom,&.right-bottom{
-							margin-top: 20px;
-						}
+						min-height: 246px;
+						margin-top: 18px;
 
 						.title-container{
 							min-height: 30px;
@@ -184,6 +180,7 @@ html{
 							.type-text{
 								padding: 20px 20px 0 20px;
 								width: 300px;
+								height: 246px;
 								.mini-item{
 									margin-bottom: 3px;
 									span{
@@ -197,26 +194,72 @@ html{
 
 								}
 							}
+							// 小缩略图
 							.type-img{
 								width: 115px;
+								height: 246px;
+								img{
+									width: 115px;
+									height: 246px;
+								}
 							}
 						}
-
-						// 头部框的背景色
-						&.left-top .title-container{
+						&:first-child .title-container{
 							background-color: #F95F9D;
 						}
-
-						&.right-top .title-container{
+						&:nth-child(2) .title-container{
 							background-color: #AD71D5;
 						}
-
-						&.left-bottom .title-container{
+						&:nth-child(3) .title-container{
 							background-color: #97BB1D;
 						}
-
-						&.right-bottom .title-container{
+						&:nth-child(4) .title-container{
 							background-color: #F2629D;
+						}
+						&:nth-child(6) .title-container{
+							background-color: #0099FF;
+						}
+						&:nth-child(7) .title-container{
+							background-color: #66CCCC;
+						}
+
+						.heigher-mini-container{
+							height: 275px;
+
+						}
+
+						&:nth-child(8) {
+							.type-mini-container{
+								.heigher-mini-container;
+							}
+							.title-container{
+								background-color: #FF8182;
+							}
+
+							
+						}
+						&:nth-child(9) {
+							.type-mini-container{
+								.heigher-mini-container;
+							}
+							.title-container{
+								background-color: #FF6600;
+							}
+
+							
+						}
+						
+
+					}
+					.middle-ad{
+						float: left;
+						height: 69px;
+						margin-left: 18px;
+						margin-top: 18px;
+						width: 889px;
+						img{
+							height: 100%;
+							width: 100%;
 						}
 					}
 				}
@@ -227,14 +270,14 @@ html{
 				float: right;
 				min-width: 240px;
 				margin: 0 auto;
-				min-height: 700px;
+				min-height: 1335px;
 				// margin-left: 20px;
 			}
 		}
 		
 		// 底部Container #11
 		.nav-bottom-container{
-			min-height: 400px;
+			min-height: 300px;
 		}
 	}
 }
