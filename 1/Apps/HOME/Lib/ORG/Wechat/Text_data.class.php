@@ -36,17 +36,17 @@ class Text_data
 		// 	$reply = $this->charactorSet($data);
 		// }
 		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
-		// $result = A('Admin/CustomReturn/CustomReturnService')->getInfoInPage('customReturnDao', $condition);
-		// if ($result) {
-		// 	$str = '';
-		// 	foreach ($result as $key => $value) {
-		// 		$str = $str.($key+1).'. ：'.$value['msg_text'].'<br/>';
-		// 	}
-		// 	return array($str,'text');
-		// } else {
+		$result = A('Admin/CustomReturn', 'Service')->getInfoInPage('customReturnDao', $condition);
+		if ($result) {
+			$str = '';
+			foreach ($result as $key => $value) {
+				$str = $str.($key+1).'. ：'.$value['msg_text'].'<br/>';
+			}
+			return array($str,'text');
+		} else {
 			$reply = array('你输入的是：'.$content.',没有该关键字！','text');
 			return  $reply;
-		// }
+		}
 		
 
 		
