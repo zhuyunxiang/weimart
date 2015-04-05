@@ -40,7 +40,7 @@ class Text_data
 		if ($result) {
 			$str = '';
 			foreach ($result as $key => $value) {
-				$str = $str.($key+1).'. ：'.$value['msg_text'].'/n';
+				$str = $str.($key+1).". ：".$value['msg_text']."\n";
 			}
 			return array($str,'text');
 		} else {
