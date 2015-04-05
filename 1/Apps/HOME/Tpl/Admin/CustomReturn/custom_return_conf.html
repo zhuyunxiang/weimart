@@ -13,8 +13,9 @@
 		<js file='__PUBLIC__/admin/js/custom_return/customReturnDirectives.js' />
 		<js file='__PUBLIC__/admin/js/custom_return/customReturnFilters.js' />
 		<script>
-			var getcustomReturnUrl = "{:U('CustomReturn/get_cutom_return_info')}";
-			var savecustomReturnUrl = "{:U('save_wechat_info')}";
+			var getCustomReturnUrl = "{:U('CustomReturn/get_cutom_text_return_info')}";
+			var saveCustomReturnUrl = "{:U('CustomReturn/save_cutom_text_return_info')}";
+			var removeCustomReturnUrl = "{:U('CustomReturn/remove_cutom_text_return_info')}";
 		</script>
 	</head>
 	<body ng-controller="customReturnCtrl">

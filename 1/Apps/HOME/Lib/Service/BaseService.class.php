@@ -50,6 +50,22 @@ class BaseService
 		->select();
 	}
 
+	// 通用保存信息 Function
+	// $dao 所用数据库表对象
+	// $data 数据
+	// $id ID字段名
+
+	public function saveInfo($dao, $data = null, $id = 'id')
+	{
+		if (isset($data[$id])) {
+			return $this->$dao
+					->save($data);
+		} else {
+			return $this->$dao ->add($data); 
+		}
+		
+	}
+
 
 }
  ?>
