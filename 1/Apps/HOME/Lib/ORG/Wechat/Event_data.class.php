@@ -106,13 +106,7 @@ class Event_data
 			switch ($result['msg_type']) {
 				// 回复文本消息
 				case 'text':
-					$condition = array('msg_keyword'=>array('like','%'.$result['msg_text'].'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
-					$result = A('CustomReturn/CustomReturnService')->getInfoInPage('customReturnDao', $condition);
-					$str = '';
-					foreach ($result as $key => $value) {
-						$str = $str.($key+1).'. ：'.$value['msg_text'].'<br/>';
-					}
-					return array($str,'text');
+					return array($result['msg_text'],'text');
 					break;
 				// 回复图文消息
 				case 'media':
