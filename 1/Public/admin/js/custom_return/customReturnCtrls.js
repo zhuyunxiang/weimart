@@ -106,7 +106,6 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             for (var i = 0; i < $scope.pagination.allPages; i++) {
                 $scope.pageData.push(i);
             };
-            console.log($scope.pageData);
         }
 
         var getReturns = function(currentPage, pageSize, keyword) {
@@ -117,7 +116,7 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             };
             $http({
                 method: 'POST',
-                url: getcustomReturnUrl,
+                url: getCustomReturnUrl,
                 data: $.param(params),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -143,10 +142,16 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
                     keyword: $scope.pagination.tempKeyword.trim(),
                     allPages: 1,
                 };
-                getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
             } else {
-                alert("对不起，搜索条件不能为空！");
+                $scope.pagination = {
+                    currentPage: 1,
+                    pageSize: 10,
+                    totalCount: 0,
+                    keyword: '',
+                    allPages: 1,
+                };
             }
+            getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
         }
 
         $scope.prePage = function () {
@@ -169,6 +174,90 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             $scope.pagination.currentPage = page;
             $scope.pagination.keyword = keyword;
             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
+        }
+
+        function count(o) {
+            var t = typeof o;
+            if (t == 'string') {
+                return o.length;
+            } else if (t == 'object') {
+                var n = 0;
+                for (var i in o) {
+                    n;
+                }
+                return n;
+            }
+            return false;
+        }
+
+        var getStrArr = function () {
+            var str = $scope.tempReturn.msg_keyword.substr(0 ,count($scope.tempReturn.msg_keyword)-1);
+            $scope.tempReturn.keyword_arr = new Array(); //定义一数组 
+            $scope.tempReturn.keyword_arr = str.split(","); //字符分割 
+        }
+
+        $scope.editCustomReturn = function (key) {
+            $scope.textInfo.modalTitleText  = '修改条目';
+            $scope.tempReturn = $scope.customReturnList[key];
+            getStrArr();
+        }
+
+        $scope.addKeyword = function () {
+            if ($scope.tempReturn&&$scope.tempReturn.msg_keyword&&$scope.tempReturn.keywordItem.trim()) {
+                $scope.tempReturn.msg_keyword = $scope.tempReturn.msg_keyword + $scope.tempReturn.keywordItem.trim() + ',';
+            } else {
+                $scope.tempReturn.msg_keyword = $scope.tempReturn.keywordItem.trim() + ',';
+            }
+            $scope.tempReturn.keywordItem = '';
+            getStrArr();
+        }
+
+        $scope.prepareAdd = function () {
+            $scope.textInfo.modalTitleText  = '添加新记录';
+            $scope.tempReturn = {};
+        }
+
+        $scope.removeCustomReturn = function (key) {
+            if (confirm("确定要删除么？")) {
+                $http({
+                    method: 'POST',
+                    url: removeCustomReturnUrl,
+                    data: $.param($scope.customReturnList[key]),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .success(function(data) {
+                        console.log(data);
+                        if (data.status == 1) {
+                            alert(data.info);
+                            getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
+                        } else {
+                            alert(data.info);
+                        }
+                    });
+            };
+        }
+
+        $scope.saveCustomReturn = function () {
+            $http({
+                method: 'POST',
+                url: saveCustomReturnUrl,
+                data: $.param($scope.tempReturn),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log($scope.tempReturn);
+                    console.log(data);
+                    if (data.status == 1) {
+                        alert(data.info);
+                        getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
+                    } else {
+                        alert(data.info);
+                    }
+                });
         }
     }
 ])

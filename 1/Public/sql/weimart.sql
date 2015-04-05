@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主机: localhost
--- 生成日期: 2015 年 04 月 05 日 14:26
+-- 生成日期: 2015 年 04 月 05 日 17:21
 -- 服务器版本: 5.0.51
 -- PHP 版本: 5.2.6
 
@@ -540,50 +540,47 @@ INSERT INTO `weimart_wechat_menu_second` VALUES (14, 'aaac', 'url', 'bf02d45be60
 CREATE TABLE `weimart_wechat_msg_list` (
   `msg_id` int(11) NOT NULL auto_increment,
   `msg_type` varchar(11) collate utf8_unicode_ci default NULL,
-  `msg_key` varchar(128) collate utf8_unicode_ci NOT NULL default '',
-  `msg_keyword` varchar(20) collate utf8_unicode_ci default NULL,
-  `msg_text` varchar(10000) collate utf8_unicode_ci default NULL,
-  `msg_is_deleted` varchar(8) collate utf8_unicode_ci NOT NULL,
+  `msg_key` varchar(128) collate utf8_unicode_ci default '',
+  `msg_keyword` text collate utf8_unicode_ci,
+  `msg_text` text collate utf8_unicode_ci,
+  `msg_is_deleted` int(8) NOT NULL default '0',
   `msg_create_time` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   `msg_author` varchar(16) collate utf8_unicode_ci default NULL,
   `msg_head_in_content` varchar(8) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`msg_id`,`msg_key`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=133 ;
+  PRIMARY KEY  (`msg_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=146 ;
 
 -- 
 -- 导出表中的数据 `weimart_wechat_msg_list`
 -- 
 
-INSERT INTO `weimart_wechat_msg_list` VALUES (114, 'media', '289f1d13de27d7ddffbf529a8339dccf', NULL, '879789aaa', '', '2015-01-28 21:44:37', '金口难开', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (2, 'text', '947c8e6f636e9a71580f9cc2fb889e7d', NULL, '12312313\n工会会', '', '0000-00-00 00:00:00', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (113, 'media', 'b06ac5869cb56b3e6910f14525b38357', NULL, '就这么挣？', '', '2014-09-16 23:06:08', '作者', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (112, 'media', '0f3dc9d6a883762732d14da829cea2b5', NULL, NULL, '', '2014-05-26 13:31:50', '123123', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (5, 'media', '2aed2d8b15d815dbe9d20c71024b2ef6', NULL, NULL, '', '2014-05-17 19:59:16', '4444444444444444', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (6, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, '', '2014-05-17 19:59:50', 'asdnjkasndkjas', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (7, 'media', 'e43b434450bc497401bab47772219ab3', NULL, NULL, '', '2014-05-22 20:30:48', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (8, 'media', 'ce881724929030f54b4a323940f2e486', NULL, NULL, '', '2014-05-22 20:45:45', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (9, 'media', 'cb0a5012aa3e30682864ec0a3fa270b3', NULL, NULL, '', '2014-05-25 19:41:43', '123asdasd', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (10, 'media', 'b8ba65d009256125e4801a74087415e6', NULL, NULL, '', '2014-05-25 19:42:36', 'asdasda', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (11, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, '', '2014-05-25 20:12:27', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (12, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, '', '2014-05-25 20:14:02', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (13, 'media', 'd232aac45d3ec3a3db9c5e5f8e68e26c', NULL, NULL, '', '2014-05-25 20:18:04', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (14, 'media', '41c0c0bfe7c0898eacd6c02dd590f1a0', NULL, '我的文字的内容', '', '2014-05-26 13:30:33', 'testauthor', 'yes');
-INSERT INTO `weimart_wechat_msg_list` VALUES (111, NULL, 'test_key', NULL, 'neir', '', '2014-05-26 00:07:09', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (115, 'text', 'fbe1400c1b99f2ed6fff8df0c95ab299', NULL, '444555666777888111', '', '2015-02-01 15:51:35', '', '');
-INSERT INTO `weimart_wechat_msg_list` VALUES (116, 'text', '18af7679535efb8bdf925e9c58878bdc', NULL, '111334455', '', '2015-02-01 23:05:11', '', '');
-INSERT INTO `weimart_wechat_msg_list` VALUES (117, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '111', '', '2015-02-24 22:58:56', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (118, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '111', '', '2015-02-24 22:59:22', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (119, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '456456', '', '2015-03-17 21:47:56', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (120, 'text', '3e74f017e236eb3903a2bcd035981ca2', NULL, '1231qew', '', '2015-03-17 21:48:23', '', '');
-INSERT INTO `weimart_wechat_msg_list` VALUES (121, 'text', 'b37668d596fc4a0de5d95ce73ca8cf5a', NULL, '12321313', '', '2015-03-22 17:05:40', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (122, 'custom_text', '793d0983fa4ea4ff6918a835d3b2a393', '一,二,三', '啊啊啊cccccc就', '', '2015-04-05 17:28:16', '', '');
-INSERT INTO `weimart_wechat_msg_list` VALUES (123, 'custom_text', 'custom_text', '793d0983fa4ea4ff6918', '一,二,三', '啊啊啊ccccc', '2015-04-05 17:29:16', '2015-04-05 17:28', '');
-INSERT INTO `weimart_wechat_msg_list` VALUES (124, 'custom_text', '', '二,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:05', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (125, 'custom_text', '', '6二,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:10', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (126, 'custom_text', '', '5二,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:09', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (127, 'custom_text', '', '3二,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:08', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (128, 'custom_text', '', '二2,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:07', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (129, 'custom_text', '', '1二,三', '啊啊啊cccccc就', '', '2015-04-05 17:30:06', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (130, 'custom_text', '', '12313', '3444', '', '2015-04-05 18:31:13', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (131, 'custom_text', '', '23131', '1231', '', '2015-04-05 18:31:19', NULL, NULL);
-INSERT INTO `weimart_wechat_msg_list` VALUES (132, 'custom_text', 'custom_text123131', '444', '555', '', '2015-04-05 18:32:03', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (114, 'media', '289f1d13de27d7ddffbf529a8339dccf', NULL, '879789aaa', 0, '2015-01-28 21:44:37', '金口难开', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (2, 'text', '947c8e6f636e9a71580f9cc2fb889e7d', NULL, '12312313\n工会会', 0, '0000-00-00 00:00:00', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (113, 'media', 'b06ac5869cb56b3e6910f14525b38357', NULL, '就这么挣？', 0, '2014-09-16 23:06:08', '作者', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (112, 'media', '0f3dc9d6a883762732d14da829cea2b5', NULL, NULL, 0, '2014-05-26 13:31:50', '123123', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (5, 'media', '2aed2d8b15d815dbe9d20c71024b2ef6', NULL, NULL, 0, '2014-05-17 19:59:16', '4444444444444444', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (6, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, 0, '2014-05-17 19:59:50', 'asdnjkasndkjas', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (7, 'media', 'e43b434450bc497401bab47772219ab3', NULL, NULL, 0, '2014-05-22 20:30:48', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (8, 'media', 'ce881724929030f54b4a323940f2e486', NULL, NULL, 0, '2014-05-22 20:45:45', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (9, 'media', 'cb0a5012aa3e30682864ec0a3fa270b3', NULL, NULL, 0, '2014-05-25 19:41:43', '123asdasd', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (10, 'media', 'b8ba65d009256125e4801a74087415e6', NULL, NULL, 0, '2014-05-25 19:42:36', 'asdasda', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (11, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, 0, '2014-05-25 20:12:27', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (12, 'media', 'c5dfe7cab10cd19b84ae1b012043dab5', NULL, NULL, 0, '2014-05-25 20:14:02', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (13, 'media', 'd232aac45d3ec3a3db9c5e5f8e68e26c', NULL, NULL, 0, '2014-05-25 20:18:04', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (14, 'media', '41c0c0bfe7c0898eacd6c02dd590f1a0', NULL, '我的文字的内容', 0, '2014-05-26 13:30:33', 'testauthor', 'yes');
+INSERT INTO `weimart_wechat_msg_list` VALUES (111, NULL, 'test_key', NULL, 'neir', 0, '2014-05-26 00:07:09', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (115, 'text', 'fbe1400c1b99f2ed6fff8df0c95ab299', NULL, '444555666777888111', 0, '2015-02-01 15:51:35', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (116, 'text', '18af7679535efb8bdf925e9c58878bdc', NULL, '111334455', 0, '2015-02-01 23:05:11', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (117, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '111', 0, '2015-02-24 22:58:56', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (118, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '111', 0, '2015-02-24 22:59:22', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (119, 'text', '2a8310e01cd76fc48a6ff2ac017e1cb1', NULL, '456456', 0, '2015-03-17 21:47:56', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (120, 'text', '3e74f017e236eb3903a2bcd035981ca2', NULL, '1231qew', 0, '2015-03-17 21:48:23', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (121, 'text', 'b37668d596fc4a0de5d95ce73ca8cf5a', NULL, '12321313', 0, '2015-03-22 17:05:40', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (138, NULL, '', '测试回复', '1111', 0, '2015-04-05 23:51:39', NULL, NULL);
+INSERT INTO `weimart_wechat_msg_list` VALUES (139, 'custom_text', 'bbf23089f8c37fb78c11f71ed752d1ca', 'zhuyunxiang', 'ceshi', 1, '2015-04-05 23:52:58', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (140, 'custom_text', '347977b7981653a89ac779c3ec2cbcc2', 'qweqwe', '请问请问', 1, '2015-04-06 00:15:18', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (141, 'custom_text', 'e14f7775f66d89ddf200529bd2809fb7', '12312', '1231', 1, '2015-04-06 00:15:03', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (142, 'custom_text', '2537878bac52483ac58924be03c0d40e', 'zyx', 'qqq', 1, '2015-04-06 00:23:14', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (143, 'custom_text', 'bd9d51aca2e65da2c06c78377e2208c4', '12', '12313', 1, '2015-04-06 00:27:07', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (144, 'custom_text', '0a0af4f865ee0ebd55e57c2af7250791', '1,2,3,qwe,qwe,qwe,', 'eqeqeq', 1, '2015-04-06 00:28:24', '', '');
+INSERT INTO `weimart_wechat_msg_list` VALUES (145, 'custom_text', '716566ee268b40ff4d17ecb5f020354c', '123,123213,123,123,', '12321', 1, '2015-04-06 01:09:07', '', '');
