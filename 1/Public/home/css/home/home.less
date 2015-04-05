@@ -21,7 +21,7 @@ html{
 // 主Container #1
 .home-container{
 	width: 100%;
-	min-width: 1170px;
+	min-width: 1270px;
 	padding: 0px;
 	overflow: hidden;
 	// 头部Logo及搜索Container #2
@@ -136,10 +136,10 @@ html{
 
 		// 装左右的Container #8
 		.side-container{
-			min-width: 1170px;
+			min-width: 1270px;
 			overflow: auto;
-			margin-left: 5%;
-			margin-right: 5%;
+			margin-left: 2.5%;
+			margin-right: 2.5%;
 			padding-bottom: 20px;
 			// 左侧Container #9
 			.left-container{
@@ -183,8 +183,21 @@ html{
 								height: 246px;
 								.mini-item{
 									margin-bottom: 3px;
-									span{
+									span {
 										font-size: xx-small;
+										// text-decoration：none;
+										&.commen{
+											&:hover{
+												color: #FF8485;
+											}
+										}
+										&.hot{
+											color: #FF8485;
+											&:hover{
+												color: green;
+												// text-decoration：underline;
+											}
+										}
 									}
 									span.type-name{
 										font-weight: bolder;
@@ -268,10 +281,141 @@ html{
 			// 右侧Container #10
 			.right-container{
 				float: right;
-				min-width: 240px;
+				width: 340px;
 				margin: 0 auto;
-				min-height: 1335px;
-				// margin-left: 20px;
+				min-height: 1315px;
+				// margin-left: 10px;
+
+				background: #F5F5F5;
+				border-color: #CCCCCC;
+				border-weight: 5px;
+				padding: 5px 22px 5px 22px;
+				margin-top: 20px;
+
+				div#find-goods {
+					// margin: 1%;
+					div.find-goods-title {
+						display: inline-block;
+						font-weight: bolder;
+						font-size: large;
+						line-height: 30px;
+						// margin-left: 15px;
+						margin-bottom: 10px;
+					}
+
+					div.favor-diy {
+						display: inline-block;
+						background: white;
+						border: 1px solid #FF8182;
+						color: #FF8182;
+						margin-left: 120px;
+
+						&:hover {
+							color: #FFFFFF;
+							background: #FF8182;
+						}
+					}
+
+					div.goods {
+						background: white;
+						padding: 15px 15px 15px 15px;
+						margin-bottom: 1px;
+						border: 1px solid #CCCCCC;
+								
+						&:hover{
+							border-color: #FF8182;
+						}
+
+						img {
+							display: inline-block;
+							width: 40%;
+							// height: 80%;
+							min-height: 109px;
+							margin-right: 3px;
+							margin-top: -70px;
+						}
+
+						div.goods-desc {
+							display: inline-block;	
+							width: 40%;
+							min-width: 110px;
+							min-height: 100px;
+							margin-left: 3px;
+							
+							p.goods-title {
+								font-size: middle;
+								overflow: hidden;
+							}
+
+							p.goods-orig {
+								font-size: small;
+							}
+
+							p.goods-sell {
+								font-weight: 4px;
+								font-size: middle;
+							}
+						}
+
+					}
+				}
+
+				div#find-shop {
+
+					div.find-shop-title {
+						font-weight: bolder;
+						font-size: large;
+						line-height: 30px;
+						margin-top: 15px;
+						margin-bottom: 10px;
+					}
+
+					div.shop {
+						background: white;
+						padding: 15px 15px 15px 15px;
+						margin-bottom: 2px;
+						border: 1px solid #CCCCCC;
+ 
+						img.shop-img {
+							display: inline-block;
+							width: 40px;
+							border-radius: 20px;
+							border: 1px solid red;
+							margin-top: -50px; 
+						}
+
+						div.shop-info {
+							display: inline-block;
+							margin-left: 10px;
+
+							p.shop-name {
+								font-size: middle;
+								overflow: hidden;
+							}
+
+							p.shop-goods {
+								font-size: small;
+							}
+						}
+
+						div.shop-goods-imgs {
+							padding-left: 10px;
+							img.shop-goods-img {
+
+								display: inline-block;
+								width: 60px;
+								margin-right: 10px;
+							}
+						}
+
+
+					}
+				}
+
+				p.change {
+					padding-left: 35%;
+					margin: 0;
+				}
 			}
 		}
 		
