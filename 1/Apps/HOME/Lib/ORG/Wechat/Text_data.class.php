@@ -42,7 +42,8 @@ class Text_data
 			foreach ($result as $key => $value) {
 				$str = $str.($key+1).". ".$value['msg_text']."\n";
 			}
-			return array($str."---【苏州卖盟科技】",'text');
+			$str = $str."---【苏州卖盟科技】";
+			return array($str,'text');
 		} else {
 			$reply = array('你输入的是：'.$content.',没有该关键字！','text');
 			return  $reply;
