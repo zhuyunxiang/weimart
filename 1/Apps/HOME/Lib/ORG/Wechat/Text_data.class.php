@@ -38,9 +38,9 @@ class Text_data
 		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
 		$result = A('Admin/CustomReturn', 'Service')->getInfoInPage('customReturnDao', $condition);
 		if ($result) {
-			$str = '你输入的关键字为:“'.$content.'”,共有'.count($result).'条回复:\n';
+			$str = "你输入的关键字为:“".$content."”,共有".count($result)."条回复:\n";
 			foreach ($result as $key => $value) {
-				$str = $str.($key+1).'. '.$value['msg_text'].'\n';
+				$str = $str.($key+1).". ".$value['msg_text']."\n";
 			}
 			$str = $str."---【苏州卖盟科技】";
 			return array($str,'text');
