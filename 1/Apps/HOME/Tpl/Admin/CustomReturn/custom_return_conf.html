@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="customReturnApp">
+	<head>
+		<title>设置自定义回复</title>
+		<link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="__PUBLIC__/admin/css/custom_return_conf.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
+		<js file='__PUBLIC__/commen/js/lib/angular.min.js' />
+		<js file='__PUBLIC__/admin/js/custom_return/customReturn.js' />
+		<js file='__PUBLIC__/admin/js/custom_return/customReturnCtrls.js' />
+		<js file='__PUBLIC__/admin/js/custom_return/customReturnServices.js' />
+		<js file='__PUBLIC__/admin/js/custom_return/customReturnDirectives.js' />
+		<js file='__PUBLIC__/admin/js/custom_return/customReturnFilters.js' />
+		<script>
+			var getcustomReturnUrl = "{:U('CustomReturn/get_cutom_return_info')}";
+			var savecustomReturnUrl = "{:U('save_wechat_info')}";
+		</script>
+	</head>
+	<body ng-controller="customReturnCtrl">
+		<div class="container-fluid custom-return-container">
+			<div class="info-container">
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#text_return" aria-controls="text_return" role="tab" data-toggle="tab">文字回复</a>
+						</li>
+						<li role="presentation">
+							<a href="#simple_media_return" aria-controls="simple_media_return" role="tab" data-toggle="tab">单图文回复</a>
+						</li>
+						<li role="presentation">
+							<a href="#multy_media_return" aria-controls="multy_media_return" role="tab" data-toggle="tab">多图文回复</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="text_return">
+							<div ng-include="'__PUBLIC__/admin/tpl/custom_return/text_conf.html'" ng-controller="textReturnCtrl"></div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="simple_media_return">
+							单图文回复
+						</div>
+						<div role="tabpanel" class="tab-pane" id="multy_media_return">
+							多图文回复
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-include="'__PUBLIC__/admin/tpl/wechat_menu_conf/tips.html'"></div>
+		</div>
+	</body>
+</html>

@@ -1,5 +1,6 @@
 var HomeCtrls = angular.module('HomeCtrls', []);
 
+// 主页的Controller Start
 HomeCtrls.controller('homeCtrl', ['$scope',
     function($scope) {
         $scope.userInfo = {
@@ -35,7 +36,24 @@ HomeCtrls.controller('homeCtrl', ['$scope',
         };
     }
 ]);
+// 主页的Controller End
 
+// 热卖宝贝的Controller Start
+HomeCtrls.controller('hotBabyCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+
+        };
+    }
+])
+// 热卖宝贝的Controller End
+
+// 注册的Controller
 HomeCtrls.controller('registerCtrl', ['$scope', '$http',
     function($scope, $http) {
         $scope.resetUserInfo = function() {
