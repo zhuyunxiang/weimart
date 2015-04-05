@@ -8,15 +8,10 @@
 		</div>
 		<div class="type-mini-container start-prepare">
 			<div class="type-text start-prepare">
-				<div class="mini-item start-prepare">
-					<span class="type-name start-prepare">
-						潮流女装
+				<div class="mini-item start-prepare" ng-repeat="rowItem in fasionClothes">
+					<span ng-class="item.class" ng-repeat="item in rowItem">
+						{{item.content}}
 					</span>
-					<span>春新品</span>
-					<span>韩版</span>
-					<span>毛衣</span>
-					<span>薄开衫</span>
-					<span>本身裙</span>
 				</div>
 				<div class="mini-item start-prepare">
 					<span class="type-name start-prepare">
