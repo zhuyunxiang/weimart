@@ -36,7 +36,7 @@ class Text_data
 		// 	$reply = $this->charactorSet($data);
 		// }
 		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
-		$result = A('Admin/CustomReturn/CustomReturnService')->getInfoInPage('customReturnDao', $condition);
+		// $result = A('Admin/CustomReturn/CustomReturnService')->getInfoInPage('customReturnDao', $condition);
 		// if ($result) {
 		// 	$str = '';
 		// 	foreach ($result as $key => $value) {
