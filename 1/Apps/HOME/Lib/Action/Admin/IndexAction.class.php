@@ -44,12 +44,6 @@ class IndexAction extends Action {
     $this->display('set_wechat_info');
   }
 
-  // 显示自定义回复设置页
-  public function custom_return_conf()
-  {
-    $this->display('custom_return_conf');
-  }
-
   // 获取菜单列表
   public function get_menu_list()
   {
