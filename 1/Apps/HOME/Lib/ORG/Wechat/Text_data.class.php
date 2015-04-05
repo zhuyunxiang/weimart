@@ -35,8 +35,21 @@ class Text_data
 		// if (empty($reply)) {
 		// 	$reply = $this->charactorSet($data);
 		// }
-		$reply = array($content,'text');
+		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
+		$result = A('CustomReturn/CustomReturnService')->getInfoInPage('customReturnDao', $condition);
+		if ($result) {
+			$str = '';
+			foreach ($result as $key => $value) {
+				$str = $str.($key+1).'. ：'.$value['msg_text'].'<br/>';
+			}
+			return array($str,'text');
+		} else {
+			$reply = array('你输入的是：'.$content.',没有该关键字！','text');
 		return  $reply;
+		}
+		
+
+		
 	}
 
 	//服务类消息处理
