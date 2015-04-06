@@ -92,6 +92,7 @@ html{
 
 		.item{
 			height: @show-img-height;
+			cursor: pointer;
 		}
 	}
 
@@ -125,6 +126,11 @@ html{
 			img{
 				width: 100%;
 				height: 100px;
+			}
+
+			&:hover {
+				cursor: pointer;
+				box-shadow: 5px 5px 5px;
 			}
 		}
 	}
@@ -172,33 +178,39 @@ html{
 							border: solid 1px #F6F6F6;
 							border-width: 0 1px 1px 1px;
 							overflow: hidden;
-							.type-text,.type-img{
+							.type-text,.type-img, .tw-img {
 								float: left;
 								min-height: 246px;
 							}
 
 							.type-text{
+								// -------zyuxue-------
+								// display: inline-block;
+								// -------zyuxue-------
 								padding: 20px 20px 0 20px;
 								width: 300px;
 								height: 246px;
 								.mini-item{
+									cursor: pointer;
 									margin-bottom: 3px;
-									span {
-										font-size: xx-small;
-										// text-decoration：none;
-										&.commen{
-											&:hover{
-												color: #FF8485;
-											}
-										}
-										&.hot{
-											color: #FF8485;
-											&:hover{
-												color: green;
-												// text-decoration：underline;
-											}
-										}
-									}
+
+									// span {
+									// 	font-size: xx-small;
+										
+									// 	&.commen{
+									// 		&:hover {
+									// 			cursor: pointer;
+									// 			color: #FF8485;
+									// 		}
+									// 	}
+									// 	&.hot{
+									// 		color: #FF8485;
+									// 		&:hover {
+									// 			cursor: pointer;
+									// 			text-decoration: underline;
+									// 		}
+									// 	}
+									// }
 									span.type-name{
 										font-weight: bolder;
 										display: inline-block;
@@ -207,15 +219,153 @@ html{
 
 								}
 							}
+
+							span {
+								font-size: xx-small;
+								margin-right: 3px;
+								
+								&.commen{
+									&:hover {
+										cursor: pointer;
+										color: #FF8485;
+									}
+								}
+								&.hot{
+									color: #FF8485;
+									&:hover {
+										cursor: pointer;
+										text-decoration: underline;
+									}
+								}
+							}
+
+
+
+
 							// 小缩略图
 							.type-img{
+								// -------zyuxue-------
+								// display: inline-block;
+								// -------zyuxue-------
+
+
 								width: 115px;
 								height: 246px;
 								img{
 									width: 115px;
 									height: 246px;
+									cursor: pointer;
 								}
 							}
+
+							div.tw-img {
+								// -------zyuxue-------
+
+								// display: inline-block;
+
+
+
+								// -------zyuxue-------
+								width: 115px;
+								height: 246px;
+								padding-top: 18px; 
+
+								div.tw-one {
+									cursor: pointer;
+									img {
+										padding-left: 10px;
+									}
+
+									p {
+										// margin: 3px 0 3px 10px;
+										text-align: center; 
+										font-size: xx-small;
+										&:hover {
+											cursor: pointer;
+											color: #FF8485;
+										}
+									}
+								}
+	
+							}
+
+
+							div.jade-imgs {
+								display: inline-block;
+								width: 188px;
+								height: 188px;
+								margin-top: 18px;
+								border: 1px solid #FF8182;
+
+								img {
+									display: inline-block;
+									margin: 0;
+									padding: 0;
+									width: 48.9%;
+									cursor: pointer;
+									// border: 1px solid #CCCCCC;
+								}
+
+							}
+
+							div.jade-texts {
+								display: inline-block;
+								padding: 0px;
+								margin-top:18px;
+								margin-left: 10px;
+								width: 225px;
+								height: 188px;
+
+								div.jade-items {
+									cursor: pointer;
+									padding: 5px 0px 0px 8px;
+								}
+							}
+
+							div.jade-bottom-img {
+								margin:5px 0px;
+								padding:5px 0px;
+								// width: 50%;
+								border-top: 1px solid #CCCCCC;
+
+								img {
+									display: inline-block;
+									cursor: pointer;
+								}
+							}
+
+
+
+
+							div.snack-imgs {
+								width: 100%;
+
+								img {
+									display: inline-block;
+									cursor: pointer;
+									width: 103px;
+									height: 220px;
+									margin: 0px;
+									padding: 0px;
+								}
+
+							}
+
+							div.snack-texts {
+								padding: 0px;
+								margin-top:10px;
+								width: 100%;
+
+								div.snack-items {
+									display: inline-block;
+									// cursor: pointer;
+									width: 45%;
+									padding-left: 18px;
+								} 
+							}
+
+
+
 						}
 						&:first-child .title-container{
 							background-color: #F95F9D;
@@ -270,9 +420,11 @@ html{
 						margin-left: 18px;
 						margin-top: 18px;
 						width: 889px;
+
 						img{
 							height: 100%;
 							width: 100%;
+							cursor: pointer;
 						}
 					}
 				}
@@ -304,6 +456,7 @@ html{
 					}
 
 					div.favor-diy {
+						cursor: pointer;
 						display: inline-block;
 						background: white;
 						border: 1px solid #FF8182;
@@ -317,6 +470,7 @@ html{
 					}
 
 					div.goods {
+						cursor: pointer;
 						background: white;
 						padding: 15px 15px 15px 15px;
 						margin-bottom: 1px;
@@ -371,6 +525,7 @@ html{
 					}
 
 					div.shop {
+						cursor: pointer;
 						background: white;
 						padding: 15px 15px 15px 15px;
 						margin-bottom: 2px;
@@ -379,9 +534,11 @@ html{
 						img.shop-img {
 							display: inline-block;
 							width: 40px;
-							border-radius: 20px;
 							border: 1px solid red;
 							margin-top: -50px; 
+							border-radius: 20px;
+							-webkit-border-radius: 20px;
+							-moz-border-radius: 20px;
 						}
 
 						div.shop-info {
@@ -413,6 +570,7 @@ html{
 				}
 
 				p.change {
+					cursor: pointer;
 					padding-left: 35%;
 					margin: 0;
 				}
@@ -423,5 +581,56 @@ html{
 		.nav-bottom-container{
 			min-height: 300px;
 		}
+	}
+
+
+	// 热卖宝贝 #
+	div.hot-baby-main {
+		background-image: url("{{imageURLs.publicUrl}}img/watch.jpg");
+		min-height: 2000px;
+
+		div.hot-today {
+			padding-top: 30px;
+			margin-left: 45%;
+
+			
+			img{
+				display: block;
+				width: 110px;
+			}
+
+			h4 {
+				display: block;
+				margin-left: 5px;
+				font-weight: bolder;
+				font-size: 24px;
+			}
+		}
+
+		div.baby-main {
+			width: 100%;
+			min-width: 1270px;
+			padding: 0px;
+			overflow: hidden;
+			min-height: 1800px;
+			margin-top: 30px;
+
+			border:1px solid red;
+
+			div.babies-list {
+				width: 80%;
+				// margin-left: ;
+				min-height: 1800px;
+				border:1px solid #CCCCCC;
+				margin: 20px 0 20px 8%;
+			}
+		}
+
+		div.baby-bottom {
+			width: 80%;
+			margin-left: 9%;
+
+		}
+		
 	}
 }
