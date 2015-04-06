@@ -79,8 +79,6 @@ var customReturnCtrl = customReturnCtrls.controller('customReturnCtrl', ['$scope
         //             }
         //         });
         // }
-
-
     }
 ]);
 
@@ -89,7 +87,7 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
         $scope.textInfo = {
             modalTitleText: '添加新记录',
         };
-
+        
         $scope.pagination = {
             currentPage: 1,
             pageSize: 10,
@@ -98,6 +96,7 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             allPages: 1,
         };
 
+        // 生成分页信息
         var generatePageData = function(totalCount, content) {
             $scope.customReturnList = content;
             $scope.pagination.totalCount = totalCount;
@@ -108,6 +107,7 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             };
         }
 
+        // 获得数据库数据
         var getReturns = function(currentPage, pageSize, keyword) {
             var params = {
                 'currentPage': currentPage,
@@ -131,10 +131,12 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
                 });
         }
 
+        // 自启动，入口
         getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
 
-        $scope.searchKeyword = function () {
-            if ($scope.pagination.tempKeyword&&$scope.pagination.tempKeyword.trim()!='') {
+        // 根据关键字搜索
+        $scope.searchKeyword = function() {
+            if ($scope.pagination.tempKeyword && $scope.pagination.tempKeyword.trim() != '') {
                 $scope.pagination = {
                     currentPage: 1,
                     pageSize: 10,
@@ -154,28 +156,32 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
         }
 
-        $scope.prePage = function () {
+        // 上一页
+        $scope.prePage = function() {
             if ($scope.pagination.currentPage > 1) {
-                $scope.jumpToPage($scope.pagination.currentPage-1);
+                $scope.jumpToPage($scope.pagination.currentPage - 1);
             } else {
                 alert("对不起，当前是首页！");
             }
         }
 
-        $scope.nextPage = function () {
+        // 下一页
+        $scope.nextPage = function() {
             if ($scope.pagination.currentPage < $scope.pagination.allPages) {
-                $scope.jumpToPage($scope.pagination.currentPage+1);
+                $scope.jumpToPage($scope.pagination.currentPage + 1);
             } else {
                 alert("对不起，已经是最后一页啦！");
             }
         }
 
-        $scope.jumpToPage = function (page, keyword) {
+        // 跳转到指定页
+        $scope.jumpToPage = function(page, keyword) {
             $scope.pagination.currentPage = page;
             $scope.pagination.keyword = keyword;
             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
         }
 
+        // 计算str长度和对象中元素个数
         function count(o) {
             var t = typeof o;
             if (t == 'string') {
@@ -190,34 +196,71 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             return false;
         }
 
-        var getStrArr = function () {
-            var str = $scope.tempReturn.msg_keyword.substr(0 ,count($scope.tempReturn.msg_keyword)-1);
+        // 根据字符串分割字符串到数组
+        var getStrArr = function() {
+            var str = $scope.tempReturn.msg_keyword.substr(0, count($scope.tempReturn.msg_keyword) - 1);
             $scope.tempReturn.keyword_arr = new Array(); //定义一数组 
             $scope.tempReturn.keyword_arr = str.split(","); //字符分割 
         }
 
-        $scope.editCustomReturn = function (key) {
-            $scope.textInfo.modalTitleText  = '修改条目';
+        // 根据数组拼接字符串
+        var getStrFromArr = function() {
+            var str = '';
+            if ($scope.tempReturn.keyword_arr) {
+                for (var i = 0; i < $scope.tempReturn.keyword_arr.length; i++) {
+                    str = str + $scope.tempReturn.keyword_arr[i] + ',';
+                };
+            }
+            $scope.tempReturn.msg_keyword = str;
+        }
+
+        // 显示修改框
+        $scope.editCustomReturn = function(key) {
+            $scope.textInfo.modalTitleText = '修改条目';
             $scope.tempReturn = $scope.customReturnList[key];
             getStrArr();
         }
 
-        $scope.addKeyword = function () {
-            if ($scope.tempReturn&&$scope.tempReturn.msg_keyword&&$scope.tempReturn.keywordItem.trim()) {
-                $scope.tempReturn.msg_keyword = $scope.tempReturn.msg_keyword + $scope.tempReturn.keywordItem.trim() + ',';
+        // 添加关键字（子）
+        $scope.addKeyword = function() {
+            // way1
+            // if ($scope.tempReturn&&$scope.tempReturn.msg_keyword&&$scope.tempReturn.keywordItem.trim()) {
+            //     $scope.tempReturn.msg_keyword = $scope.tempReturn.msg_keyword + $scope.tempReturn.keywordItem.trim() + ',';
+            // } else {
+            //     $scope.tempReturn.msg_keyword = $scope.tempReturn.keywordItem.trim() + ',';
+            // }
+            // getStrArr();
+
+            // way2
+            if ($scope.tempReturn.keywordItem && $scope.tempReturn.keywordItem.trim()) {
+                if ($scope.tempReturn.keyword_arr && ($scope.tempReturn.keyword_arr instanceof Array)) {
+                    $scope.tempReturn.keyword_arr.push($scope.tempReturn.keywordItem.trim());
+                } else {
+                    $scope.tempReturn.keyword_arr = [];
+                    $scope.tempReturn.keyword_arr.push($scope.tempReturn.keywordItem.trim());
+                }
+                getStrFromArr();
             } else {
-                $scope.tempReturn.msg_keyword = $scope.tempReturn.keywordItem.trim() + ',';
+                alert("关键字不能为空！");
             }
+
             $scope.tempReturn.keywordItem = '';
-            getStrArr();
         }
 
-        $scope.prepareAdd = function () {
-            $scope.textInfo.modalTitleText  = '添加新记录';
+        // 删除关键字（子）
+        $scope.removeKeywordItem = function(index) {
+            $scope.tempReturn.keyword_arr.splice(index, 1);
+            getStrFromArr();
+        }
+
+        // 显示添加框
+        $scope.prepareAdd = function() {
+            $scope.textInfo.modalTitleText = '添加新记录';
             $scope.tempReturn = {};
         }
 
-        $scope.removeCustomReturn = function (key) {
+        // 删除
+        $scope.removeCustomReturn = function(key) {
             if (confirm("确定要删除么？")) {
                 $http({
                     method: 'POST',
@@ -228,7 +271,6 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
                     }
                 })
                     .success(function(data) {
-                        console.log(data);
                         if (data.status == 1) {
                             alert(data.info);
                             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
@@ -239,25 +281,28 @@ customReturnCtrl.controller('textReturnCtrl', ['$http', '$scope',
             };
         }
 
-        $scope.saveCustomReturn = function () {
-            $http({
-                method: 'POST',
-                url: saveCustomReturnUrl,
-                data: $.param($scope.tempReturn),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-                .success(function(data) {
-                    console.log($scope.tempReturn);
-                    console.log(data);
-                    if (data.status == 1) {
-                        alert(data.info);
-                        getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
-                    } else {
-                        alert(data.info);
+        // 保存（添加和修改）
+        $scope.saveCustomReturn = function() {
+            if ($scope.tempReturn.msg_keyword) {
+                $http({
+                    method: 'POST',
+                    url: saveCustomReturnUrl,
+                    data: $.param($scope.tempReturn),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                });
+                })
+                    .success(function(data) {
+                        if (data.status == 1) {
+                            alert(data.info);
+                            getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
+                        } else {
+                            alert(data.info);
+                        }
+                    });
+            } else {
+                alert('关键字不能为空！');
+            }
         }
     }
 ])
