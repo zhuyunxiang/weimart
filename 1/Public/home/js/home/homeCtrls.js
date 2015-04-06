@@ -32,6 +32,10 @@ HomeCtrls.controller('homeCtrl', ['$scope',
             1: [
             {"class": "type-name","content": "潮流女装"},
             {"class": "commen","content": "春装"},
+            {"class": "hot","content": "韩版"},
+            {"class": "commen","content": "毛衣"},
+            {"class": "commen","content": "薄开衫"},
+            {"class": "commen","content": "本身裙"},
             ],
         };
     }
@@ -47,7 +51,7 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope',
         };
 
         $scope.tplURLs = {
-
+        	hotBabyMain : publicUrl + 'tpl/home/hot_baby_main.html',
         };
     }
 ])
