@@ -28,8 +28,8 @@
 		</tr>
 		<tr ng-repeat="(key, customReturnItem) in customReturnList track by $index">
 			<td>{{(pagination.currentPage-1)*pagination.pageSize+key+1}}</td>
-			<td>{{customReturnItem.msg_keyword}}</td>
-			<td>{{customReturnItem.msg_text}}</td>
+			<td title="{{customReturnItem.msg_keyword}}">{{customReturnItem.msg_keyword|trimStr:14}}</td>
+			<td title="{{customReturnItem.msg_text}}">{{customReturnItem.msg_text|trimStr:18}}</td>
 			<td>{{customReturnItem.msg_create_time}}</td>
 			<td><a href="#" data-toggle="modal" data-target="#myModal" ng-click="editCustomReturn($index)"><span class="glyphicon glyphicon-pencil"></span></a></td>
 			<td><a href="#" ng-click="removeCustomReturn($index)"><span class="glyphicon glyphicon-trash"></span></a></td>
@@ -97,7 +97,7 @@
 							<div class="keywords-container">
 								<span class="keyword-item" ng-repeat="(key, value) in tempReturn.keyword_arr track by $index">
 									{{value}}
-									<a href="#"><span class='glyphicon glyphicon-remove' ng-click="removeKeywordItem(key)"></span></a>
+									<a href="#"><span class='glyphicon glyphicon-remove' ng-click="removeKeywordItem($index)"></span></a>
 								</span>
 								
 							</div>
