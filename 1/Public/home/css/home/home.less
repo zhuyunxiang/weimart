@@ -54,14 +54,14 @@ html{
 		// ul container #7
 		.ul-container{
 			overflow: hidden;
-			width: 700px;
+			width: 1000px;
 			margin: auto;
 			height: @nav-container-height;
 			ul {
 				list-style:none;
 				li{
 					text-align: center;
-					min-width: 100px;
+					min-width: 174px;
 					float:left;
 					height: @nav-container-height;
 					line-height: @nav-container-height;
@@ -130,7 +130,7 @@ html{
 
 			&:hover {
 				cursor: pointer;
-				box-shadow: 5px 5px 5px;
+				box-shadow: 5px 5px 5px #FF8485;
 			}
 		}
 	}
@@ -175,7 +175,7 @@ html{
 
 
 						.type-mini-container{
-							border: solid 1px #F6F6F6;
+							border: solid 1px #C2C2C2;
 							border-width: 0 1px 1px 1px;
 							overflow: hidden;
 							.type-text,.type-img, .tw-img {
@@ -255,6 +255,7 @@ html{
 									width: 115px;
 									height: 246px;
 									cursor: pointer;
+									margin-left: 18px;
 								}
 							}
 
@@ -269,6 +270,7 @@ html{
 								width: 115px;
 								height: 246px;
 								padding-top: 18px; 
+								margin-left: 18px;
 
 								div.tw-one {
 									cursor: pointer;
@@ -473,11 +475,14 @@ html{
 						cursor: pointer;
 						background: white;
 						padding: 15px 15px 15px 15px;
-						margin-bottom: 1px;
+						margin-bottom: 0px;
 						border: 1px solid #CCCCCC;
 								
 						&:hover{
 							border-color: #FF8182;
+							.change{
+								color: #FF8182;
+							}
 						}
 
 						img {
@@ -528,7 +533,7 @@ html{
 						cursor: pointer;
 						background: white;
 						padding: 15px 15px 15px 15px;
-						margin-bottom: 2px;
+						margin-bottom: 0px;
 						border: 1px solid #CCCCCC;
  
 						img.shop-img {
@@ -562,6 +567,13 @@ html{
 								display: inline-block;
 								width: 60px;
 								margin-right: 10px;
+							}
+						}
+
+						&:hover{
+							border-color: #FF8182;
+							.change{
+								color: #FF8182;
 							}
 						}
 
