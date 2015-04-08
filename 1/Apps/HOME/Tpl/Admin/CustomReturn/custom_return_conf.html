@@ -14,11 +14,13 @@
 		<js file='__PUBLIC__/admin/js/custom_return/customReturnFilters.js' />
 		<script>
 			var getCustomReturnUrl = "{:U('CustomReturn/get_cutom_text_return_info')}";
+			var getCustomMediaReturnUrl = "{:U('CustomReturn/get_cutom_media_return_info')}";
 			var saveCustomReturnUrl = "{:U('CustomReturn/save_cutom_text_return_info')}";
+			var saveCustomMediaReturnUrl = "{:U('CustomReturn/save_cutom_media_return_info')}";
 			var removeCustomReturnUrl = "{:U('CustomReturn/remove_cutom_text_return_info')}";
 		</script>
 	</head>
-	<body ng-controller="customReturnCtrl">
+	<body>
 		<div class="container-fluid custom-return-container">
 			<div class="info-container">
 				<div role="tabpanel">
@@ -28,10 +30,7 @@
 							<a href="#text_return" aria-controls="text_return" role="tab" data-toggle="tab">文字回复</a>
 						</li>
 						<li role="presentation">
-							<a href="#simple_media_return" aria-controls="simple_media_return" role="tab" data-toggle="tab">单图文回复</a>
-						</li>
-						<li role="presentation">
-							<a href="#multy_media_return" aria-controls="multy_media_return" role="tab" data-toggle="tab">多图文回复</a>
+							<a href="#media_return" aria-controls="media_return" role="tab" data-toggle="tab">图文回复</a>
 						</li>
 					</ul>
 					<!-- Tab panes -->
@@ -39,11 +38,8 @@
 						<div role="tabpanel" class="tab-pane active" id="text_return">
 							<div ng-include="'__PUBLIC__/admin/tpl/custom_return/text_conf.html'" ng-controller="textReturnCtrl"></div>
 						</div>
-						<div role="tabpanel" class="tab-pane" id="simple_media_return">
-							单图文回复
-						</div>
-						<div role="tabpanel" class="tab-pane" id="multy_media_return">
-							多图文回复
+						<div role="tabpanel" class="tab-pane" id="media_return">
+							<div ng-include="'__PUBLIC__/admin/tpl/custom_return/media_conf.html'" ng-controller="mediaReturnCtrl"></div>
 						</div>
 					</div>
 				</div>
