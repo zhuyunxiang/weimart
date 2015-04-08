@@ -51,11 +51,71 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope',
         };
 
         $scope.tplURLs = {
-        	hotBabyMain : publicUrl + 'tpl/home/hot_baby_main.html',
+            hotBabyMain : publicUrl + 'tpl/home/hot_baby_main.html',
         };
     }
-])
+]);
 // 热卖宝贝的Controller End
+
+// 热卖品牌的Controller Start
+HomeCtrls.controller('popularBrandCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            
+        };
+    }
+]);
+// 热卖品牌的Controller End
+
+// 热卖店家的Controller Start
+HomeCtrls.controller('popularShopCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            
+        };
+    }
+]);
+// 热卖店家的Controller End
+
+// 代理中心的Controller Start
+HomeCtrls.controller('delegateCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            
+        };
+    }
+]);
+// 代理中心的Controller End
+
+// 更多优惠的Controller Start
+HomeCtrls.controller('moreCheapCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+        	
+        };
+    }
+]);
+// 更多优惠的Controller End
 
 // 注册的Controller
 HomeCtrls.controller('registerCtrl', ['$scope', '$http',
