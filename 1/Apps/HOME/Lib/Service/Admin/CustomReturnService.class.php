@@ -23,11 +23,33 @@ class CustomReturnService extends BaseService
 		return $data;
 	}
 
+	// 获得自顶回复列表
+	public function getCustomMediaReturn($data = null)
+	{
+		$dao = 'customReturnDao';
+		$condition = array('msg_keyword'=>array('like','%'.$data['keyword'].'%'),'msg_type'=>'custom_media','msg_is_deleted'=>0);
+		$order = 'msg_id desc';
+		$page = array('page'=>$data['currentPage'],'pageSize'=>$data['pageSize']);
+		$data = array();
+		$data['totalCount'] = $this->getCount($dao, $condition);
+		$data['content'] = $this->getInfoInPage($dao, $condition, $order, $page);
+		return $data;
+	}
+
 	// 保存自定义文字回复
 	public function saveCustomTextReturn($saveData = null)
 	{
 		$dao = 'customReturnDao';
 		$saveData['msg_type'] = 'custom_text';
+		$saveData['msg_key'] = md5(time());
+		return $this->saveInfo($dao, $saveData, 'msg_id');
+	}
+
+	// 保存自定义图文回复
+	public function saveCustomMediaReturn($saveData = null)
+	{
+		$dao = 'customReturnDao';
+		$saveData['msg_type'] = 'custom_media';
 		$saveData['msg_key'] = md5(time());
 		return $this->saveInfo($dao, $saveData, 'msg_id');
 	}

@@ -11,11 +11,19 @@ class CustomReturnAction extends Action
 		$this->display('custom_return_conf');
 	}
 
-	// 获得自定义回复列表
+	// 获得自定义文字回复列表
 	// Ajax
 	public function get_cutom_text_return_info()
 	{
 		$data = A('Admin/CustomReturn', 'Service')->getCustomTextReturn($_POST);
+		$this->ajaxReturn($data, '数据获取成功！', 1);
+	}
+
+	// 获得自定义图文回复列表
+	// Ajax
+	public function get_cutom_media_return_info()
+	{
+		$data = A('Admin/CustomReturn', 'Service')->getCustomMediaReturn($_POST);
 		$this->ajaxReturn($data, '数据获取成功！', 1);
 	}
 
@@ -24,6 +32,18 @@ class CustomReturnAction extends Action
 	public function save_cutom_text_return_info()
 	{
 		$data = A('Admin/CustomReturn', 'Service')->saveCustomTextReturn($_POST);
+		if ($data) {
+			$this->ajaxReturn($data, '数据保存成功！', 1);
+		} else {
+			$this->ajaxReturn($data, '数据保存失败！', 0);
+		}
+		
+	}
+	// 保存自定义图文回复
+	// Ajax
+	public function save_cutom_media_return_info()
+	{
+		$data = A('Admin/CustomReturn', 'Service')->saveCustomMediaReturn($_POST);
 		if ($data) {
 			$this->ajaxReturn($data, '数据保存成功！', 1);
 		} else {

@@ -1,0 +1,123 @@
+<div class="text-conf">
+	<div class="row search-container">
+		<div class="col-xs-4">
+			<div class="input-group">
+				<input type="text" class="form-control mini-input" ng-model="pagination.tempKeyword" placeholder="请输入关键字">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="searchKeyword()">搜索一下</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-xs-2 col-xs-offset-6">
+			<div class="input-group">
+				<button class="btn btn-default" type="button" data-toggle="modal" data-target="#editMediaModal" ng-click="prepareAdd()">添加新条目</button>
+			</div>
+		</div>
+	</div>
+	<div class="empty-help" ng-hide="customReturnList">
+		对不起，暂无数据！
+	</div>
+	<table class="table table-bordered" ng-show="customReturnList">
+		<tr>
+			<th>序号</th>
+			<th>关键字</th>
+			<th>自定义回复</th>
+			<th>创建时间</th>
+			<th>修改</th>
+			<th>删除</th>
+		</tr>
+		<tr ng-repeat="(key, customReturnItem) in customReturnList track by $index">
+			<td>{{(pagination.currentPage-1)*pagination.pageSize+key+1}}</td>
+			<td title="{{customReturnItem.msg_keyword}}">{{customReturnItem.msg_keyword|trimStr:14}}</td>
+			<td>查看图文</td>
+			<td>{{customReturnItem.msg_create_time}}</td>
+			<td><a href="#" data-toggle="modal" data-target="#myModal" ng-click="editCustomReturn($index)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="#" ng-click="removeCustomReturn($index)"><span class="glyphicon glyphicon-trash"></span></a></td>
+		</tr>
+	</table>
+	<div class="pagination-container">
+		<div class="href-container">
+			<nav>
+				<ul class="pagination">
+					<li ng-class="{true:'disabled'}[1==pagination.currentPage]" ng-click="prePage()">
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li ng-class="{true:'active'}[key+1==pagination.currentPage]" ng-repeat="(key, value) in pageData" ng-click="jumpToPage(key+1)">
+						<a href="#">{{key+1}}</a>
+					</li>
+					<li ng-class="{true:'disabled'}[pagination.allPages==pagination.currentPage]" ng-click="nextPage()">
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="tips">
+			{{pagination.totalCount}}条记录，共{{pagination.allPages}}页，当前第 {{pagination.currentPage}} 页，每页显示 {{pagination.pageSize}} 条记录
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="editMediaModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">{{textInfo.modalTitleText}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="keyword-container">
+					<div class="row">
+						<div class="col-xs-4 label-container">
+							<span>请输入关键字：</span>
+						</div>
+						<div class="col-xs-6">
+							<div class="input-group">
+								<input type="text" class="form-control mini-input" ng-model="tempReturn.keywordItem" placeholder="请输入关键字">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" ng-click="addKeyword()">添加</button>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="row">
+						<div class="col-xs-4 label-container">
+							<span>所有关键字：</span>
+						</div>
+						<div class="col-xs-6">
+							<div class="input-group">
+								<input type="text" class="form-control mini-input" ng-model="tempReturn.msg_keyword" placeholder="请输入所有关键字">
+							</div>
+						</div>
+					</div> -->
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-4">
+							<div class="keywords-container">
+								<span class="keyword-item" ng-repeat="(key, value) in tempReturn.keyword_arr track by $index">
+									{{value}}
+									<a href="#"><span class='glyphicon glyphicon-remove' ng-click="removeKeywordItem($index)"></span></a>
+								</span>
+								
+							</div>
+						</div>
+					</div>
+					<div class="row" style="margin-top: 10px;">
+						<div class="col-xs-4 label-container">
+							<span>点击进入图文设置</span>
+						</div>
+						<div class="col-xs-6">
+							<!-- <textarea cols="30" rows="10" ng-model="tempReturn.msg_text"></textarea> -->
+							<button class="btn btn-primary" ng-click="toSetMedia()">点击进入设置图文</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveCustomReturn()">保存</button>
+			</div>
+		</div>
+	</div>
+</div>
