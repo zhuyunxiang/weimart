@@ -1,30 +1,89 @@
 <!DOCTYPE html>
-<html ng-app="MyApp">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title>
 		商品类别管理
 		</title>
+		<link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css">
 		<link rel="stylesheet" href="__PUBLIC__/commen/angular-tree/angular-ui-tree.min.css">
+		<link rel="stylesheet" href='__PUBLIC__/admin/css/productType.css' />
+	</head>
+	<body ng-app="treeApp">
+		<div class="container" ng-controller="treeCtrl">
+			<div class="row">
+				<div class="col-xs-4">
+					<h3>Tree view
+					</h3>
+					<p>
+						搜索根: <input ng-model="query" type="text" ng-change="findNodes()" placeholder='请输入根节点关键字'/>
+					</p>
+					<!-- Nested node template -->
+					<script type="text/ng-template" id="nodes_renderer.html">
+					<div ui-tree-handle class="tree-node tree-node-content">
+								<a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+								{{node.title}}
+								<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+								<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+					</div>
+					<ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+								<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">
+								</li>
+					</ol>
+					</script>
+					<button class="btn btn-primary" ng-hide="data.length!=0" ng-click="newSubItem(data)">创建根节点</button>
+					<div ui-tree id="tree-root">
+						<ol ui-tree-nodes="" ng-model="data">
+							<li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)"></li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<h3>Data binding</h3>
+					<div class="info">
+						{{info}}
+					</div>
+				<pre class="code">{{ data | json }}</pre>
+			</div>
+		</div>
+		<div class="modal fade" id="editInfoModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">{{textInfo.modalTitleText}}</h4>
+					</div>
+					<div class="modal-body">
+						<div class="keyword-container">
+							<div class="row">
+								<div class="col-xs-4 label-container">
+									<span>请输入关键字：</span>
+								</div>
+								<div class="col-xs-6">
+									<input type="text" class="mini-input" ng-model="tempReturn.keywordItem" placeholder="请输入关键字">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveCustomReturn()">保存</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--[if IE 8]>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.min.js"></script>
+		<![endif]-->
 		<js file='__PUBLIC__/commen/js/lib/angular.min.js' />
 		<js file='__PUBLIC__/commen/angular-tree/angular-ui-tree.min.js' />
-		<js file='__PUBLIC__/admin/js/productType.js' />
-	</head>
-	<body ng-controller="myController">
-		<script type="text/ng-template" id="nodes_renderer.html">
-		<div ui-tree-handle>
-			{{node.title}}
-		</div>
-		<ol ui-tree-nodes="" ng-model="node.items">
-			<li ng-repeat="node in node.items" ui-tree-node ng-include="'nodes_renderer.html'">
-			</li>
-		</ol>
+		<js file='__PUBLIC__/admin/js/product_type/controllers.js' />
+		<js file='__PUBLIC__/admin/js/product_type/services.js' />
+		<js file='__PUBLIC__/admin/js/product_type/filters.js' />
+		<js file='__PUBLIC__/admin/js/product_type/directives.js' />
+		<script>
+		var app = angular.module('treeApp', ['ui.tree','controllers', 'services']);
 		</script>
-		
-		<div ui-tree>
-			<ol ui-tree-nodes="" ng-model="list" id="tree-root">
-				<li ng-repeat="node in list" ui-tree-node ng-include="'nodes_renderer.html'"></li>
-			</ol>
-		</div>
 	</body>
 </html>
