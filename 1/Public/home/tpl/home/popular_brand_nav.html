@@ -1,0 +1,26 @@
+<div class="start-prepare pop-brand-nav-outer">
+	<div class="start-prepare left">
+		<div class="title-container">
+			<span class="title-ch">热门品牌</span>&nbsp;
+			<span class="title-en">HOT BRAND</span>
+		</div>
+		<div class="img">
+			<img ng-src="{{imageURLs.publicUrl}}img/popular_brand/both.jpg" alt="">
+		</div>
+	</div>
+	<div class="start-prepare center">
+		<div class="start-prepare brand-container" ng-repeat="(key, value) in brandList">
+			<img ng-src="{{imageURLs.publicUrl}}img/popular_brand/{{value.url}}" alt="">
+		</div>
+
+	</div>
+	<div class="start-prepare right">
+		<div class="title-container">
+			<span class="title-ch"></span>
+			<span class="title-en"></span>
+		</div>
+		<div class="img">
+			<img ng-src="{{imageURLs.publicUrl}}img/popular_brand/both.jpg" alt="">
+		</div>
+	</div>
+</div>
