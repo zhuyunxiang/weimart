@@ -169,246 +169,271 @@
         
         //实例化编辑器
         //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
-        function saveEveryContent (id) {
-        AllResult[id][0] = $("#main_title_text").val();
-        AllResult[id][1] = $("#author").val();
-        if($("input[name='is_show_checkbox']:checked").val()=="on"){
-        AllResult[id][2] = "yes";
-        }else{
-        AllResult[id][2] = "no";
-        }
-        AllResult[id][3] = $("#major").val();
-        AllResult[id][4] = UE.getEditor('editor').getContent();
-        AllResult[id][5] = $("#other_url").val();
+        function saveEveryContent(id) {
+            AllResult[id][0] = $("#main_title_text").val();
+            AllResult[id][1] = $("#author").val();
+            if ($("input[name='is_show_checkbox']:checked").val() == "on") {
+                AllResult[id][2] = "yes";
+            } else {
+                AllResult[id][2] = "no";
+            }
+            AllResult[id][3] = $("#major").val();
+            AllResult[id][4] = UE.getEditor('editor').getContent();
+            AllResult[id][5] = $("#other_url").val();
         }
         $(document).ready(function() {
-        $('#uploaded').live('change', function() {
-        $("#uploadimg_div_div").html('');
-        
-        $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
-        $("#my_imgform").ajaxForm({
-        success:function(data){
-        var  jsonObj = eval("("+data+")");
-        if (jsonObj.state == "ok") {
-        AllResult[1][6] = jsonObj.img_url;
-        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
-        $("#uploadimg_div_div").html(img_html);
-        }else{
-        $("#uploadimg_div_div").html('上传失败！请重试！');
-        }
-        }
-        }).submit();
-        });
+            $('#uploaded').live('change', function() {
+                $("#uploadimg_div_div").html('');
+
+                $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+                $("#my_imgform").ajaxForm({
+                    success: function(data) {
+                        var jsonObj = eval("(" + data + ")");
+                        if (jsonObj.state == "ok") {
+                            AllResult[1][6] = jsonObj.img_url;
+                            var img_html = "<img src='Public/upload/thumb_" + jsonObj.img_html + "'>"
+                            $("#uploadimg_div_div").html(img_html);
+                        } else {
+                            $("#uploadimg_div_div").html('上传失败！请重试！');
+                        }
+                    }
+                }).submit();
+            });
         });
         UE.getEditor('editor');
-        UE.getEditor('editor').addListener( 'selectionchange', selectionchangefunction);
+        UE.getEditor('editor').addListener('selectionchange', selectionchangefunction);
         nowId = 1;
-        function selectionchangefunction () {
-        saveEveryContent(nowId);
+
+        function selectionchangefunction() {
+            saveEveryContent(nowId);
         }
-        function saveContent () {
-        var test = JSON.stringify(AllResult);
-        var menu_key = "<{$data.menu_key}>";
-        var action_type = "<{$data.action_type}>";
-        $.ajax({
-        type: 'POST',
-        url: '__URL__/saveMultiMsgContent',
-        data: "content="+test+"&menu_key="+menu_key+"&action_type="+action_type,
-        cache:false,
-        success: function(data){
-        jsObj = eval('('+data+')');
-        $("#alertModal").modal("show");
-        $("#alert_conetent").html(jsObj.tips);
+
+        function saveContent() {
+            var test = JSON.stringify(AllResult);
+            var menu_key = "<{$data.menu_key}>";
+            var action_type = "<{$data.action_type}>";
+            console.log(test);
+            // $.ajax({
+            //     type: 'POST',
+            //     url: '__URL__/saveMultiMsgContent',
+            //     data: "content=" + test + "&menu_key=" + menu_key + "&action_type=" + action_type,
+            //     cache: false,
+            //     success: function(data) {
+            //         jsObj = eval('(' + data + ')');
+            //         $("#alertModal").modal("show");
+            //         $("#alert_conetent").html(jsObj.tips);
+            //     }
+            // });
         }
-        });
+
+        function isFocus(e) {
+            alert(UE.getEditor('editor').isFocus());
+            UE.dom.domUtils.preventDefault(e)
         }
-        function isFocus(e){
-        alert(UE.getEditor('editor').isFocus());
-        UE.dom.domUtils.preventDefault(e)
+
+        function setblur(e) {
+            UE.getEditor('editor').blur();
+            UE.dom.domUtils.preventDefault(e)
         }
-        function setblur(e){
-        UE.getEditor('editor').blur();
-        UE.dom.domUtils.preventDefault(e)
-        }
+
         function insertHtml() {
-        var value = prompt('插入html代码', '');
-        UE.getEditor('editor').execCommand('insertHtml', value)
+            var value = prompt('插入html代码', '');
+            UE.getEditor('editor').execCommand('insertHtml', value)
         }
+
         function createEditor() {
-        enableBtn();
-        UE.getEditor('editor');
+            enableBtn();
+            UE.getEditor('editor');
         }
+
         function getAllHtml() {
-        alert(UE.getEditor('editor').getAllHtml())
+            alert(UE.getEditor('editor').getAllHtml())
         }
+
         function getContent() {
-        var arr = [];
-        arr.push("使用editor.getContent()方法可以获得编辑器的内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getContent());
-        alert(arr.join("\n"));
+            var arr = [];
+            arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+            arr.push("内容为：");
+            arr.push(UE.getEditor('editor').getContent());
+            alert(arr.join("\n"));
         }
+
         function getPlainTxt() {
-        var arr = [];
-        arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
-        arr.push("内容为：");
-        arr.push(UE.getEditor('editor').getPlainTxt());
-        alert(arr.join('\n'))
+            var arr = [];
+            arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+            arr.push("内容为：");
+            arr.push(UE.getEditor('editor').getPlainTxt());
+            alert(arr.join('\n'))
         }
+
         function setContent(isAppendTo) {
-        var arr = [];
-        arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
-        UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
-        alert(arr.join("\n"));
+            var arr = [];
+            arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+            UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+            alert(arr.join("\n"));
         }
+
         function setDisabled() {
-        UE.getEditor('editor').setDisabled('fullscreen');
-        disableBtn("enable");
+            UE.getEditor('editor').setDisabled('fullscreen');
+            disableBtn("enable");
         }
+
         function setEnabled() {
-        UE.getEditor('editor').setEnabled();
-        enableBtn();
+            UE.getEditor('editor').setEnabled();
+            enableBtn();
         }
+
         function getText() {
-        //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
-        var range = UE.getEditor('editor').selection.getRange();
-        range.select();
-        var txt = UE.getEditor('editor').selection.getText();
-        alert(txt)
+            //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+            var range = UE.getEditor('editor').selection.getRange();
+            range.select();
+            var txt = UE.getEditor('editor').selection.getText();
+            alert(txt)
         }
+
         function getContentTxt() {
-        var arr = [];
-        arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
-        arr.push("编辑器的纯文本内容为：");
-        arr.push(UE.getEditor('editor').getContentTxt());
-        alert(arr.join("\n"));
+            var arr = [];
+            arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+            arr.push("编辑器的纯文本内容为：");
+            arr.push(UE.getEditor('editor').getContentTxt());
+            alert(arr.join("\n"));
         }
+
         function hasContent() {
-        var arr = [];
-        arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
-        arr.push("判断结果为：");
-        arr.push(UE.getEditor('editor').hasContents());
-        alert(arr.join("\n"));
+            var arr = [];
+            arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+            arr.push("判断结果为：");
+            arr.push(UE.getEditor('editor').hasContents());
+            alert(arr.join("\n"));
         }
+
         function setFocus() {
-        UE.getEditor('editor').focus();
+            UE.getEditor('editor').focus();
         }
+
         function deleteEditor() {
-        disableBtn();
-        UE.getEditor('editor').destroy();
+            disableBtn();
+            UE.getEditor('editor').destroy();
         }
+
         function disableBtn(str) {
-        var div = document.getElementById('btns');
-        var btns = domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-        if (btn.id == str) {
-        domUtils.removeAttributes(btn, ["disabled"]);
-        } else {
-        btn.setAttribute("disabled", "true");
+            var div = document.getElementById('btns');
+            var btns = domUtils.getElementsByTagName(div, "button");
+            for (var i = 0, btn; btn = btns[i++];) {
+                if (btn.id == str) {
+                    domUtils.removeAttributes(btn, ["disabled"]);
+                } else {
+                    btn.setAttribute("disabled", "true");
+                }
+            }
         }
-        }
-        }
+
         function enableBtn() {
-        var div = document.getElementById('btns');
-        var btns = domUtils.getElementsByTagName(div, "button");
-        for (var i = 0, btn; btn = btns[i++];) {
-        domUtils.removeAttributes(btn, ["disabled"]);
+            var div = document.getElementById('btns');
+            var btns = domUtils.getElementsByTagName(div, "button");
+            for (var i = 0, btn; btn = btns[i++];) {
+                domUtils.removeAttributes(btn, ["disabled"]);
+            }
         }
+
+        function getLocalData() {
+            alert(UE.getEditor('editor').execCommand("getlocaldata"));
         }
-        function getLocalData () {
-        alert(UE.getEditor('editor').execCommand( "getlocaldata" ));
-        }
-        function clearLocalData () {
-        UE.getEditor('editor').execCommand( "clearlocaldata" );
-        alert("已清空草稿箱")
+
+        function clearLocalData() {
+            UE.getEditor('editor').execCommand("clearlocaldata");
+            alert("已清空草稿箱")
         }
         count = 2;
         imgCount = 2;
         pencilCount = 2;
-        function add_btn_div(){
-        if (pencilCount<8) {
-        count = count+1;
-        imgCount = imgCount+1;
-        pencilCount = pencilCount+1;
-        var picture_div = '<div class="small_picture_div" id="picture_div'+pencilCount+'"><div class="small_pic_title" id="pic_title'+count+'">标题</div><div class="small_pic" id="small_pic'+imgCount+'">缩略图</div><div class="edit_small_pic"><a href="#" id="lianjie'+pencilCount+'" onclick="find_div('+pencilCount+');"><i class="glyphicon glyphicon-pencil" style="font-size:18px;"></i></a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="del_item('+pencilCount+');"><i class="glyphicon glyphicon-trash" style="font-size:18px;"></i></a></div></div>';
-        $("#appmsg_edit").append(picture_div);
-        AllResult[pencilCount] = new Array();
-        }else{
-        $("#alert_conetent").html("你最多可加入8条图文消息");
-        $("#alertModal").modal("show");
+
+        function add_btn_div() {
+            if (pencilCount < 8) {
+                count = count + 1;
+                imgCount = imgCount + 1;
+                pencilCount = pencilCount + 1;
+                var picture_div = '<div class="small_picture_div" id="picture_div' + pencilCount + '"><div class="small_pic_title" id="pic_title' + count + '">标题</div><div class="small_pic" id="small_pic' + imgCount + '">缩略图</div><div class="edit_small_pic"><a href="#" id="lianjie' + pencilCount + '" onclick="find_div(' + pencilCount + ');"><i class="glyphicon glyphicon-pencil" style="font-size:18px;"></i></a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="del_item(' + pencilCount + ');"><i class="glyphicon glyphicon-trash" style="font-size:18px;"></i></a></div></div>';
+                $("#appmsg_edit").append(picture_div);
+                AllResult[pencilCount] = new Array();
+            } else {
+                $("#alert_conetent").html("你最多可加入8条图文消息");
+                $("#alertModal").modal("show");
+            }
+
         }
-        
+
+        function del_item(delCount) {
+            if (delCount == 2) {
+                $("#alert_conetent").html("至少要有2条图文消息！");
+                $("#alertModal").modal("show");
+            } else {
+                $("#picture_div" + delCount).remove();
+            }
+            // alert("ok");
         }
-        function del_item(delCount){
-        if (delCount==2) {
-        $("#alert_conetent").html("至少要有2条图文消息！");
-        $("#alertModal").modal("show");
-        }else{
-        $("#picture_div"+delCount).remove();
-        }
-        // alert("ok");
-        }
-        function find_div(pencilCount){
-        // var height_item = $("#")
-        if (pencilCount==1) {
-        $("#main_edit_div").css("margin-top",0+'px');
-        }else if(pencilCount==2){
-        $("#main_edit_div").css("margin-top",215+'px');
-        }else{
-        $("#main_edit_div").css("margin-top",(215+(pencilCount-2)*102)+'px');
-        }
-        $("#main_title_text").val($('#pic_title'+pencilCount).html());
-        $("#author").val("");
-        $("#major").val("");
-        UE.getEditor('editor').setContent('', false);
-        nowId = pencilCount;
-        $("#other_url").val("");
-        $("#main_title_text").attr("onkeyup","javascript:$('#pic_title"+pencilCount+"').html($('#main_title_text').val());saveEveryContent("+pencilCount+");");
-        $("#author").attr("onkeyup","saveEveryContent("+pencilCount+");");
-        $("#is_show_checkbox").attr("onchange","saveEveryContent("+pencilCount+");");
-        $("#major").attr("onkeyup","saveEveryContent("+pencilCount+");");
-        $("#other_url").attr("onkeyup","saveEveryContent("+pencilCount+");");
-        // alert(pencilCount);
-        if (pencilCount==1) {
-        $('#uploaded').die("change");
-        $('#uploaded').live('change', function() {
-        $("#uploadimg_div_div").html('');
-        
-        $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
-        $("#my_imgform").ajaxForm({
-        success:function(data){
-        var jsonObj = eval("("+data+")");
-        if (jsonObj.state == "ok") {
-        AllResult[pencilCount][6] = jsonObj.img_url;
-        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
-        $("#uploadimg_div_div").html(img_html);
-        }else{
-        $("#uploadimg_div_div").html('上传失败！请重试！');
-        }
-        }
-        }).submit();
-        });
-        }else{
-        $('#uploaded').die("change");
-        $('#uploaded').live('change', function() {
-        $("#small_pic"+pencilCount).html('');
-        
-        $("#small_pic"+pencilCount).html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
-        $("#my_imgform").ajaxForm({
-        // target: "#small_pic"+pencilCount ,
-        success:function(data){
-        var jsonObj = eval("("+data+")");
-        if (jsonObj.state == "ok") {
-        AllResult[pencilCount][6] = jsonObj.img_url;
-        var img_html = "<img src='Public/upload/thumb_"+jsonObj.img_html+"'>"
-        $("#small_pic"+pencilCount).html(img_html);
-        }else{
-        $("#small_pic"+pencilCount).html('上传失败！请重试！');
-        }
-        }
-        }).submit();
-        });
-        }
+
+        function find_div(pencilCount) {
+            // var height_item = $("#")
+            if (pencilCount == 1) {
+                $("#main_edit_div").css("margin-top", 0 + 'px');
+            } else if (pencilCount == 2) {
+                $("#main_edit_div").css("margin-top", 215 + 'px');
+            } else {
+                $("#main_edit_div").css("margin-top", (215 + (pencilCount - 2) * 102) + 'px');
+            }
+            $("#main_title_text").val($('#pic_title' + pencilCount).html());
+            $("#author").val("");
+            $("#major").val("");
+            UE.getEditor('editor').setContent('', false);
+            nowId = pencilCount;
+            $("#other_url").val("");
+            $("#main_title_text").attr("onkeyup", "javascript:$('#pic_title" + pencilCount + "').html($('#main_title_text').val());saveEveryContent(" + pencilCount + ");");
+            $("#author").attr("onkeyup", "saveEveryContent(" + pencilCount + ");");
+            $("#is_show_checkbox").attr("onchange", "saveEveryContent(" + pencilCount + ");");
+            $("#major").attr("onkeyup", "saveEveryContent(" + pencilCount + ");");
+            $("#other_url").attr("onkeyup", "saveEveryContent(" + pencilCount + ");");
+            // alert(pencilCount);
+            if (pencilCount == 1) {
+                $('#uploaded').die("change");
+                $('#uploaded').live('change', function() {
+                    $("#uploadimg_div_div").html('');
+
+                    $("#uploadimg_div_div").html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+                    $("#my_imgform").ajaxForm({
+                        success: function(data) {
+                            var jsonObj = eval("(" + data + ")");
+                            if (jsonObj.state == "ok") {
+                                AllResult[pencilCount][6] = jsonObj.img_url;
+                                var img_html = "<img src='Public/upload/thumb_" + jsonObj.img_html + "'>"
+                                $("#uploadimg_div_div").html(img_html);
+                            } else {
+                                $("#uploadimg_div_div").html('上传失败！请重试！');
+                            }
+                        }
+                    }).submit();
+                });
+            } else {
+                $('#uploaded').die("change");
+                $('#uploaded').live('change', function() {
+                    $("#small_pic" + pencilCount).html('');
+
+                    $("#small_pic" + pencilCount).html('<img src="__PUBLIC__/commen/img/loading.gif" alt="Uploading...."/><p/>正在上传...请稍候...');
+                    $("#my_imgform").ajaxForm({
+                        // target: "#small_pic"+pencilCount ,
+                        success: function(data) {
+                            var jsonObj = eval("(" + data + ")");
+                            if (jsonObj.state == "ok") {
+                                AllResult[pencilCount][6] = jsonObj.img_url;
+                                var img_html = "<img src='Public/upload/thumb_" + jsonObj.img_html + "'>"
+                                $("#small_pic" + pencilCount).html(img_html);
+                            } else {
+                                $("#small_pic" + pencilCount).html('上传失败！请重试！');
+                            }
+                        }
+                    }).submit();
+                });
+            }
         }
         </script>
     </body>
