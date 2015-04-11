@@ -3,14 +3,15 @@ html{
 }
 
 .start-prepare{
-	// border: solid 1px;
-	// margin: 1px;
+	border: solid 1px;
+	margin: 1px;
 }
 
 // ========== 常量储存区==========
 @bg-color: #EA768D;
 @active-bg-color: #E4007B;
-@hover-bg-color: #E53E98;;
+@hover-bg-color: #E53E98;
+@main-color: #FF8485;
 // @bg-color: white;
 
 // ========== 通用CSS类储存区=====
@@ -193,24 +194,6 @@ html{
 								.mini-item{
 									cursor: pointer;
 									margin-bottom: 3px;
-
-									// span {
-									// 	font-size: xx-small;
-										
-									// 	&.commen{
-									// 		&:hover {
-									// 			cursor: pointer;
-									// 			color: #FF8485;
-									// 		}
-									// 	}
-									// 	&.hot{
-									// 		color: #FF8485;
-									// 		&:hover {
-									// 			cursor: pointer;
-									// 			text-decoration: underline;
-									// 		}
-									// 	}
-									// }
 									span.type-name{
 										font-weight: bolder;
 										display: inline-block;
@@ -237,6 +220,12 @@ html{
 										text-decoration: underline;
 									}
 								}
+							}
+
+							span.type-name{
+								font-weight: bolder;
+								display: inline-block;
+								width: 60px;
 							}
 
 
@@ -594,58 +583,84 @@ html{
 			min-height: 300px;
 		}
 	}
+	
+}
 
 
-	// 热卖宝贝 #
-	div.hot-baby-main {
+// #zhaoyuxue 以下是 热卖宝贝
+
+div.hot-baby-main {
 		background-image: url("{{imageURLs.publicUrl}}img/watch.jpg");
 		min-height: 2000px;
 
 		div.hot-today {
-			padding-top: 30px;
-			margin-left: 45%;
+			// display: inline-block;
+			line-height: 140px;
+			margin: 0px;
+			margin-left: 40%;
+			padding: 0px;
 
 			
-			img{
-				display: block;
-				width: 110px;
+			h4 {
+				display: inline-block;
+				padding-top: 90px;
+				font-weight: bolder;
+				font-size: 32px;
+				color: @main-color;
+				font-family: 'Arial Negreta', 'STKaiti';
+				
 			}
 
-			h4 {
-				display: block;
-				margin-left: 5px;
-				font-weight: bolder;
-				font-size: 24px;
+			img {
+				margin-left: 205px;
+				margin-top: -40px;
+
 			}
 		}
 
 		div.baby-main {
-			width: 100%;
-			min-width: 1270px;
+			min-width: 1050px;
 			padding: 0px;
 			overflow: hidden;
-			min-height: 1800px;
-			margin-top: 30px;
+			// min-height: 1800px;
+			margin: 22px 150px 22px 150px;
+			border:1px solid #CCCCCC;
 
-			border:1px solid red;
+			div.babies-row {
+				margin: 0px;
+				padding: 21px;
+				padding-right: 0px;
+				borrder-bottom: 1px solid #CCCCCC;
+				height: 380px;
+				
+				div.img-block {
+					display: inline-block;
+					width: 235px;
+					height: 298px;
+					margin-right: 15px;
 
-			div.babies-list {
-				width: 80%;
-				// margin-left: ;
-				min-height: 1800px;
-				border:1px solid #CCCCCC;
-				margin: 20px 0 20px 8%;
+					img {
+						width: 100%;
+						border-radius: 2px;
+					}
+
+					
+				}
+				
 			}
 		}
 
 		div.baby-bottom {
 			width: 80%;
 			margin-left: 9%;
-
 		}
 		
 	}
-}
+
+
+
+
+
 
 
 // #zhuyunxiang 以下是 热卖品牌

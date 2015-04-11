@@ -37,6 +37,106 @@ HomeCtrls.controller('homeCtrl', ['$scope',
             {"class": "commen","content": "薄开衫"},
             {"class": "commen","content": "本身裙"},
             ],
+
+            2: [
+            {"class": "type-name","content": "潮流女装"},
+            {"class": "commen","content": "春装"},
+            {"class": "hot","content": "韩版"},
+            {"class": "commen","content": "毛衣"},
+            {"class": "commen","content": "薄开衫"},
+            {"class": "commen","content": "本身裙"},
+            ],
+
+            3: [
+            {"class": "type-name","content": "潮流女装"},
+            {"class": "commen","content": "春装"},
+            {"class": "hot","content": "韩版"},
+            {"class": "commen","content": "毛衣"},
+            {"class": "commen","content": "薄开衫"},
+            {"class": "commen","content": "本身裙"},
+            ],
+        };
+
+        $scope.jades = {
+            0: [
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+            1: [
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+            2: [
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+            3:[
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+            4:[
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+            5:[
+            {"class": "type-name","content": "黄金首饰"},
+            {"class": "commen","content": "手镯"},
+            {"class": "hot","content": "耳环"},
+            {"class": "commen","content": "项链"},
+            {"class": "commen","content": "戒指"},
+            ],
+
+        };
+
+
+        $scope.snacks = {
+            0: [
+            {"class": "type-name","content": "鲜果肉禽"},
+            {"class": "commen","content": "春笋"},
+            {"class": "hot","content": "海参"},
+            {"class": "commen","content": "龙虾"},
+            ],
+
+            1: [
+            {"class": "type-name","content": "鲜果肉禽"},
+            {"class": "commen","content": "春笋"},
+            {"class": "hot","content": "海参"},
+            {"class": "commen","content": "龙虾"},
+            ],
+
+            2: [
+            {"class": "type-name","content": "鲜果肉禽"},
+            {"class": "commen","content": "春笋"},
+            {"class": "hot","content": "海参"},
+            {"class": "commen","content": "龙虾"},
+            ],
+
+            3: [
+            {"class": "type-name","content": "鲜果肉禽"},
+            {"class": "commen","content": "春笋"},
+            {"class": "hot","content": "海参"},
+            {"class": "commen","content": "龙虾"},
+            ],
         };
     }
 ]);
