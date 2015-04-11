@@ -3,39 +3,62 @@
 		<h4 class="start-prepare">今日热卖</h4>
 		<img src="{{imageURLs.publicUrl}}img/hot/desc.jpg" class="start-prepare">
 	</div>
+
+	<div class="baby-left" ng-repeat="babyKindItem in babyKinds">
+		<div class="babies-kind" ng-repeat="item in babyKindItem">
+			<span>{{item.babyKindSeq}}</span>
+			<span class="babies-kind-name">{{item.babyKindName}}</span>
+		</div>
+	</div>
 	
 	<div class="baby-main start-prepare">
-		<div class="babies-row start-prepare">
-			<div class="img-block">
-				<img src="{{imageURLs.publicUrl}}img/hot/26.jpg" class="start-prepare">
+		<div class="baby-row start-prepare"ng-repeat="rowItem in babyRowsWomen">
+			<div class="img-block" ng-repeat="item in rowItem">
+				<img ng-src="{{imageURLs.publicUrl}}img/hot/{{item.url}}" class="start-prepare">
 				<div class="baby">
 					<div class="baby-desc">
-						<span class="baby-name">特芙娜</span>
-						<span class="description">
-							粉色清新小碎花连衣裙
-						</span>
+						<span class="baby-name">{{item.babyName}}</span>
+						{{item.babyDesc}}
 					</div>
-					<span class="price">
-						￥ 328
+					<span class="baby-price">
+						￥ {{item.babyPrice}}
 					</span>
 				</div>
 			</div>
-
-			<div class="img-block">
-				<img src="{{imageURLs.publicUrl}}img/hot/25.jpg" class="start-prepare">
+		</div>
+		<div class="baby-row start-prepare"ng-repeat="rowItem in babyRowsMakeup">
+			<div class="img-block" ng-repeat="item in rowItem">
+				<img ng-src="{{imageURLs.publicUrl}}img/hot/{{item.url}}" class="start-prepare">
+				<div class="baby">
+					<div class="baby-desc">
+						<span class="baby-name">{{item.babyName}}</span>
+						{{item.babyDesc}}
+					</div>
+					<span class="baby-price">
+						￥ {{item.babyPrice}}
+					</span>
+				</div>
 			</div>
-
-			<div class="img-block">
-				<img src="{{imageURLs.publicUrl}}img/hot/28.jpg" class="start-prepare">
+		</div>
+		<div class="baby-row start-prepare"ng-repeat="rowItem in babyRowsMen">
+			<div class="img-block" ng-repeat="item in rowItem">
+				<img ng-src="{{imageURLs.publicUrl}}img/hot/{{item.url}}" class="start-prepare">
+				<div class="baby">
+					<div class="baby-desc">
+						<span class="baby-name">{{item.babyName}}</span>
+						{{item.babyDesc}}
+					</div>
+					<span class="baby-price">
+						￥ {{item.babyPrice}}
+					</span>
+				</div>
 			</div>
-
-			<div class="img-block">
-				<img src="{{imageURLs.publicUrl}}img/hot/25.jpg" class="start-prepare">
-			</div>
-			
 		</div>
 	</div>
 
+	<div class="baby-right">
+		<img src="{{imageURLs.publicUrl}}img/hot/new.png">
+	</div>
 
 
 	<div class="baby-bottom start-prepare">

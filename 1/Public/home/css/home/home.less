@@ -3,8 +3,8 @@ html{
 }
 
 .start-prepare{
-	border: solid 1px;
-	margin: 1px;
+	// border: solid 1px;
+	// margin: 1px;
 }
 
 // ========== 常量储存区==========
@@ -590,69 +590,145 @@ html{
 // #zhaoyuxue 以下是 热卖宝贝
 
 div.hot-baby-main {
-		background-image: url("{{imageURLs.publicUrl}}img/watch.jpg");
-		min-height: 2000px;
+
+		//背景图片拉伸
+		background-image: url("{{imageURLs.publicUrl}}img/watch.jpg") no-repeat;
+		width: 100%; 
+		height: 100%;
+		background-size: 100% 100%; 
 
 		div.hot-today {
-			// display: inline-block;
+			display: inline-block;
 			line-height: 140px;
 			margin: 0px;
-			margin-left: 40%;
+			margin-left: 32%;
 			padding: 0px;
 
 			
 			h4 {
 				display: inline-block;
-				padding-top: 90px;
+				padding-top: 80px;
 				font-weight: bolder;
-				font-size: 32px;
+				font-size: 36px;
 				color: @main-color;
 				font-family: 'Arial Negreta', 'STKaiti';
 				
 			}
 
 			img {
-				margin-left: 205px;
-				margin-top: -40px;
-
+				margin-left: 215px;
+				margin-top: -50px;
 			}
 		}
 
+		div.baby-left {
+			float: left;
+			width: 145px;
+			min-height: 2000px;
+			padding-left:10px;
+
+
+			div.babies-kind {
+				font-family: 'Arial Negreta', 'FangSong';
+				font-size: 22px;
+				font-weight: bolder;
+				margin-top: 700px;
+
+				&:first-child {
+					margin-top: 380px;
+				}
+
+				span {
+					padding: 0px;
+					margin: 0px;
+				}
+				span.babies-kind-name {
+					color: @main-color;
+					margin-left: -10px;
+					//清除span的间距 设置汉字的距离
+					letter-spacing: -2px;
+
+					&:hover {
+						cursor: pointer;
+						text-decoration: underline;
+					}
+				}
+
+
+
+			}
+
+			
+		}
+
 		div.baby-main {
+			float: left;
 			min-width: 1050px;
 			padding: 0px;
 			overflow: hidden;
-			// min-height: 1800px;
-			margin: 22px 150px 22px 150px;
+			margin: 22px 0px 22px 0px;
 			border:1px solid #CCCCCC;
 
-			div.babies-row {
+			div.baby-row {
 				margin: 0px;
-				padding: 21px;
-				padding-right: 0px;
-				borrder-bottom: 1px solid #CCCCCC;
-				height: 380px;
+				padding: 21px 0px 0px 21px;
+				border-bottom: 1px solid #CCCCCC;
+				min-height: 380px;
 				
 				div.img-block {
-					display: inline-block;
+					display: inline-table;
 					width: 235px;
-					height: 298px;
-					margin-right: 15px;
+					margin-right: 21px;
 
 					img {
 						width: 100%;
 						border-radius: 2px;
+
+						&:hover {
+							cursor: pointer;
+							margin-left: 2px;
+						}
 					}
 
-					
+					div.baby {
+						
+						div.baby-desc {
+							font-size: 12px;
+							span.baby-name {
+								display: block;
+								font-weight: bolder;
+							}
+
+							&:hover {
+								cursor: pointer;
+								color:  @main-color;
+							}
+						}
+
+						span.baby-price {
+							color: @main-color;
+							font-size: 18px;
+						}
+					}
 				}
 				
 			}
 		}
 
+		div.baby-right {
+			float: left;
+			min-width: 145px;
+			min-height: 2000px;
+
+			img {
+				margin-left: 6px;
+				margin-top: 185px;
+			}
+		}
+
 		div.baby-bottom {
 			width: 80%;
-			margin-left: 9%;
+			margin-left: 8%;
 		}
 		
 	}

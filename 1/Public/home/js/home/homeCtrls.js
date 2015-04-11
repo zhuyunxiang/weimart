@@ -153,6 +153,65 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope',
         $scope.tplURLs = {
             hotBabyMain : publicUrl + 'tpl/home/hot_baby_main.html',
         };
+
+        $scope.babyKinds = {
+        	0: [
+			{"babyKindSeq": "01", "babyKindName": "裙角飞扬"},
+        	{"babyKindSeq": "02", "babyKindName": "女神进化术"},
+        	{"babyKindSeq": "03", "babyKindName": "时尚先生"},
+			],
+        };
+
+        $scope.babyRowsWomen = {
+			0: [
+			{"url": "4.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "5.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "6.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "7.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},	
+			],
+
+			1: [
+			{"url": "4.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "5.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "6.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
+			{"url": "7.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},	
+			],
+
+		};
+
+		$scope.babyRowsMakeup = {
+			0: [
+			{"url": "8.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "9.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "10.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "13.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			],
+
+			1: [
+			{"url": "8.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "9.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "10.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			{"url": "13.jpg","babyName": "嘉丝肤缇", "babyDesc": "丝柔矿物干湿两用粉饼13#，细腻白皙裸透遮瑕，妆效持久，完美贴合肌肤","babyPrice": "59"},
+			],
+
+		};
+
+		$scope.babyRowsMen = {
+			0: [
+			{"url": "14.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "15.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "16.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "17.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			],
+
+			1: [
+			{"url": "14.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "15.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "16.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			{"url": "17.jpg","babyName": "衣品天成", "babyDesc": "男款藏蓝色短袖T恤","babyPrice": "158"},
+			],
+
+		};
     }
 ]);
 // 热卖宝贝的Controller End
