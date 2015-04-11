@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>设置图文回复</title>
+    <meta http-equiv="Content-Type" content="text/html ;charset=utf-8" />
+    <link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/media_return_conf.css" type="text/css" media="screen" />
+    <js file="__PUBLIC__/commen/js/lib/jquery.min.js" />
+    <js file="__PUBLIC__/commen/js/lib/bootstrap.min.js" />
+    <js file='__PUBLIC__/commen/js/lib/angular.min.js' />
+    <js file='__PUBLIC__/commen/angular-file-upload/angular-file-upload-shim.min.js' />
+    <js file='__PUBLIC__/commen/angular-file-upload/angular-file-upload.min.js' />
+    <js file="__PUBLIC__/commen/ueditor/ueditor.config.js" />
+    <js file="__PUBLIC__/commen/ueditor/ueditor.all.js" />
+    
+    <js file='__PUBLIC__/commen/angular-ueditor/angular-ueditor.js' />
+    <js file='__PUBLIC__/admin/js/media_return/controllers.js' />
+    <js file='__PUBLIC__/admin/js/media_return/services.js' />
+    <js file='__PUBLIC__/admin/js/media_return/directives.js' />
+    <script>
+      var getCustomReturnUrl = "{:U('CustomReturn/get_cutom_text_return_info')}";
+    </script>
+  </head>
+  <body ng-app="fileUpload" ng-controller="MyCtrl">
+    <img ng-src="__PUBLIC__/Uploads/media_img/{{data}}" alt="">
+    <div class="button" ng-file-select ng-file-change="upload($files)">Upload on file change</div>
+    
+    <div style="height:500px;width:500px;" class="ueditor" ng-model="content1" ></div>
+    <textarea ng-model="content1"></textarea>
+    <script>
+      var app = angular.module('fileUpload', ['angularFileUpload', 'ng.ueditor']);
+
+      app.controller('MyCtrl', ['$scope', '$upload',
+          function($scope, $upload) {
+            $scope.content1 = 'Hello';
+              $scope.$watch('files', function() {
+                  $scope.upload($scope.files);
+              });
+              $scope.data = '';
+              $scope.upload = function(files) {
+                  if (files && files.length) {
+                      for (var i = 0; i < files.length; i++) {
+                          var file = files[i];
+                          $upload.upload({
+                              url: '__URL__/save_img',
+                              headers: {
+                                  'Content-Type': file.type
+                              },
+                              method: 'POST',
+                              data: file,
+                              file: file,
+                          }).progress(function(evt) {
+                              var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                              console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                          }).success(function(data, status, headers, config) {
+                              $scope.data = data;
+                              console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                          });
+                      }
+                  }
+              };
+          }
+      ]);
+    </script>
+  </body>
+</html>
