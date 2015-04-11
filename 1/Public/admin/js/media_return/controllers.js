@@ -39,7 +39,7 @@ app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
                     }).progress(function(evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     }).success(function(data, status, headers, config) {
-                    	$scope.editItem.media_img = publicFolder+'/media_img/'+data;
+                    	$scope.editItem.media_img = publicFolder+'/media_img/'+data; 
                     });
                 }
             }
