@@ -418,6 +418,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 0) {
                         showTips('success', data.info);
                         getInfo();
