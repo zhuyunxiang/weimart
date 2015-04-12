@@ -8,59 +8,16 @@
 		定制我的偏好
 	</div>
 
-	<div class="goods">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/goods.JPG">
-
+	<div class="goods" ng-repeat="goodsItems in goods">
+		<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{goodsItems.pic}}">
 		<div class="goods-desc">
-			<p class="goods-title">
-				<strong>2014新款绑公主</strong>
-			</p>
-			<p class="goods-orig">根据你“浏览”的“礼服”推荐</p>
-			<p class="goods-sell"><strong>已售99件</strong></p>
-		</div>
-
-		
+			<div class="goods-title">
+				<strong>{{goodsItems.title}}</strong>
+			</div>
+			<p class="goods-orig">{{goodsItems.orig}}</p>
+			<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
+		</div>	
 	</div>
-	<div class="goods">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/goods.JPG">
-
-		<div class="goods-desc">
-			<p class="goods-title">
-				<strong>2014新款绑公主</strong>
-			</p>
-			<p class="goods-orig">根据你“浏览”的“礼服”推荐</p>
-			<p class="goods-sell"><strong>已售99件</strong></p>
-		</div>
-
-		
-	</div>
-	<div class="goods">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/goods.JPG">
-
-		<div class="goods-desc">
-			<p class="goods-title">
-				<strong>2014新款绑公主</strong>
-			</p>
-			<p class="goods-orig">根据你“浏览”的“礼服”推荐</p>
-			<p class="goods-sell"><strong>已售99件</strong></p>
-		</div>
-
-		
-	</div>
-	<div class="goods">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/goods.JPG">
-
-		<div class="goods-desc">
-			<p class="goods-title">
-				<strong>2014新款绑公主</strong>
-			</p>
-			<p class="goods-orig">根据你“浏览”的“礼服”推荐</p>
-			<p class="goods-sell"><strong>已售99件</strong></p>
-		</div>
-
-		
-	</div>
-
 	<div class="goods">
 		<p class="change">换一批试试</p>
 	</div>
@@ -71,54 +28,20 @@
 		发现·好店
 	</div>
 
-	<div class="shop">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/shop.JPG" class="shop-img">
+	<div class="shop" ng-repeat="shopItem in shops">
+		<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.pic}}" class="shop-img" >
 
 		<div class="shop-info">
-			<p class="shop-name"><strong>牛油曲奇DIY</strong></p>
-			<p class="shop-goods">主营：居家布艺</p>
+			<p class="shop-name"><strong>{{shopItem.name}}</strong></p>
+			<p class="shop-goods">主营：{{shopItem.goods}}</p>
 		</div>
 
-		<p>很舒服 态度很好 跟描述一致 售后很好</p>
+		<p>{{shopItem.desc}}</p>
 
 		<div class="shop-goods-imgs">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-		</div>
-	</div>
-
-	<div class="shop">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/shop.JPG" class="shop-img">
-
-		<div class="shop-info">
-			<p class="shop-name"><strong>牛油曲奇DIY</strong></p>
-			<p class="shop-goods">主营：居家布艺</p>
-		</div>
-
-		<p>很舒服 态度很好 跟描述一致 售后很好</p>
-
-		<div class="shop-goods-imgs">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-		</div>
-	</div>
-
-	<div class="shop">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/shop.JPG" class="shop-img">
-
-		<div class="shop-info">
-			<p class="shop-name"><strong>牛油曲奇DIY</strong></p>
-			<p class="shop-goods">主营：居家布艺</p>
-		</div>
-
-		<p>很舒服 态度很好 跟描述一致 售后很好</p>
-
-		<div class="shop-goods-imgs">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
-			<img src="{{imageURLs.publicUrl}}img/main_right/shop-goods.JPG" class="shop-goods-img">
+			<img src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic1}}" class="shop-goods-img">
+			<img src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic2}}" class="shop-goods-img">
+			<img src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic3}}" class="shop-goods-img">
 		</div>
 	</div>
 	

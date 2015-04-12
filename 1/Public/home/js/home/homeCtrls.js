@@ -105,7 +105,6 @@ HomeCtrls.controller('homeCtrl', ['$scope',
             {"class": "commen","content": "项链"},
             {"class": "commen","content": "戒指"},
             ],
-
         };
 
 
@@ -138,6 +137,21 @@ HomeCtrls.controller('homeCtrl', ['$scope',
             {"class": "commen","content": "龙虾"},
             ],
         };
+
+        
+        $scope.goods = [
+            {"pic": "goods.JPG","title": "2014新款绑公主1111","orig": "根据你“浏览”的“礼服”推荐","sell": "已售99件"},
+            {"pic": "goods.JPG","title": "2014新款绑公主","orig": "根据你“浏览”的“礼服”推荐","sell": "已售99件"},
+            {"pic": "goods.JPG","title": "2014新款绑公主","orig": "根据你“浏览”的“礼服”推荐","sell": "已售99件"},
+            {"pic": "goods.JPG","title": "2014新款绑公主","orig": "根据你“浏览”的“礼服”推荐","sell": "已售99件"},
+        ];
+
+         $scope.shops = [
+            {"pic": "shop.JPG", "name": "牛油曲奇DIY", "goods": "居家布艺", "desc": "很舒服 态度很好 跟描述一致 售后很好","goodPic1": "shop-goods.JPG", "goodPic2": "shop-goods.JPG" , "goodPic3": "shop-goods.JPG"},
+            {"pic": "shop.JPG", "name": "牛油曲奇DIY", "goods": "居家布艺", "desc": "很舒服 态度很好 跟描述一致 售后很好","goodPic1": "shop-goods.JPG", "goodPic2": "shop-goods.JPG" , "goodPic3": "shop-goods.JPG"},
+            {"pic": "shop.JPG", "name": "牛油曲奇DIY", "goods": "居家布艺", "desc": "很舒服 态度很好 跟描述一致 售后很好","goodPic1": "shop-goods.JPG", "goodPic2": "shop-goods.JPG" , "goodPic3": "shop-goods.JPG"},
+        ];
+
     }
 ]);
 // 主页的Controller End
@@ -347,6 +361,15 @@ HomeCtrls.controller('registerCtrl', ['$scope', '$http',
 ]);
 
 // zhuyunxiang 运动风暴
-HomeCtrls.controller('sportsCtrl', ['$scope', function($scope){
-    $scope.tips =  '这个是运动风暴的controller';
+HomeCtrls.controller('sportsCtrl', ['$scope', 
+	function($scope){
+	    $scope.tips =  '这个是运动风暴的controller';
+	    $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            sportsMain : publicUrl + 'tpl/home/sports_main.html',
+        };
 }]);
