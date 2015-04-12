@@ -121,7 +121,7 @@ class Event_data
 		return array('对不起，没有设定此事件回复！','text');
 	}
 
-	public function FunctionName($result = null)
+	public function mediaMsgHand($result = null)
 	{
 		if (!empty($result)) {
 			$reply = array();
