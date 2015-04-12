@@ -5,6 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
 
     $stateProvider
+        // 主页
         .state('home', {
             url: "/home",
             templateUrl: publicUrl + 'tpl/home/home.html',
@@ -13,6 +14,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/home/sports",
             templateUrl: publicUrl + 'tpl/home/sports.html',
             controller: "sportsCtrl"
+        }).state('home/type', {
+            url: "/home/type",
+            templateUrl: publicUrl + 'tpl/home/type.html',
+            controller: "typeCtrl"
         }).state('hot_baby', {
             url: "/hot_baby",
             templateUrl: publicUrl + 'tpl/home/hot_baby.html',
