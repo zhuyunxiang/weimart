@@ -362,6 +362,20 @@ HomeCtrls.controller('registerCtrl', ['$scope', '$http',
 
 // zhuyunxiang 运动风暴
 HomeCtrls.controller('sportsCtrl', ['$scope', 
+    function($scope){
+        $scope.tips =  '这个是运动风暴的controller';
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            sportsMain : publicUrl + 'tpl/home/sports_main.html',
+        };
+}]);
+
+// zhuyunxiang 运动风暴
+HomeCtrls.controller('typeCtrl', ['$scope', 
 	function($scope){
 	    $scope.tips =  '这个是运动风暴的controller';
 	    $scope.imageURLs = {
@@ -370,6 +384,6 @@ HomeCtrls.controller('sportsCtrl', ['$scope',
         };
 
         $scope.tplURLs = {
-            sportsMain : publicUrl + 'tpl/home/sports_main.html',
+            typeMain : publicUrl + 'tpl/home/type_main.html',
         };
 }]);
