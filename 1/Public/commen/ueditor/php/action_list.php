@@ -30,7 +30,7 @@ $start = isset($_GET['start']) ? htmlspecialchars($_GET['start']) : 0;
 $end = $start + $size;
 
 /* 获取文件列表 */
-$path = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "":"/") . $path;
+// $path = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "":"/") . $path;
 $files = getfiles($path, $allowFiles);
 if (!count($files)) {
     return json_encode(array(
@@ -68,25 +68,45 @@ return $result;
  * @param array $files
  * @return array
  */
+// function getfiles($path, $allowFiles, &$files = array())
+// {
+//     if (!is_dir($path)) return null;
+//     if(substr($path, strlen($path) - 1) != '/') $path .= '/';
+//     $handle = opendir($path);
+//     while (false !== ($file = readdir($handle))) {
+//         if ($file != '.' && $file != '..') {
+//             $path2 = $path . $file;
+//             if (is_dir($path2)) {
+//                 getfiles($path2, $allowFiles, $files);
+//             } else {
+//                 if (preg_match("/\.(".$allowFiles.")$/i", $file)) {
+//                     $files[] = array(
+//                         'url'=> substr($path2, strlen($_SERVER['DOCUMENT_ROOT'])),
+//                         'mtime'=> filemtime($path2)
+//                     );
+//                 }
+//             }
+//         }
+//     }
+//     return $files;
+// }
+
 function getfiles($path, $allowFiles, &$files = array())
 {
-    if (!is_dir($path)) return null;
-    if(substr($path, strlen($path) - 1) != '/') $path .= '/';
-    $handle = opendir($path);
-    while (false !== ($file = readdir($handle))) {
-        if ($file != '.' && $file != '..') {
-            $path2 = $path . $file;
-            if (is_dir($path2)) {
-                getfiles($path2, $allowFiles, $files);
-            } else {
-                if (preg_match("/\.(".$allowFiles.")$/i", $file)) {
-                    $files[] = array(
-                        'url'=> substr($path2, strlen($_SERVER['DOCUMENT_ROOT'])),
-                        'mtime'=> filemtime($path2)
-                    );
-                }
-            }
-        }
+  $saestor = new SaeStorage();
+  $ret = $saestor->getListByPath ('Public', $path);
+  foreach($ret['dirs'] as $dir)
+  {
+    getfiles($path.'/'.$dir['name'], $allowFiles, $files);
+  }
+  foreach($ret['files'] as $file)
+  {
+    if (preg_match("/\.(".$allowFiles.")$/i", $file['Name'])) {
+      $files[] = array(
+        'url'=> $saestor->getUrl('Public', $file['fullName']),
+        'mtime'=> $file['uploadTime']
+      );
     }
-    return $files;
+  }
+  return $files;
 }
