@@ -477,7 +477,6 @@ html{
 						img {
 							display: inline-block;
 							width: 40%;
-							// height: 80%;
 							min-height: 109px;
 							margin-right: 3px;
 							margin-top: -70px;
@@ -490,8 +489,9 @@ html{
 							min-height: 100px;
 							margin-left: 3px;
 							
-							p.goods-title {
+							div.goods-title {
 								font-size: middle;
+								height: 25px;
 								overflow: hidden;
 							}
 
@@ -582,17 +582,20 @@ html{
 		.nav-bottom-container{
 			min-height: 300px;
 		}
-	}
-	
+	}	
 }
+
+// div.common-bottom {
+// 	width: 80%;
+// 	margin-left: 8%;
+// }
 
 
 // #zhaoyuxue 以下是 热卖宝贝
-
 div.hot-baby-main {
 
 		//背景图片拉伸
-		background-image: url("{{imageURLs.publicUrl}}img/watch.jpg") no-repeat;
+		// background-image: url("{{imageURLs.publicUrl}}img/watch.jpg") no-repeat;
 		width: 100%; 
 		height: 100%;
 		background-size: 100% 100%; 
@@ -656,9 +659,7 @@ div.hot-baby-main {
 
 
 
-			}
-
-			
+			}	
 		}
 
 		div.baby-main {
@@ -721,23 +722,12 @@ div.hot-baby-main {
 			min-height: 2000px;
 
 			img {
+				position: fixed;
 				margin-left: 6px;
-				margin-top: 185px;
+				margin-top: 20px;
 			}
 		}
-
-		div.baby-bottom {
-			width: 80%;
-			margin-left: 8%;
-		}
-		
-	}
-
-
-
-
-
-
+}
 
 // #zhuyunxiang 以下是 热卖品牌
 .pop-brand-main-container{
@@ -847,6 +837,80 @@ div.hot-baby-main {
 					float: left;
 				}
 			}
+		}
+	}
+}
+
+
+// #zhaoyuxue 以下是运动风暴
+div.sports {
+	min-width: 1349px;
+
+	div.forehead {
+		width: 100%;
+		min-width: 1349px;
+		height: 723px;
+		min-height: 723px;
+
+		img.logo {
+			margin-top: 30px;
+			margin-left: 190px;
+			width: 224px;
+			height: 90px;
+		}
+
+		div.forehead-main {
+
+			div.upper{
+
+			}
+
+			div.content {
+
+			}
+		}
+		
+	}
+
+	div.center {
+		margin: 50px 100px 50px 100px;
+
+		img.big-img {
+			display: inline-block;
+			width: 718px;
+			height: 607px;
+			margin-right: 57px;
+			margin-bottom: 50px; 
+			margin-top: -549px;
+		}
+
+		div.little-img {
+			display: inline-block;
+			width: 370px;
+			height: 607px;
+
+			img {
+				display: block;
+				width: 370px;
+				height: 288px;
+				margin-bottom: 30px;
+			}
+		}
+
+		
+
+		img.middle-img {
+			width: 340px;
+			height: 506px;
+			margin-right: 40px;
+		}
+
+	}
+	div.sports-heap {
+		img {
+			width: 338px;
+			height: 350px;
+			margin-right: -4px;
 		}
 	}
 }

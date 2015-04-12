@@ -40,7 +40,7 @@
 .home-container .main-container .side-container .right-container div#find-goods div.favor-diy{cursor:pointer;display:inline-block;background:white;border:1px solid #FF8182;color:#FF8182;margin-left:120px;}.home-container .main-container .side-container .right-container div#find-goods div.favor-diy:hover{color:#FFFFFF;background:#FF8182;}
 .home-container .main-container .side-container .right-container div#find-goods div.goods{cursor:pointer;background:white;padding:15px 15px 15px 15px;margin-bottom:0px;border:1px solid #CCCCCC;}.home-container .main-container .side-container .right-container div#find-goods div.goods:hover{border-color:#FF8182;}.home-container .main-container .side-container .right-container div#find-goods div.goods:hover .change{color:#FF8182;}
 .home-container .main-container .side-container .right-container div#find-goods div.goods img{display:inline-block;width:40%;min-height:109px;margin-right:3px;margin-top:-70px;}
-.home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc{display:inline-block;width:40%;min-width:110px;min-height:100px;margin-left:3px;}.home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc p.goods-title{font-size:middle;overflow:hidden;}
+.home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc{display:inline-block;width:40%;min-width:110px;min-height:100px;margin-left:3px;}.home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc div.goods-title{font-size:middle;height:25px;overflow:hidden;}
 .home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc p.goods-orig{font-size:small;}
 .home-container .main-container .side-container .right-container div#find-goods div.goods div.goods-desc p.goods-sell{font-weight:4px;font-size:middle;}
 .home-container .main-container .side-container .right-container div#find-shop div.find-shop-title{font-weight:bolder;font-size:large;line-height:30px;margin-top:15px;margin-bottom:10px;}
@@ -51,7 +51,7 @@
 .home-container .main-container .side-container .right-container div#find-shop div.shop:hover{border-color:#FF8182;}.home-container .main-container .side-container .right-container div#find-shop div.shop:hover .change{color:#FF8182;}
 .home-container .main-container .side-container .right-container p.change{cursor:pointer;padding-left:35%;margin:0;}
 .home-container .main-container .nav-bottom-container{min-height:300px;}
-div.hot-baby-main{background-image:url("{{imageURLs.publicUrl}}img/watch.jpg") no-repeat;width:100%;height:100%;background-size:100% 100%;}div.hot-baby-main div.hot-today{display:inline-block;line-height:140px;margin:0px;margin-left:32%;padding:0px;}div.hot-baby-main div.hot-today h4{display:inline-block;padding-top:80px;font-weight:bolder;font-size:36px;color:#ff8485;font-family:'Arial Negreta','STKaiti';}
+div.hot-baby-main{width:100%;height:100%;background-size:100% 100%;}div.hot-baby-main div.hot-today{display:inline-block;line-height:140px;margin:0px;margin-left:32%;padding:0px;}div.hot-baby-main div.hot-today h4{display:inline-block;padding-top:80px;font-weight:bolder;font-size:36px;color:#ff8485;font-family:'Arial Negreta','STKaiti';}
 div.hot-baby-main div.hot-today img{margin-left:215px;margin-top:-50px;}
 div.hot-baby-main div.baby-left{float:left;width:145px;min-height:2000px;padding-left:10px;}div.hot-baby-main div.baby-left div.babies-kind{font-family:'Arial Negreta','FangSong';font-size:22px;font-weight:bolder;margin-top:700px;}div.hot-baby-main div.baby-left div.babies-kind:first-child{margin-top:380px;}
 div.hot-baby-main div.baby-left div.babies-kind span{padding:0px;margin:0px;}
@@ -60,8 +60,7 @@ div.hot-baby-main div.baby-main{float:left;min-width:1050px;padding:0px;overflow
 div.hot-baby-main div.baby-main div.baby-row div.img-block div.baby div.baby-desc{font-size:12px;}div.hot-baby-main div.baby-main div.baby-row div.img-block div.baby div.baby-desc span.baby-name{display:block;font-weight:bolder;}
 div.hot-baby-main div.baby-main div.baby-row div.img-block div.baby div.baby-desc:hover{cursor:pointer;color:#ff8485;}
 div.hot-baby-main div.baby-main div.baby-row div.img-block div.baby span.baby-price{color:#ff8485;font-size:18px;}
-div.hot-baby-main div.baby-right{float:left;min-width:145px;min-height:2000px;}div.hot-baby-main div.baby-right img{margin-left:6px;margin-top:185px;}
-div.hot-baby-main div.baby-bottom{width:80%;margin-left:8%;}
+div.hot-baby-main div.baby-right{float:left;min-width:145px;min-height:2000px;}div.hot-baby-main div.baby-right img{position:fixed;margin-left:6px;margin-top:20px;}
 .pop-brand-main-container{background-color:rgba(102, 153, 255, 0.298039215686275);}.pop-brand-main-container .pop-brand-nav-outer{min-height:365px;padding-top:25px;text-align:center;overflow:hidden;}.pop-brand-main-container .pop-brand-nav-outer .left{float:left;min-width:182px;min-height:365px;margin-left:100px;}
 .pop-brand-main-container .pop-brand-nav-outer .center{min-height:345px;max-width:675px;margin:0 auto;display:inline-block;padding:32px 0px 32px 0px;}.pop-brand-main-container .pop-brand-nav-outer .center .brand-container{width:90px;height:45px;margin:19px 6px 0 15px;float:left;}.pop-brand-main-container .pop-brand-nav-outer .center .brand-container img{width:100%;height:100%;}
 .pop-brand-main-container .pop-brand-nav-outer .right{float:right;min-width:182px;min-height:365px;margin-right:100px;}
@@ -74,3 +73,8 @@ div.hot-baby-main div.baby-bottom{width:80%;margin-left:8%;}
 .pop-brand-main-container .pop-brand-main-outer .item:nth-child(odd) .text-area{float:right;}
 .pop-brand-main-container .pop-brand-main-outer .item:nth-child(even) .img{float:right;}
 .pop-brand-main-container .pop-brand-main-outer .item:nth-child(even) .text-area{float:left;}
+div.sports{min-width:1349px;}div.sports div.forehead{width:100%;min-width:1349px;height:723px;min-height:723px;}div.sports div.forehead img.logo{margin-top:30px;margin-left:190px;width:224px;height:90px;}
+div.sports div.center{margin:50px 100px 50px 100px;}div.sports div.center img.big-img{display:inline-block;width:718px;height:607px;margin-right:57px;margin-bottom:50px;margin-top:-549px;}
+div.sports div.center div.little-img{display:inline-block;width:370px;height:607px;}div.sports div.center div.little-img img{display:block;width:370px;height:288px;margin-bottom:30px;}
+div.sports div.center img.middle-img{width:340px;height:506px;margin-right:40px;}
+div.sports div.sports-heap img{width:338px;height:350px;margin-right:-4px;}
