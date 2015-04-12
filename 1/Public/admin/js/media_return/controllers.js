@@ -3,8 +3,15 @@ var app = angular.module('myApp', ['angularFileUpload', 'ng.ueditor', 'services'
 app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
     function($scope, $upload, MediaList) {
 
+
+        $scope.$on('MediaList.update', function (event) {
+            $scope.mediaList = MediaList.data;
+            $scope.editItem = $scope.mediaList[0];
+        });
+
+        MediaList.getInfo();
         $scope.mediaList = MediaList.data;
-        $scope.editItem = $scope.mediaList[0];
+
         $scope._simpleConfig = {
             //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
             toolbars: [
@@ -14,6 +21,19 @@ app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
 
         $scope.editItemClick = function(index) {
             $scope.editItem = $scope.mediaList[index];
+        }
+
+        $scope.removeItem = function (index) {
+            $scope.mediaList.splice(index,1);
+        }
+
+        $scope.addItem = function () {
+            if ($scope.mediaList.length <= 8) {
+                 var item = {};
+                $scope.mediaList.push(item);
+            } else {
+                alert("对不起，最多只能8项");
+            }
         }
 
         $scope.saveInfo = function () {

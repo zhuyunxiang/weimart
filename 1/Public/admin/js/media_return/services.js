@@ -2,16 +2,29 @@ var services = angular.module('services', []);
 
 services.service('MediaList', ['$http', '$rootScope',
     function($http, $rootScope) {
-    	MediaList = {};
+        MediaList = {};
 
-    	MediaList.data = [
-    	{'media_id': 1,'media_title':'题目1', 'media_img': null},
-    	{'media_id': 1,'media_title':'题目2', 'media_img': null},
-    	{'media_id': 1,'media_title':'题目3', 'media_img': null},
-    	{'media_id': 1,'media_title':'题目4', 'media_img': null},
-    	{'media_id': 1,'media_title':'题目5', 'media_img': null},
-    	];
+        MediaList.data = null;
 
-    	return MediaList;
+        MediaList.info = '';
+        MediaList.status = 1;
+
+        MediaList.getInfo = function() {
+            $http({
+                method: 'POST',
+                url: getInfoUrl,
+                data: 'msg_id=111',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    MediaList.data = data.data;
+                    console.log(MediaList.data);
+                    $rootScope.$broadcast('MediaList.update');
+                });
+        }
+
+        return MediaList;
     }
 ])
