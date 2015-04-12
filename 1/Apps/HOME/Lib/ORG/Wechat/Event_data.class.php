@@ -128,14 +128,14 @@ class Event_data
 			$third_news_list = array();
 
 			$m = M('wechat_media_list');
-			$condition = array('msg_id'=>$result['msg_id']);
+			$condition = array('media_msg_id'=>$result['msg_id']);
 			$data = $m->where($condition)->order('order_index ASC')->select();
 
 			foreach ($data as $key => $value) {
 				$short = strip_tags($value['media_content']);
 				$short_str = substr($short,0,15)."......";
 				$short_str = str_replace("&nbsp;", " ", $short_str);
-				$arr = array($value['media_title'],$short_str, $value['media_img'], 'http://www.baidu.com');
+				$arr = array($value['media_title'],$short_str, $value['media_img'], $value['media_img']);
 				array_push($third_news_list, $arr);
 			}
 			array_push($reply, $third_news_list);
