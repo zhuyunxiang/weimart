@@ -116,11 +116,34 @@ class Uploader
         }
 
         //移动文件
-        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
-            $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
-        } else { //移动成功
-            $this->stateInfo = $this->stateMap[0];
+        // if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
+        //     $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+        // } else { //移动成功
+        //     $this->stateInfo = $this->stateMap[0];
+        // }
+
+        // SAE环境修改开始
+        if ( $this->stateInfo == $this->stateMap[0] ) {
+            if(!defined('SAE_TMP_PATH')){
+                // 非SAE环境中
+                if ( !move_uploaded_file( $file[ "tmp_name" ] , $this->filePath ) ) {
+                    $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+                } else {
+                    $this->stateInfo = $this->stateMap[0];
+                }
+            }else{
+                // SAE环境中
+                $st=new SaeStorage();
+                $url=$st->upload('Public',$this->fullName, $file[ "tmp_name" ]);
+                if(!$url){
+                    $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+                }else{
+                    $this->fullName=$url;
+                    $this->stateInfo = $this->stateMap[0];
+                }
+            }
         }
+        // SAE环境修改结束
     }
 
     /**
@@ -307,6 +330,14 @@ class Uploader
 
         if (substr($fullname, 0, 1) != '/') {
             $fullname = '/' . $fullname;
+        }
+
+        if (!defined('SAE_TMP_PATH')) {
+            if ( !file_exists( $rootPath . $fullname ) ) {
+                if ( !mkdir( $rootPath . $fullname , 0777 , true ) ) {
+                    return false;
+                }
+            }
         }
 
         return $rootPath . $fullname;
