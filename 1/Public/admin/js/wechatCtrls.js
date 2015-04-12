@@ -217,7 +217,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                                         $scope.defaultCss.settedText = true;
                                         break;
                                     case "media":
-                                        alert("已经设置图文消息！");
+                                        self.location = $scope.mulTuwenURL + '?msg_id=' + data.data.msg_items.msg_id;
                                         break;
 
                                     case "url":
@@ -274,7 +274,7 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                             $scope.defaultCss.settedText = true;
                             break;
                         case "media":
-                            alert("已经设置图文消息！");
+                            self.location = $scope.mulTuwenURL+'?msg_id='+$scope.menuList[index].msg_items.msg_id;
                             break;
 
                         case "url":
@@ -338,6 +338,28 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                     if (data.status == 1) {
                         showTips('success', data.info);
                         getInfo();
+                    } else {
+                        showTips('error', data.info);
+                    }
+                })
+                .error(function() {
+                    showTips('error', "对不起，连接服务器失败！");
+                });
+        }
+// 保存Media Msg
+        $scope.toSetMediaMsg = function () {
+            $http({
+                method: 'POST',
+                url: saveMediaMsgUrl,
+                data: $.param($scope.editTextMsg),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                } // set the headers so angular passing info as form data (not request payload)
+            })
+                .success(function(data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        self.location = $scope.mulTuwenURL + "?msg_id=" + data.data;
                     } else {
                         showTips('error', data.info);
                     }

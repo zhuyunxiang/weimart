@@ -146,6 +146,39 @@ class IndexService
 		return array('data'=>false, 'info'=>"保存的内容不能为空", 'status'=>0);
 	}
 
+	// 保存图文消息
+	public function saveMediaMsg($data = null)
+	{
+		if ($data) {
+			// 设置menu类型为文字
+			$menu_info = array(
+				'menu_id'=>$data['menu_id'],
+				'menu_type'=>'media'
+			);
+
+			if ($data['menu_type'] == 'first') {
+				$this->firstMenuDao->save($menu_info);
+			} else {
+				$this->secondMenuDao->save($menu_info);
+			}
+
+			unset($data['menu_type']);
+			unset($data['menu_id']);
+			$data['msg_type'] = 'media';
+
+			if (isset($data['msg_id'])) {
+				// $data = $this->msgDao->save($data);
+
+				return array('data'=>$data['msg_id'], 'info'=>"图文信息msg-id获取成功", 'status'=>1);
+			} else {
+				$data = $this->msgDao->add($data);
+				return array('data'=>$data, 'info'=>"图文信息添加成功", 'status'=>1);
+			}
+		}
+
+		return array('data'=>false, 'info'=>"保存的内容不能为空", 'status'=>0);
+	}
+
 	// 保存链接地址
 	public function saveURL($data = null)
 	{
