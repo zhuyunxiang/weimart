@@ -16,19 +16,25 @@ class MediaReturnService extends BaseService
 		$dao = 'MediaItemDao';
 
 		$condition = array('media_msg_id'=>$id);
-		$order = null;
+		$order = 'order_index asc';
 		$page = null;
-		return $this->getInfo($dao, $condition);
+		return $this->getInfo($dao, $condition, $order);
 	}
 
-	// // 保存自定义图文回复
-	// public function saveCustomMediaReturn($saveData = null)
-	// {
-	// 	$dao = 'customReturnDao';
-	// 	$saveData['msg_type'] = 'custom_media';
-	// 	$saveData['msg_key'] = md5(time());
-	// 	return $this->saveInfo($dao, $saveData, 'msg_id');
-	// }
+	// 保存自定义图文回复
+	public function saveMediaItems($saveData = null)
+	{
+		$dao = 'MediaItemDao';
+		$id = $saveData['msg_id'];
+		$condition = array('media_msg_id'=>$id);
+		$this->MediaItemDao->where($condition)->delete();
+
+		foreach ($saveData['data'] as $key => $value) {
+			unset($value['media_id']);
+			$this->MediaItemDao->add($value);
+		}
+		return true;
+	}
 
 	// // 删除自定义文字回复
 	// public function removeCustomTextReturn($data = null)

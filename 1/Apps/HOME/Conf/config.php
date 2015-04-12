@@ -1,7 +1,7 @@
 <?php
 return array(
 	//'配置项'=>'配置值'
-	'URL_MODEL'=>3,
+	// 'URL_MODEL'=>3,
 	'DB_TYPE'=> 'mysql',     // 数据库类型
 	'DB_HOST'=> 'localhost', // 服务器地址
 	'DB_NAME'=> 'weimart',        // 数据库名,填写你创建的数据库

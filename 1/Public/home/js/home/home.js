@@ -9,6 +9,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/home",
             templateUrl: publicUrl + 'tpl/home/home.html',
             controller: "homeCtrl"
+        }).state('home/sports', {
+            url: "/home/sports",
+            templateUrl: publicUrl + 'tpl/home/sports.html',
+            controller: "sportsCtrl"
         }).state('hot_baby', {
             url: "/hot_baby",
             templateUrl: publicUrl + 'tpl/home/hot_baby.html',

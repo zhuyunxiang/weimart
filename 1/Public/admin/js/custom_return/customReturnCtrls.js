@@ -462,7 +462,7 @@ customReturnCtrls.controller('mediaReturnCtrl', ['$http', '$scope',
                     .success(function(data) {
                         if (data.status == 1) {
                             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
-                            parent.location='http://www.baidu.com?id=?';
+                            parent.location = editMediaReturnUrl + '?msg_id=111';
                             
                         } else {
                             alert(data.info);

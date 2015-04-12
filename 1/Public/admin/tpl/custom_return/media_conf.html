@@ -31,7 +31,7 @@
 			<td title="{{customReturnItem.msg_keyword}}">{{customReturnItem.msg_keyword|trimStr:14}}</td>
 			<td>查看图文</td>
 			<td>{{customReturnItem.msg_create_time}}</td>
-			<td><a href="#" data-toggle="modal" data-target="#myModal" ng-click="editCustomReturn($index)"><span class="glyphicon glyphicon-pencil"></span></a></td>
+			<td><a href="#" data-toggle="modal" role="button" data-target="#editMediaModal" ng-click="editCustomReturn($index)"><span class="glyphicon glyphicon-pencil"></span></a></td>
 			<td><a href="#" ng-click="removeCustomReturn($index)"><span class="glyphicon glyphicon-trash"></span></a></td>
 		</tr>
 	</table>
@@ -83,14 +83,14 @@
 						</div>
 					</div>
 					<!-- <div class="row">
-						<div class="col-xs-4 label-container">
-							<span>所有关键字：</span>
-						</div>
-						<div class="col-xs-6">
-							<div class="input-group">
-								<input type="text" class="form-control mini-input" ng-model="tempReturn.msg_keyword" placeholder="请输入所有关键字">
+							<div class="col-xs-4 label-container">
+									<span>所有关键字：</span>
 							</div>
-						</div>
+							<div class="col-xs-6">
+									<div class="input-group">
+											<input type="text" class="form-control mini-input" ng-model="tempReturn.msg_keyword" placeholder="请输入所有关键字">
+									</div>
+							</div>
 					</div> -->
 					<div class="row">
 						<div class="col-xs-6 col-xs-offset-4">

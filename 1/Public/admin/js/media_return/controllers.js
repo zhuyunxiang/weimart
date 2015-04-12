@@ -3,10 +3,11 @@ var app = angular.module('myApp', ['angularFileUpload', 'ng.ueditor', 'services'
 app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
     function($scope, $upload, MediaList) {
 
-
-        $scope.$on('MediaList.update', function (event) {
+        $scope.$on('MediaList.update', function(event) {
             $scope.mediaList = MediaList.data;
-            $scope.editItem = $scope.mediaList[0];
+            if ($scope.mediaList && $scope.mediaList.length > 0) {
+                $scope.editItem = $scope.mediaList[0];
+            }
         });
 
         MediaList.getInfo();
@@ -21,23 +22,29 @@ app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
 
         $scope.editItemClick = function(index) {
             $scope.editItem = $scope.mediaList[index];
+            $scope.editItem.order_index = index;
         }
 
-        $scope.removeItem = function (index) {
-            $scope.mediaList.splice(index,1);
+        $scope.removeItem = function(index) {
+            $scope.mediaList.splice(index, 1);
         }
 
-        $scope.addItem = function () {
-            if ($scope.mediaList.length <= 8) {
-                 var item = {};
-                $scope.mediaList.push(item);
-            } else {
+        $scope.addItem = function() {
+            var item = {
+                media_title: '标题',
+                media_msg_id: msgId,
+            };
+
+            if ($scope.mediaList && $scope.mediaList.length > 8) {
                 alert("对不起，最多只能8项");
+            } else {
+                if (!$scope.mediaList) {
+                    $scope.mediaList = Array(item);
+                    $scope.editItem = item;
+                } else {
+                    $scope.mediaList.push(item);
+                }
             }
-        }
-
-        $scope.saveInfo = function () {
-        	console.log($scope.mediaList);
         }
 
         $scope.$watch('files', function() {
@@ -49,7 +56,7 @@ app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
                     $upload.upload({
-                        url: currentAction+'/save_img',
+                        url: currentAction + '/save_img',
                         headers: {
                             'Content-Type': file.type
                         },
@@ -59,7 +66,7 @@ app.controller('myCtrl', ['$scope', '$upload', 'MediaList',
                     }).progress(function(evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     }).success(function(data, status, headers, config) {
-                    	$scope.editItem.media_img = publicFolder+'/media_img/'+data; 
+                        $scope.editItem.media_img = publicFolder + '/media_img/' + data;
                     });
                 }
             }
