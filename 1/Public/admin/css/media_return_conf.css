@@ -12,9 +12,9 @@ body{font-family:"Microsoft YaHei","微软雅黑",Helvetica,"黑体",Arial,Tahom
 .tab-inner-content .left .item .img{width:80px;height:80px;float:right;margin:10px;border-radius:3px;}.tab-inner-content .left .item .img img{border-radius:3px;width:100%;height:100%;}
 .tab-inner-content .left .item:hover{background-color:#DDDDDD;}.tab-inner-content .left .item:hover .hidden-panel{display:block;}
 .tab-inner-content .left .add-new-item{width:290px;height:75px;border:3px dotted silver;line-height:75px;margin-left:13px;margin-top:13px;margin-bottom:13px;text-align:center;}.tab-inner-content .left .add-new-item:hover{border-color:#deed98;}
-.tab-inner-content .right{border:1px solid #DDDDDD;border-radius:5px;float:right;width:750px;min-height:740px;padding:20px;}.tab-inner-content .right .arrow{position:relative;top:125px;}
+.tab-inner-content .right{border:1px solid #DDDDDD;border-radius:5px;float:right;width:750px;min-height:740px;padding:20px;}.tab-inner-content .right .arrow{position:relative;top:115px;}
 .tab-inner-content .right .arrow_out{left:-32px;float:left;display:inline-block;width:0;height:0;border-width:12px;border-style:dashed;border-color:transparent;border-left-width:0;border-right-color:#d3d3d3;border-right-style:solid;}
 .tab-inner-content .right .arrow_in{left:-43px;float:left;display:inline-block;width:0;height:0;border-width:12px;border-style:dashed;border-color:transparent;border-left-width:0;border-right-color:#f8f8f8;border-right-style:solid;}
 .tab-inner-content .right .controls label{position:static;margin:0px;display:block;font-weight:100;}
 .tab-inner-content .right .controls input{height:27px;width:100%;margin:15px 0;padding-left:5px;border:1px solid silver;border-radius:0.25em;}
-.tab-inner-content .right .main-content{height:500px;}.tab-inner-content .right .main-content .ueditor{height:400px;}
+.tab-inner-content .right .main-content{height:400px;}.tab-inner-content .right .main-content .ueditor{height:400px;}

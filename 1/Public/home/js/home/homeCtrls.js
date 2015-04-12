@@ -345,3 +345,8 @@ HomeCtrls.controller('registerCtrl', ['$scope', '$http',
         }
     }
 ]);
+
+// zhuyunxiang 运动风暴
+HomeCtrls.controller('sportsCtrl', ['$scope', function($scope){
+    $scope.tips =  '这个是运动风暴的controller';
+}]);

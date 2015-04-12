@@ -53,7 +53,7 @@
 								</div>
 								<div class="controls">
 									<label for="">作者(选填)</label>
-									<input type="text" ng-model='editItem.media_major' required />
+									<input type="text" ng-model='editItem.media_major' />
 								</div>
 
 								<div class="controls">
@@ -69,7 +69,7 @@
 									<label for="">正文</label>
 									<div class="ueditor" config="_simpleConfig" ng-model="editItem.media_content" ></div>
 								</div>
-								<button class="btn btn-primary" ng-disabled="editForm.$invalid" ng-click="saveInfo()">提交</button>
+								<div show-tips><button class="btn btn-primary" ng-disabled="editForm.$invalid" save-info info='mediaList' index="{$msg_id}">提交</button></div>
 							</form>
 						</div>
 					</div>
@@ -91,8 +91,10 @@
 		<js file='__PUBLIC__/admin/js/media_return/directives.js' />
 		<script>
 			var getInfoUrl = "{:U('MediaReturn/get_media_items')}";
+			var saveInfoUrl = "{:U('MediaReturn/save_media_items')}";
 			var currentAction = "__URL__";
 			var publicFolder = "__PUBLIC__/Uploads";
+			var msgId = '{$msg_id}';
 		</script>
 	</body>
 </html>

@@ -6,16 +6,13 @@ class MediaReturnAction extends Action
 {
 	public function index()
 	{
-		$this->display();
+		if ($_GET['msg_id']) {
+			$this->assign('msg_id', $_GET['msg_id']);
+			$this->display('index');
+		} else {
+			$this->error('访问错误！');
+		}
 	}
-
-	// public function save_img()
-	// {
-	// 	$filename = time().$_FILES['file']['name'];
-	// 	$destination = "./upload/Uploads/media_img/" . $filename;
-	// 	move_uploaded_file( $_FILES['file']['tmp_name'] , $destination );
-	// 	echo $filename;
-	// }
 
 	// Ajax 数据交互
 	// 获取当前Key的所有Meddia Item
@@ -26,6 +23,14 @@ class MediaReturnAction extends Action
 		$this->ajaxReturn($data, '数据获取成功', 1);
 	}
 
+	public function save_media_items()
+	{
+		$data = $_POST;
+		$data = A('Admin/MediaReturn', 'Service')->saveMediaItems($data);
+		$this->ajaxReturn($data, '数据获取成功', 1);
+	}
+
+	// 图片上传处理
 	public function save_img()
 	{
 		if (!empty($_FILES)) {
