@@ -17,6 +17,15 @@ class MediaReturnAction extends Action
 	// 	echo $filename;
 	// }
 
+	// Ajax 数据交互
+	// 获取当前Key的所有Meddia Item
+	public function get_media_items()
+	{
+		$id = $_POST['msg_id'];
+		$data = A('Admin/MediaReturn', 'Service')->getItemsByMsgId($id);
+		$this->ajaxReturn($data, '数据获取成功', 1);
+	}
+
 	public function save_img()
 	{
 		if (!empty($_FILES)) {
