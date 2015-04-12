@@ -35,8 +35,26 @@ class Text_data
 		// if (empty($reply)) {
 		// 	$reply = $this->charactorSet($data);
 		// }
-		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_type'=>'custom_text','msg_is_deleted'=>0);
+		$condition = array('msg_keyword'=>array('like','%'.$content.'%'),'msg_is_deleted'=>0);
 		$result = A('Admin/CustomReturn', 'Service')->getInfoInPage('customReturnDao', $condition);
+		
+		switch ($result[0]['msg_type']) {
+			case 'custom_text':
+				return $this->textMsgHand($content, $result);
+				break;
+			case 'custom_media':
+				return $this->mediaMsgHand($result[0]);
+				break;
+			default:
+				$reply = array('你输入的是：'.$content.',没有该关键字！','text');
+				return  $reply;
+				break;
+		}
+		
+	}
+
+	public function textMsgHand($content, $result)
+	{
 		if ($result) {
 			$str = "你输入的关键字为:“".$content."”,共有".count($result)."条回复:\n";
 			foreach ($result as $key => $value) {
@@ -45,12 +63,31 @@ class Text_data
 			$str = $str."---【苏州卖盟科技】";
 			return array($str,'text');
 		} else {
-			$reply = array('你输入的是：'.$content.',没有该关键字！','text');
-			return  $reply;
+			return array('你输入的是：'.$content.',没有该关键字！','text');
 		}
-		
+	}
 
-		
+	public function mediaMsgHand($result = null)
+	{
+		if (!empty($result)) {
+			$reply = array();
+			$third_news_list = array();
+
+			$m = M('wechat_media_list');
+			$condition = array('media_msg_id'=>$result['msg_id']);
+			$data = $m->where($condition)->order('order_index ASC')->select();
+
+			foreach ($data as $key => $value) {
+				$short = strip_tags($value['media_content']);
+				$short_str = substr($short,0,15)."......";
+				$short_str = str_replace("&nbsp;", " ", $short_str);
+				$arr = array($value['media_title'],$short_str, $value['media_img'], $value['media_img']);
+				array_push($third_news_list, $arr);
+			}
+			array_push($reply, $third_news_list);
+			array_push($reply, 'news');
+		}
+		return $reply;
 	}
 
 	//服务类消息处理
