@@ -135,7 +135,7 @@ class Event_data
 				$short = strip_tags($value['media_content']);
 				$short_str = substr($short,0,15)."......";
 				$short_str = str_replace("&nbsp;", " ", $short_str);
-				$arr = array($value['media_title'],$short_str, 'http://weimart-public.stor.sinaapp.com/Uploads/media_img/552a90869726b.jpg', $value['media_img']);
+				$arr = array($value['media_title'],$short_str, $value['media_img'], $value['media_img']);
 				array_push($third_news_list, $arr);
 			}
 			array_push($reply, $third_news_list);
