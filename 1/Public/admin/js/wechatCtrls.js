@@ -200,7 +200,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                     } // set the headers so angular passing info as form data (not request payload)
                 })
                     .success(function(data) {
-                        console.log(data);
                         if (data.status == 1) {
                             if (data.data.menu_type != null) {
                                 switch (data.data.menu_type) {
@@ -334,7 +333,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         showTips('success', data.info);
                         getInfo();
@@ -357,7 +355,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         self.location = $scope.mulTuwenURL + "?msg_id=" + data.data;
                     } else {
@@ -387,7 +384,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                         showTips('error', data.info);
                     }
 
-                    console.log(data);
                 })
                 .error(function() {
                     showTips('error', "对不起，连接服务器失败！");
@@ -418,7 +414,6 @@ WechatCtrls.controller('wechatCtrl', ['$scope', '$timeout', '$http',
                 } // set the headers so angular passing info as form data (not request payload)
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 0) {
                         showTips('success', data.info);
                         getInfo();
