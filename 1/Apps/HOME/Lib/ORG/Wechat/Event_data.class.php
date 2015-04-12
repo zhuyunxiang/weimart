@@ -110,7 +110,7 @@ class Event_data
 					break;
 				// 回复图文消息
 				case 'media':
-					# code...
+					return $this->mediaMsgHand($result);
 					break;
 				
 				default:
@@ -119,6 +119,29 @@ class Event_data
 			}
 		} 
 		return array('对不起，没有设定此事件回复！','text');
+	}
+
+	public function FunctionName($result = null)
+	{
+		if (!empty($result)) {
+			$reply = array();
+			$third_news_list = array();
+
+			$m = M('wechat_media_list');
+			$condition = array('msg_id'=>$result['msg_id']);
+			$data = $m->where($condition)->order('order_index ASC')->select();
+
+			foreach ($data as $key => $value) {
+				$short = strip_tags($value['media_content']);
+				$short_str = substr($short,0,15)."......";
+				$short_str = str_replace("&nbsp;", " ", $short_str);
+				$arr = array($value['media_title'],$short_str, $value['media_img'], 'http://www.baidu.com');
+				array_push($third_news_list, $arr);
+			}
+			array_push($reply, $third_news_list);
+			array_push($reply, 'news');
+		}
+		return $reply;
 	}
 	
 }
