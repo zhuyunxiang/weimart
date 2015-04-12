@@ -165,6 +165,15 @@ class IndexAction extends Action {
     $this->save_data("saveTextMsg");
   }
 
+  // 保存图文消息
+  public function save_media_msg()
+  {
+    if ($_POST != null) {
+      $result = A('Admin/Index', 'Service')->saveMediaMsg($_POST);
+      $this->ajaxReturn($result['data'], $result['info'], $result['status']);
+    }
+  }
+
   // 保存菜单链接地址 
   public function save_url()
   {

@@ -18,6 +18,33 @@ directives.directive('editItem', ['MediaList',
     }
 ]);
 
+function goBack() {
+    if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
+        if (history.length > 0) {
+            window.history.go(-1);
+        } else {
+            window.opener = null;
+            window.close();
+        }
+    } else { //非IE浏览器 
+        if (navigator.userAgent.indexOf('Firefox') >= 0 ||
+            navigator.userAgent.indexOf('Opera') >= 0 ||
+            navigator.userAgent.indexOf('Safari') >= 0 ||
+            navigator.userAgent.indexOf('Chrome') >= 0 ||
+            navigator.userAgent.indexOf('WebKit') >= 0) {
+
+            if (window.history.length > 1) {
+                window.history.go(-1);
+            } else {
+                window.opener = null;
+                window.close();
+            }
+        } else { //未知的浏览器 
+            window.history.go(-1);
+        }
+    }
+}
+
 directives.directive('saveInfo', ['MediaList',
     function(MediaList) {
         return {
@@ -29,13 +56,17 @@ directives.directive('saveInfo', ['MediaList',
             },
             link: function(scope, element, attrs, showTipsCtrl) {
                 element.bind('click', function() {
-                    var data = {'data': scope.info, 'msg_id': scope.index};
+                    var data = {
+                        'data': scope.info,
+                        'msg_id': scope.index
+                    };
                     MediaList.saveInfo(data);
 
-                    scope.$on('MediaList.saveSuccess', function (event) {
-                        showTipsCtrl.showSuccess("数据保存成功！");
+                    scope.$on('MediaList.saveSuccess', function(event) {
+                        alert("数据保存成功！");
+                        goBack();
                     });
-                    
+
                 });
             },
         };

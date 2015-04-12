@@ -19,8 +19,9 @@
 			var getSecondMenuInfoUrl = "{:U('get_second_menu_info_by_id')}";
 			var saveTextMsgUrl = "{:U('save_text_msg')}";
 			var saveAddressURL = "{:U('save_url')}";
-			var mulTuwenURL = "{:U('mulTuwen')}";
+			var mulTuwenURL = "{:U('MediaReturn/index')}";
 			var saveToWechatActionUrl = "{:U('Wechat/Conf/set_menu')}";
+			var saveMediaMsgUrl = "{:U('save_media_msg')}";
 		</script>
 	</head>
 	<body ng-controller="wechatCtrl">
@@ -78,8 +79,9 @@
 									<div class="edit-container">
 										<ul class="nav nav-tabs">
 											<li role="presentation" class="active"><a href="#"><i class="glyphicon glyphicon-pencil" ></i>文字</a></li>
-											<li role="presentation"><a ng-href="{{mulTuwenURL}}" target="_blank"><i class="glyphicon glyphicon-picture" ></i>图文</a></li>
+											<li role="presentation"><a ng-click="toSetMediaMsg()" target="_blank"><i class="glyphicon glyphicon-picture" ></i>图文</a></li>
 										</ul>
+										<!-- ng-href="{{mulTuwenURL}}" -->
 										<div class="edit-textarea">
 											<textarea ng-model="editTextMsg.msg_text">
 											

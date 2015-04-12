@@ -51,6 +51,10 @@ class CustomReturnService extends BaseService
 		$dao = 'customReturnDao';
 		$saveData['msg_type'] = 'custom_media';
 		$saveData['msg_key'] = md5(time());
+		if (isset($saveData['msg_id'])) {
+			$this->saveInfo($dao, $saveData, 'msg_id');
+			return $saveData['msg_id'];
+		}
 		return $this->saveInfo($dao, $saveData, 'msg_id');
 	}
 

@@ -363,6 +363,7 @@ customReturnCtrls.controller('mediaReturnCtrl', ['$http', '$scope',
             $scope.textInfo.modalTitleText = '修改条目';
             $scope.tempReturn = $scope.customReturnList[key];
             getStrArr();
+            $("#editMediaModal").modal('show');
         }
 
         // 添加关键字（子）
@@ -449,6 +450,8 @@ customReturnCtrls.controller('mediaReturnCtrl', ['$http', '$scope',
             }
         }
 
+        $scope.editMediaReturnUrl = editMediaReturnUrl;
+
         $scope.toSetMedia = function (argument) {
             if ($scope.tempReturn.msg_keyword) {
                 $http({
@@ -462,7 +465,8 @@ customReturnCtrls.controller('mediaReturnCtrl', ['$http', '$scope',
                     .success(function(data) {
                         if (data.status == 1) {
                             getReturns($scope.pagination.currentPage, $scope.pagination.pageSize, $scope.pagination.keyword);
-                            parent.location = editMediaReturnUrl + '?msg_id=111';
+                            // parent.location = editMediaReturnUrl + '?msg_id=' + data.data;
+                            window.open(editMediaReturnUrl + '?msg_id=' + data.data);
                             
                         } else {
                             alert(data.info);
