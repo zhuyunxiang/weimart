@@ -17,4 +17,4 @@ body{font-family:"Microsoft YaHei","微软雅黑",Helvetica,"黑体",Arial,Tahom
 .tab-inner-content .right .arrow_in{left:-43px;float:left;display:inline-block;width:0;height:0;border-width:12px;border-style:dashed;border-color:transparent;border-left-width:0;border-right-color:#f8f8f8;border-right-style:solid;}
 .tab-inner-content .right .controls label{position:static;margin:0px;display:block;font-weight:100;}
 .tab-inner-content .right .controls input{height:27px;width:100%;margin:15px 0;padding-left:5px;border:1px solid silver;border-radius:0.25em;}
-.tab-inner-content .right .main-content{height:300px;}.tab-inner-content .right .main-content .ueditor{height:60%;}
+.tab-inner-content .right .main-content{height:500px;}.tab-inner-content .right .main-content .ueditor{height:400px;}
