@@ -107,15 +107,34 @@ class Uploader
         }
 
         //创建目录失败
-        if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
-            $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
-            return;
-        } else if (!is_writeable($dirname)) {
-            $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
-            return;
+        // if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+        //     $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+        //     return;
+        // } else if (!is_writeable($dirname)) {
+        //     $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+        //     return;
+        // }
+
+        // 非SAE环境创建目录失败
+        if (!defined('SAE_TMP_PATH')) {
+            if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+                return;
+            } else if (!is_writeable($dirname)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+                return;
+            }
+        } else {
+            if (!file_exists(file_domain('Public').'/Uploads') && !mkdir(file_domain('Public').'/Uploads', 0777, true)) {
+                $this->stateInfo = "SAE文件夹创建失败";
+                return;
+            } else if (!is_writeable(file_domain('Public').'/Uploads')) {
+                $this->stateInfo = "SAE文件夹不可写";
+                return;
+            }
         }
 
-        //移动文件
+        // 移动文件
         // if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
         //     $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
         // } else { //移动成功
@@ -138,7 +157,7 @@ class Uploader
                 if(!$url){
                     $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
                 }else{
-                    $this->fullName=$url;
+                    $this->fullName = $url;
                     $this->stateInfo = $this->stateMap[0];
                 }
             }
@@ -336,6 +355,8 @@ class Uploader
             if ( !file_exists( $rootPath . $fullname ) ) {
                 if ( !mkdir( $rootPath . $fullname , 0777 , true ) ) {
                     return false;
+                } else {
+                    return $fullname;
                 }
             }
         }
