@@ -119,7 +119,13 @@ function getfiles($path, $allowFiles, &$files = array())
     return $files;
   } else {
     $saestor = new SaeStorage();
-    $path = preg_replace('/','',$path);
+    if (substr($path, 0, 1) == '/') {
+      $path = substr($path, 1, strlen($path)-1);
+    } 
+    if (substr($path, -1) == '/') {
+      $path = substr($path, 0, strlen($path)-1);
+    }
+
     $ret = $saestor->getListByPath ('Public', $path);
     foreach($ret['dirs'] as $dir)
     {
