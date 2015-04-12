@@ -121,10 +121,31 @@ class Uploader
         // } else { //移动成功
         //     $this->stateInfo = $this->stateMap[0];
         // }
-        $saestor = new SaeStorage();
-        $url = $saestor->upload('Public', $this->fullName, $file['tmp_name']);
-        $this->fullName = str_replace('\\', '/', $url);
-        $this->stateInfo = $this->stateMap[0];
+
+        // 非SAE环境
+        if(!defined('SAE_TMP_PATH')){
+            //创建目录失败
+            if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+                return;
+            } else if (!is_writeable($dirname)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+                return;
+            }
+
+            //移动文件
+            if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
+                $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
+            } else { //移动成功
+                $this->stateInfo = $this->stateMap[0];
+            }
+        } else {
+            $saestor = new SaeStorage();
+            $url = $saestor->upload('Public', $this->fullName, $file['tmp_name']);
+            $this->fullName = str_replace('\\', '/', $url);
+            $this->stateInfo = $this->stateMap[0];
+        }
+
     }
 
     /**
@@ -166,11 +187,29 @@ class Uploader
         //     $this->stateInfo = $this->stateMap[0];
         // }
 
-        $saestor = new SaeStorage();
-        $url = $saestor->write('Public', $this->fullName, $img);
-        $this->fullName = str_replace('\\', '/', $url);
-        $this->stateInfo = $this->stateMap[0];
+        // 非SAE环境
+        if(!defined('SAE_TMP_PATH')){
+            //创建目录失败
+            if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+                return;
+            } else if (!is_writeable($dirname)) {
+                $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+                return;
+            }
 
+            //移动文件
+            if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+                $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
+            } else { //移动成功
+                $this->stateInfo = $this->stateMap[0];
+            }
+        } else {
+            $saestor = new SaeStorage();
+            $url = $saestor->write('Public', $this->fullName, $img);
+            $this->fullName = str_replace('\\', '/', $url);
+            $this->stateInfo = $this->stateMap[0];
+        }
     }
 
     /**
