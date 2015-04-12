@@ -107,31 +107,12 @@ class Uploader
         }
 
         //创建目录失败
-        // if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
-        //     $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
-        //     return;
-        // } else if (!is_writeable($dirname)) {
-        //     $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
-        //     return;
-        // }
-
-        // 非SAE环境创建目录失败
-        if (!defined('SAE_TMP_PATH')) {
-            if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
-                $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
-                return;
-            } else if (!is_writeable($dirname)) {
-                $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
-                return;
-            }
-        } else {
-            if (!file_exists(file_domain('Public').'/Uploads') && !mkdir(file_domain('Public').'/Uploads', 0777, true)) {
-                $this->stateInfo = "SAE文件夹创建失败";
-                return;
-            } else if (!is_writeable(file_domain('Public').'/Uploads')) {
-                $this->stateInfo = "SAE文件夹不可写";
-                return;
-            }
+        if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
+            $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
+            return;
+        } else if (!is_writeable($dirname)) {
+            $this->stateInfo = $this->getStateInfo("ERROR_DIR_NOT_WRITEABLE");
+            return;
         }
 
         // 移动文件
@@ -347,18 +328,17 @@ class Uploader
         $fullname = $this->fullName;
         $rootPath = $_SERVER['DOCUMENT_ROOT'];
 
-        if (substr($fullname, 0, 1) != '/') {
-            $fullname = '/' . $fullname;
-        }
-
-        if (!defined('SAE_TMP_PATH')) {
+        // 非SAE环境
+        if (defined('SAE_TMP_PATH')) {
             if ( !file_exists( $rootPath . $fullname ) ) {
                 if ( !mkdir( $rootPath . $fullname , 0777 , true ) ) {
                     return false;
-                } else {
-                    return $fullname;
                 }
             }
+        }
+
+        if (substr($fullname, 0, 1) != '/') {
+            $fullname = '/' . $fullname;
         }
 
         return $rootPath . $fullname;
