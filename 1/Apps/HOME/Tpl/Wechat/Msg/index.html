@@ -7,8 +7,8 @@
 		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 		<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-		<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js">
-		</script>
+		<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/commen/ueditor/ueditor.parse.js"></script>
 		<style type="text/css" media="screen">
 			.img{
 				width:100%;
@@ -21,29 +21,36 @@
 		<div class="container">
 			<div>
 				<h4>
-				<strong>{$data.media_title}<strong>
+				<strong>{$data.media_title}</strong>
 				<br/>
 				<br/>
 				<p>
-				<small>20{$data.media_create_time|strtotime|date="y-m-d",###}</small>
-				&nbsp;
-				&nbsp;
-				<small>卖盟科技</small>
+					<small>20{$data.media_create_time|strtotime|date="y-m-d",###}</small>
+					&nbsp;
+					&nbsp;
+					<small>卖盟科技</small>
 				</p>
 				</h4>
 			</div>
-			<?php
-				if ($data['media_head_in_content']=="true") {
-					echo "<img class='img' src='".$data['media_img']."'/>";
-				}
-			?>
+			<div>
+				<?php
+					if ($data['media_head_in_content']=="true") {
+						echo "<img class='img' src='".$data['media_img']."'/>";
+					}
+				?>
+			</div>
 			<div id="" class="row">
 				<div id="" class="col-md-12 ">
-					<div class=" nicEdit-main ">
+					<div class="content">
 						{$data.media_content}
 					</div>
 				</div>
 			</div>
 		</div>
+		<script>
+			uParse('.content', {
+			    rootPath: './'
+			})
+		</script>
 	</body>
 </html>
