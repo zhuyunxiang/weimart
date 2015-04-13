@@ -53,6 +53,14 @@ class Text_data
 		
 	}
 
+	public function get_url() {
+	    $sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
+	    $php_self = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
+	    $path_info = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+	    $relate_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : $php_self.(isset($_SERVER['QUERY_STRING']) ? '?'.$_SERVER['QUERY_STRING'] : $path_info);
+	    return $sys_protocal.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
+ 	}
+
 	public function textMsgHand($content, $result)
 	{
 		if ($result) {
@@ -81,7 +89,7 @@ class Text_data
 				$short = strip_tags($value['media_content']);
 				$short_str = substr($short,0,15)."......";
 				$short_str = str_replace("&nbsp;", " ", $short_str);
-				$arr = array($value['media_title'],$short_str, $value['media_img'], $value['media_img']);
+				$arr = array($value['media_title'],$short_str, $value['media_img'], $this->get_url().'/index.php/Wechat/Msg?media_id='.$value['media_id']);
 				array_push($third_news_list, $arr);
 			}
 			array_push($reply, $third_news_list);
