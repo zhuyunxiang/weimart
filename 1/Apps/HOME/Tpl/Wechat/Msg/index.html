@@ -1,0 +1,49 @@
+<html lang="zh-cn">
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=3.0">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+		<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+		<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js">
+		</script>
+		<style type="text/css" media="screen">
+			.img{
+				width:100%;
+			padding-top: 2px;
+			padding-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div>
+				<h4>
+				<strong>{$data.media_title}<strong>
+				<br/>
+				<br/>
+				<p>
+				<small>20{$data.media_create_time|strtotime|date="y-m-d",###}</small>
+				&nbsp;
+				&nbsp;
+				<small>卖盟科技</small>
+				</p>
+				</h4>
+			</div>
+			<?php
+				if ($data['media_head_in_content']!="false") {
+					echo "<img class='img' src='".$data['media_img']."'/>";
+				}
+			?>
+			<div id="" class="row">
+				<div id="" class="col-md-12 ">
+					<div class=" nicEdit-main ">
+						{$data.media_content}
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -36,6 +36,16 @@ class MediaReturnService extends BaseService
 		return true;
 	}
 
+	// 根据Id获取每个单项的内容
+	public function getMediaReturnById($mediaId = null)
+	{
+		if ($mediaId) {
+			$condition = array('media_id'=>$mediaId);
+			return $this->MediaItemDao->where($condition)->find();
+		}
+		return false;
+	}
+
 	// // 删除自定义文字回复
 	// public function removeCustomTextReturn($data = null)
 	// {
