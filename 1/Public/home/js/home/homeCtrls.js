@@ -374,10 +374,9 @@ HomeCtrls.controller('sportsCtrl', ['$scope',
         };
 }]);
 
-// zhuyunxiang 运动风暴
+// zhuyunxiang 男装&女装
 HomeCtrls.controller('typeCtrl', ['$scope', 
 	function($scope){
-	    $scope.tips =  '这个是运动风暴的controller';
 	    $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
@@ -386,4 +385,19 @@ HomeCtrls.controller('typeCtrl', ['$scope',
         $scope.tplURLs = {
             typeMain : publicUrl + 'tpl/home/type_main.html',
         };
+
+
+        $scope.typeSingles = [
+	        {"url": "3.jpg"},
+	        {"url": "4.jpg"},
+	        {"url": "5.jpg"},
+	        {"url": "6.jpg"},
+	        {"url": "7.jpg"},
+	        {"url": "8.jpg"},
+	        {"url": "9.jpg"},
+	        {"url": "10.jpg"},
+	        {"url": "11.jpg"},
+	        {"url": "12.jpg"},
+        ];
+
 }]);
