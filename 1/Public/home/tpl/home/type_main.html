@@ -1,1 +1,44 @@
-这个是男装女装的页面
+<div class="type" style="background-image: url('{{imageURLs.publicUrl}}img/type/bj.jpg')">
+	<div class="type-box">
+		<div class="type-fore">
+			<div class="type-main">
+				<img src="{{imageURLs.publicUrl}}img/type/1.jpg" alt="" class="type-fore-left">
+				<img src="{{imageURLs.publicUrl}}img/type/2.jpg" alt="" class="type-fore-right">
+			</div>
+		</div>
+		
+		<div class="type-container">
+			<span class="title">
+				最新单品
+			</span>
+			<div class="type-center">
+				<div class="type-single" ng-repeat="(key, value) in typeSingles">
+					<img src="{{imageURLs.publicUrl}}img/type/{{value.url}}" alt="">
+				</div>
+			</div>
+			<span class="title">
+				最美组合
+			</span>
+			<div class="type-rear">
+				<div class="type-rear-row">
+					<img src="{{imageURLs.publicUrl}}img/type/13.jpg" alt="" class="left">
+					<img src="{{imageURLs.publicUrl}}img/type/14.jpg" alt="" class="right">
+					<img src="{{imageURLs.publicUrl}}img/type/17.png" alt="" class="type-inc">
+				</div>
+				<div class="type-rear-row">
+					<img src="{{imageURLs.publicUrl}}img/type/15.jpg" alt="" class="left">
+					<img src="{{imageURLs.publicUrl}}img/type/16-1.jpg" alt="" class="right">
+					<img src="{{imageURLs.publicUrl}}img/type/18.png" alt="" class="type-inc2">
+				</div>	
+				
+			</div>
+		</div>
+
+		<div class="common-bottom">
+			<img src="{{imageURLs.publicUrl}}img/common-bottom.png">
+		</div>
+
+	</div>
+	
+	
+</div>
