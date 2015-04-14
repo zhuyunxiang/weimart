@@ -54,7 +54,6 @@ class BaseService
 	// $dao 所用数据库表对象
 	// $data 数据
 	// $id ID字段名
-
 	public function saveInfo($dao, $data = null, $id = 'id')
 	{
 		if (isset($data[$id])) {
@@ -63,7 +62,19 @@ class BaseService
 		} else {
 			return $this->$dao ->add($data); 
 		}
-		
+	}
+
+	// 通用删除方法，
+	// $dao 所用数据库表对象
+	// $id 数据ID
+	// $mapKey ID字段名
+	public function removeInfo($data, $id, $mapKey = 'id')
+	{
+		if (isset($id)) {
+			$condition = array($mapKey=>$id);
+			return $this->$data->where($condition)->delete();
+		}
+		return false;
 	}
 
 
