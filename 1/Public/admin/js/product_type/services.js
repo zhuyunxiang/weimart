@@ -5,82 +5,54 @@ services.service('ProductType', ['$http', '$rootScope',
         var ProductType = {};
         ProductType.info = '数据获取成功！';
         ProductType.status = 1;
-        ProductType.data = [{
-            "id": 1,
-            "title": "node1",
-            "nodes": [{
-                "id": 11,
-                "title": "node1.1",
-                "nodes": [{
-                    "id": 111,
-                    "title": "node1.1.1",
-                    "nodes": []
-                }]
-            }, {
-                "id": 12,
-                "title": "node1.2",
-                "nodes": []
-            }],
-        }, {
-            "id": 2,
-            "title": "node2",
-            "nodes": [{
-                "id": 21,
-                "title": "node2.1",
-                "nodes": []
-            }, {
-                "id": 22,
-                "title": "node2.2",
-                "nodes": []
-            }],
-        }, {
-            "id": 3,
-            "title": "node3",
-            "nodes": [{
-                "id": 31,
-                "title": "node3.1",
-                "nodes": []
-            }],
-        }, {
-            "id": 4,
-            "title": "node4",
-            "nodes": [{
-                "id": 41,
-                "title": "node4.1",
-                "nodes": []
-            }],
-        }];
+        ProductType.data = null;
 
         ProductType.getInfo = function() {
             $http({
                 method: 'POST',
-                url: getInfoUrl,
+                url: appPath + '/API/PtypeAPI/get_all_types',
                 data: null,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).success(function(data) {
-                ProductType.data = data.data;
+                ProductType.data = data;
                 $rootScope.$broadcast('ProductType.update');
             });
         }
 
-        ProductType.addInfo = function(info) {
+        ProductType.saveInfo = function(info) {
             $http({
                 method: 'POST',
-                url: saveInfoUrl,
+                url: appPath + '/API/PtypeAPI/save_type',
                 data: $.param(info),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).success(function(data) {
+                alert(data.info)
                 if (data.status == 1) {
-                    ProductType.getList();
-                };
-                ProductType.status = data.status;
-                ProductType.info = data.info;
+                    ProductType.getInfo();
+                }
             });
         }
+
+        ProductType.removeInfo = function(typeId) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/PtypeAPI/remove_type',
+                data: 'type_id=' + typeId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).success(function(data) {
+                alert(data.info)
+                if (data.status == 1) {
+                    ProductType.getInfo();
+                }
+            });
+        }
+
         return ProductType;
     }
 ])

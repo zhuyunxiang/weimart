@@ -12,62 +12,57 @@
 	<body ng-app="treeApp">
 		<div class="container" ng-controller="treeCtrl">
 			<div class="row">
-				<div class="col-xs-4">
-					<h3>Tree view
+				<div class="col-xs-8">
+					<h3>所有商品分类
 					</h3>
 					<p>
-						搜索根: <input ng-model="query" type="text" ng-change="findNodes()" placeholder='请输入根节点关键字'/>
+						搜索根: <input ng-model="query" type="text" ng-change="findNodes()" placeholder='请输入根节点关键字'/>&nbsp;&nbsp; <button class="btn btn-primary create-root-btn" data-toggle="modal" data-target="#editInfoModal" ng-click="setRoot()">创建根节点</button>
 					</p>
 					<!-- Nested node template -->
 					<script type="text/ng-template" id="nodes_renderer.html">
 					<div ui-tree-handle class="tree-node tree-node-content">
-								<a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
-								{{node.title}}
-								<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
-								<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+									<a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+									{{node.type_name}}
+									<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeType(this)"><span class="glyphicon glyphicon-remove"></span></a>
+									<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="setAdd(this)" data-toggle="modal" data-target="#editInfoModal" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
 					</div>
 					<ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
-								<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">
-								</li>
+									<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">
+									</li>
 					</ol>
 					</script>
-					<button class="btn btn-primary" ng-hide="data.length!=0" ng-click="newSubItem(data)">创建根节点</button>
+					
 					<div ui-tree id="tree-root">
 						<ol ui-tree-nodes="" ng-model="data">
 							<li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)"></li>
 						</ol>
 					</div>
 				</div>
-				<div class="col-xs-4">
-					<h3>Data binding</h3>
-					<div class="info">
-						{{info}}
-					</div>
-				<pre class="code">{{ data | json }}</pre>
+				
 			</div>
-		</div>
-		<div class="modal fade" id="editInfoModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">{{textInfo.modalTitleText}}</h4>
-					</div>
-					<div class="modal-body">
-						<div class="keyword-container">
-							<div class="row">
-								<div class="col-xs-4 label-container">
-									<span>请输入关键字：</span>
-								</div>
-								<div class="col-xs-6">
-									<input type="text" class="mini-input" ng-model="tempReturn.keywordItem" placeholder="请输入关键字">
+			<div class="modal fade" id="editInfoModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">{{textInfo.modalTitleText}}</h4>
+						</div>
+						<div class="modal-body">
+							<div class="keyword-container">
+								<div class="row">
+									<div class="col-xs-4 label-container">
+										<span>请输入关键字：</span>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" class="mini-input" ng-model="editType.type_name" placeholder="请输入关键字">
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveCustomReturn()">保存</button>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveType()">保存</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -77,13 +72,18 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.min.js"></script>
 		<![endif]-->
 		<js file='__PUBLIC__/commen/js/lib/angular.min.js' />
+		<js file='__PUBLIC__/commen/js/lib/jquery.min.js' />
+		<js file='__PUBLIC__/commen/js/lib/bootstrap.min.js' />
 		<js file='__PUBLIC__/commen/angular-tree/angular-ui-tree.min.js' />
 		<js file='__PUBLIC__/admin/js/product_type/controllers.js' />
 		<js file='__PUBLIC__/admin/js/product_type/services.js' />
 		<js file='__PUBLIC__/admin/js/product_type/filters.js' />
 		<js file='__PUBLIC__/admin/js/product_type/directives.js' />
 		<script>
-		var app = angular.module('treeApp', ['ui.tree','controllers', 'services']);
+		var app = angular.module('treeApp', ['ui.tree','controllers', 'services', 'directives']);
+		var urlPath = "__URL__";
+		var appPath = "__APP__";
+		var publicPath = "__PUBLIC__";
 		</script>
 	</body>
 </html>
