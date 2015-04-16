@@ -10,7 +10,7 @@
 			<div class="type-text start-prepare">
 				<div class="mini-item start-prepare" ng-repeat="rowItem in fasionClothes">
 					<span ng-class="item.class" ng-repeat="item in rowItem">
-						{{item.content}}
+						<a ui-sref="product_list">{{item.content}}</a>
 					</span>
 				</div>
 			</div>

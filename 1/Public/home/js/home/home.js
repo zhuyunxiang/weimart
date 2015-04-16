@@ -38,10 +38,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/more_cheap",
             templateUrl: publicUrl + 'tpl/home/more_cheap.html',
             controller: "moreCheapCtrl"
+        }).state('product_list', {
+            url: "/product_list",
+            templateUrl: publicUrl + 'tpl/home/product_list.html',
+            controller: "productListCtrl"
         })
         .state('register', {
             url: "/register",
-            templateUrl: publicUrl + 'tpl/home/register.html',
+            templateUrl: publicUrl + 'tpl/home/control/register.html',
             controller: "registerCtrl"
         });
 });

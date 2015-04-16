@@ -401,3 +401,17 @@ HomeCtrls.controller('typeCtrl', ['$scope',
         ];
 
 }]);
+
+// 商品列表Controller
+HomeCtrls.controller('productListCtrl', ['$scope',
+    function($scope) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        $scope.tplURLs = {
+            
+        };
+    }
+]);
