@@ -413,5 +413,59 @@ HomeCtrls.controller('productListCtrl', ['$scope',
         $scope.tplURLs = {
             
         };
+
+
+        $scope.brands = [
+        	{"url":"1.jpg"},
+        	{"url":"2.jpg"},
+        	{"url":"3.jpg"},
+        	{"url":"4.jpg"},
+        	{"url":"5.jpg"},
+        	{"url":"6.jpg"},
+        	{"url":"7.jpg"},
+        	{"url":"8.jpg"},
+        	{"url":"1.jpg"},
+        	{"url":"2.jpg"},
+        	{"url":"3.jpg"},
+        	{"url":"4.jpg"},
+        	{"url":"5.jpg"},
+        	{"url":"6.jpg"},
+        	{"url":"7.jpg"},
+        	{"url":"8.jpg"},
+        ];
+
+        $scope.hotSell = [
+        	{"item":"气质淑女"},
+        	{"item":"加肥加大"},
+        	{"item":"小香风"},
+        	{"item":"打底"},
+        	{"item":"气质优雅"},
+        	{"item":"牛仔"},
+        	{"item":"气质淑女"},
+        	{"item":"加肥加大"},
+        	{"item":"小香风"},
+        	{"item":"打底"},
+        	{"item":"气质优雅"},
+        	{"item":"牛仔"},
+        	{"item":"气质淑女"},
+        	{"item":"加肥加大"},
+        	{"item":"气质淑女"},
+        	{"item":"加肥加大"},
+        	{"item":"小香风"},
+        	{"item":"打底"},
+        	{"item":"气质优雅"},
+        	{"item":"牛仔"},
+        	{"item":"气质淑女"},
+        	{"item":"加肥加大"},
+        	{"item":"小香风"},
+        	{"item":"打底"},
+        	{"item":"气质优雅"},
+        	{"item":"牛仔"},
+        ];
+
+        // $scope.poplarSpring = [
+        // ];
+
+
     }
 ]);

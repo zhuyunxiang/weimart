@@ -18,6 +18,9 @@ html{
 .boder-solid-CCCC{
 	border: solid 1px #CCCCCC;
 }
+.boder-solid-main{
+	border: solid 1px #FF8485;
+}
 
 // 主Container #1
 .home-container{
@@ -1022,7 +1025,85 @@ div.type {
 
 		
 		
+	}	
+}
+
+// #zhaoyuxue 以下是product-list
+div.prod-list {
+	width: 1150px;
+	min-width: 1150px;
+	margin-left: 100px;
+	margin-top: 15px;
+
+	div.page-flow {
+		font-size: 14px;
+		font-family: 'Arial Negreta', 'SamHei';
+
 	}
 
-	
+	div.title {
+		.boder-solid-main;
+		width: 100%;
+		height: 44px;
+		font-size: 20px;
+		background-color: #FFD9DA;
+		line-height: 44px;
+		margin-bottom: 15px;
+
+		span {
+			font-weight: bold;
+		}
+	}
+
+	div.class-flow {
+		font-size: 18px;
+	}
+
+	div.class-list {
+		width: 100%;
+		.boder-solid-CCCC;
+
+		font-weight: 12px;
+		font-family: 'Arial Negreta', 'SamHei';
+
+		div.classes {
+			border-bottom: dotted 1px #CCCCCC;
+			margin: 15px 20px 15px 20px;
+
+			div.heading {
+				display: inline-table;
+				width: 80px;
+
+			}
+
+			div.class-item {
+				display: inline-table;
+				width: 1021px;
+				
+
+				span {
+					display: inline-table;
+					margin-right: 25px;
+					margin-bottom: 10px;
+
+					span.sum {
+						color: #A5A5C2;
+						margin: 0px;
+					}
+				}
+
+				img {
+					display: inline-table;
+					width: 90px;
+					height: 45px;
+					margin-right: 30px;
+					margin-bottom: 10px;
+					// margin-left: -4px;
+				}
+
+			}
+		}
+	}
+
+
 }
