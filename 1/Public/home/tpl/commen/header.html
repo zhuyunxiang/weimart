@@ -8,7 +8,15 @@
 						<a href="#/home">网站收藏</a>
 					</div>
 					<div class="config-tips">
-						请登录&nbsp;&nbsp;<a href="#/register">免费注册</a>&nbsp;&nbsp;
+						<span ng-hide="user_name">
+							<a href="#/login">亲,请登录</a>
+							&nbsp;&nbsp;
+							<a href="#/register">免费注册</a>
+							&nbsp;&nbsp;
+						</span>
+						<span ng-show="user_name">
+						欢迎你 {{user_name}} <a href="" log-out>退出登陆</a></span>
+						
 						<a href="#">卖家中心</a>&nbsp;
 						<a href="#">买家中心</a>&nbsp;
 						<a href="#">客户服务</a>

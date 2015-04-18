@@ -1,4 +1,4 @@
-<div class="container register-container">
+<div class="container login-container">
 	<div class="logo">
 		<hr>
 	</div>
@@ -11,7 +11,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<div class="panel-title">
-							账户注册
+							账户登陆
 						</div>
 					</div>
 					<div class="panel-body">
@@ -20,21 +20,12 @@
 								<form class="form-horizontal" role="form" name="infoForm">
 									<div class="form-group">
 										<label class="col-xs-4 control-label">
-											邮&nbsp;&nbsp;箱：
-										</label>
-										<div class="col-xs-8">
-											<input type="email" class="form-control" placeholder="请输入你的邮箱" ng-model="userInfo.user_email" required>
-										</div>
-										<span ng-init="validateTips.email = ' '">{{validateTips.email}}</span>
-									</div>
-									<div class="form-group">
-										<label class="col-xs-4 control-label">
 											用户名：
 										</label>
 										<div class="col-xs-8">
 											<input type="text" class="form-control" placeholder="请输入你的用户名" ng-model="userInfo.user_name" required>
 										</div>
-										<span ng-init="validateTips.username = ' '">{{validateTips.username}}</span>
+										<span></span>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">
@@ -46,29 +37,13 @@
 										<span></span>
 									</div>
 									<div class="form-group">
-										<label class="col-xs-4 control-label">
-											再次输入：
-										</label>
-										<div class="col-xs-8">
-											<input type="password" class="form-control" placeholder="再次输入你的密码" ng-model="userInfo.user_re_pwd" required>
-										</div>
-										<span ng-init="validateTips.repassword = ' '">{{validateTips.repassword}}</span>
-									</div>
-									<div class="form-group">
-										<div class="col-xs-offset-2 col-xs-9">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" ng-model="userInfo.autoLogin" required>我已阅读并接受卖盟服务条款
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form group">
+										<span class="login-tips">{{errorInfo}}</span>
 										<div class="col-xs-offset-2 col-xs-10">
-											<button class="btn btn-primary" ng-disabled="infoForm.$invalid" do-register info="userInfo" vldtip="validateTips">
-											注册
+											<button class="btn btn-primary" ng-disabled="infoForm.$invalid" do-login info="userInfo" errorinfo="errorInfo">
+											登陆
 											</button>
 										</div>
+										
 									</div>
 								</form>
 							</div>

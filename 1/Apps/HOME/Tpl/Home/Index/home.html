@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="__PUBLIC__/home/css/home/home.css">
     </head>
     <body>
-        <ng-include src="'__PUBLIC__/home/tpl/commen/header.html'"></ng-include>
+        <ng-include src="'__PUBLIC__/home/tpl/commen/header.html'" ng-controller="headCtrl"></ng-include>
         <div ui-view></div>
         <ng-include src="'__PUBLIC__/home/tpl/commen/bottom.html'"></ng-include>
         <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular.js"></script>
@@ -18,10 +18,13 @@
         <script type="text/javascript">
             var publicUrl = '__PUBLIC__/home/';
             var commenUrl = '__PUBLIC__/commen/';
-            var appUrl = '__URL__/';
-            var appIndexUrl = '__APP__/';
+            var urlPath = '__URL__/';
+            var appPath = '__APP__/';
+            var publicPath = '__PUBLIC__/';
         </script>
         <script type="text/javascript" src="__PUBLIC__/home/js/home/home.js"></script>
         <script type="text/javascript" src="__PUBLIC__/home/js/home/homeCtrls.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/home/js/home/homeService.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/home/js/home/homeDirective.js"></script>
     </body>
 </html>

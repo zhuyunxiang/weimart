@@ -330,33 +330,47 @@ HomeCtrls.controller('moreCheapCtrl', ['$scope',
 // 注册的Controller
 HomeCtrls.controller('registerCtrl', ['$scope', '$http',
     function($scope, $http) {
-        $scope.resetUserInfo = function() {
-            $scope.userInfo = {
-                email: "",
-                password: "",
-                repassword: "",
-                autoLogin: false
-            };
-        }
+        $scope.urlPath = urlPath;
+        $scope.appPath = appPath;
+        $scope.publicPath = publicPath;
+    }
+]);
 
-        $scope.submitInfo = function() {
-            $http({
-                method: 'POST',
-                url: appIndexUrl + 'Index/doRegister',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                },
+// 登陆的Controller
+HomeCtrls.controller('loginCtrl', ['$scope', '$http',
+    function($scope, $http) {
+        $scope.urlPath = urlPath;
+        $scope.appPath = appPath;
+        $scope.publicPath = publicPath;
+    }
+]);
 
-                data: $scope.userInfo
+// 头部的Controller
+HomeCtrls.controller('headCtrl', ['User', '$scope',
+    function(User, $scope) {
+        User.checkLogin();
+        $scope.user_name = User.user_name;
+        $scope.user_id = User.user_id;
 
-            }).success(function(data, status, headers, config) {
-                console.log("success...");
-                console.log(data);
-                $scope.users = data;
-            }).error(function(data, status, headers, config) {
-                console.log("error...");
-            });
-        }
+        $scope.$on('User.isLogin', function (event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+        });
+
+        $scope.$on('User.registerSuccess', function (event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+        });
+
+        $scope.$on('User.loginSuccess', function (event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+        });
+
+        $scope.$on('User.logoutSuccess', function (event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+        });
     }
 ]);
 
