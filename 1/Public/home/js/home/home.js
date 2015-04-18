@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', ['ui.router', 'HomeCtrls']);
+var app = angular.module('HomeApp', ['ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     // 设置默认显示的页面
@@ -47,5 +47,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/register",
             templateUrl: publicUrl + 'tpl/home/control/register.html',
             controller: "registerCtrl"
+        }).state('login', {
+            url: "/login",
+            templateUrl: publicUrl + 'tpl/home/control/login.html',
+            controller: "loginCtrl"
         });
 });
