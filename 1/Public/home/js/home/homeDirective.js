@@ -1,27 +1,6 @@
 var HomeDirectives = angular.module('HomeDirectives', []);
 
-var compareTo = function() {
-    return {
-        require: "ngModel",
-        scope: {
-            otherModelValue: "=compareTo"
-        },
-        link: function(scope, element, attributes, ngModel) {
-
-            // ngModel.$validators.compareTo = function(modelValue) {
-            //     return modelValue == scope.otherModelValue;
-            // };
-
-            // scope.$watch("otherModelValue", function() {
-            //     ngModel.$validate();
-            // });
-            // console.log(ngModel);
-        }
-    };
-};
-
-HomeDirectives.directive("compareTo", compareTo);
-
+// 退出登陆
 HomeDirectives.directive('logOut', ['User',
     function(User) {
         return {
@@ -38,6 +17,7 @@ HomeDirectives.directive('logOut', ['User',
     }
 ]);
 
+// 登陆
 HomeDirectives.directive('doLogin', ['$state', 'User',
     function($state, User) {
         return {
@@ -54,6 +34,34 @@ HomeDirectives.directive('doLogin', ['$state', 'User',
                     });
 
                     scope.$on('User.loginError', function(event) {
+                        scope.errorTips = User.error_info;
+                    });
+                });
+            }
+        }
+    }
+]);
+
+// 保存用户详细信息
+HomeDirectives.directive('saveDetail', ['$state', 'User',
+    function($state, User) {
+        return {
+            restirect: 'AE',
+            scope: {
+                userDetailInfo: '=info',
+            },
+            link: function(scope, element, attributes) {
+                element.bind('click', function(event) {
+
+                    if (scope.userDetailInfo.user_header_temp_img && scope.userDetailInfo.user_nick_name && scope.userDetailInfo.user_full_name && scope.userDetailInfo.user_address) {
+                        User.saveDetail(scope.userDetailInfo);
+                    };
+
+                    scope.$on('User.saveDetailSuccess', function(event) {
+                        $state.go('home');
+                    });
+
+                    scope.$on('User.saveDetailError', function(event) {
                         scope.errorTips = User.error_info;
                     });
                 });
@@ -111,7 +119,7 @@ HomeDirectives.directive('doRegister', ['$state', '$timeout', 'User',
                     }
 
                     scope.$on('User.registerSuccess', function(event) {
-                        $state.go('home');
+                        $state.go('complete_detail');
                     });
 
                     // 循环检测异步请求是否已经完成

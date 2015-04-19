@@ -99,3 +99,6 @@ div.prod-list div.class-list div.classes div.class-item img{display:inline-table
 .register-container .content .right .btn-primary,.login-container .content .right .btn-primary{background-color:#FF8182;border-color:#FF8182;width:130px;font-weight:bolder;}
 .register-container .content .right .form-group,.login-container .content .right .form-group{margin-bottom:2px;}.register-container .content .right .form-group span,.login-container .content .right .form-group span{font-size:13px;margin-left:160px;color:red;display:inline-block;height:13px;}
 .login-container .right{margin-top:100px;}.login-container .right .form-group span.login-tips{margin-left:80px;}
+.complete-detail .detail-form{width:550px;margin:0 auto;}
+.complete-detail .head-img-container{margin:0 auto;width:150px;margin-bottom:10px;}.complete-detail .head-img-container img{width:150px;height:150px;margin-bottom:10px;}
+.complete-detail .radio-label{display:inline-block;margin-top:5px;margin-right:20px;}

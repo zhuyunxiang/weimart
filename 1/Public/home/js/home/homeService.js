@@ -122,6 +122,27 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        User.saveDetail = function(detailInfo) {
+        	detailInfo.user_id = User.user_id;
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/save_detail',
+                data: $.param(detailInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                	console.log(data);
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('User.saveDetailSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.saveDetailError');
+                    }
+                });
+        }
+
         return User;
     }
 ]);

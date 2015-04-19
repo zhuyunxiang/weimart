@@ -345,6 +345,42 @@ HomeCtrls.controller('loginCtrl', ['$scope', '$http',
     }
 ]);
 
+HomeCtrls.controller('completeDetailCtrl', ['$scope', '$upload',
+    function($scope, $upload) {
+        $scope.urlPath = urlPath;
+        $scope.appPath = appPath;
+        $scope.publicPath = publicPath;
+
+        $scope.userDetailInfo = {user_header_img: publicPath + 'home/img/default_head.png'};
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/UserAPI/save_head_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.userDetailInfo.user_header_img = publicPath + 'Uploads/head_img/' + data;
+                        $scope.userDetailInfo.user_header_temp_img = publicPath + 'Uploads/head_img/thumb_' + data;
+                    });
+                }
+            }
+        };
+    }
+]);
+
 // 头部的Controller
 HomeCtrls.controller('headCtrl', ['User', '$scope',
     function(User, $scope) {

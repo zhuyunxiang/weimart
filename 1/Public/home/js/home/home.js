@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', ['ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
+var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
     // 设置默认显示的页面
@@ -51,5 +51,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/login",
             templateUrl: publicUrl + 'tpl/home/control/login.html',
             controller: "loginCtrl"
+        }).state('complete_detail', {
+            url: "/complete_detail",
+            templateUrl: publicUrl + 'tpl/home/control/complete_detail.html',
+            controller: "completeDetailCtrl"
         });
 });
