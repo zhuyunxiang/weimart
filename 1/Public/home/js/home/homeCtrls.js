@@ -157,8 +157,8 @@ HomeCtrls.controller('homeCtrl', ['$scope',
 // 主页的Controller End
 
 // 热卖宝贝的Controller Start
-HomeCtrls.controller('hotBabyCtrl', ['$scope',
-    function($scope) {
+HomeCtrls.controller('hotBabyCtrl', ['$scope','HotBaby',
+    function($scope, HotBaby) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
@@ -176,22 +176,11 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope',
 			],
         };
 
-        $scope.babyRowsWomen = {
-			0: [
-			{"url": "4.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "5.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "6.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "7.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},	
-			],
+        $scope.$on('HotBaby.babyRowsWomenUpdate', function (event) {
+            $scope.babyRowsWomen = HotBaby.babyRowsWomen;
+        });
 
-			1: [
-			{"url": "4.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "5.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "6.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},
-			{"url": "7.jpg","babyName": "特芙娜", "babyDesc": "粉色清新小碎花连衣裙","babyPrice": "328"},	
-			],
-
-		};
+        HotBaby.getBabyRowsWomen();
 
 		$scope.babyRowsMakeup = {
 			0: [
@@ -231,8 +220,8 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope',
 // 热卖宝贝的Controller End
 
 // 热卖品牌的Controller Start
-HomeCtrls.controller('popularBrandCtrl', ['$scope',
-    function($scope) {
+HomeCtrls.controller('popularBrandCtrl', ['$scope','PopularBrand',
+    function($scope,PopularBrand) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
@@ -243,32 +232,11 @@ HomeCtrls.controller('popularBrandCtrl', ['$scope',
             popularBrandMain : publicUrl + 'tpl/home/popular_brand_main.html',
         };
 
-        $scope.brandList = [
-        {"url": "1.jpg"},
-        {"url": "2.jpg"},
-        {"url": "3.jpg"},
-        {"url": "4.jpg"},
-        {"url": "5.jpg"},
-        {"url": "6.jpg"},
-        {"url": "7.jpg"},
-        {"url": "8.jpg"},
-        {"url": "9.jpg"},
-        {"url": "10.jpg"},
-        {"url": "11.jpg"},
-        {"url": "12.jpg"},
-        {"url": "13.jpg"},
-        {"url": "14.jpg"},
-        {"url": "15.jpg"},
-        {"url": "16.jpg"},
-        {"url": "17.jpg"},
-        {"url": "18.jpg"},
-        {"url": "19.jpg"},
-        {"url": "20.jpg"},
-        {"url": "21.jpg"},
-        {"url": "22.jpg"},
-        {"url": "23.jpg"},
-        {"url": "24.jpg"},
-        ];
+        PopularBrand.getBrandList();
+
+        $scope.$on('PopularBrand.brandListUpdate', function (event) {
+            $scope.brandList = PopularBrand.brandList;
+        });
 
         $scope.item_list = [
             {"url": "25.jpg"},
