@@ -318,6 +318,7 @@ HomeCtrls.controller('completeDetailCtrl', ['$scope', '$upload',
         $scope.urlPath = urlPath;
         $scope.appPath = appPath;
         $scope.publicPath = publicPath;
+        $scope.uploadPath = uploadPath;
 
         $scope.userDetailInfo = {user_header_img: publicPath + 'home/img/default_head.png'};
 
@@ -340,8 +341,8 @@ HomeCtrls.controller('completeDetailCtrl', ['$scope', '$upload',
                     }).progress(function(evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     }).success(function(data, status, headers, config) {
-                        $scope.userDetailInfo.user_header_img = publicPath + 'Uploads/head_img/' + data;
-                        $scope.userDetailInfo.user_header_temp_img = publicPath + 'Uploads/head_img/thumb_' + data;
+                        $scope.userDetailInfo.user_header_img = uploadPath + 'head_img/' + data;
+                        $scope.userDetailInfo.user_header_temp_img = uploadPath + 'head_img/thumb_' + data;
                     });
                 }
             }
