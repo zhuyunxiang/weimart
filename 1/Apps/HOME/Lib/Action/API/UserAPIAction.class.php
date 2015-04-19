@@ -72,5 +72,39 @@ class UserAPIAction extends Action
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
 	}
+
+	// 保存详细信息
+	public function save_detail()
+	{
+		$result = A('User', 'Service')->doSaveDetail($_POST);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 保存头像
+	public function save_head_img()
+	{
+		if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/Uploads/head_img/',
+                // 'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+            	$id = $_POST['now_id'];
+                $info = $upload->getUploadFileInfo();
+				echo $info[0]['savename'];
+            }
+		}
+	}
 }
  ?>

@@ -68,8 +68,8 @@ class UserModel extends RelationModel
     protected $_auto = array ( 
         array('user_is_deleted', 0),  // 新增的时候把user_is_deleted字段设置为0
         array('user_pwd','md5', 1, 'function') , // 对password字段在新增的时候使md5函数处理
-        array('user_last_updated','timestamp', 3, 'function'), // 对create_time字段在更新的时候写入当前时间戳
-        array('user_last_logined','timestamp', 3, 'function'), // 对create_time字段在更新的时候写入当前时间戳
+        array('user_last_logined','timestamp', 2, 'function'), // 对create_time字段在更新的时候写入当前时间戳
+        array('user_last_updated','timestamp', 2, 'function'), // 对create_time字段在更新的时候写入当前时间戳
         array('user_stage', 0)
     );
 }

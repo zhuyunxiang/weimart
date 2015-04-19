@@ -2,8 +2,6 @@
 <html ng-app="HomeApp" lang="zh-cn">
     <head>
         <title>欢迎访问卖盟</title>
-        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
         <link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css">
         <link rel="stylesheet" href="__PUBLIC__/home/css/commen/commen.css">
         <link rel="stylesheet" href="__PUBLIC__/home/css/home/home.css">
@@ -12,8 +10,6 @@
         <ng-include src="'__PUBLIC__/home/tpl/commen/header.html'" ng-controller="headCtrl"></ng-include>
         <div ui-view></div>
         <ng-include src="'__PUBLIC__/home/tpl/commen/bottom.html'"></ng-include>
-        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular.js"></script>
-        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular-ui-router.min.js"></script>
         
         <script type="text/javascript">
             var publicUrl = '__PUBLIC__/home/';
@@ -22,6 +18,12 @@
             var appPath = '__APP__/';
             var publicPath = '__PUBLIC__/';
         </script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/angular-file-upload/angular-file-upload-shim.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/angular-file-upload/angular-file-upload.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/home/js/home/home.js"></script>
         <script type="text/javascript" src="__PUBLIC__/home/js/home/homeCtrls.js"></script>
         <script type="text/javascript" src="__PUBLIC__/home/js/home/homeService.js"></script>
