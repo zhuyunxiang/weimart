@@ -121,10 +121,30 @@ class UserService extends BaseService
 				A('Log', 'Service')->saveLog('xxx','用户注册失败 [User Register Error] Detail:'.$this->userRelationDao->getError());
 				return array('info'=>$this->userRelationDao->getError(), 'data'=>false, 'status'=>0);
 			}else{
+				$user_info['user_id'] = $result;
 				$_SESSION['user'] = $user_info;
 				// 打LOG
 				A('Log', 'Service')->saveLog($user_info['user_name'], '用户注册成功 [User Register Success]');
 				return array('info'=>'数据添加成功!', 'data'=>$result, 'status'=>1);
+			}
+		}
+		return array('info'=>'输入的数据为空', 'data'=>false, 'status'=>0);
+	}
+
+	// 保存详细信息
+	public function doSaveDetail($data = null)
+	{
+		if ($data) {
+			$user_info = $this->userRelationDao->create($data);
+			$result = $this->userRelationDao->save();
+			if (!$result){
+				// 打LOG
+				A('Log', 'Service')->saveLog('xxx','用户录入详细信息失败 [User Save Detail Error] Detail:'.$this->userRelationDao->getError());
+				return array('info'=>$this->userRelationDao->getError(), 'data'=>false, 'status'=>0);
+			}else{
+				// 打LOG
+				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '用户录入详细信息成功 [User Save Detail Success]');
+				return array('info'=>'数据保存成功!', 'data'=>$user_info, 'status'=>1);
 			}
 		}
 		return array('info'=>'输入的数据为空', 'data'=>false, 'status'=>0);
