@@ -1,0 +1,38 @@
+<div class="user-admin-container">
+	<div class="search-container">
+		<div class="input-group">
+			<input type="text" class="form-control" ng-model="searchKey" placeholder="请输入关键字">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button">按关键字搜索</button>
+			</span>
+		</div>
+	</div>
+	<div class="user-data">
+		<h3 ng-hide="user_list">对不起,暂无用户!</h3>
+		<table class="table table-bordered" ng-show="user_list">
+			<tr>
+				<th>序号</th>
+				<th>用户名</th>
+				<th>昵称</th>
+				<th>邮箱</th>
+				<th>实名</th>
+				<th>手机</th>
+				<th>地址</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="userInfo in user_list|filter:searchKey">
+				<td>{{$index+1}}</td>
+				<td>{{userInfo.user_name}}</td>
+				<td>{{userInfo.user_nick_name}}</td>
+				<td>{{userInfo.user_email}}</td>
+				<td>{{userInfo.user_full_name}}</td>
+				<td>{{userInfo.user_telephone}}</td>
+				<td>{{userInfo.user_address}}</td>
+				<td>
+					<a href="" ng-click="removeUserInfo(userInfo.user_id)"><span class="glyphicon glyphicon-trash"></span></a>
+				</td>
+			</tr>
+		</table>
+		<br>
+	</div>
+</div>

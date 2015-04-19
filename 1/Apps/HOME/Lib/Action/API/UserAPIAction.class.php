@@ -106,5 +106,29 @@ class UserAPIAction extends Action
             }
 		}
 	}
+
+	// 获取所有用户信息
+	// (需加验证)
+	public function get_user_list()
+	{
+		$result = A('User', 'Service')->getAllUserList();
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 删除用户信息
+	// (需加验证)
+	public function remove_user()
+	{
+		$result = A('User', 'Service')->removeUserBasicInfoById($_POST['user_id']);
+		if ($result) {
+			A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户成功 [Delete User Success ID:'.$_POST['user_id'].']');
+			$this->ajaxReturn($result, '用户删除成功!', 1);
+		}
+		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户失败 [Delete User Success ID:'.$_POST['user_id'].']');
+		$this->ajaxReturn($result, '用户删除失败!', 0);
+	}
 }
  ?>

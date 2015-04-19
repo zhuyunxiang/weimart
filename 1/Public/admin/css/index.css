@@ -49,3 +49,5 @@ body{padding:0px;margin:0px;line-height:1.6;font-family:"Helvetica Neue","Hiragi
 .mian_content{position:relative;min-height:93%;margin-top:10px;margin-right:5px;}
 #page_content{position:absolute;width:100%;height:100%;}
 .layout_footer{position:absolute;bottom:0px;font-size:12px;background:#ffffff;text-align:center;border:1px solid #eee;width:100%;height:30px;}
+.page_content_frame{height:100%;}.page_content_frame .user-admin-container .search-container .input-group{width:500px;}
+.page_content_frame .user-admin-container .user-data{margin-top:10px;}

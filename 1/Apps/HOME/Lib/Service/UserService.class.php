@@ -106,6 +106,7 @@ class UserService extends BaseService
 	}
 
 	// 注册
+	// Ajax
 	public function doRegister($data = null)
 	{
 		if ($data) {
@@ -132,6 +133,7 @@ class UserService extends BaseService
 	}
 
 	// 保存详细信息
+	// Ajax
 	public function doSaveDetail($data = null)
 	{
 		if ($data) {
@@ -151,6 +153,7 @@ class UserService extends BaseService
 	}
 
 	// 登陆
+	// Ajax
 	public function doLogin($data = null)
 	{
 		if ($data) {
@@ -169,6 +172,18 @@ class UserService extends BaseService
 			}
 		}
 		return array('info'=>'输入的数据为空', 'data'=>false, 'status'=>0);
+	}
+
+	// 获取所有用户列表
+	// Ajax
+	public function getAllUserList()
+	{
+		$condition = array('user_is_deleted'=>0);
+		$result = $this->getInfo('userDao',$condition);
+		if ($result) {
+			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
 	}
 
 }
