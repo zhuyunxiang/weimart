@@ -1,5 +1,6 @@
 var HomeServices = angular.module('HomeServices', []);
 
+// 用户
 HomeServices.service('User', ['$http', '$rootScope',
     function($http, $rootScope) {
         var User = {};
@@ -144,5 +145,60 @@ HomeServices.service('User', ['$http', '$rootScope',
         }
 
         return User;
+    }
+]);
+
+// 热门品牌
+HomeServices.service('PopularBrand', ['$http', '$rootScope',
+    function($http, $rootScope) {
+    	var PopularBrand = {};
+    	PopularBrand.brandList = null;
+
+    	PopularBrand.getBrandList = function () {
+    		$http({
+                method: 'POST',
+                url: appPath + 'Home/PopularBrand/get_brand_list',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                    	PopularBrand.brandList = data.data;
+                        $rootScope.$broadcast('PopularBrand.brandListUpdate');
+                    }
+                });
+		}
+
+
+    	return PopularBrand;
+    }
+]);
+
+// 热卖宝贝
+HomeServices.service('HotBaby', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var HotBaby = {};
+        HotBaby.babyRowsWomen = null;
+
+        HotBaby.getBabyRowsWomen = function() {
+            $http({
+                method: 'POST',
+                url: appPath + 'Home/HotBaby/get_baby_rows_women',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        HotBaby.babyRowsWomen = data.data;
+                        $rootScope.$broadcast('HotBaby.babyRowsWomenUpdate');
+                    }
+                });
+        }
+
+        return HotBaby;
     }
 ]);
