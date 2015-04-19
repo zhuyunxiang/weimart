@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>卖盟后台管理系统</title>
         <link rel="stylesheet" href="__PUBLIC__/admin/css/index.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="__PUBLIC__/commen/css/lib/bootstrap.min.css" type="text/css" media="screen" />
         <link rel="Shortcut Icon" href="__PUBLIC__/commen/img/ico/home.ico" />
     </head>
     <body ng-controller="adminCtrl">
@@ -29,13 +30,11 @@
             <ul id="menu">
                 <li class="childUlLi">
                     <a href="main.html"  target="menuFrame"><i class="glyph-icon icon-home"></i>首页</a>
-                    <ul>
-                        <li change-nav info="navContent"><a href="user_add.html" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>用户添加</a></li>
-                    </ul>
                 </li>
                 <li class="childUlLi">
                     <a href="user.html"  target="menuFrame"> <i class="glyph-icon icon-reorder"></i>成员管理</a>
                     <ul>
+                        <li change-nav info="navContent"><a ui-sref="user_admin"><i class="glyph-icon icon-chevron-right"></i>用户管理</a></li>
                         <li change-nav info="navContent"><a href="#"><i class="glyph-icon icon-chevron-right"></i>后台菜单管理</a></li>
                         <li change-nav info="navContent"><a href="#"><i class="glyph-icon icon-chevron-right"></i>展示商品管理</a></li>
                         <li change-nav info="navContent"><a href="#"><i class="glyph-icon icon-chevron-right"></i>数据管理</a></li>
@@ -75,8 +74,11 @@
             </div>
             <div class="mian_content">
                 <div id="page_content">
+                    <script type="text/ng-template" id="main_ifram.html">
                     <iframe id="menuFrame" name="menuFrame" src="__URL__/main" style="overflow:visible;"
                     scrolling="yes" frameborder="no" width="100%" height="100%"></iframe>
+                    </script>
+                    <div ui-view class="page_content_frame"></div>
                 </div>
             </div>
         </div>
@@ -96,6 +98,7 @@
         <script type="text/javascript" src="__PUBLIC__/admin/js/home/filters.js"></script>
         <script type="text/javascript">
         var publicPath = "__PUBLIC__";
+        var uploadPath = "__PUBLIC__/Uploads";
         var urlPath = "__URL__";
         var appPath = "__APP__";
         </script>
