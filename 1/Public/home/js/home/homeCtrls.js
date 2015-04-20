@@ -259,7 +259,7 @@ HomeCtrls.controller('popularShopCtrl', ['$scope',
         };
 
         $scope.tplURLs = {
-            
+           popularShop: publicUrl + 'tpl/home/popular_shop_main.html', 
         };
     }
 ]);
