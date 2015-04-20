@@ -1,10 +1,11 @@
 var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
-    // 设置默认显示的页面
-    $urlRouterProvider.otherwise("/home");
+app.config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+        // 设置默认显示的页面
+        $urlRouterProvider.otherwise("/home");
 
-    $stateProvider
+        $stateProvider
         // 主页
         .state('home', {
             url: "/home",
@@ -42,8 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/product_list",
             templateUrl: publicUrl + 'tpl/home/product_list.html',
             controller: "productListCtrl"
-        })
-        .state('register', {
+        }).state('register', {
             url: "/register",
             templateUrl: publicUrl + 'tpl/home/control/register.html',
             controller: "registerCtrl"
@@ -55,5 +55,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: "/complete_detail",
             templateUrl: publicUrl + 'tpl/home/control/complete_detail.html',
             controller: "completeDetailCtrl"
-        });
-});
+        }).state('sellercenter', {
+            url: "/sellercenter",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/index.html',
+            controller: "sellerCenterCtrl"
+        })
+    }
+]);
