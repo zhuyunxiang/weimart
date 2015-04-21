@@ -4,6 +4,8 @@
 * 用户信息
 * 纯逻辑接口，对外公开
 */
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: X-Requested-With');
 class UserAPIAction extends Action
 {
 	// 检查邮箱是否已注册
