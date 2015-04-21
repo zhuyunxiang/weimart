@@ -1,5 +1,12 @@
 var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
 
+app.run(['$rootScope', '$state', '$stateParams',
+    function($rootScope, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+    }
+]);
+
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
         // 设置默认显示的页面
@@ -59,6 +66,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/sellercenter",
             templateUrl: publicUrl + 'tpl/home/sellercenter/index.html',
             controller: "sellerCenterCtrl"
+        }).state('sellercenter.self', {
+            url: "/self",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/self.html',
+            controller: "sellerCenterShopCtrl"
+        }).state('sellercenter.shop', {
+            url: "/shop",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/shop_info.html',
+            controller: "sellerCenterShopCtrl"
+        }).state('sellercenter.product', {
+            url: "/product",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/product_info.html',
+            controller: "sellerCenterShopCtrl"
+        }).state('sellercenter.punish', {
+            url: "/punish",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/punish.html',
+            controller: "sellerCenterShopCtrl"
         })
     }
 ]);
