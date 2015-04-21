@@ -489,8 +489,18 @@ HomeCtrls.controller('productListCtrl', ['$scope',
     }
 ]);
 
-HomeCtrls.controller('sellerCenterCtrl', ['$scope',
-    function($scope) {
+HomeCtrls.controller('sellerCenterCtrl', ['$scope','$state',
+    function($scope,$state) {
+        // $scope.stateStr = $state.current.name;
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+    }
+]);
+
+HomeCtrls.controller('sellerCenterShopCtrl', ['$scope','$state',
+    function($scope,$state) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
