@@ -499,6 +499,52 @@ HomeCtrls.controller('sellerCenterCtrl', ['$scope','$state',
     }
 ]);
 
+HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'User',
+    function($scope, $state,$upload, User) {
+        User.checkLogin();
+        $scope.$on('User.isLogin', function(event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+            $scope.detailInfo = User.detail_info;
+        });
+
+        $scope.$on('User.notLogin', function(event) {
+            $scope.user_name = null;
+            $scope.user_id = null;
+            alert("对不起,请先登录!");
+            $state.go('login');
+        });
+
+        $scope.detailInfo = {user_header_img: publicPath + 'home/img/default_head.png'};
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/UserAPI/save_head_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.detailInfo.user_header_img = uploadPath + 'head_img/' + data;
+                        $scope.detailInfo.user_header_temp_img = uploadPath + 'head_img/thumb_' + data;
+                    });
+                }
+            }
+        };
+    }
+]);
+
 HomeCtrls.controller('sellerCenterShopCtrl', ['$scope','$state',
     function($scope,$state) {
         $scope.imageURLs = {

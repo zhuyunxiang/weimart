@@ -1263,10 +1263,12 @@ div.popular_shop_main {
 	.all-panel{
 		overflow: hidden;
 		.left{
+			.start-prepare;
 			width: 200px;
 			float: left;
 		}
 		.right{
+			.start-prepare;
 			float: right;
 			width: 950px;
 			min-height: 500px;
@@ -1291,6 +1293,61 @@ div.popular_shop_main {
 				img{
 					width: 150px;
 					height: 150px;
+				}
+			}
+
+			&.self-info{
+				padding: 50px 0 0 50px;
+				border: solid 1px;
+				border-radius: 5px;
+				border-color: #DDDDDD; 
+				min-height: 450px;
+				margin-bottom: 50px;
+			}
+			.head-img-container{
+				.start-prepare;
+				float: left;
+				width: 160px;
+				height: 220px;
+				.img-container{
+					.start-prepare;
+					width: 100%;
+					height: 190px;
+					border: solid 1px;
+					img{
+						height: 100%;
+						width: 100%;
+					}
+				}
+				.up-btn-container{
+					.start-prepare;
+					width: 85px;
+					margin: 10px auto;
+				}
+			}
+			.info-container{
+				.start-prepare;
+				float: left;
+				width: 670px;
+				height: 200px;
+				margin-left: 60px;
+				.line-info{
+					.start-prepare;
+					overflow: hidden;
+					// border: dotted 1px;
+					// border-width: 0 0 1px 0;
+					.cols-item{
+						.start-prepare;
+						padding-left: 20px;
+						margin-top: 6px;
+						float: left;
+						width: 80px;
+						height: 50px;
+						line-height: 30px;
+						&.input-text{
+							width: 200px;
+						}
+					}
 				}
 			}
 		}
