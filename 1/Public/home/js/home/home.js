@@ -69,7 +69,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         }).state('sellercenter.self', {
             url: "/self",
             templateUrl: publicUrl + 'tpl/home/sellercenter/self.html',
-            controller: "sellerCenterShopCtrl"
+            controller: "sellerCenterSelfCtrl"
         }).state('sellercenter.shop', {
             url: "/shop",
             templateUrl: publicUrl + 'tpl/home/sellercenter/shop_info.html',

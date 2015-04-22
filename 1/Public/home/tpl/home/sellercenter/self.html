@@ -1,1 +1,67 @@
-ziji
+<div class="right self-info">
+	<div class="head-img-container">
+		<div class="img-container">
+			<img ng-src="{{detailInfo.user_header_img}}" alt="头像">
+		</div>
+		<div class="up-btn-container">
+			<button class="btn btn-small btn-default" ng-file-select ng-file-change="upload($files)">点击上传</button>
+		</div>
+	</div>
+	<div class="info-container">
+		<div class="line-info">
+			<div class="cols-item">
+				用户名:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_name">
+			</div>
+			<div class="cols-item">
+				性别:
+			</div>
+			<div class="cols-item input-text">
+				<label><input type="radio" ng-model="detailInfo.user_gender" value="男" ng-init="detailInfo.user_gender='男'">男</label>&nbsp;&nbsp;
+				<label><input type="radio" ng-model="detailInfo.user_gender" value="女">女</label>
+			</div>
+		</div>
+		<div class="line-info">
+			<div class="cols-item">
+				昵称:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_nick_name">
+			</div>
+			<div class="cols-item">
+				邮箱:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_email">
+			</div>
+		</div>
+		<div class="line-info">
+			<div class="cols-item">
+				实名:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_full_name">
+			</div>
+			<div class="cols-item">
+				联系电话:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_telephone">
+			</div>
+		</div>
+		<div class="line-info">
+			<div class="cols-item">
+				联系地址:
+			</div>
+			<div class="cols-item input-text">
+				<input type="text" class="form-control" ng-model="detailInfo.user_address">
+			</div>
+		</div>
+		<hr>
+		<div>
+			<button class="btn btn-primary pull-right">确定提交</button>
+		</div>
+	</div>
+</div>

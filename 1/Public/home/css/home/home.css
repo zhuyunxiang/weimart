@@ -112,3 +112,7 @@ div.popular_shop_main div.cupons{margin-left:150px;margin-bottom:40px;margin-top
 .sellercenter-container .all-panel .right .search-group{display:inline-block;width:250px;}
 .sellercenter-container .all-panel .right .product-table-container{margin-top:20px;}
 .sellercenter-container .all-panel .right .shop-img-container{width:190px;margin:20px auto;}.sellercenter-container .all-panel .right .shop-img-container img{width:150px;height:150px;}
+.sellercenter-container .all-panel .right.self-info{padding:50px 0 0 50px;border:solid 1px;border-radius:5px;border-color:#DDDDDD;min-height:450px;margin-bottom:50px;}
+.sellercenter-container .all-panel .right .head-img-container{float:left;width:160px;height:220px;}.sellercenter-container .all-panel .right .head-img-container .img-container{width:100%;height:190px;border:solid 1px;}.sellercenter-container .all-panel .right .head-img-container .img-container img{height:100%;width:100%;}
+.sellercenter-container .all-panel .right .head-img-container .up-btn-container{width:85px;margin:10px auto;}
+.sellercenter-container .all-panel .right .info-container{float:left;width:670px;height:200px;margin-left:60px;}.sellercenter-container .all-panel .right .info-container .line-info{overflow:hidden;}.sellercenter-container .all-panel .right .info-container .line-info .cols-item{padding-left:20px;margin-top:6px;float:left;width:80px;height:50px;line-height:30px;}.sellercenter-container .all-panel .right .info-container .line-info .cols-item.input-text{width:200px;}

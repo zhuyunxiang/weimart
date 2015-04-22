@@ -7,6 +7,7 @@ HomeServices.service('User', ['$http', '$rootScope',
         User.user_name = null;
         User.user_id = null;
         User.error_info = null;
+        User.detail_info = null;
 
         User.checkLogin = function() {
             $http({
@@ -19,9 +20,12 @@ HomeServices.service('User', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     if (data.status == 1) {
+                        User.detail_info = data.data;
                         User.user_name = data.data.user_name;
                         User.user_id = data.data.user_id;
                         $rootScope.$broadcast('User.isLogin');
+                    } else {
+                        $rootScope.$broadcast('User.notLogin');
                     }
                 });
         }
