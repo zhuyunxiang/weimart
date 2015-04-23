@@ -536,6 +536,14 @@ HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'Use
             $state.go('login');
         });
 
+        $scope.$on('User.saveDetailSuccess', function(event) {
+            alert("数据保存成功!");
+        });
+
+        $scope.saveSelfInfo = function () {
+            User.saveDetail($scope.detailInfo);
+        }
+
         $scope.detailInfo = {user_header_img: publicPath + 'home/img/default_head.png'};
 
         $scope.$watch('files', function() {
@@ -566,11 +574,61 @@ HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'Use
     }
 ]);
 
-HomeCtrls.controller('sellerCenterShopCtrl', ['$scope','$state',
-    function($scope,$state) {
-        $scope.imageURLs = {
-            'publicUrl': publicUrl,
-            'logo': commenUrl + 'img/logo-mini.png',
+HomeCtrls.controller('sellerCenterShopCtrl', ['$upload', '$scope', '$state', 'User', 'Shop',
+
+    function($upload, $scope, $state, User, Shop) {
+        User.checkLogin();
+        Shop.getShopInfo();
+
+        // 获取店铺信息
+        $scope.$on('Shop.getShopInfoSuccess', function(event) {
+            $scope.editShopInfo = Shop.data;
+        });
+
+        // 已登录
+        $scope.$on('User.isLogin', function(event) {
+            $scope.user_name = User.user_name;
+            $scope.user_id = User.user_id;
+            $scope.detailInfo = User.detail_info;
+        });
+
+        // 未登录
+        $scope.$on('User.notLogin', function(event) {
+            $scope.user_name = null;
+            $scope.user_id = null;
+            alert("对不起,请先登录!");
+            $state.go('login');
+        });
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/ShopAPI/save_shop_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editShopInfo.shop_img = uploadPath + 'shop_img/' + data;
+                        $scope.editShopInfo.shop_img_temp = uploadPath + 'shop_img/thumb_' + data;
+                    });
+                }
+            }
         };
+
+
+        $scope.saveShopInfo = function() {
+            Shop.saveShopInfo($scope.editShopInfo);
+        }
     }
 ]);

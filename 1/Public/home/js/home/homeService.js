@@ -138,7 +138,6 @@ HomeServices.service('User', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                	console.log(data);
                     if (data.status == 1) {
                         $rootScope.$broadcast('User.saveDetailSuccess');
                     } else {
@@ -149,6 +148,56 @@ HomeServices.service('User', ['$http', '$rootScope',
         }
 
         return User;
+    }
+]);
+
+// 店铺
+HomeServices.service('Shop', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Shop = {};
+        Shop.data = null;
+
+        Shop.getShopInfo = function() {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ShopAPI/get_shop_info',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.data = data.data;
+                        $rootScope.$broadcast('Shop.getShopInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('User.getShopInfoError');
+                    }
+                });
+        }
+
+        Shop.saveShopInfo = function(shopInfo) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ShopAPI/save_shop_info',
+                data: $.param(shopInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        Shop.getShopInfo();
+                        alert("信息保存成功!");
+                        $rootScope.$broadcast('Shop.saveShopInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('User.saveShopInfoError');
+                    }
+                });
+        }
+
+        return Shop;
     }
 ]);
 

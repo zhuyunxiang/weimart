@@ -6,6 +6,7 @@
 */
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: X-Requested-With');
+
 class UserAPIAction extends Action
 {
 	// 检查邮箱是否已注册
@@ -80,6 +81,7 @@ class UserAPIAction extends Action
 	{
 		$result = A('User', 'Service')->doSaveDetail($_POST);
 		if ($result) {
+			$_SESSION['user'] = $_POST;
 			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
