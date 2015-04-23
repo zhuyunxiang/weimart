@@ -13,7 +13,7 @@
 				用户名:
 			</div>
 			<div class="cols-item input-text">
-				<input type="text" class="form-control" ng-model="detailInfo.user_name">
+				<input type="text" class="form-control" ng-model="detailInfo.user_name" disabled>
 			</div>
 			<div class="cols-item">
 				性别:
@@ -34,7 +34,7 @@
 				邮箱:
 			</div>
 			<div class="cols-item input-text">
-				<input type="text" class="form-control" ng-model="detailInfo.user_email">
+				<input type="text" class="form-control" ng-model="detailInfo.user_email" disabled>
 			</div>
 		</div>
 		<div class="line-info">
@@ -61,7 +61,7 @@
 		</div>
 		<hr>
 		<div>
-			<button class="btn btn-primary pull-right">确定提交</button>
+			<button class="btn btn-primary pull-right" ng-click="saveSelfInfo()">确定提交</button>
 		</div>
 	</div>
 </div>
