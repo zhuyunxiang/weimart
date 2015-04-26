@@ -30,5 +30,28 @@ class ProductAPIAction extends Action
             }
 		}
 	}
+
+	// 保存商品信息
+	public function save_product_info()
+	{
+		if (isset($_SESSION['user'])) {
+			// 获取商店信息
+			$result = A('Product', 'Service')->saveProductInfo($_POST);
+			if ($result) {
+				$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+			}
+			$this->ajaxReturn(false, '内部错误!', 0);
+		}
+	}
+
+	// 根据店铺id获取店铺商品
+	public function get_product_by_shop()
+	{
+		$result = A('Product', 'Service')->getProductByShop($_POST['shop_id']);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 }
  ?>
