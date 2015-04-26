@@ -14,7 +14,7 @@
 		<button type="button" class="btn btn-default">已卖完</button>
 	</div>
 	
-	<button class="btn btn-primary">添加商品</button>
+	<button class="btn btn-primary" data-toggle="modal" data-target="#editProductModal" ng-click="setAddInfo()">添加商品</button>
 	<div class="product-table-container">
 		<table class="table table-hover">
 			<tr>
@@ -34,5 +34,67 @@
 				<td></td>
 			</tr>
 		</table>
+	</div>
+	<div class="modal fade" id="editProductModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" ng-init="modalTitle='添加商品信息'">{{modalTitle}}</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品名称:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" ng-model="editProductInfo.product_name" placeholder="商品名称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品数量:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" ng-model="editProductInfo.product_num" placeholder="商品数量">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品余量:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" ng-model="editProductInfo.product_left" placeholder="商品余量">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品单价:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" ng-model="editProductInfo.product_price" placeholder="商品单价">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品类别:</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" ng-model="editProductInfo.product_type" placeholder="商品类别">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">商品详情:</label>
+							<div class="col-sm-6 main-content-container">
+								<div class="ueditor" config="_simpleConfig" ng-model="editProductInfo.product_desc"></div>
+							</div>
+						</div>
+						<div class="img-container">
+							<div class="img">
+								<img ng-src="{{editProductInfo.head_img}}" alt="上传商品图片">
+							</div>
+							<div class="button">
+								<button class="btn btn-primary" ng-file-select ng-file-change="upload($files)">上传商品图片</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" ng-click="saveProductInfo()">保存</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

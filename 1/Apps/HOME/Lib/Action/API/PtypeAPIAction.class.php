@@ -3,6 +3,9 @@
 * Ptype Action
 * 商品类别API
 */
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: X-Requested-With');
 class PtypeAPIAction extends Action
 {
 

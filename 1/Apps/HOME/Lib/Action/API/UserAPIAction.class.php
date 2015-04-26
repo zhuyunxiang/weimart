@@ -104,7 +104,6 @@ class UserAPIAction extends Action
             if (!$upload->upload()) {
                 $this->error($upload->getErrorMsg());
             } else {
-            	$id = $_POST['now_id'];
                 $info = $upload->getUploadFileInfo();
 				echo $info[0]['savename'];
             }

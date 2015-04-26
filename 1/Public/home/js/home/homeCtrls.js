@@ -1,4 +1,4 @@
-var HomeCtrls = angular.module('HomeCtrls', []);
+var HomeCtrls = angular.module('HomeCtrls', ['ng.ueditor']);
 
 // 主页的Controller Start
 HomeCtrls.controller('homeCtrl', ['$scope',
@@ -630,5 +630,53 @@ HomeCtrls.controller('sellerCenterShopCtrl', ['$upload', '$scope', '$state', 'Us
         $scope.saveShopInfo = function() {
             Shop.saveShopInfo($scope.editShopInfo);
         }
+    }
+]);
+
+HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope',
+    function($upload, $scope) {
+        $scope._simpleConfig = {
+            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+            toolbars: [
+                ["bold", "italic", "underline", "insertunorderedlist", "insertorderedlist", "simpleupload", "removeformat", "forecolor", "backcolor", "link", "scrawl"]
+            ],
+            initialFrameHeight: 280,
+            initialFrameWidth: 440
+        }
+
+        $scope.setAddInfo = function () {
+            $scope.modalTitle='添加商品信息';
+            $scope.editProductInfo = {};
+        }
+
+        $scope.saveProductInfo = function () {
+            console.log($scope.editProductInfo);
+        }
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/ProductAPI/save_product_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editProductInfo.head_img = uploadPath + 'product_img/' + data;
+                        $scope.editProductInfo.head_img_temp = uploadPath + 'product_img/thumb_' + data;
+                    });
+                }
+            }
+        };
     }
 ]);
