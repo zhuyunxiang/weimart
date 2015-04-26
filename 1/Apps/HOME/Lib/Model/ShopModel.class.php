@@ -9,7 +9,7 @@ class ShopModel extends RelationModel
 		array(
 			'mapping_type'=>MANY_TO_MANY,
             'class_name'=>'Product',
-            'mapping_name'=>'products',
+            'mapping_name'=>'product',
             'foreign_key'=>'shop_id',
             'relation_foreign_key'=>'product_id',
             'relation_table'=>'weimart_shop_product'

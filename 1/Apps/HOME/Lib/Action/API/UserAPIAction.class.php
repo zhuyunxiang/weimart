@@ -77,6 +77,7 @@ class UserAPIAction extends Action
 	}
 
 	// 保存详细信息
+	// Ajax
 	public function save_detail()
 	{
 		$result = A('User', 'Service')->doSaveDetail($_POST);

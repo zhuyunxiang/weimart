@@ -31,11 +31,13 @@ class ShopService extends BaseService
 		return array('data'=>false, 'info'=>'数据保存失败！', 'status'=>0);
 	}
 
-	public function get_shop_with_user()
+	// 获取当前用户的店铺信息
+	public function getShopWithUser()
 	{
 		if (isset($_SESSION['user'])) {
 			$condition = array('user_id'=>$_SESSION['user']['user_id']);
 			$result = $this->userRelationDao->where($condition)->relation('shops')->find();
+			$_SESSION['shop'] = $result['shops'][0];
 			return $result['shops'][0];
 		}
 		return false;

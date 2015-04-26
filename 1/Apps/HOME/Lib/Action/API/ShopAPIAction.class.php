@@ -23,7 +23,7 @@ class ShopAPIAction extends Action
 	// 获取店铺信息
 	public function get_shop_info()
 	{
-		$result = A('Shop', 'Service')->get_shop_with_user();
+		$result = A('Shop', 'Service')->getShopWithUser();
 		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
 

@@ -186,7 +186,6 @@ HomeServices.service('Shop', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         Shop.getShopInfo();
                         alert("信息保存成功!");
@@ -255,3 +254,49 @@ HomeServices.service('HotBaby', ['$http', '$rootScope',
         return HotBaby;
     }
 ]);
+
+// 商品
+HomeServices.service('Product', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Product = {};
+        Product.list = null;
+
+        Product.getList = function (shopId) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ProductAPI/get_product_by_shop',
+                data: 'shop_id='+shopId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.list = data.data;
+                        $rootScope.$broadcast('Product.getProductListSuccess');
+                    }
+                });
+        }
+
+        Product.saveInfo = function(info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ProductAPI/save_product_info',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        alert("信息保存成功!");
+                        $rootScope.$broadcast('Product.saveProductInfoSuccess');
+                        Product.getList(info['shop_id']);
+                    } else {
+                        $rootScope.$broadcast('Product.saveProductInfoError');
+                    }
+                });
+        }
+        return Product;
+    }
+])

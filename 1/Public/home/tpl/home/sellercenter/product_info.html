@@ -18,19 +18,19 @@
 	<div class="product-table-container">
 		<table class="table table-hover">
 			<tr>
-				<th>商品描述</th>
+				<th>商品名称</th>
 				<th>价格</th>
 				<th>数量</th>
 				<th>分类</th>
 				<th>更新时间</th>
 				<th>操作</th>
 			</tr>
-			<tr>
-				<td>1231231</td>
-				<td>2.5</td>
+			<tr ng-repeat="item in ProductList">
+				<td>{{item.product_name}}</td>
+				<td>{{item.product_price}}</td>
+				<td>{{item.product_num}}</td>
 				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{item.product_register_time}}</td>
 				<td></td>
 			</tr>
 		</table>
@@ -82,7 +82,7 @@
 						</div>
 						<div class="img-container">
 							<div class="img">
-								<img ng-src="{{editProductInfo.head_img}}" alt="上传商品图片">
+								<img ng-src="{{editProductInfo.product_img}}" alt="上传商品图片">
 							</div>
 							<div class="button">
 								<button class="btn btn-primary" ng-file-select ng-file-change="upload($files)">上传商品图片</button>
