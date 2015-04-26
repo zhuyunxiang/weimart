@@ -1,5 +1,5 @@
 .border-solid{border:solid 1px;}
-.bottom-navbar-container{position:fixed;bottom:0px;width:100%;}.bottom-navbar-container .menu_item{border:solid 1px;height:40px;line-height:40px;border-width:1px 1px 1px 0;text-align:center;}.bottom-navbar-container .menu_item.active{color:orange;}
+.bottom-navbar-container{background-color:#FF8485;position:fixed;bottom:0px;width:100%;}.bottom-navbar-container .menu_item{border:solid 1px;height:40px;line-height:40px;border-width:1px 1px 1px 0;text-align:center;}.bottom-navbar-container .menu_item.active{color:orange;}
 .content-container{height:auto !important;min-height:640px;border:solid 1px;}
 .animateView.ng-enter,.animateView.ng-leave{transition:all 0.5s ease-in;-moz-transition:all 0.5s ease-in;-o-transition:all 0.5s ease-in;}
 .animateView.ng-enter{opacity:0;color:green;}

@@ -1,3 +1,172 @@
-.aaa{
-	color: red;
+@main-color:  #FF8485;
+@often-color: #CCCCCC;
+@border-CCCC: solid 1px #CCCCCC;
+
+//=====================================
+.boder-solid-CCCC {
+	border: solid 1px #CCCCCC;
 }
+.boder-solid-main {
+	border: solid 1px #FEBFC0;
+}
+
+//=====================================
+
+img {
+	width: 100%;
+}
+
+div.fore {
+	background-color: @main-color;
+
+	input.search {
+		margin-top: 8px;
+	}
+}
+
+div.ad-pic {
+	width: 100%;
+}
+
+div.main-class {
+	margin: 10px;
+
+	span {
+		text-align: center;
+		color: @main-color;
+		font-family: 'Arial Negreta', 'Arial';
+		///////////////////字体随屏幕变化
+		font-size: 18px;
+	}
+}
+
+div.ads {
+	margin: 20px 10px 20px 10px;
+	img {
+		.boder-solid-main;
+		//两个图片高度不同---------修改使高度自动
+		height: 75px;
+	}
+}
+
+div.title {
+	width: 100%;
+	height: 50px;
+	border-top: @border-CCCC;
+	border-bottom: @border-CCCC;
+	line-height: 50px;
+	font-size: 20px;
+	border-left: solid 10px #FF8182;
+
+	//=============no effect===============
+
+	// &:first-child {
+	// 	border-left: solid 10px #FF8182;
+	// }
+	// &:nth-child(2) {
+	// 	border-left: solid 10px #FF8182;
+	// }
+	// &:nth-child(3) {
+	// 	border-left: solid 10px #FF8182;
+	// }
+
+	span {
+		float: right;
+	}
+	img {
+		float: right;
+		width: 30px;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 15px;
+	}
+
+	
+}
+
+div.clothes {
+
+	div.large {
+		position: relative;
+		border-right: @border-CCCC;
+
+		span {
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			color: @main-color;
+			font-size: 18px;
+		}
+		img {
+			margin-top: 18px;
+			height: 198px;
+		}
+	}
+
+	div.two-middle {
+		position: relative;
+		img {
+			margin-top: 35px;
+			width:48%;
+		}
+
+		span {
+			position: absolute;
+			top: 5px;
+			left: 10px;
+			color: @main-color;
+			font-size: 18px;
+		}
+	}
+}
+
+div.shoes {
+	div.large {
+		border-right: @border-CCCC;
+
+	}
+
+	span {
+		width: 100%;
+		text-align: center;
+		color: @main-color;
+		font-size: 16px;
+	}
+
+	div.text {
+		display: block;
+		color: @main-color;
+		font-size: 20px;
+		span {
+			display: block;
+			margin-top: 10%;
+		}
+	}
+
+	div.row-left {
+		margin-top: 30px;
+
+		img {
+			margin-left: -10%;
+		}
+	}
+}
+
+div.bottom {
+	margin-bottom: 50px;
+
+	div.first {
+			border-right: @border-CCCC;
+	}
+
+	img {
+		margin-top: 10px;	
+	}
+
+	span {
+		color: @main-color;
+		font-size: 18px;
+		margin-left: 10%;
+	}
+}
+

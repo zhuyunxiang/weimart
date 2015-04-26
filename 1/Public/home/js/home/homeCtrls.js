@@ -275,6 +275,7 @@ HomeCtrls.controller('delegateCtrl', ['$scope',
 
         $scope.tplURLs = {
             agence: publicUrl + 'tpl/home/agence_main.html', 
+            agencySettingMain:publicUrl + 'tpl/home/agence_setting_main.html'
         };
     }
 ]);
