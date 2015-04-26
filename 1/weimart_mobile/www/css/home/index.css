@@ -15,6 +15,6 @@ div.shoes div.large{border-right:solid 1px #cccccc;}
 div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:16px;}
 div.shoes div.text{display:block;color:#ff8485;font-size:20px;}div.shoes div.text span{display:block;margin-top:10%;}
 div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-10%;}
-div.bottom{margin-bottom:50px;}div.bottom div.first{border-right:solid 1px #cccccc;}
+div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;}
 div.bottom span{color:#ff8485;font-size:18px;margin-left:10%;}
