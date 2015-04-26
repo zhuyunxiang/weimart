@@ -1,1 +1,20 @@
-.aaa{color:red;}
+.boder-solid-CCCC{border:solid 1px #CCCCCC;}
+.boder-solid-main{border:solid 1px #FEBFC0;}
+img{width:100%;}
+div.fore{background-color:#ff8485;}div.fore input.search{margin-top:8px;}
+div.ad-pic{width:100%;}
+div.main-class{margin:10px;}div.main-class span{text-align:center;color:#ff8485;font-family:'Arial Negreta','Arial';font-size:18px;}
+div.ads{margin:20px 10px 20px 10px;}div.ads img{border:solid 1px #FEBFC0;height:75px;}
+div.title{width:100%;height:50px;border-top:solid 1px #cccccc;border-bottom:solid 1px #cccccc;line-height:50px;font-size:20px;border-left:solid 10px #FF8182;}div.title span{float:right;}
+div.title img{float:right;width:30px;margin-left:10px;margin-right:10px;margin-top:15px;}
+div.clothes div.large{position:relative;border-right:solid 1px #cccccc;}div.clothes div.large span{position:absolute;top:5px;right:10px;color:#ff8485;font-size:18px;}
+div.clothes div.large img{margin-top:18px;height:198px;}
+div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:35px;width:48%;}
+div.clothes div.two-middle span{position:absolute;top:5px;left:10px;color:#ff8485;font-size:18px;}
+div.shoes div.large{border-right:solid 1px #cccccc;}
+div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:16px;}
+div.shoes div.text{display:block;color:#ff8485;font-size:20px;}div.shoes div.text span{display:block;margin-top:10%;}
+div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-10%;}
+div.bottom{margin-bottom:50px;}div.bottom div.first{border-right:solid 1px #cccccc;}
+div.bottom img{margin-top:10px;}
+div.bottom span{color:#ff8485;font-size:18px;margin-left:10%;}

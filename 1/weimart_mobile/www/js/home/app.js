@@ -10,13 +10,19 @@ app.run(['$rootScope', '$state', '$stateParams',
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
         // 设置默认显示的页面
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/home");
 
         $stateProvider
         // 主页
         .state('home', {
-            url: "/",
+            url: "/home",
             templateUrl: 'tpl/home/index.html',
+            controller: "homeCtrl"
+        })
+        // 主页
+        .state('home.hotbaby', {
+            url: "/hotbaby",
+            templateUrl: 'tpl/home/hotbaby.html',
             controller: "homeCtrl"
         })
         // 分类
