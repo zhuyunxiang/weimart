@@ -11,10 +11,10 @@ div.clothes div.large{position:relative;border-right:solid 1px #cccccc;}div.clot
 div.clothes div.large img{margin-top:18px;height:198px;}
 div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:35px;width:48%;}
 div.clothes div.two-middle span{position:absolute;top:5px;left:10px;color:#ff8485;font-size:14px;}
-div.shoes div.large{border-right:solid 1px #cccccc;}
-div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:10px;}
-div.shoes div.text{display:block;color:#ff8485;font-size:20px;}div.shoes div.text span{display:block;margin-top:10%;}
+div.shoes{width:100%;}div.shoes div.large{border-right:solid 1px #cccccc;}
+div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:8px;}
+div.shoes div.text{display:block;color:#ff8485;font-size:10px;}div.shoes div.text span{display:block;margin-top:10%;width:100%;font-size:9px;}
 div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-10%;}
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;}
-div.bottom span{color:#ff8485;font-size:12px;margin-left:10%;}
+div.bottom span{color:#ff8485;font-size:12px;}
