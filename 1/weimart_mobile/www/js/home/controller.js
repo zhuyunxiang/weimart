@@ -46,6 +46,49 @@ controllers.controller('homeCtrl', ['$scope', '$state',
 controllers.controller('listCtrl', ['$scope',
     function($scope) {
 
+        $scope.women = [
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"}, 
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"}, 
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"}, 
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"}, 
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"}, 
+        {"pic":"1.jpg", "name":"T恤"},
+        {"pic":"1.jpg", "name":"衬衫"},
+        ];
+        $scope.womenShoes = [
+        {"pic":"4.jpg", "name":"商务鞋"},
+        {"pic":"5.jpg", "name":"单鞋"}, 
+        {"pic":"4.jpg", "name":"商务鞋"},
+        {"pic":"5.jpg", "name":"单鞋"}, 
+        ];
+        $scope.men = [
+        {"pic":"3.jpg", "name":"短袖"},
+        {"pic":"3.jpg", "name":"2袖"}, 
+        {"pic":"3.jpg", "name":"短袖"},
+        {"pic":"3.jpg", "name":"短袖"}, 
+        {"pic":"3.jpg", "name":"短袖"},
+        {"pic":"3.jpg", "name":"短袖"}, 
+        {"pic":"3.jpg", "name":"短袖"},
+        {"pic":"3.jpg", "name":"短袖"}, 
+        ];
+        $scope.menShoes = [
+        {"pic":"2.jpg", "name":"皮鞋"},
+        {"pic":"6.jpg", "name":"商务鞋"}, 
+        {"pic":"2.jpg", "name":"皮鞋"},
+        {"pic":"6.jpg", "name":"商务鞋"}, 
+        ];
+        $scope.pkage = [
+        {"pic":"7.jpg", "name":"女包"},
+        {"pic":"8.jpg", "name":"男包"}, 
+        {"pic":"9.jpg", "name":"钱包"},
+        {"pic":"7.jpg", "name":"女包"}, 
+        ];
+
     }
 ]);
 // 我的
