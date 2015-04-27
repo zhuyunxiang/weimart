@@ -1,0 +1,6 @@
+.border-solid{border:solid 1px #CCCCCC;}
+div.title{min-height:40px;line-height:40px;}div.title .center{text-align:center;border:solid 1px #CCCCCC;}
+div.user-info{background-color:#FF8182;min-height:80px;}div.user-info .user-text{padding:10px 30px;color:#FFFFFF;}div.user-info .user-text .user-name{font-size:18px;}
+div.user-info .user-img{padding:10px 0px;}div.user-info .user-img img{width:50px;height:50px;}
+.history-container{min-height:40px;padding:5px;}.history-container .num{text-align:center;}
+.history-container .text{text-align:center;font-size:10px;}
