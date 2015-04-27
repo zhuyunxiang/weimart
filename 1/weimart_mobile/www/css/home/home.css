@@ -1,5 +1,5 @@
 
-.bottom-navbar-container{background-color:#FF8485;position:fixed;bottom:0px;width:100%;height:80px;}.bottom-navbar-container .menu_item{height:40px;line-height:40px;border-width:1px 1px 1px 0;text-align:center;}.bottom-navbar-container .menu_item.active{opacity:0.5;}
+.bottom-navbar-container{background-color:#FF8485;position:fixed;bottom:0px;width:100%;height:50px;}.bottom-navbar-container .menu_item{height:40px;border-width:1px 1px 1px 0;text-align:center;font-size:10px;}.bottom-navbar-container .menu_item.active{opacity:0.5;}
 .bottom-navbar-container img{display:block;width:50%;margin-left:25%;}
 .bottom-navbar-container span{margin-top:-10%;color:white;}
 .content-container{height:auto !important;min-height:640px;}
