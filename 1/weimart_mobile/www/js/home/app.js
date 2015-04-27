@@ -42,6 +42,19 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/conf",
             templateUrl: 'tpl/home/conf.html',
             controller: "confCtrl"
+        })
+        // 登陆页面
+        .state('login', {
+            url: "/login",
+            templateUrl: 'tpl/home/login.html',
+            controller: "loginCtrl"
+        })
+
+        // 注册页面
+        .state('register', {
+            url: "/register",
+            templateUrl: 'tpl/home/register.html',
+            controller: "registerCtrl"
         });
     }
 ]);

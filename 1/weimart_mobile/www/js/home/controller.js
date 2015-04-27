@@ -99,7 +99,21 @@ controllers.controller('personalCtrl', ['$scope',
 ]);
 
 // 设置
-controllers.controller('confCtrl', ['$scope',
+controllers.controller('confCtrl', ['$scope','$state',
+    function($scope,$state) {
+        $state.go('login');
+    }
+]);
+
+// 登陆页面
+controllers.controller('loginCtrl', ['$scope',
+    function($scope) {
+
+    }
+]);
+
+// 注册页面
+controllers.controller('registerCtrl', ['$scope',
     function($scope) {
 
     }
