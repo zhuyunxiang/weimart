@@ -1,4 +1,53 @@
 <link rel="stylesheet" href="css/home/list.css">
-<div class="content-container col-xs-12">	
-	分类
+<div class="content-container col-xs-12 main">	
+	<div class="col-xs-12 title">
+		女装
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in women">
+			<img src="img/list/{{value.pic}}" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		女鞋
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in womenShoes">
+			<img src="img/list/{{value.pic}}" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		男装
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in men">
+			<img src="img/list/{{value.pic}}" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		男鞋
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in menShoes">
+			<img src="img/list/{{value.pic}}" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+
+	<div class="col-xs-12 title">
+		箱包
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in pkage">
+			<img src="img/list/{{value.pic}}" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
 </div>
