@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="css/home/index.css">
-<div class="content-container col-xs-12" >
+<!-- home child -->
+<div ng-show="$state.current.name !== 'home'" ui-view></div>
+<!-- home -->
+<div class="content-container col-xs-12" ng-show="$state.current.name == 'home'">
 	<div class="row fore">
 		<div class="col-xs-2">
 			<img ng-src="img/index/menu.png" class="ico" alt="mune">
