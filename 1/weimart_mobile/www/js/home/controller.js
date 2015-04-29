@@ -115,6 +115,8 @@ controllers.controller('loginCtrl', ['$scope',
 // 注册页面
 controllers.controller('registerCtrl', ['$scope',
     function($scope) {
-
+        $scope.doRegister = function () {
+            console.log($scope.registerInfo);
+        }
     }
 ]);

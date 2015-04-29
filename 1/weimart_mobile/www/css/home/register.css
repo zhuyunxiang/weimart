@@ -2,3 +2,6 @@
 div.title{border:solid 1px #CCCCCC;min-height:35px;line-height:35px;}
 div.form-container{margin-top:20px;}div.form-container .list-group-item{overflow:hidden;}div.form-container .list-group-item input{border:none;}
 div.bottom{margin-top:20px;}
+.list-group-item .col-xs-3{padding:0;}
+.list-group-item .col-xs-2{padding:0;color:red;}
+.register-btn{background-color:red;color:white;}

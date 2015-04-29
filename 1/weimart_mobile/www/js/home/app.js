@@ -1,11 +1,62 @@
-var app = angular.module('homeApp', ['ngAnimate', 'ngTouch','ui.router', 'controllers', 'directives']);
+var app = angular.module('homeApp', ['ngAnimate', 'ngTouch', 'ui.router', 'controllers', 'services', 'directives']);
 
-app.run(['$rootScope', '$state', '$stateParams',
-    function($rootScope, $state, $stateParams) {
+app.run(['$rootScope', '$state', '$stateParams', '$location', 'Auth',
+    function($rootScope, $state, $stateParams, $location, Auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        $rootScope.$on('$routeChangeStart', function (evt, next, curr) {
+            if ($Auth.isAuthorized(next.$$route.access_level)) {
+                
+            };
+        });
     }
 ]);
+
+// 身份认证
+app.config(function($httpProvider) {
+    var interceptor = ['$q', '$rootScope', 'Auth',
+        function($q, $rootScope, Auth) {
+            return {
+                'response': function(resp) {
+                    if (resp.config.url == 'login') {
+
+                        // Auth.setToken(resp.data.token);
+                    };
+                    return resp;
+                },
+                'responseError': function(rejection) {
+                    switch (rejection.status) {
+                        case 401:
+                            if (rejection.config.url !== 'login') {
+                                // 判断当前页是否为登录页
+                                $rootScope.$broadcast('auth:loginRequired');
+                            };
+                            break;
+                        case 403:
+                            $rootScope.$broadcast('auth:forbidden');
+                            break;
+                        case 404:
+                            $rootScope.$broadcast('page:notFound');
+                            break;
+                        case 500:
+                            $rootScope.$broadcast('server:error');
+                            break;
+                    }
+                    return $q.reject(rejection);
+                }
+            };
+        }
+    ];
+
+    $httpProvider.interceptors.push(interceptor);
+
+});
+
+app.constant('ACCESS_LEVELS', {
+    pub: 1,
+    user: 2
+});
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
