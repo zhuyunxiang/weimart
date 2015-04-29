@@ -169,3 +169,57 @@ div.bottom {
 	}
 }
 
+
+//zhaoyuxue 热卖宝贝
+div.hotbaby-container {
+	margin-bottom: 100px;
+	div.hotbaby-fore {
+		//row 同一级上不能加width: 100%;
+		// width: 100%;
+		text-align: center;
+		height: 30px;
+		line-height: 30px;
+		background-color:  @main-color;
+
+		span.back {
+			float: left;
+			//span 上下居中的问题
+			vertical-align: middle;
+		}
+
+		span.title {
+			color: white;
+			font-size: 14px;
+			font-weight: bolder;
+		}
+	}
+
+	div.item-container {
+		text-align: center;
+		vertical-align: middle;
+		margin-top: 20px;
+		
+		span {
+			font-size: 13px;
+			
+			&.item-name {
+				font-weight: bold;
+				height: 30px;
+				line-height: 30px;
+			}
+		}
+
+		div.item-desc {
+			font-size: 13px;
+			height: 40px;
+			line-height: 20px;
+			overflow-y: hidden;
+			margin-bottom: 10px;
+		}
+
+		img {
+			width: 100%;
+			.boder-solid-main;
+		}
+	}
+}

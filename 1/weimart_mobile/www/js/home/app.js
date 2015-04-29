@@ -80,6 +80,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: 'tpl/home/hotbaby.html',
             controller: "homeCtrl"
         })
+
+         .state('home.hotbrand', {
+            url: "/hotbaby",
+            templateUrl: 'tpl/home/hotbrand.html',
+            controller: "homeCtrl"
+        })
         // 分类
         .state('list', {
             url: "/list",
