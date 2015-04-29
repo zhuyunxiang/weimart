@@ -6,8 +6,12 @@ app.run(['$rootScope', '$state', '$stateParams', '$location', 'Auth',
         $rootScope.$stateParams = $stateParams;
 
         $rootScope.$on('$routeChangeStart', function (evt, next, curr) {
-            if ($Auth.isAuthorized(next.$$route.access_level)) {
-                
+            if (!Auth.isAuthorized(next.$$route.access_level)) {
+                if (Auth.isLoggedIn()) {
+                    alert("已经登陆！");
+                } else {
+                    alert("请登陆！");
+                }
             };
         });
     }

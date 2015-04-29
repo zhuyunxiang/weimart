@@ -101,7 +101,7 @@ controllers.controller('personalCtrl', ['$scope',
 // 设置
 controllers.controller('confCtrl', ['$scope','$state',
     function($scope,$state) {
-        $state.go('login');
+        // $state.go('login');
     }
 ]);
 
