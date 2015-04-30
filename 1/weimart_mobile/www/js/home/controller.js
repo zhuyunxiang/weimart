@@ -99,23 +99,42 @@ controllers.controller('personalCtrl', ['$scope',
 ]);
 
 // 设置
-controllers.controller('confCtrl', ['$scope','$state',
-    function($scope,$state) {
-        // $state.go('login');
+controllers.controller('confCtrl', ['$scope', '$state', 'Auth',
+    function($scope, $state, Auth) {
+        // 判断是否已经登陆
+        if (!Auth.isLoggedIn()) {
+            $state.go('login');
+        } else {
+            $scope.userInfo = Auth.getUser();
+
+            $scope.logOut = function() {
+                if (confirm("确定要退出吗?")) {
+                    Auth.logOut();
+                    $scope.userInfo = null;
+                    $state.go('login');
+                };
+            }
+        }
     }
 ]);
 
 // 登陆页面
-controllers.controller('loginCtrl', ['$scope',
-    function($scope) {
+controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth',
+    function($scope, $state, User, Auth) {
+        $scope.doLogin = function() {
+            User.doLogin($scope.loginInfo);
 
+            $scope.$on('User.loginSuccess', function(event) {
+                $state.go('conf');
+            })
+        }
     }
 ]);
 
 // 注册页面
-controllers.controller('registerCtrl', ['$scope',
-    function($scope) {
-        $scope.doRegister = function () {
+controllers.controller('registerCtrl', ['$scope', '$state',
+    function($scope, $state) {
+        $scope.doRegister = function() {
             console.log($scope.registerInfo);
         }
     }

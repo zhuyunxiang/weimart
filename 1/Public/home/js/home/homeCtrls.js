@@ -1,4 +1,4 @@
-var HomeCtrls = angular.module('HomeCtrls', ['ng.ueditor']);
+var HomeCtrls = angular.module('HomeCtrls', ['ng.ueditor','ui.tree']);
 
 // 主页的Controller Start
 HomeCtrls.controller('homeCtrl', ['$scope',
@@ -518,6 +518,14 @@ HomeCtrls.controller('sellerCenterCtrl', ['$scope','$state',
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
+
+        // 未登录
+        $scope.$on('User.notLogin', function(event) {
+            $scope.user_name = null;
+            $scope.user_id = null;
+            alert("对不起,请先登录!");
+            $state.go('login');
+        });
     }
 ]);
 
@@ -575,6 +583,7 @@ HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'Use
     }
 ]);
 
+// 店铺信息
 HomeCtrls.controller('sellerCenterShopCtrl', ['$upload', '$scope', '$state', 'User', 'Shop',
 
     function($upload, $scope, $state, User, Shop) {
@@ -583,6 +592,9 @@ HomeCtrls.controller('sellerCenterShopCtrl', ['$upload', '$scope', '$state', 'Us
 
         // 获取店铺信息
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
+            if (!Shop.data) {
+                Shop.data = {};
+            };
             $scope.editShopInfo = Shop.data;
         });
 
@@ -634,6 +646,7 @@ HomeCtrls.controller('sellerCenterShopCtrl', ['$upload', '$scope', '$state', 'Us
     }
 ]);
 
+// 商品信息
 HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','Product','Shop',
     function($upload, $scope,$state,Product,Shop) {
         $scope._simpleConfig = {
@@ -648,28 +661,51 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
         // 获取当前店铺的所有商品列表
         $scope.$on('Product.getProductListSuccess', function(event) {
             $scope.ProductList = Product.list;
-            console.log($scope.ProductList);
         });
 
         // 获取店铺信息
         Shop.getShopInfo();
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
             $scope.shopInfo = Shop.data;
-            Product.getList($scope.shopInfo.shop_id);
+            if (!$scope.shopInfo) {
+                alert("对不起,请先注册店铺!");
+                $state.go('sellercenter.shop');
+            } else {
+                Product.getList($scope.shopInfo.shop_id);
+            }
         });
 
+        // 设置新建内容
         $scope.setAddInfo = function () {
             if (!$scope.shopInfo) {
                 alert("对不起,请先注册店铺!");
-                $scope.go('sellercenter.shop');
+                $state.go('sellercenter.shop');
             };
             $scope.modalTitle='添加商品信息';
-            $scope.editProductInfo = {};
+            $scope.editProductInfo = {product_img:publicPath+'home/img/default_product.png'};
         }
 
+        // 设置修改商品信息
+        $scope.setUpdateInfo = function (info) {
+            $scope.modalTitle='修改商品信息';
+            $scope.editProductInfo = info;
+            if (!info.product_img) {
+                $scope.editProductInfo.product_img = publicPath+'home/img/default_product.png';
+            };
+        }
+
+        // 保存商品信息
         $scope.saveProductInfo = function () {
             $scope.editProductInfo.shop_id = $scope.shopInfo.shop_id;
             Product.saveInfo($scope.editProductInfo);
+        }
+
+        // 删除商品信息
+        $scope.deleteInfo = function (productId) {
+            if (confirm("确定要删除?不可恢复!")) {
+                Product.deleteInfo(productId); 
+                Product.getList($scope.shopInfo.shop_id);
+            };
         }
 
         $scope.$watch('files', function() {
@@ -697,5 +733,22 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
                 }
             }
         };
+    }
+]);
+
+// 商品类别
+HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope','Product',
+    function($scope,Product) {
+        $scope.visible = function(item) {
+            if ($scope.query && $scope.query.length > 0 && item.type_name.indexOf($scope.query) == -1) {
+                return false;
+            }
+            return true;
+        };
+
+        Product.getTypeList();
+        $scope.$on('Product.getPTypeListSuccess', function (event) {
+            $scope.data = Product.type_list;
+        });
     }
 ]);

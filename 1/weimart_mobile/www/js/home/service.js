@@ -6,11 +6,13 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
 
 		var setUser = function(user) {
 			if (!user.role || user.role < 0) {
+				console.log('aaa');
 				user.role = ACCESS_LEVELS.pub;
 			};
 
 			_user = user;
 			$cookieStore.put('user', _user);
+			console.log('cokkie'+_user);
 		}
 
 		return {
@@ -41,8 +43,8 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
 
 
 // 用户信息
-services.service('User', ['$http', '$rootScope',
-	function($http, $rootScope) {
+services.service('User', ['$http', '$rootScope','Auth',
+	function($http, $rootScope, Auth) {
 		var User = {};
 		User.user_name = null;
 		User.user_id = null;
@@ -157,13 +159,10 @@ services.service('User', ['$http', '$rootScope',
 				}
 			})
 				.success(function(data) {
+					console.log(data);
 					if (data.status == 1) {
-						User.user_name = data.data.user_name;
-						User.user_id = data.data.user_id;
+						Auth.setUser(data.data);
 						$rootScope.$broadcast('User.loginSuccess');
-					} else {
-						User.error_info = data.info;
-						$rootScope.$broadcast('User.loginError');
 					}
 				});
 		}

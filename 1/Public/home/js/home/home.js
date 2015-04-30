@@ -78,6 +78,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/product",
             templateUrl: publicUrl + 'tpl/home/sellercenter/product_info.html',
             controller: "sellerCenterProductCtrl"
+        }).state('sellercenter.type', {
+            url: "/type",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/product_type.html',
+            controller: "sellerCenterProductTypeCtrl"
         }).state('sellercenter.punish', {
             url: "/punish",
             templateUrl: publicUrl + 'tpl/home/sellercenter/punish.html',

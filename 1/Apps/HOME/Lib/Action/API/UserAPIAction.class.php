@@ -131,7 +131,7 @@ class UserAPIAction extends Action
 			A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户成功 [Delete User Success ID:'.$_POST['user_id'].']');
 			$this->ajaxReturn($result, '用户删除成功!', 1);
 		}
-		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户失败 [Delete User Success ID:'.$_POST['user_id'].']');
+		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户失败 [Delete User Error ID:'.$_POST['user_id'].']');
 		$this->ajaxReturn($result, '用户删除失败!', 0);
 	}
 }

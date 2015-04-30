@@ -43,5 +43,13 @@ class ProductService extends BaseService
 		$result = $this->shopRelationDao->where($condition)->relation('product')->find();
 		return array('data'=>$result['product'], 'info'=>'数据获取成功！', 'status'=>1);
 	}
+
+	// 根据ID删除商品信息
+	public function removeProductInfoById($productId)
+	{
+		$data = array('product_id'=>$productId, 'product_is_deleted'=>1);
+		$result = $this->productDao->save($data);
+		return array('data'=>$result, 'info'=>'商品删除成功！', 'status'=>1);
+	}
 }
  ?>

@@ -37,31 +37,55 @@ class PtypeService extends BaseService
 	    return $tree;  
 	}
 
-	// 由树转成数组
-	public function treeGetArr($data, $arr = array())
+	// 由树转成数组(由大到小)
+	public function treeGetArr($data, $arr = array(), $depth = 0)
 	{
+		$depth++;
 		foreach ($data as $rk => $rv) {
 			if (count($rv['nodes']) > 0) {
-				$arr = $this->treeGetArr($rv['nodes'], $arr);
+				$arr = $this->treeGetArr($rv['nodes'], $arr, $depth);
 			}
+
+			// 生成多级下拉列表
+			for ($i=1; $i <= $depth; $i++) { 
+				if ($i == 2) {
+					$rv['type_name'] = '|----'.$rv['type_name'];
+				}
+				if ($i > 1) {
+					$rv['type_name'] = '	'.$rv['type_name'];
+				}
+			}
+			$rv['depth'] = $depth;
 			unset($rv['nodes']);
-			array_push($arr, $rv);
+			array_unshift($arr, $rv);
 		}
 		return $arr;
 	}
 
-	// 获取所有商品分类
-	public function getAllTypes()
+	// 获取所有有分级的分类数组
+	public function getAllTypesInArr($condition = null)
 	{
-		$result = $this->getInfo('pTypeDao');
+		$result = $this->getInfo('pTypeDao', $condition);
 
-		if (count($result)>1) {
+		if (count($result) > 1) {
+			$result =  $this->getTree($result);
+
+			return $this->treeGetArr($result);
+		} else {
+			return $result;
+		}
+	}
+
+	// 获取所有商品分类
+	public function getAllTypes($condition = null)
+	{
+		$result = $this->getInfo('pTypeDao', $condition);
+
+		if (count($result) > 1) {
 			return $this->getTree($result);
 		} else {
 			return $result;
 		}
-
-		
 	}
 
 	// 保存商品分类

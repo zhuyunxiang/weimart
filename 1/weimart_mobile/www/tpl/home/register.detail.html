@@ -1,0 +1,49 @@
+<div class="content-container col-xs-12 register-detail">
+	<form class="form-horizontal detail-form">
+		<div class="head-img-container">
+			<img ng-src="{{userDetailInfo.user_header_img}}" alt="头像">
+			<button class="btn btn-default" ng-file-select ng-file-change="upload($files)">点击上传</button>
+		</div>
+		<div class="form-group">
+			<label for="nick_name" class="col-xs-4 control-label">昵称:</label>
+			<div class="col-xs-8">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_nick_name" placeholder="请输入你的昵称" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputPassword3" class="col-xs-4 control-label">性别:</label>
+			<div class="col-xs-8">
+				<label class="radio-label" ng-init="userDetailInfo.user_gender='男'">
+					<input type="radio" ng-model="userDetailInfo.user_gender" value="男"> 男
+				</label>
+				<label class="radio-label">
+					<input type="radio" ng-model="userDetailInfo.user_gender" value="女" > 女
+				</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-xs-4 control-label">真实姓名:</label>
+			<div class="col-xs-8">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_full_name" placeholder="请输入你的真实姓名" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-xs-4 control-label">联系方式:</label>
+			<div class="col-xs-8">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_telephone" placeholder="请输入你的联系方式" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="col-xs-4 control-label">联系地址:</label>
+			<div class="col-xs-8">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_address" placeholder="请输入你的联系地址" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-offset-2 col-xs-8">
+				<button type="submit" class="btn btn-primary" save-detail info="userDetailInfo">提交审核</button>
+				<button type="button" class="btn btn-default">以后再说</button>
+			</div>
+		</div>
+	</form>
+</div>
