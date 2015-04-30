@@ -5,7 +5,8 @@ app.run(['$rootScope', '$state', '$stateParams', '$location', 'Auth',
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        $rootScope.$on('$routeChangeStart', function (evt, next, curr) {
+        $rootScope.$on('$routeChangeStart', function(evt, next, curr) {
+            alert('qiehuanluyou');
             if (!Auth.isAuthorized(next.$$route.access_level)) {
                 if (Auth.isLoggedIn()) {
                     alert("已经登陆！");
@@ -23,8 +24,8 @@ app.config(function($httpProvider) {
         function($q, $rootScope, Auth) {
             return {
                 'response': function(resp) {
-                    if (resp.config.url == 'login') {
-
+                    if (resp.config.url == 'tpl/home/login.html') {
+                        console.log(resp.config.url);
                         // Auth.setToken(resp.data.token);
                     };
                     return resp;
@@ -32,6 +33,7 @@ app.config(function($httpProvider) {
                 'responseError': function(rejection) {
                     switch (rejection.status) {
                         case 401:
+                            alert('401');
                             if (rejection.config.url !== 'login') {
                                 // 判断当前页是否为登录页
                                 $rootScope.$broadcast('auth:loginRequired');
@@ -62,8 +64,8 @@ app.constant('ACCESS_LEVELS', {
     user: 2
 });
 
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
+    function($stateProvider, $urlRouterProvider, ACCESS_LEVELS) {
         // 设置默认显示的页面
         $urlRouterProvider.otherwise("/home");
 
@@ -81,7 +83,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller: "homeCtrl"
         })
 
-         .state('home.hotbrand', {
+        .state('home.hotbrand', {
             url: "/hotbaby",
             templateUrl: 'tpl/home/hotbrand.html',
             controller: "homeCtrl"
@@ -102,7 +104,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         .state('conf', {
             url: "/conf",
             templateUrl: 'tpl/home/conf.html',
-            controller: "confCtrl"
+            controller: "confCtrl",
         })
         // 登陆页面
         .state('login', {
@@ -110,11 +112,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: 'tpl/home/login.html',
             controller: "loginCtrl"
         })
-
         // 注册页面
         .state('register', {
             url: "/register",
             templateUrl: 'tpl/home/register.html',
+            controller: "registerCtrl"
+        })
+        // 个人详细信息
+        .state('register.detail', {
+            url: "/detail",
+            templateUrl: 'tpl/home/register.detail.html',
             controller: "registerCtrl"
         });
     }

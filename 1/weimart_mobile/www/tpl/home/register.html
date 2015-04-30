@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/home/register.css">
-<div class="content-container col-xs-12">
+<div ui-view ng-show="$state.current.name !== 'register'"></div>
+<div class="content-container col-xs-12" ng-show="$state.current.name == 'register'">
 	<div class="row title">
 		<div class="col-xs-1" ui-sref="login">
 			<span class="glyphicon glyphicon-chevron-left"></span>

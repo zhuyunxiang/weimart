@@ -38,6 +38,7 @@ class ProductAPIAction extends Action
 			// 获取商店信息
 			$result = A('Product', 'Service')->saveProductInfo($_POST);
 			if ($result) {
+				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '保存商品信息成功 [Save Product Success ID:'.$result['data'].']');
 				$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 			}
 			$this->ajaxReturn(false, '内部错误!', 0);
@@ -52,6 +53,18 @@ class ProductAPIAction extends Action
 			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 删除商品
+	public function delete_product_info()
+	{
+		$result = A('Product', 'Service')->removeProductInfoById($_POST['product_id']);
+		if ($result) {
+			A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除商品信息成功 [Delete Product Success ID:'.$_POST['product_id'].']');
+			$this->ajaxReturn($result, '用户删除成功!', 1);
+		}
+		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除商品信息失败 [Delete Product Error ID:'.$_POST['product_id'].']');
+		$this->ajaxReturn($result, '用户删除失败!', 0);
 	}
 }
  ?>

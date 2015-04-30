@@ -128,7 +128,7 @@ HomeServices.service('User', ['$http', '$rootScope',
         }
 
         User.saveDetail = function(detailInfo) {
-        	detailInfo.user_id = User.user_id;
+            detailInfo.user_id = User.user_id;
             $http({
                 method: 'POST',
                 url: appPath + 'API/UserAPI/save_detail',
@@ -203,11 +203,11 @@ HomeServices.service('Shop', ['$http', '$rootScope',
 // 热门品牌
 HomeServices.service('PopularBrand', ['$http', '$rootScope',
     function($http, $rootScope) {
-    	var PopularBrand = {};
-    	PopularBrand.brandList = null;
+        var PopularBrand = {};
+        PopularBrand.brandList = null;
 
-    	PopularBrand.getBrandList = function () {
-    		$http({
+        PopularBrand.getBrandList = function() {
+            $http({
                 method: 'POST',
                 url: appPath + 'Home/PopularBrand/get_brand_list',
                 data: null,
@@ -217,14 +217,14 @@ HomeServices.service('PopularBrand', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     if (data.status == 1) {
-                    	PopularBrand.brandList = data.data;
+                        PopularBrand.brandList = data.data;
                         $rootScope.$broadcast('PopularBrand.brandListUpdate');
                     }
                 });
-		}
+        }
 
 
-    	return PopularBrand;
+        return PopularBrand;
     }
 ]);
 
@@ -260,12 +260,30 @@ HomeServices.service('Product', ['$http', '$rootScope',
     function($http, $rootScope) {
         var Product = {};
         Product.list = null;
+        Product.type_list = null
 
-        Product.getList = function (shopId) {
+        Product.getTypeList = function () {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/get_all_types_for_seller',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.type_list = data.data;
+                        $rootScope.$broadcast('Product.getPTypeListSuccess');
+                    }
+                });
+        }
+
+        Product.getList = function(shopId) {
             $http({
                 method: 'POST',
                 url: appPath + 'API/ProductAPI/get_product_by_shop',
-                data: 'shop_id='+shopId,
+                data: 'shop_id=' + shopId,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -297,6 +315,25 @@ HomeServices.service('Product', ['$http', '$rootScope',
                     }
                 });
         }
+
+        Product.deleteInfo = function(productId) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ProductAPI/delete_product_info',
+                data: 'product_id=' + productId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('Product.deleteProductInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('Product.deleteProductInfoError');
+                    }
+                });
+        }
+
         return Product;
     }
 ])

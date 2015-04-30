@@ -5,3 +5,5 @@ div.bottom{margin-top:20px;}
 .list-group-item .col-xs-3{padding:0;}
 .list-group-item .col-xs-2{padding:0;color:red;}
 .register-btn{background-color:red;color:white;}
+.register-detail .head-img-container img{width:100px;height:100px;display:block;margin:0 auto;}
+.register-detail .head-img-container .btn{display:block;margin:10px auto;}

@@ -1,15 +1,15 @@
 var directives = angular.module('directives', []);
 
-directives.directive('swipeView', function () {
-	return {
-		restrict: 'AEC',
-		scope:{
+directives.directive('swipeView', function() {
+    return {
+        restrict: 'AEC',
+        scope: {
 
-		},
-		link: function (scope, element, attribute) {
-			// body...
-		}
-	}
+        },
+        link: function(scope, element, attribute) {
+            // body...
+        }
+    }
 });
 
 // 完成注册验证及实现
@@ -61,7 +61,7 @@ directives.directive('doRegister', ['$state', '$timeout', 'User',
                     }
 
                     scope.$on('User.registerSuccess', function(event) {
-                        $state.go('home');
+                        $state.go('register.detail');
                     });
 
                     // 循环检测异步请求是否已经完成

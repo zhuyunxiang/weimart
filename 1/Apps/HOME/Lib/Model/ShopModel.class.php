@@ -12,7 +12,8 @@ class ShopModel extends RelationModel
             'mapping_name'=>'product',
             'foreign_key'=>'shop_id',
             'relation_foreign_key'=>'product_id',
-            'relation_table'=>'weimart_shop_product'
+            'relation_table'=>'weimart_shop_product',
+            'condition'=>'product_is_deleted=0'
 		),
 		// Shop's types.
 		array(

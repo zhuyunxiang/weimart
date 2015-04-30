@@ -13,11 +13,11 @@
 	<!-- 个人信息栏 -->
 	<div class="row user-info">
 		<div class="col-xs-9 user-text">
-			<div class="user-name">朱云祥</div>
-			<div class="user-score">积分：142</div>
+			<div class="user-name">{{userInfo.user_name}}</div>
+			<!-- <div class="user-score">积分：142</div> -->
 		</div>
 		<div class="col-xs-3 user-img">
-			<img src="../../img/index/2.jpg" class="img-circle" alt="头像">
+			<img ng-src="{{userInfo.user_header_img}}" class="img-circle" alt="头像">
 		</div>
 	</div>
 	<div class="row history-container">
@@ -62,5 +62,9 @@
 				优惠券/礼品卡
 			</li>
 		</ul>
+	</div>
+
+	<div class="row">
+		<button class="btn btn-primary col-xs-6 col-xs-offset-3" ng-click="logOut()">退出登陆</button>
 	</div>
 </div>
