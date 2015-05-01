@@ -223,3 +223,85 @@ div.hotbaby-container {
 		}
 	}
 }
+
+div.hotbrand-container {
+	margin-bottom: 100px;
+	div.hotbrand-fore {
+		text-align: center;
+		height: 30px;
+		line-height: 30px;
+		background-color:  @main-color;
+
+		span.back {
+			float: left;
+			//span 上下居中的问题
+			vertical-align: middle;
+		}
+
+		span.title {
+			color: white;
+			font-size: 14px;
+			font-weight: bolder;
+		}
+	}
+
+	div.pic-container {
+		margin: 0px;
+		padding: 0px;
+		img {
+			width: 100%;
+		}
+	}
+
+	div.title-middle {
+		height: 30px;
+		line-height: 30px;
+		background-color: @main-color;
+
+		span {
+			font-size: 14px;
+		}
+	}
+
+	div.item {
+		height: 195px;
+		.pre-item {
+			.boder-solid-main;
+			pre {
+				height: 175px;
+				overflow: hidden;
+				margin-bottom: 10px;
+				margin-top: 10px;
+			}
+		}
+
+		.img-item {
+			.boder-solid-main;
+			img {
+				margin-bottom: 10px;
+				margin-top: 10px;
+				height: 175px;
+			}
+		}
+
+		&:nth-child(odd){
+			.img-item{
+				float: left;
+			}
+			.pre-item {
+				float: right;
+			}
+		}
+		&:nth-child(even){
+			.img-item {
+				float: right;
+			}
+			.pre-item {
+				float: left;
+			}
+		}
+	}
+
+
+
+}

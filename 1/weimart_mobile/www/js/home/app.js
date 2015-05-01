@@ -76,13 +76,13 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/index.html',
             controller: "homeCtrl"
         })
-        // 主页
+        // 主页 == 热卖宝贝
         .state('home.hotbaby', {
             url: "/hotbaby",
             templateUrl: 'tpl/home/hotbaby.html',
             controller: "homeCtrl"
         })
-
+         // 主页 == 热门品牌
         .state('home.hotbrand', {
             url: "/hotbaby",
             templateUrl: 'tpl/home/hotbrand.html',
