@@ -12,6 +12,7 @@ class ProductService extends BaseService
 		$this->productTypeDao = M('Product_type');
 		$this->shopProductDao = M('Shop_product');
 		$this->shopRelationDao = D('Shop');
+		$this->productRelationDao = D('Product');
 
 	}
 
@@ -21,12 +22,17 @@ class ProductService extends BaseService
 		$result = $this->saveInfo('productDao', $data, 'product_id');
 		// 新增
 		if (!isset($data['product_id'])) {
-			$data = array('shop_id'=>$data['shop_id'], 'product_id'=>$result);
-			$result = $this->shopProductDao->add($data);
+			$shopProductData = array('shop_id'=>$data['shop_id'], 'product_id'=>$result);
+			$productTypeData = array('type_id'=>$data['type_id'], 'product_id'=>$result);
+
+			$shopProductResult = $this->shopProductDao->add($shopProductData);
+			$productTypeResult = $this->productTypeDao->add($productTypeData);
+			$result = ($shopProductResult && $productTypeResult);
 			// 在这里添加分类
 		// 修改
 		} else {
-
+			$productTypeData = array('type_id'=>$data['type_id'], 'product_id'=>$data['product_id']);
+			$result = $this->productTypeDao->add($productTypeData);
 		}
 
 		if ($result) {
@@ -36,12 +42,21 @@ class ProductService extends BaseService
 		return array('data'=>false, 'info'=>'数据保存失败！', 'status'=>0);
 	}
 
-	// 根据店铺ID获取所有店铺商品
+	// 根据店铺ID获取所有店铺中的商品
 	public function getProductByShop($shopId)
 	{
 		$condition = array('shop_id'=>$shopId);
 		$result = $this->shopRelationDao->where($condition)->relation('product')->find();
-		return array('data'=>$result['product'], 'info'=>'数据获取成功！', 'status'=>1);
+
+		$productIdList = array();
+		foreach ($result['product'] as $key => $product) {
+			array_push($productIdList, $product['product_id']);
+		}
+
+		$condition = array('product_id'=>array('in', $productIdList));
+		$product_list = $this->productRelationDao->where($condition)->relation('types')->select();
+
+		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
 
 	// 根据ID删除商品信息

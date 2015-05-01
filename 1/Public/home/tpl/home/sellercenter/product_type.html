@@ -1,23 +1,52 @@
 <script type="text/ng-template" id="nodes_renderer.html">
-	<div ui-tree-handle class="tree-node tree-node-content">
+<div ui-tree-handle class="tree-node tree-node-content">
 				<a class="btn btn-success btn-xs" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
-					{{node.type_name}}
-				<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeType(this)"><span class="glyphicon glyphicon-remove"></span></a>
-				<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="setAdd(this)" data-toggle="modal" data-target="#editInfoModal" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
-	</div>
-	<ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+				{{node.type_name}}
+				<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeType(node.type_id)"><span class="glyphicon glyphicon-remove"></span></a>
+				<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="setAdd(node.type_id)" data-toggle="modal" data-target="#editPTypeModal" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+</div>
+<ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
 				<li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" ng-show="visible(node)">
 				</li>
-	</ol>
+</ol>
 </script>
 <div class="right">
-	我的商品分类:
 	<div class="row">
+		<div class="col-xs-6">
+			<span class="col-xs-4">我的商品分类:</span>
+			<span class="pull-right"><button class="btn btn-default" data-toggle="modal" data-target="#editPTypeModal" ng-click="setAdd()">添加根节点</button></span>
+		</div>
+	</div>
+	<div class="row tree-container">
 		<div class="col-xs-6">
 			<div ui-tree id="tree-root">
 				<ol ui-tree-nodes="" ng-model="data">
 					<li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
 				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="editPTypeModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" ng-init="modalTitle='添加商品类别'">{{modalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" name="editPTypeInfoForm">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">商品类别:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" ng-model="editPTypeInfo.type_name" placeholder="商品名称" required>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button ng-disabled="editPTypeInfoForm.$invalid" type="button" class="btn btn-primary" data-dismiss="modal" ng-click="savePTypeInfo()">保存</button>
 			</div>
 		</div>
 	</div>

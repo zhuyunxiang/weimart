@@ -1,9 +1,13 @@
 var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
 
-app.run(['$rootScope', '$state', '$stateParams',
-    function($rootScope, $state, $stateParams) {
+app.run(['$rootScope', '$state', '$stateParams','User',
+    function($rootScope, $state, $stateParams, User) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        $rootScope.$on('User.logoutSuccess', function (event) {
+            $rootScope.$state.go('login');
+        });
     }
 ]);
 

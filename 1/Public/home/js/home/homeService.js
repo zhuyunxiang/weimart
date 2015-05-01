@@ -260,9 +260,11 @@ HomeServices.service('Product', ['$http', '$rootScope',
     function($http, $rootScope) {
         var Product = {};
         Product.list = null;
-        Product.type_list = null
+        Product.type_list = null;
+        Product.type_drop_list = null;
 
-        Product.getTypeList = function () {
+        // 获得所有商品类别列表树
+        Product.getTypeList = function() {
             $http({
                 method: 'POST',
                 url: appPath + 'API/PtypeAPI/get_all_types_for_seller',
@@ -279,6 +281,61 @@ HomeServices.service('Product', ['$http', '$rootScope',
                 });
         }
 
+        // 获得所有商品类别列表数组
+        Product.getTypeListDropArr = function() {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/get_all_types_for_droplist',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.type_drop_list = data.data;
+                        $rootScope.$broadcast('Product.getTypeListDropArrSuccess');
+                    }
+                });
+        }
+
+        // 保存商品类别
+        Product.savePtypeInfo = function(info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/save_type_pub',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.getTypeList();
+                        $rootScope.$broadcast('Product.savePtypeInfoSuccess');
+                    }
+                });
+        }
+
+        // 删除商品类别
+        Product.removePtypeInfo = function (typeId) {
+             $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/remove_type',
+                data: 'type_id='+typeId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.getTypeList();
+                        $rootScope.$broadcast('Product.removePtypeInfoSuccess');
+                    }
+                });
+        }
+
+        // 获得所有商品列表
         Product.getList = function(shopId) {
             $http({
                 method: 'POST',
@@ -296,6 +353,7 @@ HomeServices.service('Product', ['$http', '$rootScope',
                 });
         }
 
+        // 保存商品信息
         Product.saveInfo = function(info) {
             $http({
                 method: 'POST',
@@ -316,6 +374,7 @@ HomeServices.service('Product', ['$http', '$rootScope',
                 });
         }
 
+        // 删除商品信息
         Product.deleteInfo = function(productId) {
             $http({
                 method: 'POST',
@@ -336,4 +395,4 @@ HomeServices.service('Product', ['$http', '$rootScope',
 
         return Product;
     }
-])
+]);
