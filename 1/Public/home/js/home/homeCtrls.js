@@ -658,6 +658,12 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
             initialFrameWidth: 440
         }
 
+        // 获取所有下拉
+        Product.getTypeListDropArr();
+        $scope.$on('Product.getTypeListDropArrSuccess', function (event) {
+            $scope.typeListForDrop = Product.type_drop_list;
+        });
+
         // 获取当前店铺的所有商品列表
         $scope.$on('Product.getProductListSuccess', function(event) {
             $scope.ProductList = Product.list;
@@ -689,6 +695,9 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
         $scope.setUpdateInfo = function (info) {
             $scope.modalTitle='修改商品信息';
             $scope.editProductInfo = info;
+            if (info.types[0]) {
+                $scope.editProductInfo.type_id = info.types[0].type_id;
+            };
             if (!info.product_img) {
                 $scope.editProductInfo.product_img = publicPath+'home/img/default_product.png';
             };
@@ -737,8 +746,8 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
 ]);
 
 // 商品类别
-HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope','Product',
-    function($scope,Product) {
+HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope', 'Product',
+    function($scope, Product) {
         $scope.visible = function(item) {
             if ($scope.query && $scope.query.length > 0 && item.type_name.indexOf($scope.query) == -1) {
                 return false;
@@ -747,8 +756,31 @@ HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope','Product',
         };
 
         Product.getTypeList();
-        $scope.$on('Product.getPTypeListSuccess', function (event) {
+        $scope.$on('Product.getPTypeListSuccess', function(event) {
             $scope.data = Product.type_list;
         });
+
+        $scope.setAdd = function(typeId) {
+            if (typeId) {
+                $scope.editPTypeInfo = {
+                    'super_type_id': typeId
+                };
+            } else {
+                $scope.editPTypeInfo = {
+                    'super_type_id': 0
+                };
+            }
+            $scope.modalTitle = "添加商品类别";
+        }
+
+        $scope.removeType = function(typeId) {
+            if (confirm("确定要删除吗?不可恢复!")) {
+                Product.removePtypeInfo(typeId);
+            };            
+        }
+
+        $scope.savePTypeInfo = function() {
+            Product.savePtypeInfo($scope.editPTypeInfo);
+        }
     }
 ]);

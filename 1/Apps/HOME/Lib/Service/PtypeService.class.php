@@ -95,10 +95,12 @@ class PtypeService extends BaseService
 			$result = $this->saveInfo('pTypeDao', $data, $id = 'type_id');
 			if ($result) {
 				return array('data'=>$result, 'info'=>'数据保存成功!', 'status'=>1);
+			} else {
+				return array('data'=>$result, 'info'=>'数据保存失败!', 'status'=>0);
 			}
-			return array('data'=>$result, 'info'=>'数据保存失败!', 'status'=>0);
+		} else {
+			return array('data'=>false, 'info'=>'数据为空!', 'status'=>0);
 		}
-		return array('data'=>false, 'info'=>'数据为空!', 'status'=>0);
 	}
 
 	// 删除商品分类
