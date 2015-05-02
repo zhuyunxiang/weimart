@@ -135,7 +135,7 @@ class UserAPIAction extends Action
 				if(!defined('SAE_TMP_PATH')){
 					echo "http://".$_SERVER['HTTP_HOST'].'/weimart/Public/Uploads/head_img/'.$result;
 				} else {
-					echo file_domain('Public').'/Uploads/head_img'.$result;
+					echo file_domain('Public').'/Uploads/head_img/'.$result;
 				}
             }
 		}
