@@ -142,7 +142,7 @@ class UserService extends BaseService
 			if (!$result){
 				// 打LOG
 				A('Log', 'Service')->saveLog('xxx','用户录入详细信息失败 [User Save Detail Error] Detail:'.$this->userRelationDao->getError());
-				return array('info'=>$this->userRelationDao->getError(), 'data'=>false, 'status'=>0);
+				return array('info'=>$this->userRelationDao->getError(), 'data'=>$data, 'status'=>0);
 			}else{
 				// 打LOG
 				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '用户录入详细信息成功 [User Save Detail Success]');
