@@ -2,6 +2,11 @@
 @often-color: #CCCCCC;
 @border-CCCC: solid 1px #CCCCCC;
 
+img {
+	width: 100%;
+	cursor: pointer;
+}
+
 div.main {
 	width: 100%;
 	margin: 0px;
@@ -31,5 +36,91 @@ div.list-one {
 		font-size: 10px;
 		width: 100%;
 		text-align: center;
+	}
+}
+
+
+//class-type
+div.class-container {
+	margin-bottom: 100px;
+	color: #999999;
+
+	div.class-type-fore {
+		text-align: center;
+		height: 40px;
+		line-height: 40px;
+		background-color:  #F5F5F5;
+		vertical-align: middle;
+
+		span.back {
+			float: left;
+			//span 上下居中的问题
+			
+		}
+
+		span.title {
+			color: @main-color;
+			font-size: 14px;
+			font-weight: bolder;
+		}
+	}
+
+
+	div.nav {
+		background-color: white;
+		border-top: @border-CCCC;
+		border-bottom: @border-CCCC;
+		height: 40px;
+		line-height: 40px;
+		
+		text-align: center;
+		span {
+			font-size: 14px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	}
+
+	div.item-list {
+		background-color: #F5F5F5;
+
+		div.item {
+			margin-top: 20px;
+			border:@border-CCCC;
+			background-color: white;
+			// padding-right: 10px;
+			// padding-left: 10px;
+
+			img.pic {
+			}
+
+			div.desc {
+				margin-right: 10px;
+				margin-left: 10px;
+				font-size: 13px;
+				margin-top:5px;
+
+			}
+
+			hr {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				margin-right: 10px;
+				margin-left: 10px;
+			}
+
+			img.tabs {
+				display: inline-block;
+				width: 20%;
+				margin-bottom: 10px;
+				margin-right: 10px;
+				margin-right: 10px;
+				margin-left: 10px;
+			}
+
+			span {
+				font-size: 13px;
+			}
+		}
 	}
 }
