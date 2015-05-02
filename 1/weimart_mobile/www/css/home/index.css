@@ -1,6 +1,6 @@
 .boder-solid-CCCC{border:solid 1px #CCCCCC;}
 .boder-solid-main{border:solid 1px #FEBFC0;}
-img{width:100%;}
+img{width:100%;cursor:pointer;}
 div.fore{background-color:#ff8485;min-height:50px;}div.fore img.ico{margin-top:10px;}
 div.fore input.search{margin-top:8px;}
 div.ad-pic{width:100%;padding:0;}div.ad-pic img{width:100%;}
@@ -33,3 +33,7 @@ div.hotbrand-container div.item:nth-child(odd) .img-item{float:left;}
 div.hotbrand-container div.item:nth-child(odd) .pre-item{float:right;}
 div.hotbrand-container div.item:nth-child(even) .img-item{float:right;}
 div.hotbrand-container div.item:nth-child(even) .pre-item{float:left;}
+div.detail-main{background-color:#F5F5F5;width:100%;}div.detail-main div.item-theme{font-size:13px;font-weight:bold;height:30px;line-height:30px;}
+div.detail-main div.item div.item-desc{font-size:13px;height:60px;line-height:20px;overflow-y:hidden;}
+div.detail-main div.price{position:relative;top:-40px;background-color:#ff8485;height:40px;line-height:40px;text-align:center;}div.detail-main div.price span{font-size:16px;font-weight:bold;}div.detail-main div.price span.new{color:white;}
+div.detail-main div.price span.old{text-decoration:line-through;}
