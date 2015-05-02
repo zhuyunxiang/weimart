@@ -1,0 +1,5 @@
+img{width:100%;cursor:pointer;}
+div.container{margin-bottom:100px;color:#999999;}div.container div.goods-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.container div.goods-fore span.back{float:left;}
+div.container div.goods-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
+div.container div.pic{background-color:#F5F5F5;}
+div.container div.desc{padding-top:15px;border-bottom:solid 1px #cccccc;}div.container div.desc img{width:30px;}

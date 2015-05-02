@@ -91,6 +91,11 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/class_type.html',
             controller: "homeCtrl"
         })
+        .state('home.goods', {
+            url: "/goods",
+            templateUrl: 'tpl/home/goods.html',
+            controller: "homeCtrl"
+        })
          // 主页 == 热门品牌
         .state('home.hotbrand', {
             url: "/hotbrand",

@@ -1,0 +1,50 @@
+@main-color:  #FF8485;
+@often-color: #CCCCCC;
+@border-CCCC: solid 1px #CCCCCC;
+@bold-border: solid 10px #CCCCCC;
+
+img {
+	width: 100%;
+	cursor: pointer;
+}
+
+div.container {
+	margin-bottom: 100px;
+	color: #999999;
+
+	div.goods-fore {
+		text-align: center;
+		height: 40px;
+		line-height: 40px;
+		background-color:  #F5F5F5;
+		vertical-align: middle;
+		border-bottom: @border-CCCC;
+
+		span.back {
+			float: left;
+			//span 上下居中的问题
+			
+		}
+
+		span.title {
+			color: @main-color;
+			font-size: 14px;
+			font-weight: bolder;
+		}
+	}
+
+	div.pic {
+		background-color: #F5F5F5;
+	}
+
+	div.desc {
+		padding-top: 15px;
+		border-bottom: @border-CCCC;
+
+
+		img {
+			width: 30px;
+		}
+
+	}
+}
