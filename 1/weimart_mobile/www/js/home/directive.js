@@ -13,8 +13,8 @@ directives.directive('swipeView', function() {
 });
 
 // 完成注册验证及实现
-directives.directive('doRegister', ['$state', '$timeout', 'User',
-    function($state, $timeout, User) {
+directives.directive('doRegister', ['$state', '$timeout', 'User', 'Auth',
+    function($state, $timeout, User, Auth) {
         return {
             restirect: 'AE',
             scope: {
@@ -61,6 +61,8 @@ directives.directive('doRegister', ['$state', '$timeout', 'User',
                     }
 
                     scope.$on('User.registerSuccess', function(event) {
+                        scope.registerInfo.user_id = User.user_id;
+                        Auth.setUser(scope.registerInfo);
                         $state.go('register.detail');
                     });
 
@@ -77,6 +79,35 @@ directives.directive('doRegister', ['$state', '$timeout', 'User',
                     }
 
                     checkAll();
+                });
+            }
+        }
+    }
+]);
+
+// 保存用户详细信息
+directives.directive('saveDetail', ['$state', 'User', 'Auth',
+    function($state, User, Auth) {
+        return {
+            restirect: 'AE',
+            scope: {
+                userDetailInfo: '=info',
+            },
+            link: function(scope, element, attributes) {
+                element.bind('click', function(event) {
+                    var authUser = Auth.getUser();
+                    User.user_id = authUser.user_id;
+
+                    User.saveDetail(scope.userDetailInfo);
+
+                    scope.$on('User.saveDetailSuccess', function(event) {
+                        Auth.setUser(scope.userDetailInfo);
+                        $state.go("conf");
+                    });
+
+                    scope.$on('User.saveDetailError', function(event) {
+                        alert("保存用户详细信息失败!");
+                    });
                 });
             }
         }

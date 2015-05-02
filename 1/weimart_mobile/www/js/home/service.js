@@ -5,14 +5,13 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
 		var _user = $cookieStore.get('user');
 
 		var setUser = function(user) {
-			if (!user.role || user.role < 0) {
-				console.log('aaa');
-				user.role = ACCESS_LEVELS.pub;
-			};
+			// if (!user.role || user.role < 0) {
+			// 	console.log('aaa');
+			// 	user.role = ACCESS_LEVELS.pub;
+			// };
 
 			_user = user;
 			$cookieStore.put('user', _user);
-			console.log('cokkie'+_user);
 		}
 
 		return {
@@ -109,7 +108,6 @@ services.service('User', ['$http', '$rootScope','Auth',
 		}
 
 		User.doRegister = function(info) {
-			console.log(info);
 			$http({
 				method: 'POST',
 				url: serverPath + '/API/UserAPI/do_register',
@@ -159,10 +157,11 @@ services.service('User', ['$http', '$rootScope','Auth',
 				}
 			})
 				.success(function(data) {
-					console.log(data);
 					if (data.status == 1) {
 						Auth.setUser(data.data);
 						$rootScope.$broadcast('User.loginSuccess');
+					} else {
+						alert("对不起,用户名或密码错误!");
 					}
 				});
 		}

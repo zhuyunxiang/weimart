@@ -25,7 +25,6 @@ app.config(function($httpProvider) {
             return {
                 'response': function(resp) {
                     if (resp.config.url == 'tpl/home/login.html') {
-                        console.log(resp.config.url);
                         // Auth.setToken(resp.data.token);
                     };
                     return resp;

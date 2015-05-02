@@ -111,6 +111,42 @@ class UserAPIAction extends Action
 		}
 	}
 
+	// 保存头像For APP
+	public function save_head_img_for_app()
+	{
+		if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/Uploads/head_img/',
+                // 'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+                $info = $upload->getUploadFileInfo();
+				$result = $info[0]['savename'];
+
+				// 判断非SAE环境
+				if(!defined('SAE_TMP_PATH')){
+					echo "http://".$_SERVER['HTTP_HOST'].'/weimart/Public/Uploads/head_img/'.$result;
+				} else {
+					echo file_domain('Public').'/Uploads/head_img'.$result;
+				}
+            }
+		}
+	}
+
+	public function test()
+	{
+		$arr=C();
+		dump($arr);
+	}
+
 	// 获取所有用户信息
 	// (需加验证)
 	public function get_user_list()

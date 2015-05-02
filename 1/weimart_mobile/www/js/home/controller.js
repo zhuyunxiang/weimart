@@ -1,11 +1,9 @@
-var controllers = angular.module('controllers', []);
+var controllers = angular.module('controllers', ['angularFileUpload']);
 // 主页
 controllers.controller('homeCtrl', ['$scope', '$state',
     function($scope, $state) {
     	$scope.u = navigator.userAgent;
         $scope.swipeTo = function(direction, state) {
-            // alert(state.current.name);
-            console.log(state);
             switch (state.current.name) {
                 case 'home':
                     if (direction == 'right') {
@@ -142,10 +140,38 @@ controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth',
 ]);
 
 // 注册页面
-controllers.controller('registerCtrl', ['$scope', '$state',
-    function($scope, $state) {
+controllers.controller('registerCtrl', ['$scope', '$state', '$upload','Auth',
+    function($scope, $state, $upload,Auth) {
         $scope.doRegister = function() {
             console.log($scope.registerInfo);
         }
+
+        $scope.userDetailInfo = Auth.getUser();
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + '/API/UserAPI/save_head_img_for_app',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.userDetailInfo.user_header_img = data;
+                        $scope.userDetailInfo.user_header_temp_img = data;
+                    });
+                }
+            }
+        };
     }
 ]);

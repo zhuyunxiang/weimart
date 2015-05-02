@@ -2,7 +2,7 @@
 	<form class="form-horizontal detail-form">
 		<div class="head-img-container">
 			<img ng-src="{{userDetailInfo.user_header_img}}" alt="头像">
-			<button class="btn btn-default" ng-file-select ng-file-change="upload($files)">点击上传</button>
+			<button class="btn btn-default" type="button" ng-file-select ng-file-change="upload($files)">点击上传</button>
 		</div>
 		<div class="form-group">
 			<label for="nick_name" class="col-xs-4 control-label">昵称:</label>
@@ -42,7 +42,7 @@
 		<div class="form-group">
 			<div class="col-xs-offset-2 col-xs-8">
 				<button type="submit" class="btn btn-primary" save-detail info="userDetailInfo">提交审核</button>
-				<button type="button" class="btn btn-default">以后再说</button>
+				<button type="button" class="btn btn-default" ui-sref="conf">以后再说</button>
 			</div>
 		</div>
 	</form>
