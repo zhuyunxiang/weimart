@@ -14,6 +14,7 @@
 
 img {
 	width: 100%;
+	cursor: pointer;
 }
 
 div.fore {
@@ -224,6 +225,8 @@ div.hotbaby-container {
 	}
 }
 
+//热门品牌
+
 div.hotbrand-container {
 	margin-bottom: 100px;
 	div.hotbrand-fore {
@@ -302,6 +305,51 @@ div.hotbrand-container {
 		}
 	}
 
+}
 
+//详情
+div.detail-main {
+	background-color: #F5F5F5;
+	width: 100%;
 
+	div.item-theme {
+		font-size: 13px;
+		font-weight: bold;
+		height: 30px;
+		line-height: 30px;
+	}
+
+	div.item {
+		div.item-desc {
+			font-size: 13px;
+			height: 60px;
+			line-height: 20px;
+			overflow-y: hidden;
+		}
+	}
+
+	div.price {
+		position: relative;
+		top:-40px;
+		background-color: @main-color;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+
+		span {
+			font-size: 16px;
+			font-weight: bold;
+
+			&.new {
+				color: white;
+			}
+
+			&.old {
+				text-decoration: line-through;
+			}
+		}
+	}
+
+	
+	
 }
