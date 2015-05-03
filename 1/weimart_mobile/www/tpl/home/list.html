@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="css/home/list.css">
-<div class="content-container col-xs-12 main">	
-	<div class="col-xs-12 title">
+<div ui-view ng-show="$state.current.name !== 'list'"></div>
+<div class="content-container col-xs-12 main" ng-show="$state.current.name == 'list'">	
+	<div class="col-xs-12 title"  ui-sref=".classType">
 		女装
 	</div>
 	<div class="row col-xs-12">

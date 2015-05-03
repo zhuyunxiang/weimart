@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/home/list.css">
-<div class="class-container col-xs-12">
+<div ui-view ng-show="$state.current.name !== 'list.classType'"></div>
+<div class="class-container col-xs-12" ng-show="$state.current.name == 'list.classType'">
 	<div class="row class-type-fore">
 		<div class="col-xs-1">
 			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="home"></span>
@@ -26,7 +27,7 @@
 
 	<div class="row item-list">
 		<div class="col-xs-6">
-			<div class="item">
+			<div class="item" ui-sref=".goods">
 				<img src="img/class-type/1.png" alt="" class="pic">
 				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
 				<hr>

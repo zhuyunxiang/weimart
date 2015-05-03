@@ -86,12 +86,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/detail.html',
             controller: "homeCtrl"
         })
-        .state('home.classType', {
-            url: "/list/classType",
+        .state('list.classType', {
+            url: "/classType",
             templateUrl: 'tpl/home/class_type.html',
             controller: "homeCtrl"
         })
-        .state('home.goods', {
+        .state('list.classType.goods', {
             url: "/goods",
             templateUrl: 'tpl/home/goods.html',
             controller: "homeCtrl"
@@ -100,6 +100,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('home.hotbrand', {
             url: "/hotbrand",
             templateUrl: 'tpl/home/hotbrand.html',
+            controller: "homeCtrl"
+        })
+        // 主页 == 热门品牌 == 品牌
+        .state('home.hotbrand.brand', {
+            url: "/hotbrand",
+            templateUrl: 'tpl/home/brand.html',
             controller: "homeCtrl"
         })
         // 分类
