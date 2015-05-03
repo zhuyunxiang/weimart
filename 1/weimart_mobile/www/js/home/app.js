@@ -81,8 +81,8 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/hotbaby.html',
             controller: "homeCtrl"
         })
-        .state('home.detail', {
-            url: "/hotbaby/detail",
+        .state('home.hotbaby.detail', {
+            url: "/detail",
             templateUrl: 'tpl/home/detail.html',
             controller: "homeCtrl"
         })

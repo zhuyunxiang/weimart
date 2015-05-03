@@ -574,6 +574,14 @@ HomeCtrls.controller('sellerCenterProductCtrl', ['$upload', '$scope','$state','P
             initialFrameWidth: 440
         }
 
+        // 排序类别
+        $scope.orderType = 'time';
+
+        // 设置排序类别
+        $scope.setOrderType = function (type) {
+            $scope.orderType = type;
+        }
+
         // 获取所有下拉
         Product.getTypeListDropArr();
         $scope.$on('Product.getTypeListDropArrSuccess', function (event) {

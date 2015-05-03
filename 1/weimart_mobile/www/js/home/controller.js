@@ -100,8 +100,19 @@ controllers.controller('listCtrl', ['$scope',
     }
 ]);
 // 我的
-controllers.controller('personalCtrl', ['$scope',
-    function($scope) {
+controllers.controller('personalCtrl', ['$scope', '$state', 'Shop', 'Auth',
+    function($scope, $state, Shop, Auth) {
+        if (Auth.isLoggedIn()) {
+            alert("已经登陆");
+        } else {
+            $state.go('login');
+        }
+
+        Shop.getMyShop();
+        $scope.$on('Shop.getMyShopSuccess', function(event) {
+            $scope.myShop = Shop.myShop;
+
+        });
 
     }
 ]);
