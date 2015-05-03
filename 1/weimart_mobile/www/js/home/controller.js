@@ -45,9 +45,7 @@ controllers.controller('homeCtrl', ['$scope', '$state',
             {"url": "3.jpg"},
             {"url": "4.jpg"},
         ];
-
-
-        
+   
     }
 ]);
 // 分类
