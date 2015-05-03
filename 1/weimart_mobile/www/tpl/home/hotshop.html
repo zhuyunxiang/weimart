@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="css/home/index.css">
+<div ui-view ng-show="$state.current.name !== 'home.hotshop'"></div>
+<div class="hotshop-container col-xs-12" ng-show="$state.current.name == 'home.hotshop'">
+	<div class="row common-fore">
+		<div class="col-xs-1">
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="home"></span>
+		</div>
+		<div class="col-xs-10">
+			<span class="title">热门卖家</span>
+		</div>
+	</div>
+
+	<div class="row reward-box">
+		<div class="col-xs-2 col-xs-offset-5 reward">
+			<span>1/20</span>
+		</div>
+	</div>
+
+	<div class="row shop-info">
+
+		<div class="row shop-fore">
+			<div class="col-xs-3 shop-pic">
+				<img src="img/hotshop/1.jpg" alt="">
+			</div>
+			<div class="col-xs-3 shop-name">
+				<span>【ZZLADY】</span>
+			</div>
+			<div class="col-xs-3 col-xs-offset-2 enshop" ui-sref=".inshop">
+				<span>进入店铺</span>
+			</div>
+		</div>
+
+		<div class="row pic-show">
+			<div class="col-xs-4 two-little">
+				<img src="img/hotshop/0.jpg" alt="">
+				<img src="img/hotshop/2.jpg" alt="">
+			</div>
+			<div class="col-xs-8 one-large">
+				<img src="img/hotshop/3.jpg" alt="">
+			</div>
+		</div>
+		
+
+		
+
+	</div>
+
+
+
+
+
+</div>
