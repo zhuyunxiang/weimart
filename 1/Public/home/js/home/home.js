@@ -1,4 +1,4 @@
-var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'HomeDirectives', 'HomeServices']);
+var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'filters', 'HomeDirectives', 'HomeServices']);
 
 app.run(['$rootScope', '$state', '$stateParams','User',
     function($rootScope, $state, $stateParams, User) {

@@ -2,17 +2,17 @@
 	<div class="row">
 		<div class="btn-group search-group col-xs-3">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="请输入商品关键字">
+				<input type="text" class="form-control" placeholder="请输入商品关键字" ng-model="searchKeyword">
 				<span class="input-group-btn">
 					<button class="btn btn-default" type="button">搜索</button>
 				</span>
 			</div>
 		</div>
 		<div class="btn-group order-group" role="group" aria-label="...">
-			<button type="button" class="btn btn-default">上架时间</button>
-			<button type="button" class="btn btn-default">销量</button>
-			<button type="button" class="btn btn-default">库存</button>
-			<button type="button" class="btn btn-default">已卖完</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='time'}" ng-click="setOrderType('time')">上架时间</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='sellNum'}" ng-click="setOrderType('sellNum')">销量</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='stock'}" ng-click="setOrderType('stock')">库存</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='empty'}" ng-click="setOrderType('empty')">已卖完</button>
 		</div>
 		
 		<button class="btn btn-primary" data-toggle="modal" data-target="#editProductModal" ng-click="setAddInfo()">添加商品</button>
@@ -22,15 +22,19 @@
 			<tr>
 				<th>商品名称</th>
 				<th>价格</th>
-				<th>数量</th>
+				<th>总数量</th>
+				<th>库存</th>
+				<th>已售</th>
 				<th>分类</th>
 				<th>更新时间</th>
 				<th>操作</th>
 			</tr>
-			<tr ng-repeat="item in ProductList">
+			<tr ng-repeat="item in ProductList|filterProduct:orderType|orderBy:orderType:true|filter:searchKeyword">
 				<td>{{item.product_name}}</td>
 				<td>{{item.product_price}}</td>
 				<td>{{item.product_num}}</td>
+				<td>{{item.product_left}}</td>
+				<td>{{item.product_num - item.product_left}}</td>
 				<td>{{item.types.0.type_name}}</td>
 				<td>{{item.product_register_time}}</td>
 				<td>
