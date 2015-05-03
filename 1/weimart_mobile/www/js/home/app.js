@@ -86,16 +86,19 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/detail.html',
             controller: "homeCtrl"
         })
-        .state('list.classType', {
-            url: "/classType",
-            templateUrl: 'tpl/home/class_type.html',
+        // 主页 == 热门卖家
+        .state('home.hotshop', {
+            url: "/hotshop",
+            templateUrl: 'tpl/home/hotshop.html',
             controller: "homeCtrl"
         })
-        .state('list.classType.goods', {
-            url: "/goods",
-            templateUrl: 'tpl/home/goods.html',
+        // 主页 == 热门卖家==详情
+        .state('home.hotshop.inshop', {
+            url: "/inshop",
+            templateUrl: 'tpl/home/inshop.html',
             controller: "homeCtrl"
         })
+        
          // 主页 == 热门品牌
         .state('home.hotbrand', {
             url: "/hotbrand",
@@ -108,16 +111,28 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/brand.html',
             controller: "homeCtrl"
         })
+        
+        //主页 == 代理服务
+        .state('home.agence', {
+            url: "/hotbrand",
+            templateUrl: 'tpl/home/agence.html',
+            controller: "homeCtrl"
+        })
         // 分类
         .state('list', {
             url: "/list",
             templateUrl: 'tpl/home/list.html',
             controller: "listCtrl"
         })
-         .state('list.classType1', {
+        .state('list.classType', {
             url: "/classType",
             templateUrl: 'tpl/home/class_type.html',
-            controller: "listCtrl"
+            controller: "homeCtrl"
+        })
+        .state('list.classType.goods', {
+            url: "/goods",
+            templateUrl: 'tpl/home/goods.html',
+            controller: "homeCtrl"
         })
         // 我的
         .state('personal', {
