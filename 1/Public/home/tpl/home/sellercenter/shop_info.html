@@ -1,4 +1,7 @@
 <div class="right start-prepare">
+	<div class="alert alert-warning" role="alert" ng-show="editShopInfo.shop_stage == 0">
+      <strong>提示</strong> 你的店铺暂未通过审核,通过审核后才能进行商品管理!
+    </div>
 	<form class="form-horizontal detail-form">
 		<div class="shop-img-container">
 			<img ng-src="{{editShopInfo.shop_img}}" alt="请上传头像">

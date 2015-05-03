@@ -67,6 +67,16 @@ class ShopModel extends RelationModel
             'relation_table'=>'weimart_user_visit_shop'
         ),
 
+        // Shop Keepers
+        array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'User',
+            'mapping_name'=>'keeper',
+            'foreign_key'=>'shop_id',
+            'relation_foreign_key'=>'user_id',
+            'relation_table'=>'weimart_user_shop'
+        ),
+
         // Visit history.
         array(
             'mapping_type'=>HAS_MANY,

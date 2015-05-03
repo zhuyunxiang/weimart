@@ -11,18 +11,34 @@
 		
 	</div>
 	<div class="table-container">
-		<table class="table">
+		<h3 ng-hide="allList">对不起,暂无店铺!</h3>
+		<table class="table table-hover" ng-show="allList">
 			<tr>
 				<th>序号</th>
 				<th>店铺名称</th>
 				<th>简介</th>
 				<th>货物量</th>
 				<th>访问量</th>
-				<th>注册时间</th>
+				<th>注册日期</th>
 				<th>店主</th>
+				<th>状态</th>
 				<th>操作</th>
 			</tr>
-			
+			<tr ng-repeat="shop in allList|filter:searchKey|orderBy:'shop_register_time':true">
+				<td>{{$index+1}}</td>
+				<td title="{{shop.shop_name}}">{{shop.shop_name}}</td>
+				<td title="{{shop.shop_desc}}">{{shop.shop_desc|limitTo:10}}</td>
+				<td title="{{shop.product.length}}">{{shop.product.length}}</td>
+				<td title="{{shop.history_users.length}}">{{shop.history_users.length}}</td>
+				<td title="{{shop.shop_register_time}}">{{shop.shop_register_time|limitTo:10}}</td>
+				<td title="{{shop.keeper.0.user_name}}">{{shop.keeper.0.user_name}}</td>
+				<td>
+					<select ng-model="shop.shop_stage" ng-options="k as v for (k, v) in stage_list" ng-change="setStage(shop)">
+						<option value="">请选择</option>
+					</select>
+				</td>
+				<td><span class="glyphicon glyphicon-eye-open"></span></td>
+			</tr>
 		</table>
 	</div>
 </div>
