@@ -18,13 +18,11 @@ div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;}
 div.bottom span{color:#ff8485;font-size:12px;}
-div.hotbaby-container{margin-bottom:100px;}div.hotbaby-container div.hotbaby-fore{text-align:center;height:30px;line-height:30px;background-color:#ff8485;}div.hotbaby-container div.hotbaby-fore span.back{float:left;vertical-align:middle;}
-div.hotbaby-container div.hotbaby-fore span.title{color:white;font-size:14px;font-weight:bolder;}
+div.hotbaby-container{margin-bottom:100px;}div.hotbaby-container div.hotbaby-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbaby-container div.hotbaby-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.hotbaby-container div.item-container{text-align:center;vertical-align:middle;margin-top:20px;}div.hotbaby-container div.item-container span{font-size:13px;}div.hotbaby-container div.item-container span.item-name{font-weight:bold;height:30px;line-height:30px;}
 div.hotbaby-container div.item-container div.item-desc{font-size:13px;height:40px;line-height:20px;overflow-y:hidden;margin-bottom:10px;}
 div.hotbaby-container div.item-container img{width:100%;border:solid 1px #FEBFC0;}
-div.hotbrand-container{margin-bottom:100px;}div.hotbrand-container div.hotbrand-fore{text-align:center;height:30px;line-height:30px;background-color:#ff8485;}div.hotbrand-container div.hotbrand-fore span.back{float:left;vertical-align:middle;}
-div.hotbrand-container div.hotbrand-fore span.title{color:white;font-size:14px;font-weight:bolder;}
+div.hotbrand-container{margin-bottom:100px;}div.hotbrand-container div.hotbrand-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbrand-container div.hotbrand-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.hotbrand-container div.pic-container{margin:0px;padding:0px;}div.hotbrand-container div.pic-container img{width:100%;}
 div.hotbrand-container div.title-middle{height:30px;line-height:30px;background-color:#ff8485;}div.hotbrand-container div.title-middle span{font-size:14px;}
 div.hotbrand-container div.item{height:195px;}div.hotbrand-container div.item .pre-item{border:solid 1px #FEBFC0;}div.hotbrand-container div.item .pre-item pre{height:175px;overflow:hidden;margin-bottom:10px;margin-top:10px;}
