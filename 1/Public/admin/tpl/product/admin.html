@@ -1,0 +1,51 @@
+<div class="product-admin">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="请输入关键字" ng-model="searchKey">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">关键字查找</button>
+				</span>
+			</div>
+		</div>
+		<!-- <div class="col-xs-3">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="请输入分类关键字">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">按分类查找 <span class="caret"></span></button>
+					<ul class="dropdown-menu dropdown-menu-right" role="menu">
+						<li><a href="#">Action</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
+	</div>
+	<div class="table-container">
+		<table class="table">
+			<tr>
+				<th>序号</th>
+				<th>商品名称</th>
+				<th>类别</th>
+				<th>价格</th>
+				<th>数量</th>
+				<th>修改时间</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="product in allList|orderBy:'product_register_time':true|filter:searchKey">
+				<td>{{$index+1}}</td>
+				<td>{{product.product_name}}</td>
+				<td>{{product.types.0.type_name}}</td>
+				<td>{{product.product_price}}</td>
+				<td>{{product.product_num}}</td>
+				<td>{{product.product_register_time}}</td>
+				<td>
+					<span class="glyphicon glyphicon-star"></span>
+					<span class="glyphicon glyphicon-star-empty"></span>
+					<span class="glyphicon glyphicon-eye-open"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

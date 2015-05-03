@@ -29,23 +29,25 @@
         <div class="layout_left_menu">
             <ul id="menu">
                 <li class="childUlLi">
-                    <a href="main.html"  target="menuFrame"><i class="glyph-icon icon-home"></i>首页</a>
+                    <a href="#"><i class="glyph-icon icon-home"></i>首页</a>
                 </li>
                 <li class="childUlLi">
-                    <a href="user.html"  target="menuFrame"> <i class="glyph-icon icon-reorder"></i>成员管理</a>
+                    <a href="#"> <i class="glyph-icon icon-reorder"></i>成员管理</a>
                     <ul>
                         <li change-nav info="navContent"><a ui-sref="user_admin"><i class="glyph-icon icon-chevron-right"></i>用户管理</a></li>
                     </ul>
                 </li>
                 <li class="childUlLi">
-                    <a href="role.html" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>角色管理</a>
+                    <a href="#"> <i class="glyph-icon icon-reorder"></i>角色管理</a>
                     <ul>
                         <li change-nav info="navContent"><a href="#"><i class="glyph-icon icon-chevron-right"></i>修改密码</a></li>
                     </ul>
                 </li>
                 <li class="childUlLi">
-                    <a href="role.html" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>内容管理</a>
+                    <a href="#"> <i class="glyph-icon icon-reorder"></i>内容管理</a>
                     <ul>
+                        <li change-nav info="navContent"><a href="#" ui-sref="shop"><i class="glyph-icon icon-chevron-right"></i>店铺管理</a></li>
+                        <li change-nav info="navContent"><a href="#" ui-sref="product"><i class="glyph-icon icon-chevron-right"></i>商品管理</a></li>
                         <li change-nav info="navContent"><a href="__APP__/Admin/Product/product_type_conf" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>商品种类</a></li>
                     </ul>
                 </li>
@@ -82,6 +84,7 @@
         <script type="text/javascript" src="__PUBLIC__/commen/js/lib/jquery.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/admin/js/tendina.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/admin/js/common.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/commen/js/lib/bootstrap.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular.js"></script>
         <script type="text/javascript" src="__PUBLIC__/commen/js/lib/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="__PUBLIC__/admin/js/home/app.js"></script>
