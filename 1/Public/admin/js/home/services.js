@@ -1,5 +1,6 @@
 var services = angular.module('services', []);
 
+// 用户
 services.service('User', ['$http', '$rootScope',
     function($http, $rootScope) {
         var User = {};
@@ -42,4 +43,31 @@ services.service('User', ['$http', '$rootScope',
 
         return User;
     }
-])
+]);
+
+// 商品
+services.service('Product', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Product = {};
+        Product.allList = null;
+
+        Product.getAllList = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/get_all',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.allList = data.data;
+                        $rootScope.$broadcast('Product.getAllListSuccess');
+                    }
+                });
+        }
+
+        return Product;
+    }
+]);

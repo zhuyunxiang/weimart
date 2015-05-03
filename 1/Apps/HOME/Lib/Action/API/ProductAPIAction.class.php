@@ -66,5 +66,15 @@ class ProductAPIAction extends Action
 		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除商品信息失败 [Delete Product Error ID:'.$_POST['product_id'].']');
 		$this->ajaxReturn($result, '用户删除失败!', 0);
 	}
+
+	// 获取所有商品列表
+	public function get_all()
+	{
+		$result = A('Product', 'Service')->getAllProducts();
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 }
  ?>

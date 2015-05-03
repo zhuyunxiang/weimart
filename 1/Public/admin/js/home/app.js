@@ -13,5 +13,13 @@ adminApp.config(function($stateProvider, $urlRouterProvider) {
         url: "/user_admin",
         templateUrl: publicPath + '/admin/tpl/user_admin/index.html',
         controller: "userAdminCtrl",
+    }).state('product', {
+        url: "/product",
+        templateUrl: publicPath + '/admin/tpl/product/admin.html',
+        controller: "productAdminCtrl",
+    }).state('shop', {
+        url: "/shop",
+        templateUrl: publicPath + '/admin/tpl/shop/admin.html',
+        controller: "productAdminCtrl",
     });
 });

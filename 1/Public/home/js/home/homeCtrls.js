@@ -1,8 +1,8 @@
 var HomeCtrls = angular.module('HomeCtrls', ['ng.ueditor','ui.tree']);
 
 // 主页的Controller Start
-HomeCtrls.controller('homeCtrl', ['$scope',
-    function($scope) {
+HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
+    function($scope, Product) {
         $scope.userInfo = {
             email: "tests@qq.com"
         };
@@ -19,125 +19,41 @@ HomeCtrls.controller('homeCtrl', ['$scope',
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
-        $scope.fasionClothes = {
-            0: [
-            {"class": "type-name","content": "潮流女装"},
-            {"class": "commen","content": "春新品"},
-            {"class": "hot","content": "韩版"},
-            {"class": "commen","content": "毛衣"},
-            {"class": "commen","content": "薄开衫"},
-            {"class": "commen","content": "本身裙"},
-            ],
+        Product.getTypeList();
+        $scope.$on('Product.getPTypeListSuccess', function (event) {
+            console.log(Product.type_list);
 
-            1: [
-            {"class": "type-name","content": "潮流女装"},
-            {"class": "commen","content": "春装"},
-            {"class": "hot","content": "韩版"},
-            {"class": "commen","content": "毛衣"},
-            {"class": "commen","content": "薄开衫"},
-            {"class": "commen","content": "本身裙"},
-            ],
+            var firstFourtypeList = [];
+            var secondTwotypeList = [];
+            var thirdOnetypeList = [];
+            var fourthOnetypeList = [];
+            for(var i in Product.type_list){
+                if ( i < 4) {
+                    firstFourtypeList.push(Product.type_list[i]);
+                };
 
-            2: [
-            {"class": "type-name","content": "潮流女装"},
-            {"class": "commen","content": "春装"},
-            {"class": "hot","content": "韩版"},
-            {"class": "commen","content": "毛衣"},
-            {"class": "commen","content": "薄开衫"},
-            {"class": "commen","content": "本身裙"},
-            ],
+                if (i < 6 && i > 3) {
+                    secondTwotypeList.push(Product.type_list[i]);
+                };
 
-            3: [
-            {"class": "type-name","content": "潮流女装"},
-            {"class": "commen","content": "春装"},
-            {"class": "hot","content": "韩版"},
-            {"class": "commen","content": "毛衣"},
-            {"class": "commen","content": "薄开衫"},
-            {"class": "commen","content": "本身裙"},
-            ],
-        };
+                if (i == 6) {
+                    thirdOnetypeList.push(Product.type_list[i]);
+                };
 
-        $scope.jades = {
-            0: [
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
+                if (i == 7) {
+                    fourthOnetypeList.push(Product.type_list[i]);
+                };
+            }
+            secondTwotypeList[0].ad_1 = "热销品牌";
+            secondTwotypeList[0].ad_2 = "最畅销高级单反";
+            secondTwotypeList[1].ad_1 = "潮流单品";
+            secondTwotypeList[1].ad_2 = "家电低至五折";
 
-            1: [
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
-
-            2: [
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
-
-            3:[
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
-
-            4:[
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
-
-            5:[
-            {"class": "type-name","content": "黄金首饰"},
-            {"class": "commen","content": "手镯"},
-            {"class": "hot","content": "耳环"},
-            {"class": "commen","content": "项链"},
-            {"class": "commen","content": "戒指"},
-            ],
-        };
-
-
-        $scope.snacks = {
-            0: [
-            {"class": "type-name","content": "鲜果肉禽"},
-            {"class": "commen","content": "春笋"},
-            {"class": "hot","content": "海参"},
-            {"class": "commen","content": "龙虾"},
-            ],
-
-            1: [
-            {"class": "type-name","content": "鲜果肉禽"},
-            {"class": "commen","content": "春笋"},
-            {"class": "hot","content": "海参"},
-            {"class": "commen","content": "龙虾"},
-            ],
-
-            2: [
-            {"class": "type-name","content": "鲜果肉禽"},
-            {"class": "commen","content": "春笋"},
-            {"class": "hot","content": "海参"},
-            {"class": "commen","content": "龙虾"},
-            ],
-
-            3: [
-            {"class": "type-name","content": "鲜果肉禽"},
-            {"class": "commen","content": "春笋"},
-            {"class": "hot","content": "海参"},
-            {"class": "commen","content": "龙虾"},
-            ],
-        };
-
+            $scope.firstFourtypeList = firstFourtypeList;
+            $scope.secondTwotypeList = secondTwotypeList;
+            $scope.thirdOnetypeList = thirdOnetypeList;
+            $scope.fourthOnetypeList = fourthOnetypeList;
+        });
         
         $scope.goods = [
             {"pic": "goods.JPG","title": "2014新款绑公主1111","orig": "根据你“浏览”的“礼服”推荐","sell": "已售99件"},
@@ -773,10 +689,14 @@ HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope', 'Product',
             $scope.modalTitle = "添加商品类别";
         }
 
-        $scope.removeType = function(typeId) {
-            if (confirm("确定要删除吗?不可恢复!")) {
-                Product.removePtypeInfo(typeId);
-            };            
+        $scope.removeType = function(node) {
+            if (node.super_type_id != '0') {
+                if (confirm("确定要删除吗?不可恢复!")) {
+                    Product.removePtypeInfo(node.tyep_id);
+                };            
+            } else {
+                alert("对不起,你没有权限!");
+            }
         }
 
         $scope.savePTypeInfo = function() {

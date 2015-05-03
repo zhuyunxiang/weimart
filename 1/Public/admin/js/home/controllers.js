@@ -1,11 +1,13 @@
 var controllers = angular.module('controllers', []);
 
+// 主页
 controllers.controller('adminCtrl', ['$scope',
     function($scope) {
         $scope.navContent = "欢迎访问";
     }
 ]);
 
+// 用户管理
 controllers.controller('userAdminCtrl', ['$scope', 'User',
     function($scope, User) {
 
@@ -21,4 +23,15 @@ controllers.controller('userAdminCtrl', ['$scope', 'User',
             };
         }
     }
-])
+]);
+
+// 商品管理
+controllers.controller('productAdminCtrl', ['$scope', 'Product',
+    function($scope, Product) {
+
+        Product.getAllList();
+        $scope.$on('Product.getAllListSuccess', function(event) {
+            $scope.allList = Product.allList;
+        });
+    }
+]);
