@@ -20,6 +20,6 @@ adminApp.config(function($stateProvider, $urlRouterProvider) {
     }).state('shop', {
         url: "/shop",
         templateUrl: publicPath + '/admin/tpl/shop/admin.html',
-        controller: "productAdminCtrl",
+        controller: "productShopCtrl",
     });
 });

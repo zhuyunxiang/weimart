@@ -18,6 +18,11 @@ class ShopService extends BaseService
 	// 保存店铺信息
 	public function saveShopInfo($data = null)
 	{
+		// 设置店铺默认状态
+		if (!isset($data['shop_id'])) {
+			$data['shop_stage'] = 0;
+		}
+
 		$result = $this->saveInfo('shopDao', $data, 'shop_id');
 		if (!isset($data['shop_id'])) {
 			$data = array('user_id'=>$_SESSION['user']['user_id'], 'shop_id'=>$result);
@@ -41,6 +46,12 @@ class ShopService extends BaseService
 			return $result['shops'][0];
 		}
 		return false;
+	}
+
+	// 获取所有店铺信息
+	public function getAllShops()
+	{
+		return $this->shopRelationDao->relation(true)->select();
 	}
 }
  ?>

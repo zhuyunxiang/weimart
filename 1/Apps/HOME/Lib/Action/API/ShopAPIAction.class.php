@@ -14,6 +14,7 @@ class ShopAPIAction extends Action
 		if (isset($_SESSION['user'])) {
 			$result = A('Shop', 'Service')->saveShopInfo($_POST);
 			if ($result) {
+				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], $result['info'].' [save Shop Info ID:'.$result['data'].' Data:'.implode('', $_POST).']');
 				$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 			}
 			$this->ajaxReturn(false, '内部错误!', 0);
@@ -49,6 +50,13 @@ class ShopAPIAction extends Action
 				echo $info[0]['savename'];
             }
 		}
+	}
+
+	// 获得所有店铺信息
+	public function get_all()
+	{
+		$result = A('Shop', 'Service')->getAllShops();
+		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
 }
  ?>

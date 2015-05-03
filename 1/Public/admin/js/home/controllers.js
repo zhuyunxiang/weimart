@@ -35,3 +35,20 @@ controllers.controller('productAdminCtrl', ['$scope', 'Product',
         });
     }
 ]);
+
+// 店铺管理
+controllers.controller('productShopCtrl', ['$scope', 'Shop',
+    function($scope, Shop) {
+
+        Shop.getAllList();
+        $scope.$on('Shop.getAllShopListSuccess', function(event) {
+            $scope.allList = Shop.allList;
+        });
+
+        $scope.stage_list = {0:'未认证', 1:'已认证', null:'不详'};
+
+        $scope.setStage = function (shopInfo) {
+            Shop.saveInfo(shopInfo);
+        }
+    }
+]);

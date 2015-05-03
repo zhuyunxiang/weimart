@@ -71,3 +71,51 @@ services.service('Product', ['$http', '$rootScope',
         return Product;
     }
 ]);
+
+// 店铺
+services.service('Shop', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Shop = {};
+        Shop.allList = null;
+
+        // 获得所有店铺列表
+        Shop.getAllList = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/get_all',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.allList = data.data;
+                        $rootScope.$broadcast('Shop.getAllShopListSuccess');
+                    }
+                });
+        }
+
+        // 保存店铺信息
+        Shop.saveInfo = function (shopInfo) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/save_shop_info',
+                data: $.param(shopInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.getAllList();
+                        $rootScope.$broadcast('Shop.saveInfoSuccess');
+                    } else {
+                        alert("店铺信息保存失败!");
+                    }
+                });
+        }
+
+        return Shop;
+    }
+]);
