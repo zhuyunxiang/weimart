@@ -37,7 +37,13 @@
 						<option value="">请选择</option>
 					</select>
 				</td>
-				<td><span class="glyphicon glyphicon-eye-open"></span></td>
+				<td>
+					<span class="glyphicon glyphicon-star" title="设为推荐" ng-show="shop.is_recommend == 0" ng-click="setRecommend(shop, 1)"></span>
+					<span class="glyphicon glyphicon-star-empty" title="取消推荐" ng-show="shop.is_recommend != 0" ng-click="setRecommend(shop, 0)"></span>
+					&nbsp;
+					&nbsp;
+					<span class="glyphicon glyphicon-eye-open"></span>
+				</td>
 			</tr>
 		</table>
 	</div>

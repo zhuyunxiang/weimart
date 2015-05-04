@@ -9,6 +9,7 @@ header('Access-Control-Allow-Headers: X-Requested-With');
 class ShopAPIAction extends Action
 {
 	// 保存
+	// 所传的数据格式如Shop表,有shop_id字段就修改,否则就插入
 	public function save_shop_info()
 	{
 		if (isset($_SESSION['user'])) {
@@ -58,5 +59,13 @@ class ShopAPIAction extends Action
 		$result = A('Shop', 'Service')->getAllShops();
 		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
+
+	// 获得所有推荐店铺
+	public function get_recommend()
+	{
+		$result = A('Shop', 'Service')->getAllRecommendShops();
+		$this->ajaxReturn($result, '数据获取成功!', 1);
+	}
+
 }
  ?>

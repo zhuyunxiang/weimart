@@ -76,5 +76,15 @@ class ProductAPIAction extends Action
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
 	}
+
+	// 获取所有推荐商品列表
+	public function get_recommend()
+	{
+		$result = A('Product', 'Service')->getAllRecommendProducts();
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 }
  ?>
