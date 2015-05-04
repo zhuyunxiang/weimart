@@ -68,6 +68,22 @@ services.service('Product', ['$http', '$rootScope',
                 });
         }
 
+        Product.saveInfo = function(info) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/save_product_info',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.getAllList();
+                    }
+                });
+        }
+
         return Product;
     }
 ]);

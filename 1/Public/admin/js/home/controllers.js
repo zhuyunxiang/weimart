@@ -1,9 +1,12 @@
 var controllers = angular.module('controllers', []);
 
 // 主页
-controllers.controller('adminCtrl', ['$scope',
-    function($scope) {
+controllers.controller('adminCtrl', ['$scope','$state',
+    function($scope,$state) {
         $scope.navContent = "欢迎访问";
+        $scope.goHome = function () {
+            $state.go('home');
+        }
     }
 ]);
 
@@ -33,6 +36,11 @@ controllers.controller('productAdminCtrl', ['$scope', 'Product',
         $scope.$on('Product.getAllListSuccess', function(event) {
             $scope.allList = Product.allList;
         });
+
+        $scope.setRecommend = function (productInfo, isRecommend) {
+            productInfo.is_recommend = isRecommend;
+            Product.saveInfo(productInfo);
+        }
     }
 ]);
 
@@ -48,6 +56,11 @@ controllers.controller('productShopCtrl', ['$scope', 'Shop',
         $scope.stage_list = {0:'未认证', 1:'已认证', null:'不详'};
 
         $scope.setStage = function (shopInfo) {
+            Shop.saveInfo(shopInfo);
+        }
+
+        $scope.setRecommend = function (shopInfo, isRecommend) {
+            shopInfo.is_recommend = isRecommend;
             Shop.saveInfo(shopInfo);
         }
     }

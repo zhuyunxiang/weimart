@@ -51,7 +51,15 @@ class ShopService extends BaseService
 	// 获取所有店铺信息
 	public function getAllShops()
 	{
-		return $this->shopRelationDao->relation(true)->select();
+		$condition = array();
+		return $this->shopRelationDao->where($condition)->relation(true)->select();
+	}
+
+	// 获取所有推荐店铺信息
+	public function getAllRecommendShops()
+	{
+		$condition = array('shop_stage'=>array('neq',0), 'is_recommend'=>1, 'shop_is_deleted'=>0);
+		return $this->shopRelationDao->where($condition)->relation(true)->select();
 	}
 }
  ?>

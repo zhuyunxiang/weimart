@@ -42,8 +42,8 @@
 				<td>{{product.product_num}}</td>
 				<td>{{product.product_register_time}}</td>
 				<td>
-					<span class="glyphicon glyphicon-star"></span>
-					<span class="glyphicon glyphicon-star-empty"></span>
+					<span class="glyphicon glyphicon-star" title="设为推荐" ng-show="product.is_recommend == 0" ng-click="setRecommend(product, 1)"></span>
+					<span class="glyphicon glyphicon-star-empty" title="取消推荐" ng-show="product.is_recommend != 0" ng-click="setRecommend(product, 0)"></span>
 					<span class="glyphicon glyphicon-eye-open"></span>
 				</td>
 			</tr>

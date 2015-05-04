@@ -68,6 +68,15 @@ class ProductService extends BaseService
 		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
 
+	// 获取所有推荐商品信息
+	public function getAllRecommendProducts()
+	{
+		$condition = array('product_is_deleted'=>0, 'is_recommend'=>1);
+		$product_list = $this->productRelationDao->where($condition)->relation('types')->select();
+
+		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
+	}
+
 	// 根据ID删除商品信息
 	public function removeProductInfoById($productId)
 	{
