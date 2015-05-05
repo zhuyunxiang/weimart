@@ -22,4 +22,7 @@ div.publish-container div.publish div.button-set button{width:100%;}
 div.clientManage-container{margin-bottom:100px;}div.clientManage-container div.client-nav{height:40px;line-height:40px;text-align:center;}
 div.clientManage-container div.client-list{background-color:#f5f5f5;}div.clientManage-container div.client-list div.client-item{padding-top:10px;border-bottom:solid 1px #cccccc;}div.clientManage-container div.client-list div.client-item img{height:80px;margin-bottom:10px;}
 div.clientManage-container div.client-list div.client-item span{display:block;margin-bottom:10px;text-align:left;overflow-x:hidden;}
-div.incomeManage-container{margin-bottom:100px;}
+div.incomeManage-container{margin-bottom:100px;}div.incomeManage-container div.income{height:70px;line-height:35px;font-size:14px;border-bottom:solid 2px #cccccc;}div.incomeManage-container div.income span{color:#ff8485;font-weight:bolder;}
+div.incomeManage-container div.income-list-title{height:40px;line-height:40px;text-align:center;}div.incomeManage-container div.income-list-title span.title{font-size:15px;font-weight:bolder;text-align:left;}
+div.incomeManage-container div.income-list{background-color:#f5f5f5;}div.incomeManage-container div.income-list div.income-item{padding-top:10px;border-bottom:solid 1px #cccccc;}div.incomeManage-container div.income-list div.income-item img{height:80px;margin-bottom:10px;}
+div.incomeManage-container div.income-list div.income-item span{display:block;margin-bottom:10px;text-align:left;overflow-x:hidden;}div.incomeManage-container div.income-list div.income-item span.income-once{color:#ff8485;font-weight:bold;}
