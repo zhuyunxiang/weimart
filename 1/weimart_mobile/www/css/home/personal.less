@@ -26,10 +26,7 @@ img {
 
 //<!-- personal
 div.main {
-	// width: 100%;
-	// margin: 0px;
-	// padding: 0px;
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 }
 
 
@@ -126,9 +123,19 @@ div.goods-item {
 //orderManage
 div.orderManage-container {
 	text-align: center;
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 
 	div.order-nav {
+		
+		div.nav-item {
+			line-height: 30px;
+			height: 30px;
+			span {
+				border-bottom: solid 1px @usual-color;	
+			}
+			
+		}
+
 		div.search{
 			margin-top: 10px;
 			margin-bottom: 10px;
@@ -148,6 +155,7 @@ div.orderManage-container {
 		background-color: @usual-color;
 
 		div.order-item {
+			padding-bottom: 10px;
 			padding-top: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
@@ -165,7 +173,7 @@ div.orderManage-container {
 
 //marketManage
 div.marketManage-container {
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 	div.baby-nav {
 		height: 40px;
 		line-height: 40px;
@@ -176,6 +184,7 @@ div.marketManage-container {
 		background-color: @usual-color;
 
 		div.baby-item {
+			padding-bottom: 10px;
 			padding-top: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
@@ -194,14 +203,16 @@ div.marketManage-container {
 }
 //baby publish
 div.publish-container {
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 	div.publish {
 		text-align: center;
 
 		div.goods-info {
+			vertical-align: middle;
 
 			label {
 				text-align: right;
+				vertical-align: middle;
 			}
 		}
 
@@ -215,7 +226,7 @@ div.publish-container {
 
 //clientManage
 div.clientManage-container {
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 	div.client-nav {
 		height: 40px;
 		line-height: 40px;
@@ -227,6 +238,7 @@ div.clientManage-container {
 
 		div.client-item {
 			padding-top: 10px;
+			padding-bottom: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
 				height: 80px;
@@ -245,7 +257,7 @@ div.clientManage-container {
 
 //incomeManage
 div.incomeManage-container {
-	margin-bottom: 100px;
+	padding-bottom: 80px;
 
 	div.income {
 		height: 70px;
@@ -277,6 +289,7 @@ div.incomeManage-container {
 
 		div.income-item {
 			padding-top: 10px;
+			padding-bottom: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
 				height: 80px;
