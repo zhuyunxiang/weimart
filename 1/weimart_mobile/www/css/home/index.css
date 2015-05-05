@@ -10,7 +10,7 @@ div.ads{margin:10px;}div.ads img{border:solid 2px #FEBFC0;height:65px;}
 div.title{border:solid 1px #cccccc;height:30px;border-top:solid 1px #cccccc;border-bottom:solid 1px #cccccc;line-height:30px;font-size:13px;border-left:solid 10px #FF8182;padding:0;}div.title .more{background-color:red;}
 div.clothes div.large{position:relative;border-right:solid 1px #cccccc;}div.clothes div.large span{position:absolute;top:5px;right:10px;color:#ff8485;font-size:14px;}
 div.clothes div.large img{margin-top:18px;height:198px;}
-div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:35px;width:48%;}
+div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:18px;height:198px;}
 div.clothes div.two-middle span{position:absolute;top:5px;left:10px;color:#ff8485;font-size:14px;}
 div.shoes{width:100%;}div.shoes div.large{border-right:solid 1px #cccccc;}
 div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:8px;}
@@ -19,11 +19,11 @@ div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;}
 div.bottom span{color:#ff8485;font-size:12px;}
-div.hotbaby-container{margin-bottom:100px;}div.hotbaby-container div.hotbaby-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbaby-container div.hotbaby-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
+div.hotbaby-container{padding-bottom:80px;}div.hotbaby-container div.hotbaby-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbaby-container div.hotbaby-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.hotbaby-container div.item-container{text-align:center;vertical-align:middle;margin-top:20px;}div.hotbaby-container div.item-container span{font-size:13px;}div.hotbaby-container div.item-container span.item-name{font-weight:bold;height:30px;line-height:30px;}
 div.hotbaby-container div.item-container div.item-desc{font-size:13px;height:40px;line-height:20px;overflow-y:hidden;margin-bottom:10px;}
 div.hotbaby-container div.item-container img{width:100%;border:solid 2px #FEBFC0;}
-div.hotbrand-container{margin-bottom:100px;}div.hotbrand-container div.hotbrand-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbrand-container div.hotbrand-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
+div.hotbrand-container{padding-bottom:80px;}div.hotbrand-container div.hotbrand-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbrand-container div.hotbrand-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.hotbrand-container div.pic-container{margin:0px;padding:0px;}div.hotbrand-container div.pic-container img{width:100%;}
 div.hotbrand-container div.title-middle{height:30px;line-height:30px;background-color:#ff8485;}div.hotbrand-container div.title-middle span{font-size:14px;}
 div.hotbrand-container div.item .pre-item{border:solid 2px #FEBFC0;}div.hotbrand-container div.item .pre-item pre{height:175px;overflow:hidden;margin-bottom:10px;margin-top:10px;}
@@ -32,10 +32,10 @@ div.detail-main{background-color:#F5F5F5;width:100%;}div.detail-main div.item-th
 div.detail-main div.item div.item-desc{font-size:13px;height:60px;line-height:20px;overflow-y:hidden;}
 div.detail-main div.price{position:relative;top:-40px;background-color:#ff8485;height:40px;line-height:40px;text-align:center;}div.detail-main div.price span{font-size:16px;font-weight:bold;}div.detail-main div.price span.new{color:white;}
 div.detail-main div.price span.old{text-decoration:line-through;}
-div.brand-list-container{margin-bottom:100px;}div.brand-list-container div.brand-item-list{background-color:#F5F5F5;}div.brand-list-container div.brand-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.brand-list-container div.brand-item-list div.item img.pic{height:180px;}
+div.brand-list-container{padding-bottom:80px;}div.brand-list-container div.brand-item-list{background-color:#F5F5F5;}div.brand-list-container div.brand-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.brand-list-container div.brand-item-list div.item img.pic{height:180px;}
 div.brand-list-container div.brand-item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;height:50px;line-height:25px;overflow:hidden;}
 div.brand-list-container div.brand-item-list div.item span{color:#ff8485;font-size:14px;font-weight:bolder;margin-top:5px;margin-left:10px;}
-div.hotshop-container{margin-bottom:100px;background-color:#f5f5f5;}div.hotshop-container div.reward-box{text-align:center;margin-top:3px;margin-bottom:3px;}div.hotshop-container div.reward-box div.reward{height:40px;line-height:40px;border-radius:40px;background-color:#ff8485;}div.hotshop-container div.reward-box div.reward span{font-size:20px;font-weight:bolder;color:white;}
+div.hotshop-container{padding-bottom:80px;background-color:#f5f5f5;}div.hotshop-container div.reward-box{text-align:center;margin-top:3px;margin-bottom:3px;}div.hotshop-container div.reward-box div.reward{height:40px;line-height:40px;border-radius:40px;background-color:#ff8485;}div.hotshop-container div.reward-box div.reward span{font-size:20px;font-weight:bolder;color:white;}
 div.hotshop-container div.shop-info{background-color:white;text-align:center;vertical-align:middle;border:solid 1px #CCCCCC;width:98%;margin-left:1%;border-radius:10px;}div.hotshop-container div.shop-info div.shop-fore div.shop-pic{margin-top:15px;margin-bottom:15px;margin-left:10px;}
 div.hotshop-container div.shop-info div.shop-fore div.shop-name{margin-top:35px;font-size:15px;font-weight:bolder;color:#ff8485;}
 div.hotshop-container div.shop-info div.shop-fore div.enshop{padding:0px;padding-top:5px;padding-bottom:5px;margin-top:25px;font-size:16px;border:solid 1px #CCCCCC;border-radius:5px;}
@@ -43,7 +43,7 @@ div.hotshop-container div.shop-info div.pic-show div.two-little{margin-top:20px;
 div.hotshop-container div.shop-info div.pic-show div.one-large{margin-top:20px;margin-bottom:20px;padding-left:2px;}div.hotshop-container div.shop-info div.pic-show div.one-large img{height:222px;margin-bottom:2px;}
 div.hotshop-container div.shop-info div.text-desc-main{margin-bottom:10px;}div.hotshop-container div.shop-info div.text-desc-main span{font-size:14px;}div.hotshop-container div.shop-info div.text-desc-main span.space{margin-top:10px;}
 div.hotshop-container div.shop-info div.text-desc-main span.tags{font-weight:bolder;}
-div.inshop-container{margin-bottom:100px;}div.inshop-container input{margin-top:5px;height:30px;line-height:30px;border-radius:5px;}
+div.inshop-container{padding-bottom:80px;}div.inshop-container input{margin-top:5px;height:30px;line-height:30px;border-radius:5px;}
 div.inshop-container div.inshop-fore img.fore-img{padding:0px;}
 div.inshop-container div.shop-fore{position:relative;top:-50px;margin-bottom:-50px;}div.inshop-container div.shop-fore div.shop-pic{margin-top:15px;margin-bottom:15px;margin-left:10px;}
 div.inshop-container div.shop-fore div.shop-name{margin-top:35px;font-size:15px;}div.inshop-container div.shop-fore div.shop-name span{font-weight:bolder;color:#ff8485;}div.inshop-container div.shop-fore div.shop-name span.fans{color:black;font-weight:thin;padding-left:8px;}
