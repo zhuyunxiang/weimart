@@ -247,6 +247,56 @@ div.clientManage-container {
 div.incomeManage-container {
 	margin-bottom: 100px;
 
+	div.income {
+		height: 70px;
+		line-height: 35px;
+		font-size: 14px;
+		border-bottom: solid 2px @often-color;
+		
+
+		span {
+			color: @main-color;
+			font-weight: bolder;
+		}
+	}
+
+	div.income-list-title {
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+
+		span.title {
+			font-size: 15px;
+			font-weight: bolder;
+			text-align: left;
+		}
+	}
+
+	div.income-list {
+		background-color: @usual-color;
+
+		div.income-item {
+			padding-top: 10px;
+			border-bottom: @border-CCCC;
+			img	 {
+				height: 80px;
+				margin-bottom: 10px;
+			}
+
+			span {
+				display: block;
+				margin-bottom: 10px;
+				text-align: left;
+				overflow-x: hidden;
+
+				&.income-once {
+					color: @main-color;
+					font-weight: bold;
+				}
+			}
+		}	
+	}
+
 
 	
 }
