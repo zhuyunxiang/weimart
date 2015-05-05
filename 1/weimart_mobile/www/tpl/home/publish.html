@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="css/home/personal.css">
+<link rel="stylesheet" href="css/home/register.css">
+<div class="publish-container col-xs-12">
+	<div class="row common-fore">
+		<div class="col-xs-1">
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="personal.marketManage"></span>
+		</div>
+		<div class="col-xs-10">
+			<span class="title">发布宝贝</span>
+		</div>
+	</div>
+
+	<div class="content-container col-xs-12 register-detail publish">
+	<form class="form-horizontal detail-form ">
+		<div class="head-img-container">
+			<img ng-src="" alt="头像">
+			<button class="btn btn-default" type="button" ng-file-select ng-file-change="upload($files)">点击上传</button>
+		</div>
+		<div class="form-group goods-info">
+			<label for="nick_name" class="col-xs-3 control-label">名称</label>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_nick_name" placeholder="请输入宝贝名称" required>
+			</div>
+		</div>
+		<div class="form-group goods-info">
+			<label for="" class="col-xs-3 control-label">价格</label>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_full_name" placeholder="请输入宝贝价格" required>
+			</div>
+		</div>
+		<div class="form-group goods-info">
+			<label for="" class="col-xs-3 control-label">库存</label>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_telephone" placeholder="请输入宝贝库存" required>
+			</div>
+		</div>
+		<div class="form-group goods-info">
+			<label for="" class="col-xs-3 control-label">运费</label>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" ng-model="userDetailInfo.user_address" placeholder="请输入宝贝运费" required>
+			</div>
+		</div>
+		<div class="form-group goods-info">
+			<label for="" class="col-xs-3 control-label">描述</label>
+			<div class="col-xs-9">
+				<input type="textarea" class="form-control" ng-model="userDetailInfo.user_address" placeholder="请输入宝贝描述" required>
+			</div>
+		</div>
+		<div class="form-group button-set">
+			<div class="col-xs-offset-1 col-xs-5">
+				<button type="submit" class="btn btn-success" save-detail info="userDetailInfo">放入仓库</button>
+			</div>
+			<div class="col-xs-offset-1 col-xs-5">
+				<button type="button" class="btn btn-info" ui-sref="conf">立即发布</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
