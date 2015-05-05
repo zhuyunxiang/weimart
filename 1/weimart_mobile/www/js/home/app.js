@@ -170,6 +170,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/incomeManage.html',
             controller: "personalCtrl"
         })
+         //卖家中心 收入管理
+        .state('personal.shop', {
+            url: "/shop",
+            templateUrl: 'tpl/home/shop.html',
+            controller: "personalCtrl"
+        })
         // 设置
         .state('conf', {
             url: "/conf",

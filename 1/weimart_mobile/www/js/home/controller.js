@@ -2,7 +2,7 @@ var controllers = angular.module('controllers', ['angularFileUpload']);
 // 主页
 controllers.controller('homeCtrl', ['$scope', '$state',
     function($scope, $state) {
-    	$scope.u = navigator.userAgent;
+        $scope.u = navigator.userAgent;
         $scope.swipeTo = function(direction, state) {
             switch (state.current.name) {
                 case 'home':
@@ -37,69 +37,133 @@ controllers.controller('homeCtrl', ['$scope', '$state',
         }
 
 
-        $scope.itemList = [
-            {"url": "2.jpg"},
-            {"url": "3.jpg"},
-            {"url": "4.jpg"},
-            {"url": "2.jpg"},
-            {"url": "3.jpg"},
-            {"url": "4.jpg"},
-        ];
-   
+        $scope.itemList = [{
+            "url": "2.jpg"
+        }, {
+            "url": "3.jpg"
+        }, {
+            "url": "4.jpg"
+        }, {
+            "url": "2.jpg"
+        }, {
+            "url": "3.jpg"
+        }, {
+            "url": "4.jpg"
+        }, ];
+
     }
 ]);
 // 分类
 controllers.controller('listCtrl', ['$scope',
     function($scope) {
 
-        $scope.women = [
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"}, 
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"}, 
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"}, 
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"}, 
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"}, 
-        {"pic":"1.jpg", "name":"T恤"},
-        {"pic":"1.jpg", "name":"衬衫"},
-        ];
-        $scope.womenShoes = [
-        {"pic":"4.jpg", "name":"商务鞋"},
-        {"pic":"5.jpg", "name":"单鞋"}, 
-        {"pic":"4.jpg", "name":"商务鞋"},
-        {"pic":"5.jpg", "name":"单鞋"}, 
-        ];
-        $scope.men = [
-        {"pic":"3.jpg", "name":"短袖"},
-        {"pic":"3.jpg", "name":"2袖"}, 
-        {"pic":"3.jpg", "name":"短袖"},
-        {"pic":"3.jpg", "name":"短袖"}, 
-        {"pic":"3.jpg", "name":"短袖"},
-        {"pic":"3.jpg", "name":"短袖"}, 
-        {"pic":"3.jpg", "name":"短袖"},
-        {"pic":"3.jpg", "name":"短袖"}, 
-        ];
-        $scope.menShoes = [
-        {"pic":"2.jpg", "name":"皮鞋"},
-        {"pic":"6.jpg", "name":"商务鞋"}, 
-        {"pic":"2.jpg", "name":"皮鞋"},
-        {"pic":"6.jpg", "name":"商务鞋"}, 
-        ];
-        $scope.pkage = [
-        {"pic":"7.jpg", "name":"女包"},
-        {"pic":"8.jpg", "name":"男包"}, 
-        {"pic":"9.jpg", "name":"钱包"},
-        {"pic":"7.jpg", "name":"女包"}, 
-        ];
+        $scope.women = [{
+            "pic": "1.jpg",
+            "name": "T恤"
+        }, {
+            "pic": "1.jpg",
+            "name": "衬衫"
+        }, {
+            "pic": "1.jpg",
+            "name": "外套"
+        }, {
+            "pic": "1.jpg",
+            "name": "衬衫"
+        }, {
+            "pic": "1.jpg",
+            "name": "毛衣"
+        }, {
+            "pic": "1.jpg",
+            "name": "家居"
+        }, {
+            "pic": "1.jpg",
+            "name": "上装"
+        }, {
+            "pic": "1.jpg",
+            "name": "内衣"
+        }, {
+            "pic": "1.jpg",
+            "name": "裙装"
+        }, {
+            "pic": "1.jpg",
+            "name": "T恤"
+        }, {
+            "pic": "1.jpg",
+            "name": "T恤"
+        }, {
+            "pic": "1.jpg",
+            "name": "休闲"
+        }, ];
+        $scope.womenShoes = [{
+            "pic": "4.jpg",
+            "name": "商务鞋"
+        }, {
+            "pic": "5.jpg",
+            "name": "单鞋"
+        }, {
+            "pic": "4.jpg",
+            "name": "商务鞋"
+        }, {
+            "pic": "5.jpg",
+            "name": "单鞋"
+        }, ];
+        $scope.men = [{
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "2袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, {
+            "pic": "3.jpg",
+            "name": "短袖"
+        }, ];
+        $scope.menShoes = [{
+            "pic": "2.jpg",
+            "name": "皮鞋"
+        }, {
+            "pic": "6.jpg",
+            "name": "商务鞋"
+        }, {
+            "pic": "2.jpg",
+            "name": "皮鞋"
+        }, {
+            "pic": "6.jpg",
+            "name": "商务鞋"
+        }, ];
+        $scope.pkage = [{
+            "pic": "7.jpg",
+            "name": "女包"
+        }, {
+            "pic": "8.jpg",
+            "name": "男包"
+        }, {
+            "pic": "9.jpg",
+            "name": "钱包"
+        }, {
+            "pic": "7.jpg",
+            "name": "女包"
+        }, ];
 
     }
 ]);
 // 我的
-controllers.controller('personalCtrl', ['$scope', '$state', 'Shop', 'Auth',
-    function($scope, $state, Shop, Auth) {
+controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth',
+    function($upload, $scope, $state, Shop, Auth) {
         // if (Auth.isLoggedIn()) {
         //     alert("已经登陆");
         // } else {
@@ -111,6 +175,32 @@ controllers.controller('personalCtrl', ['$scope', '$state', 'Shop', 'Auth',
             $scope.myShop = Shop.myShop;
 
         });
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/ShopAPI/save_shop_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editShopInfo.shop_img = uploadPath + 'shop_img/' + data;
+                        $scope.editShopInfo.shop_img_temp = uploadPath + 'shop_img/thumb_' + data;
+                    });
+                }
+            }
+        };
 
     }
 ]);
@@ -142,15 +232,15 @@ controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth',
             User.doLogin($scope.loginInfo);
 
             $scope.$on('User.loginSuccess', function(event) {
-                $state.go('conf');
+               goBack();
             })
         }
     }
 ]);
 
 // 注册页面
-controllers.controller('registerCtrl', ['$scope', '$state', '$upload','Auth',
-    function($scope, $state, $upload,Auth) {
+controllers.controller('registerCtrl', ['$scope', '$state', '$upload', 'Auth',
+    function($scope, $state, $upload, Auth) {
         $scope.doRegister = function() {
             console.log($scope.registerInfo);
         }
@@ -184,3 +274,31 @@ controllers.controller('registerCtrl', ['$scope', '$state', '$upload','Auth',
         };
     }
 ]);
+
+
+function goBack() {
+    if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
+        if (history.length > 0) {
+            window.history.go(-1);
+        } else {
+            window.opener = null;
+            window.close();
+        }
+    } else { //非IE浏览器 
+        if (navigator.userAgent.indexOf('Firefox') >= 0 ||
+            navigator.userAgent.indexOf('Opera') >= 0 ||
+            navigator.userAgent.indexOf('Safari') >= 0 ||
+            navigator.userAgent.indexOf('Chrome') >= 0 ||
+            navigator.userAgent.indexOf('WebKit') >= 0) {
+
+            if (window.history.length > 1) {
+                window.history.go(-1);
+            } else {
+                window.opener = null;
+                window.close();
+            }
+        } else { //未知的浏览器 
+            window.history.go(-1);
+        }
+    }
+}
