@@ -140,6 +140,36 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/personal.html',
             controller: "personalCtrl"
         })
+        //卖家中心 订单管理
+        .state('personal.orderManage', {
+            url: "/orderManage",
+            templateUrl: 'tpl/home/orderManage.html',
+            controller: "personalCtrl"
+        })
+        //卖家中心 销售管理
+        .state('personal.marketManage', {
+            url: "/marketManage",
+            templateUrl: 'tpl/home/marketManage.html',
+            controller: "personalCtrl"
+        })
+        //卖家中心 销售管理 发布宝贝
+        .state('personal.marketManage.publish', {
+            url: "/publish",
+            templateUrl: 'tpl/home/publish.html',
+            controller: "personalCtrl"
+        })
+        //卖家中心 客户管理
+        .state('personal.clientManage', {
+            url: "/clientManage",
+            templateUrl: 'tpl/home/clientManage.html',
+            controller: "personalCtrl"
+        })
+        //卖家中心 收入管理
+        .state('personal.incomeManage', {
+            url: "/incomeManage",
+            templateUrl: 'tpl/home/incomeManage.html',
+            controller: "personalCtrl"
+        })
         // 设置
         .state('conf', {
             url: "/conf",

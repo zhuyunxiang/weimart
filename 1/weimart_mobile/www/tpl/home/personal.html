@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/home/personal.css">
-<div class="content-container col-xs-12 main">	
+<div ui-view ng-show="$state.current.name !== 'personal'"></div>
+<div class="content-container col-xs-12 main" ng-show="$state.current.name == 'personal'">	
 	<div class="row fore">
 		<div class="col-xs-3 col-xs-offset-9">
 			<span>添加</span>
@@ -7,16 +8,16 @@
 	</div>
 
 	<div class="row personal-nav">
-		<div class="col-xs-3">
+		<div class="col-xs-3" ui-sref=".orderManage">
 			<img ng-src="img/personal/1.png" alt="">
 		</div>
-		<div class="col-xs-3">
+		<div class="col-xs-3" ui-sref=".marketManage">
 			<img ng-src="img/personal/2.png" alt="">
 		</div>
-		<div class="col-xs-3">
+		<div class="col-xs-3" ui-sref=".clientManage">
 			<img ng-src="img/personal/3.png" alt="">
 		</div>
-		<div class="col-xs-3">
+		<div class="col-xs-3" ui-sref=".incomeManage">
 			<img ng-src="img/personal/4.png" alt="">
 		</div>
 	</div>
@@ -27,7 +28,7 @@
 		</div>
 		<div class="col-xs-12">
 			<img ng-src="img/personal/5.png" class="shop-img">
-			<span class="shop-name">{{myShop.shop_name}}</span>
+			<span class="shop-name">撒旦撒旦撒旦撒旦</span>
 		</div>
 	</div>
 

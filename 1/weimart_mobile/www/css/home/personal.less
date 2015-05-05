@@ -1,8 +1,30 @@
 @main-color:  #FF8485;
 @often-color: #CCCCCC;
+@usual-color: #F5F5F5;
 @border-CCCC: solid 1px #CCCCCC;
-// @height: ((300px - this.height)/2);
 
+//===================================================
+.common-fore {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background-color:  #F5F5F5;
+	vertical-align: middle;
+	border-bottom: @border-CCCC;
+
+	span.title {
+		color: @main-color;
+		font-size: 14px;
+		font-weight: bolder;
+	}
+}
+
+img {
+	cursor: pointer;
+}
+//===================================================
+
+//<!-- personal
 div.main {
 	// width: 100%;
 	// margin: 0px;
@@ -96,5 +118,91 @@ div.goods-item {
 			}
 		}
 	}
+}
+
+//   personal-->
+
+
+//orderManage
+div.orderManage-container {
+	text-align: center;
+	margin-bottom: 100px;
+
+	div.order-nav {
+		div.search{
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+			input {
+				margin-left: 10%;
+				width: 80%;
+			}
+		}
+
+		span {
+			display: block;
+		}
+	}
+
+	div.order-list{
+		background-color: @usual-color;
+
+		div.order-item {
+			padding-top: 10px;
+			border-bottom: @border-CCCC;
+			img	 {
+				height: 120px;
+				margin-bottom: 10px;
+			}
+
+			span {
+				margin-bottom: 10px;
+				text-align: left;
+			}
+		}	
+	}
+}
+
+//marketManage
+div.marketManage-container {
+
+	div.baby-nav {
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+	}
+
+	div.baby-list{
+		background-color: @usual-color;
+
+		div.baby-item {
+			padding-top: 10px;
+			border-bottom: @border-CCCC;
+			img	 {
+				height: 120px;
+				margin-bottom: 10px;
+			}
+
+			span {
+				display: block;
+				margin-bottom: 10px;
+				text-align: left;
+				overflow-x: hidden;
+			}
+		}	
+	}
+}
+//baby publish
+div.publish-container {
+
+}
+
+//clientManage
+div.clientManage-container {
+	
+}
+
+//incomeManage
+div.incomeManage-container {
 	
 }
