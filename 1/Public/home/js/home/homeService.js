@@ -262,6 +262,7 @@ HomeServices.service('Product', ['$http', '$rootScope',
         Product.list = null;
         Product.type_list = null;
         Product.type_drop_list = null;
+        Product.recommend_list = null;
 
         // 获得所有商品类别列表树
         Product.getTypeList = function() {
@@ -349,6 +350,24 @@ HomeServices.service('Product', ['$http', '$rootScope',
                     if (data.status == 1) {
                         Product.list = data.data;
                         $rootScope.$broadcast('Product.getProductListSuccess');
+                    }
+                });
+        }
+
+        // 获得推荐商品列表
+        Product.getRecommendList = function() {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ProductAPI/get_recommend',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.recommend_list = data.data;
+                        $rootScope.$broadcast('Product.getRecommendListSuccess');
                     }
                 });
         }

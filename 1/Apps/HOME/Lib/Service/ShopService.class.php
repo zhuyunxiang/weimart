@@ -55,11 +55,14 @@ class ShopService extends BaseService
 		return $this->shopRelationDao->where($condition)->relation(true)->select();
 	}
 
-	// 获取所有推荐店铺信息
+	// 获取所有推荐店铺信息(随机乱序)
 	public function getAllRecommendShops()
 	{
 		$condition = array('shop_stage'=>array('neq',0), 'is_recommend'=>1, 'shop_is_deleted'=>0);
-		return $this->shopRelationDao->where($condition)->relation(true)->select();
+		$result = $this->shopRelationDao->where($condition)->relation(true)->select();
+		// 随机
+		shuffle($result);
+		return $result;
 	}
 }
  ?>

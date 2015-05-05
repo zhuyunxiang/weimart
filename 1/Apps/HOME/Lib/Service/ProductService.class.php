@@ -31,8 +31,9 @@ class ProductService extends BaseService
 			// 在这里添加分类
 		// 修改
 		} else {
+			$condition = array('product_id'=>$data['product_id']);
 			$productTypeData = array('type_id'=>$data['type_id'], 'product_id'=>$data['product_id']);
-			$result = $this->productTypeDao->add($productTypeData);
+			$result = $this->productTypeDao->where($condition)->save($productTypeData);
 		}
 
 		if ($result) {
@@ -68,12 +69,13 @@ class ProductService extends BaseService
 		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
 
-	// 获取所有推荐商品信息
+	// 获取所有推荐商品信息(随机乱序)
 	public function getAllRecommendProducts()
 	{
 		$condition = array('product_is_deleted'=>0, 'is_recommend'=>1);
 		$product_list = $this->productRelationDao->where($condition)->relation('types')->select();
-
+		// 随机打乱
+		shuffle($product_list);
 		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
 
