@@ -44,3 +44,15 @@ div.hotshop-container div.shop-info div.pic-show div.one-large{margin-top:20px;m
 div.hotshop-container div.shop-info div.text-desc-main{margin-bottom:10px;}div.hotshop-container div.shop-info div.text-desc-main span{font-size:14px;}div.hotshop-container div.shop-info div.text-desc-main span.space{margin-top:10px;}
 div.hotshop-container div.shop-info div.text-desc-main span.tags{font-weight:bolder;}
 div.inshop-container{margin-bottom:100px;}div.inshop-container input{margin-top:5px;height:30px;line-height:30px;border-radius:5px;}
+div.inshop-container div.inshop-fore img.fore-img{padding:0px;}
+div.inshop-container div.shop-fore{position:relative;top:-50px;margin-bottom:-50px;}div.inshop-container div.shop-fore div.shop-pic{margin-top:15px;margin-bottom:15px;margin-left:10px;}
+div.inshop-container div.shop-fore div.shop-name{margin-top:35px;font-size:15px;}div.inshop-container div.shop-fore div.shop-name span{font-weight:bolder;color:#ff8485;}div.inshop-container div.shop-fore div.shop-name span.fans{color:black;font-weight:thin;padding-left:8px;}
+div.inshop-container div.shop-fore img.favorite{margin-top:35px;border-radius:5px;}
+div.inshop-container div.inshop-goods img.goods-img{padding:0px;}
+div.inshop-container div.inshop-goods div.price{position:relative;top:-50px;text-align:center;}div.inshop-container div.inshop-goods div.price span{color:#ff8485;}
+div.inshop-container div.inshop-goods div.price img{border-radius:7px;}
+div.inshop-container div.pic-show div.two-little{margin-top:20px;margin-bottom:20px;padding-right:2px;}div.inshop-container div.pic-show div.two-little img{margin-bottom:2px;height:110px;}
+div.inshop-container div.pic-show div.one-large{margin-top:20px;margin-bottom:20px;padding-left:2px;}div.inshop-container div.pic-show div.one-large img{height:222px;margin-bottom:2px;}
+div.inshop-container div.goods-item-list{background-color:#F5F5F5;}div.inshop-container div.goods-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.inshop-container div.goods-item-list div.item img.pic{height:180px;}
+div.inshop-container div.goods-item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;height:50px;line-height:25px;overflow:hidden;}
+div.inshop-container div.goods-item-list div.item span{color:#ff8485;font-size:14px;font-weight:bolder;margin-top:5px;margin-left:10px;}
