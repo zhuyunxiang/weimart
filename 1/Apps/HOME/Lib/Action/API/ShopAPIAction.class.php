@@ -67,5 +67,13 @@ class ShopAPIAction extends Action
 		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
 
+	// 根据用户获取店铺
+
+	public function get_shop_with_user()
+	{
+		$result = A('Shop', 'Service')->getShopWithUser();
+		$this->ajaxReturn($result, '数据获取成功!', 1);
+	}
+
 }
  ?>

@@ -58,104 +58,72 @@ controllers.controller('listCtrl', ['$scope',
     function($scope) {
 
         $scope.women = [{
-            "pic": "1.jpg",
             "name": "T恤"
         }, {
-            "pic": "1.jpg",
             "name": "衬衫"
         }, {
-            "pic": "1.jpg",
             "name": "外套"
         }, {
-            "pic": "1.jpg",
             "name": "衬衫"
         }, {
-            "pic": "1.jpg",
             "name": "毛衣"
         }, {
-            "pic": "1.jpg",
             "name": "家居"
         }, {
-            "pic": "1.jpg",
             "name": "上装"
         }, {
-            "pic": "1.jpg",
             "name": "内衣"
         }, {
-            "pic": "1.jpg",
             "name": "裙装"
         }, {
-            "pic": "1.jpg",
             "name": "T恤"
         }, {
-            "pic": "1.jpg",
             "name": "T恤"
         }, {
-            "pic": "1.jpg",
             "name": "休闲"
         }, ];
         $scope.womenShoes = [{
-            "pic": "4.jpg",
             "name": "商务鞋"
         }, {
-            "pic": "5.jpg",
             "name": "单鞋"
         }, {
-            "pic": "4.jpg",
             "name": "商务鞋"
         }, {
-            "pic": "5.jpg",
             "name": "单鞋"
         }, ];
         $scope.men = [{
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "2袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, {
-            "pic": "3.jpg",
             "name": "短袖"
         }, ];
         $scope.menShoes = [{
-            "pic": "2.jpg",
             "name": "皮鞋"
         }, {
-            "pic": "6.jpg",
             "name": "商务鞋"
         }, {
-            "pic": "2.jpg",
             "name": "皮鞋"
         }, {
-            "pic": "6.jpg",
             "name": "商务鞋"
         }, ];
         $scope.pkage = [{
-            "pic": "7.jpg",
             "name": "女包"
         }, {
-            "pic": "8.jpg",
             "name": "男包"
         }, {
-            "pic": "9.jpg",
             "name": "钱包"
         }, {
-            "pic": "7.jpg",
             "name": "女包"
         }, ];
 
@@ -164,11 +132,19 @@ controllers.controller('listCtrl', ['$scope',
 // 我的
 controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth',
     function($upload, $scope, $state, Shop, Auth) {
-        // if (Auth.isLoggedIn()) {
-        //     alert("已经登陆");
-        // } else {
-        //     $state.go('login');
-        // }
+        if (Auth.isLoggedIn()) {
+            console.log('212');
+            Shop.getShopWithUser();
+            $scope.$on('Shop.getShopWithUserSuccess', function(event) {
+                $scope.hasShop = Shop.hasShop;
+            });
+            if ('false' == $scope.hasShop) {
+                console.log('333');
+                $state.go('.shop');
+            }
+        } else {
+            $state.go('login');
+        }
 
         Shop.getMyShop();
         $scope.$on('Shop.getMyShopSuccess', function(event) {
