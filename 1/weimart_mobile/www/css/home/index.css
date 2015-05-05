@@ -12,10 +12,10 @@ div.clothes div.large{position:relative;border-right:solid 1px #cccccc;}div.clot
 div.clothes div.large img{margin-top:18px;height:198px;}
 div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:18px;height:198px;}
 div.clothes div.two-middle span{position:absolute;top:5px;left:10px;color:#ff8485;font-size:14px;}
-div.shoes{width:100%;}div.shoes div.large{border-right:solid 1px #cccccc;}
-div.shoes span{width:100%;text-align:center;color:#ff8485;font-size:8px;}
-div.shoes div.text{display:block;color:#ff8485;font-size:10px;}div.shoes div.text span{display:block;margin-top:10%;width:100%;font-size:9px;}
-div.shoes div.row-left{margin-top:30px;}div.shoes div.row-left img{margin-left:-10%;}
+div.shoes{text-align:center;}div.shoes div.large{border-right:solid 1px #cccccc;margin-bottom:5px;}
+div.shoes span{color:#ff8485;font-size:8px;}
+div.shoes div.shoe-item{margin-top:20px;}
+div.shoes div.text{padding:0px;display:block;color:#ff8485;font-size:10px;}div.shoes div.text span{display:block;margin-top:10%;width:100%;font-size:9px;}
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;}
 div.bottom span{color:#ff8485;font-size:12px;}
@@ -27,10 +27,10 @@ div.hotbrand-container{padding-bottom:80px;}div.hotbrand-container div.hotbrand-
 div.hotbrand-container div.pic-container{margin:0px;padding:0px;}div.hotbrand-container div.pic-container img{width:100%;}
 div.hotbrand-container div.title-middle{height:30px;line-height:30px;background-color:#ff8485;}div.hotbrand-container div.title-middle span{font-size:14px;}
 div.hotbrand-container div.item .pre-item{border:solid 2px #FEBFC0;}div.hotbrand-container div.item .pre-item pre{height:175px;overflow:hidden;margin-bottom:10px;margin-top:10px;}
-div.hotbrand-container div.item .img-item{border:solid 2px #FEBFC0;}
+div.hotbrand-container div.item .img-item{padding:0px;border-top:solid 1px #febfc0;border-bottom:solid 1px #febfc0;}
 div.detail-main{background-color:#F5F5F5;width:100%;}div.detail-main div.item-theme{font-size:13px;font-weight:bold;height:30px;line-height:30px;}
 div.detail-main div.item div.item-desc{font-size:13px;height:60px;line-height:20px;overflow-y:hidden;}
-div.detail-main div.price{position:relative;top:-40px;background-color:#ff8485;height:40px;line-height:40px;text-align:center;}div.detail-main div.price span{font-size:16px;font-weight:bold;}div.detail-main div.price span.new{color:white;}
+div.detail-main div.price{position:relative;top:-40px;background-color:#ff8485;height:40px;line-height:40px;text-align:center;padding-left:3px;padding-right:3px;}div.detail-main div.price span{font-size:16px;font-weight:bold;}div.detail-main div.price span.new{color:white;}
 div.detail-main div.price span.old{text-decoration:line-through;}
 div.brand-list-container{padding-bottom:80px;}div.brand-list-container div.brand-item-list{background-color:#F5F5F5;}div.brand-list-container div.brand-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.brand-list-container div.brand-item-list div.item img.pic{height:180px;}
 div.brand-list-container div.brand-item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;height:50px;line-height:25px;overflow:hidden;}

@@ -2,6 +2,7 @@
 @often-color: #CCCCCC;
 @usual-color: #F5F5F5;
 @border-CCCC: solid 1px #CCCCCC;
+@border-main: solid 1px #FEBFC0;
 
 //=====================================
 .boder-solid-CCCC {
@@ -138,18 +139,24 @@ div.clothes {
 }
 
 div.shoes {
+	text-align: center;
 	div.large {
 		border-right: @border-CCCC;
+		margin-bottom: 5px;
 	}
-	width: 100%;
+	// width: 100%;
 	span {
-		width: 100%;
-		text-align: center;
+		// width: 100%;
 		color: @main-color;
 		font-size: 8px;
 	}
 
+	div.shoe-item {
+		margin-top: 20px;
+	}
+
 	div.text {
+		padding: 0px;
 		display: block;
 		color: @main-color;
 		font-size: 10px;
@@ -161,13 +168,13 @@ div.shoes {
 		}
 	}
 
-	div.row-left {
-		margin-top: 30px;
+	// div.row-left {
+	// 	margin-top: 30px;
 
-		img {
-			margin-left: -10%;
-		}
-	}
+	// 	img {
+	// 		margin-left: -10%;
+	// 	}
+	// }
 }
 
 div.bottom {
@@ -287,7 +294,9 @@ div.hotbrand-container {
 		}
 
 		.img-item {
-			.boder-solid-main;
+			padding: 0px;
+			border-top: @border-main;
+			border-bottom: @border-main;
 			img {
 				// margin-bottom: 10px;
 				// margin-top: 10px;
@@ -342,6 +351,8 @@ div.detail-main {
 		height: 40px;
 		line-height: 40px;
 		text-align: center;
+		padding-left: 3px;
+		padding-right: 3px;
 
 		span {
 			font-size: 16px;

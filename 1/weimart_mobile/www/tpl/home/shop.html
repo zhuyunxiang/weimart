@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="css/home/personal.css">
+<link rel="stylesheet" href="css/home/register.css">
+<div class="incomeManage-container col-xs-12">
+	<div class="row common-fore">
+		<div class="col-xs-1">
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="personal"></span>
+		</div>
+		<div class="col-xs-10">
+			<span class="title">店铺信息</span>
+		</div>
+	</div>
+
+	<div class="content-container col-xs-12 register-detail publish">
+		<form class="form-horizontal detail-form">
+			<div class="head-img-container">
+				<img ng-src="{{editShopInfo.shop_img}}" alt="请上传头像">
+				<button class="btn btn-default" ng-file-select ng-file-change="upload($files)">点击更改</button>
+			</div>
+			<div class="input-container">
+				<div class="form-group">
+					<label for="nick_name" class="col-xs-4 control-label">店铺名称:</label>
+					<div class="col-xs-8">
+						<input type="text" class="form-control" ng-model="editShopInfo.shop_name" placeholder="请输入店铺名称" required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="" class="col-xs-4 control-label">店铺简介:</label>
+					<div class="col-xs-8">
+						<textarea class="form-control" ng-model="editShopInfo.shop_desc" placeholder="请输入店铺简介" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-xs-4 control-label">店铺标语:</label>
+					<div class="col-xs-8">
+						<textarea class="form-control" ng-model="editShopInfo.shop_ad" placeholder="请输入店铺标语" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-xs-4 control-label">店铺描述:</label>
+					<div class="col-xs-8">
+						<textarea class="form-control" ng-model="editShopInfo.shop_brif" placeholder="请输入店铺描述" required></textarea>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-xs-offset-1 col-xs-5">
+					<button type="submit" class="btn btn-primary" ng-click="saveShopInfo()">提交审核</button>
+				</div>
+				<div class="col-xs-offset-1 col-xs-5">
+					<button type="button" class="btn btn-default">以后再说</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
