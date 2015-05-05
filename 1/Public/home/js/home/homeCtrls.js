@@ -20,8 +20,8 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
         };
 
         Product.getTypeList();
+        Product.getRecommendList();
         $scope.$on('Product.getPTypeListSuccess', function (event) {
-            console.log(Product.type_list);
 
             var firstFourtypeList = [];
             var secondTwotypeList = [];
@@ -53,6 +53,18 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
             $scope.secondTwotypeList = secondTwotypeList;
             $scope.thirdOnetypeList = thirdOnetypeList;
             $scope.fourthOnetypeList = fourthOnetypeList;
+        });
+
+        $scope.$on('Product.getRecommendListSuccess', function (event) {
+            var recommend_list= [];
+            for(var i in Product.recommend_list){
+                if (i < 4) {
+                    recommend_list.push(Product.recommend_list[i]);
+                };
+            }
+
+            $scope.recommendList = recommend_list;
+            console.log(recommend_list);
         });
         
         $scope.goods = [
