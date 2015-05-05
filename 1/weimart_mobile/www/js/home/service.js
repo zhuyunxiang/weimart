@@ -35,7 +35,11 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
             logOut: function() {
                 $cookieStore.remove('user');
                 _user = null;
-            }
+            },
+
+            // hasShop: function () {
+            //     //判断是否有店铺
+            // }
         };
     }
 ]);
@@ -210,6 +214,25 @@ services.service('Shop', ['$http', '$rootScope',
                     if (data.status == 1) {
                         Shop.myShop = data.data;
                         $rootScope.$broadcast('Shop.getMyShopSuccess');
+                    }
+                });
+        }
+
+        Shop.getShopWithUser = function () {
+            console.log("222222222222");
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/ShopAPI/get_shop_with_user',
+                data: 'null',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        console.log(data.data);
+                        Shop.hasShop = data.data;
+                        $rootScope.$broadcast('Shop.getShopWithUserSuccess');
                     }
                 });
         }
