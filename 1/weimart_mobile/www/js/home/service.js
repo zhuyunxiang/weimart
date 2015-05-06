@@ -282,3 +282,117 @@ services.service('Shop', ['$http', '$rootScope',
         return Shop;
     }
 ]);
+
+// 商品
+services.service('Product', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Product = {};
+        Product.list = null;
+        Product.type_list = null;
+        Product.type_drop_list = null;
+        Product.update_item = null;
+
+        // 设置要修改的对象
+        Product.setUpdateItem = function (data) {
+            Product.update_item = data;
+            $rootScope.$broadcast('Product.setUpdateItemSuccess');
+            console.log(Product.update_item);
+        }
+
+        // 获得所有商品类别列表树
+        Product.getTypeList = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/PtypeAPI/get_all_types_for_seller',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.type_list = data.data;
+                        $rootScope.$broadcast('Product.getPTypeListSuccess');
+                    }
+                });
+        }
+
+        // 获得所有商品类别列表数组
+        Product.getTypeListDropArr = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/PtypeAPI/get_all_types_for_droplist',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.type_drop_list = data.data;
+                        $rootScope.$broadcast('Product.getTypeListDropArrSuccess');
+                    }
+                });
+        }
+
+        // 获得所有商品列表
+        Product.getList = function(shopId) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/get_product_by_shop',
+                data: 'shop_id=' + shopId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.list = data.data;
+                        $rootScope.$broadcast('Product.getProductListSuccess');
+                    }
+                });
+        }
+
+        // 保存商品信息
+        Product.saveInfo = function(info) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/save_product_info',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        alert("信息保存成功!");
+                        $rootScope.$broadcast('Product.saveProductInfoSuccess');
+                        Product.getList(info['shop_id']);
+                    } else {
+                        $rootScope.$broadcast('Product.saveProductInfoError');
+                    }
+                });
+        }
+
+        // 删除商品信息
+        Product.deleteInfo = function(productId) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/delete_product_info',
+                data: 'product_id=' + productId,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('Product.deleteProductInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('Product.deleteProductInfoError');
+                    }
+                });
+        }
+
+        return Product;
+    }
+]);

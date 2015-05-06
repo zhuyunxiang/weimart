@@ -23,12 +23,10 @@
 	</div>
 
 	<div class="row content common">
-		<div class="col-xs-12">
-			<input type="text" class="form-control search " placeholder="请输入关键字">
-		</div>
-		<div class="col-xs-12" ui-sref=".shop">
-			<img ng-src="img/personal/5.png" class="shop-img">
-			<span class="shop-name">撒旦撒旦撒旦撒旦</span>
+		<div class="col-xs-6 col-xs-offset-3" ui-sref=".shop">
+			<!-- <img ng-src="img/personal/5.png" class="shop-img"> -->
+			<img ng-src="{{myShop.shop_img}}" class="shop-img">
+			<span class="shop-name">{{myShop.shop_name}}</span>
 		</div>
 	</div>
 
@@ -44,40 +42,21 @@
 		</div>
 	</div>
 
-	<div class="row goods-item">
+	<div class="row goods-item" ng-repeat="item in ProductList">
 		<div class="col-xs-4">
-			<img ng-src="img/personal/1.jpg" alt="">
+			<img ng-src="{{item.product_img}}" alt="">
 		</div>
 		<div class="col-xs-8">
-			<span class="desc">裂帛</span>
+			<span class="desc">{{item.product_name}}</span>
 		</div>
 		<div class="col-xs-8">
-			<span class="desc">花色针织短袖连衣裙</span>
+			<span class="desc">{{item.product_desc}}</span>
 		</div>
 		<div class="col-xs-8 ">
-			<span class="price">￥ 199</span>
+			<span class="price">￥ {{item.product_price}}</span>
 		</div>
 		<div class="col-xs-8">
-			<span>总销量  35      库存 30</span>
+			<span>总销量  {{item.product_num}}      库存 {{item.product_product_left}}</span>
 		</div>
 	</div>
-
-	<div class="row goods-item common">
-		<div class="col-xs-4">
-			<img ng-src="img/personal/1.jpg" alt="">
-		</div>
-		<div class="col-xs-8">
-			<span class="desc">裂帛</span>
-		</div>
-		<div class="col-xs-8">
-			<span class="desc">花色针织短袖连衣裙</span>
-		</div>
-		<div class="col-xs-8 ">
-			<span class="price">￥ 199</span>
-		</div>
-		<div class="col-xs-8">
-			<span>总销量  35      库存 30</span>
-		</div>
-	</div>
-
 </div>

@@ -77,6 +77,10 @@ div.content {
 		display: block;
 		margin-top: 10px;
 	}
+	img.shop-img {
+		width: 100%;
+		border-radius: 50%;
+	}
 }
 
 div.list-class {
@@ -159,7 +163,6 @@ div.orderManage-container {
 			padding-top: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
-				height: 120px;
 				margin-bottom: 10px;
 			}
 
@@ -188,7 +191,6 @@ div.marketManage-container {
 			padding-top: 10px;
 			border-bottom: @border-CCCC;
 			img	 {
-				height: 120px;
 				margin-bottom: 10px;
 			}
 
@@ -197,6 +199,11 @@ div.marketManage-container {
 				margin-bottom: 10px;
 				text-align: left;
 				overflow-x: hidden;
+
+				&.operation {
+					display: inline-block;
+					margin-right: 20px;
+				}
 			}
 		}	
 	}

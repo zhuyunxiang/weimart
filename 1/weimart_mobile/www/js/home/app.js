@@ -154,9 +154,9 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         })
         //卖家中心 销售管理 发布宝贝
         .state('personal.marketManage.publish', {
-            url: "/publish",
+            url: "/publish/{id:^}",
             templateUrl: 'tpl/home/publish.html',
-            controller: "personalCtrl"
+            controller: "productCtrl"
         })
         //卖家中心 客户管理
         .state('personal.clientManage', {
@@ -173,7 +173,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
          //卖家中心 店铺管理
         .state('personal.shop', {
             url: "/shop",
-            templateUrl: 'tpl/home/shop.html',
+            templateUrl: 'tpl/home/shop2.html',
             controller: "personalCtrl"
         })
         .state('shop', {
