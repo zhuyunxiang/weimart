@@ -284,8 +284,6 @@ services.service('Shop', ['$http', '$rootScope',
                 });
         }
 
-
-
         return Shop;
     }
 ]);
@@ -362,6 +360,7 @@ services.service('Product', ['$http', '$rootScope',
 
         // 保存商品信息
         Product.saveInfo = function(info) {
+            console.log(1);
             $http({
                 method: 'POST',
                 url: appPath + '/API/ProductAPI/save_product_info',
@@ -371,6 +370,7 @@ services.service('Product', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
+                    console.log(2);
                     if (data.status == 1) {
                         alert("信息保存成功!");
                         $rootScope.$broadcast('Product.saveProductInfoSuccess');
