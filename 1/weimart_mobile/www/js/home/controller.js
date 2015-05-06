@@ -340,9 +340,20 @@ controllers.controller('registerCtrl', ['$scope', '$state', '$upload', 'Auth',
 ]);
 
 //商品管理
-controllers.controller('productCtrl', ['$upload', '$scope', '$state', 'Product', 'Shop',
-    function($upload, $scope, $state, Product, Shop) {
-        $scope.editProductInfo = {};
+controllers.controller('productCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state,$stateParams, Product, Shop) {
+
+        if ($stateParams && $stateParams.id) {
+            for(var i in Product.list) {
+                if (Product.list[i].product_id == $stateParams.id) {
+                    $scope.editProductInfo = Product.list[i];
+                    break;
+                };
+            }
+        } else {
+            $scope.editProductInfo = {};
+        }
+
 
         $scope.$on('Product.setUpdateItemSuccess', function (event) {
             $scope.editProductInfo = Product.update_item;
