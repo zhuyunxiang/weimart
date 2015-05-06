@@ -130,17 +130,25 @@ controllers.controller('listCtrl', ['$scope',
     }
 ]);
 // 我的
-controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth',
-    function($upload, $scope, $state, Shop, Auth) {
+controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth', 'Product',
+    function($upload, $scope, $state, Shop, Auth, Product) {
+        $scope.myShop = {};
         Shop.getShopInfo();
+        
 
         if (Auth.isLoggedIn()) {
-            if (!$scope.editShopInfo) {
+            if (!Shop.data) {
                 $state.go('shop');
             }
         } else {
             $state.go('login');
         }
+
+        // 获取当前店铺的所有商品列表
+        
+        $scope.$on('Product.getProductListSuccess', function (event) {
+            $scope.ProductList = Product.list;
+        });
 
         // 获取店铺信息
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
@@ -148,6 +156,8 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
                 Shop.data = {};
             };
             $scope.editShopInfo = Shop.data;
+            $scope.myShop = Shop.data;
+            Product.getList($scope.myShop.shop_id);
         });
 
         //头像
@@ -186,6 +196,75 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
          $scope.$on('User.saveShopInfoError', function (event) {
             alert('保存店铺信息失败');
         })
+
+//========================================================================
+        $scope.editProductInfo = {};
+
+        // 获取所有下拉
+        Product.getTypeListDropArr();
+        $scope.$on('Product.getTypeListDropArrSuccess', function (event) {
+            $scope.typeListForDrop = Product.type_drop_list;
+        });
+
+
+        // 保存商品信息
+        $scope.saveProductInfo = function () {
+            console.log($scope.editProductInfo);
+            $scope.editProductInfo.shop_id = $scope.myShop.shop_id;
+            Product.saveInfo($scope.editProductInfo);
+        }
+        $scope.$on('Product.saveProductInfoSuccess', function (event) {
+            $state.go('personal.marketManage');
+        })
+
+        // 删除商品信息
+        $scope.deleteInfo = function (productId) {
+            if (confirm("确定要删除?不可恢复!")) {
+                Product.deleteInfo(productId); 
+                Product.getList($scope.myShop.shop_id);
+            };
+        }
+
+        // 设置新建内容
+        $scope.setAddInfo = function () {
+            $scope.pageTitle = '发布宝贝';
+            // $scope.editProductInfo = {product_img:publicPath+'home/img/default_product.png'};
+        }
+
+        // 设置修改商品信息
+        $scope.setUpdateInfo = function (info) {
+            $scope.pageTitle = '更新宝贝信息';
+            Product.setUpdateItem(info);
+            $state.go('personal.marketManage.publish');
+            $scope.$broadcast('Product.setUpdateItemSuccess', 'aaa');
+        }
+
+
+         $scope.$watch('files', function() {
+            $scope.upload_baby($scope.files);
+        });
+
+        $scope.upload_baby = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + '/API/ProductAPI/save_product_img_for_app',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editProductInfo.product_img = data;
+                        $scope.editProductInfo.product_img_temp =  data;
+                    });
+                }
+            }
+        };
 
     }
 ]);
@@ -260,6 +339,73 @@ controllers.controller('registerCtrl', ['$scope', '$state', '$upload', 'Auth',
     }
 ]);
 
+//商品管理
+controllers.controller('productCtrl', ['$upload', '$scope', '$state', 'Product', 'Shop',
+    function($upload, $scope, $state, Product, Shop) {
+        $scope.editProductInfo = {};
+
+        $scope.$on('Product.setUpdateItemSuccess', function (event) {
+            $scope.editProductInfo = Product.update_item;
+            alert('111');
+            console.log($scope.editProductInfo);
+        });
+
+        // 获取所有下拉
+        Product.getTypeListDropArr();
+        $scope.$on('Product.getTypeListDropArrSuccess', function (event) {
+            $scope.typeListForDrop = Product.type_drop_list;
+        });
+
+        // 获取当前店铺的所有商品列表
+        Product.getList($scope.myShop.shop_id);
+        $scope.$on('Product.getProductListSuccess', function (event) {
+            $scope.ProductList = Product.list;
+        });
+
+        // 保存商品信息
+        $scope.saveProductInfo = function () {
+            $scope.editProductInfo.shop_id = $scope.myShop.shop_id;
+            Product.saveInfo($scope.editProductInfo);
+        }
+        $scope.$on('Product.saveProductInfoSuccess', function (event) {
+            $state.go('personal.marketManage');
+        })
+
+        // 删除商品信息
+        $scope.deleteInfo = function (productId) {
+            if (confirm("确定要删除?不可恢复!")) {
+                Product.deleteInfo(productId); 
+                Product.getList($scope.myShop.shop_id);
+            };
+        }
+
+        $scope.$watch('files', function() {
+            $scope.upload_baby($scope.files);
+        });
+
+        $scope.upload_baby = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + '/API/ProductAPI/save_product_img_for_app',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editProductInfo.product_img = data;
+                        $scope.editProductInfo.product_img_temp =  data;
+                    });
+                }
+            }
+        };
+    }
+]);
 
 function goBack() {
     if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 

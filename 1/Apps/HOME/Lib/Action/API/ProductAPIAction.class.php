@@ -31,6 +31,36 @@ class ProductAPIAction extends Action
 		}
 	}
 
+	// 保存商品图片
+	public function save_product_img_for_app()
+	{
+		if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/Uploads/product_img/',
+                // 'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+                $info = $upload->getUploadFileInfo();
+				$result = $info[0]['savename'];
+
+				if(!defined('SAE_TMP_PATH')){
+					echo "http://".$_SERVER['HTTP_HOST'].'/weimart/Public/Uploads/product_img/'.$result;
+				} else {
+					echo file_domain('Public').'/Uploads/product_img/'.$result;
+				}
+            }
+		}
+	}
+	
+
 	// 保存商品信息
 	public function save_product_info()
 	{

@@ -6,49 +6,57 @@
 			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="personal.marketManage"></span>
 		</div>
 		<div class="col-xs-10">
-			<span class="title">发布宝贝</span>
+			<span class="title">{{pageTitle}}</span>
 		</div>
 	</div>
 
 	<div class="content-container col-xs-12 register-detail publish">
 	<form class="form-horizontal detail-form ">
 		<div class="head-img-container">
-			<img ng-src="" alt="头像">
-			<button class="btn btn-default" type="button" ng-file-select ng-file-change="upload($files)">点击上传</button>
+			<img ng-src="{{editProductInfo.product_img}}" alt="上传商品图片">
+			<button class="btn btn-primary" ng-file-select ng-file-change="upload_baby($files)">上传宝贝图片</button>
 		</div>
 		<div class="form-group goods-info">
 			<label for="nick_name" class="col-xs-3 control-label">名称</label>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" ng-model="userDetailInfo.user_nick_name" placeholder="请输入宝贝名称" required>
+				<input type="text" class="form-control" ng-model="editProductInfo.product_name" placeholder="请输入宝贝名称" required>
 			</div>
 		</div>
 		<div class="form-group goods-info">
 			<label for="" class="col-xs-3 control-label">价格</label>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" ng-model="userDetailInfo.user_full_name" placeholder="请输入宝贝价格" required>
+				<input type="text" class="form-control" ng-model="editProductInfo.product_price" placeholder="请输入宝贝价格" required>
 			</div>
 		</div>
 		<div class="form-group goods-info">
 			<label for="" class="col-xs-3 control-label">库存</label>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" ng-model="userDetailInfo.user_telephone" placeholder="请输入宝贝库存" required>
+				<input type="text" class="form-control" ng-model="editProductInfo.product_left" placeholder="请输入宝贝库存" required>
 			</div>
 		</div>
 		<div class="form-group goods-info">
-			<label for="" class="col-xs-3 control-label">运费</label>
+			<label for="" class="col-xs-3 control-label">数量</label>
 			<div class="col-xs-9">
-				<input type="text" class="form-control" ng-model="userDetailInfo.user_address" placeholder="请输入宝贝运费" required>
+				<input type="text" class="form-control" ng-model="editProductInfo.product_num" placeholder="请输入宝贝总数量" required>
+			</div>
+		</div>
+		<div class="form-group goods-info">
+			<label for="" class="col-xs-3 control-label">类别</label>
+			<div class="col-xs-9">
+				<select class="form-control" ng-model="editProductInfo.type_id" ng-options="x.type_id as x.type_name for x in typeListForDrop">
+					<option value="">请选择</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group goods-info">
 			<label for="" class="col-xs-3 control-label">描述</label>
 			<div class="col-xs-9">
-				<textarea class="form-control" ng-model="editShopInfo.shop_ad" placeholder="请输入宝贝描述" required></textarea>
+				<textarea class="form-control" ng-model="editProductInfo.product_desc" placeholder="请输入宝贝描述" required></textarea>
 			</div>
 		</div>
 		<div class="form-group button-set">
 			<div class="col-xs-offset-1 col-xs-5">
-				<button type="submit" class="btn btn-success" save-detail info="userDetailInfo">放入仓库</button>
+				<button type="submit" class="btn btn-success" ng-click="saveProductInfo()">放入仓库</button>
 			</div>
 			<div class="col-xs-offset-1 col-xs-5">
 				<button type="button" class="btn btn-info" ui-sref="conf">立即发布</button>
