@@ -202,6 +202,13 @@ services.service('Shop', ['$http', '$rootScope',
         Shop.myShop = null;
         Shop.hasShop = null;
 
+        Shop.clearUp = function () {
+            Shop.allList = null;
+            Shop.myShop = null;
+            Shop.hasShop = null;
+            $rootScope.$broadcast('Shop.clearSuccess');
+        }
+
         Shop.getMyShop = function() {
             $http({
                 method: 'POST',

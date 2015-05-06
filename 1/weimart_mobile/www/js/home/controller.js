@@ -134,10 +134,10 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
     function($upload, $scope, $state, Shop, Auth, Product) {
         $scope.myShop = {};
         Shop.getShopInfo();
-        
 
         if (Auth.isLoggedIn()) {
-            if (!Shop.data) {
+            var user = Auth.getUser();
+            if (user.shops && user.shops.length == 0) {
                 $state.go('shop');
             }
         } else {
@@ -153,11 +153,13 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         // 获取店铺信息
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
             if (!Shop.data) {
-                Shop.data = {};
-            };
-            $scope.editShopInfo = Shop.data;
-            $scope.myShop = Shop.data;
-            Product.getList($scope.myShop.shop_id);
+                Shop.data = null;
+            } else {
+                $scope.editShopInfo = Shop.data;
+                $scope.myShop = Shop.data;
+                Product.getList($scope.myShop.shop_id);
+            }
+            
         });
 
         //头像
@@ -263,8 +265,8 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 ]);
 
 // 设置
-controllers.controller('confCtrl', ['$scope', '$state', 'Auth',
-    function($scope, $state, Auth) {
+controllers.controller('confCtrl', ['$scope', '$state', 'Auth', 'Shop',
+    function($scope, $state, Auth, Shop) {
         // 判断是否已经登陆
         if (!Auth.isLoggedIn()) {
             $state.go('login');
@@ -275,16 +277,20 @@ controllers.controller('confCtrl', ['$scope', '$state', 'Auth',
                 if (confirm("确定要退出吗?")) {
                     Auth.logOut();
                     $scope.userInfo = null;
-                    $state.go('login');
+                    Shop.clearUp();
                 };
             }
         }
+
+        $scope.$on('Shop.clearSuccess', function (event) {
+            $state.go('login');
+        });
     }
 ]);
 
 // 登陆页面
-controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth',
-    function($scope, $state, User, Auth) {
+controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth','Shop',
+    function($scope, $state, User, Auth,Shop) {
         $scope.doLogin = function() {
             User.doLogin($scope.loginInfo);
 
