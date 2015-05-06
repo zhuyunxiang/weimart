@@ -2,8 +2,8 @@
 <div ui-view ng-show="$state.current.name !== 'personal'"></div>
 <div class="content-container col-xs-12 main" ng-show="$state.current.name == 'personal'">	
 	<div class="row fore">
-		<div class="col-xs-3 col-xs-offset-9">
-			<span>添加</span>
+		<div class="col-xs-12">
+			<span>管理我的店铺</span>
 		</div>
 	</div>
 
@@ -42,21 +42,16 @@
 		</div>
 	</div>
 
-	<div class="row goods-item" ng-repeat="item in ProductList">
-		<div class="col-xs-4">
-			<img ng-src="{{item.product_img}}" alt="">
-		</div>
-		<div class="col-xs-8">
-			<span class="desc">{{item.product_name}}</span>
-		</div>
-		<div class="col-xs-8">
-			<span class="desc">{{item.product_desc}}</span>
-		</div>
-		<div class="col-xs-8 ">
-			<span class="price">￥ {{item.product_price}}</span>
-		</div>
-		<div class="col-xs-8">
-			<span>总销量  {{item.product_num}}      库存 {{item.product_left}}</span>
+	<div class="row baby-list">
+		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList">
+			<img src="{{item.product_img}}" alt="" class="col-xs-4">
+			<div class="col-xs-8">
+				<span class="span-text"><strong>名称</strong> &nbsp;&nbsp; {{item.product_name}}</span>
+				<span class="span-text"><strong>描述</strong> &nbsp;&nbsp; {{item.product_desc}}</span>
+				<span class="span-text"><strong>价格</strong> &nbsp;&nbsp; ￥ {{item.product_price}}</span>
+				<span class="span-text"><strong>销量</strong> &nbsp;&nbsp; {{item.product_num}}</span>
+				<span class="span-text"><strong>库存</strong> &nbsp;&nbsp; {{item.product_left}}</span>
+			</div>	
 		</div>
 	</div>
 </div>

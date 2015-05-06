@@ -138,6 +138,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         if (Auth.isLoggedIn()) {
             var user = Auth.getUser();
             if (user.shops && user.shops.length == 0) {
+                console.log(Shop);
                 $state.go('shop');
             }
         } else {
@@ -201,15 +202,6 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
 //========================================================================
         $scope.editProductInfo = {};
-
-        // 获取所有下拉
-        Product.getTypeListDropArr();
-        $scope.$on('Product.getTypeListDropArrSuccess', function (event) {
-            $scope.typeListForDrop = Product.type_drop_list;
-        });
-
-
-       
 
         // 删除商品信息
         $scope.deleteInfo = function (productId) {
@@ -343,14 +335,19 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
     function($upload, $scope, $state,$stateParams, Product, Shop) {
 
         if ($stateParams && $stateParams.id) {
+            $scope.pageTitle = '更新宝贝信息';
             for(var i in Product.list) {
                 if (Product.list[i].product_id == $stateParams.id) {
                     $scope.editProductInfo = Product.list[i];
+                    if (Product.list[i].types[0]) {
+                        $scope.editProductInfo.type_id = Product.list[i].types[0].type_id;
+                    };
                     break;
                 };
             }
         } else {
             $scope.editProductInfo = {};
+            $scope.pageTitle = '发布宝贝';
         }
 
 
@@ -376,6 +373,7 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
         $scope.saveProductInfo = function () {
             $scope.editProductInfo.shop_id = $scope.myShop.shop_id;
             Product.saveInfo($scope.editProductInfo);
+            console.log("11112122");
         }
         $scope.$on('Product.saveProductInfoSuccess', function (event) {
             $state.go('personal.marketManage');
