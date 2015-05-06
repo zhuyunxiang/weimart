@@ -117,7 +117,6 @@ class UserAPIAction extends Action
 		if (!empty($_FILES)) {
             import("@.ORG.UploadFile");
             $config=array(
-                'allowExts'=>array('jpg','gif','png'),
                 'savePath'=>'./Public/Uploads/head_img/',
                 // 'saveRule'=>'time',
             );
