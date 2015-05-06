@@ -1,4 +1,4 @@
-var app = angular.module('homeApp', ['ngAnimate', 'ngTouch', 'ui.router', 'controllers', 'services', 'directives']);
+var app = angular.module('homeApp', ['ngAnimate', 'ngTouch', 'ui.router', 'filters', 'controllers', 'services', 'directives']);
 
 app.run(['$rootScope', '$state', '$stateParams', '$location', 'Auth',
     function($rootScope, $state, $stateParams, $location, Auth) {

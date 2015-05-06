@@ -214,44 +214,8 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         // 设置新建内容
         $scope.setAddInfo = function () {
             $scope.pageTitle = '发布宝贝';
-            // $scope.editProductInfo = {product_img:publicPath+'home/img/default_product.png'};
         }
 
-
-        // 设置修改商品信息
-        $scope.setUpdateInfo = function (info) {
-            $scope.pageTitle = '更新宝贝信息';
-            Product.setUpdateItem(info);
-            $state.go('personal.marketManage.publish');
-            $scope.$broadcast('Product.setUpdateItemSuccess', 'aaa');
-        }
-
-
-         $scope.$watch('files', function() {
-            $scope.upload_baby($scope.files);
-        });
-
-        $scope.upload_baby = function(files) {
-            if (files && files.length) {
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    $upload.upload({
-                        url: appPath + '/API/ProductAPI/save_product_img_for_app',
-                        headers: {
-                            'Content-Type': file.type
-                        },
-                        method: 'POST',
-                        data: file,
-                        file: file,
-                    }).progress(function(evt) {
-                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    }).success(function(data, status, headers, config) {
-                        $scope.editProductInfo.product_img = data;
-                        $scope.editProductInfo.product_img_temp =  data;
-                    });
-                }
-            }
-        };
 
     }
 ]);
