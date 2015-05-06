@@ -60,6 +60,7 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
             for(var i in Product.recommend_list){
                 if (i < 4) {
                     recommend_list.push(Product.recommend_list[i]);
+                    // recommend_list.push(Product.recommend_list[i]);
                 };
             }
 

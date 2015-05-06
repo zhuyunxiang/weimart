@@ -29,7 +29,8 @@
 				<span>名称：{{item.product_name}}</span>
 				<span>分类：{{item.types.0.type_name}}</span>
 				<span>价格：￥{{item.product_price}}</span>
-				<span class="glyphicon glyphicon-pencil operation" aria-hidden="true" ng-click="setUpdateInfo(item)"></span>
+				<!-- <span class="glyphicon glyphicon-pencil operation" aria-hidden="true" ng-click="setUpdateInfo(item)"></span> -->
+				<span class="glyphicon glyphicon-pencil" ui-sref=".publish({id:item.product_id})"></span>
 				<span class="glyphicon glyphicon-trash operation"  aria-hidden="true" ng-click="deleteInfo(item.product_id)"></span>
 			</div>	
 		</div>

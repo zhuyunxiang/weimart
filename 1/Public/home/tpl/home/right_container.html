@@ -8,7 +8,7 @@
 		定制我的偏好
 	</div>
 
-	<div class="goods" ng-repeat="goodsItems in goods">
+	<!-- <div class="goods" ng-repeat="goodsItems in goods">
 		<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{goodsItems.pic}}">
 		<div class="goods-desc">
 			<div class="goods-title">
@@ -16,6 +16,16 @@
 			</div>
 			<p class="goods-orig">{{goodsItems.orig}}</p>
 			<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
+		</div>	
+	</div> -->
+	<div class="goods" ng-repeat="goodsItems in recommendList">
+		<img ng-src="{{goodsItems.product_img}}">
+		<div class="goods-desc">
+			<div class="goods-title">
+				<strong>{{goodsItems.product_name}}</strong>
+			</div>
+			<p class="goods-orig">{{goodsItems.product_desc}}</p>
+			<p class="goods-sell"><strong>{{goodsItems.product_num}}</strong></p>
 		</div>	
 	</div>
 	<div class="goods">
