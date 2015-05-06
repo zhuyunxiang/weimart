@@ -132,36 +132,36 @@ controllers.controller('listCtrl', ['$scope',
 // 我的
 controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth',
     function($upload, $scope, $state, Shop, Auth) {
+        Shop.getShopInfo();
+
         if (Auth.isLoggedIn()) {
-            console.log('212');
-            Shop.getShopWithUser();
-            $scope.$on('Shop.getShopWithUserSuccess', function(event) {
-                $scope.hasShop = Shop.hasShop;
-            });
-            if ('false' == $scope.hasShop) {
-                console.log('333');
-                $state.go('.shop');
+            if (!$scope.editShopInfo) {
+                $state.go('shop');
             }
         } else {
             $state.go('login');
         }
 
-        Shop.getMyShop();
-        $scope.$on('Shop.getMyShopSuccess', function(event) {
-            $scope.myShop = Shop.myShop;
-
+        // 获取店铺信息
+        $scope.$on('Shop.getShopInfoSuccess', function(event) {
+            if (!Shop.data) {
+                Shop.data = {};
+            };
+            $scope.editShopInfo = Shop.data;
         });
 
+        //头像
         $scope.$watch('files', function() {
             $scope.upload($scope.files);
         });
 
+        //头像上传
         $scope.upload = function(files) {
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
                     $upload.upload({
-                        url: appPath + 'API/ShopAPI/save_shop_img',
+                        url: appPath + '/API/ShopAPI/save_shop_img_for_app',
                         headers: {
                             'Content-Type': file.type
                         },
@@ -171,12 +171,21 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
                     }).progress(function(evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     }).success(function(data, status, headers, config) {
-                        $scope.editShopInfo.shop_img = uploadPath + 'shop_img/' + data;
-                        $scope.editShopInfo.shop_img_temp = uploadPath + 'shop_img/thumb_' + data;
+                        $scope.editShopInfo.shop_img = data;
+                        $scope.editShopInfo.shop_img_temp = data;
                     });
                 }
             }
         };
+
+         $scope.saveShopInfo = function() {
+            console.log($scope.editShopInfo);
+            Shop.saveShopInfo($scope.editShopInfo);
+        }
+
+         $scope.$on('User.saveShopInfoError', function (event) {
+            alert('保存店铺信息失败');
+        })
 
     }
 ]);
