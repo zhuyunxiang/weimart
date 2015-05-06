@@ -28,7 +28,7 @@
 			<div class="col-xs-8">
 				<span class="span-text">名称：{{item.product_name}}</span>
 				<span class="span-text">分类：{{item.types.0.type_name}}</span>
-				<span class="span-text">价格：￥{{item.product_price}}</span>
+				<span class="span-text">价格：{{item.product_price|currency:'￥'}}</span>
 				<span class="glyphicon glyphicon-pencil" ui-sref=".publish({id:item.product_id})"></span>&nbsp;&nbsp;&nbsp;
 				<span class="glyphicon glyphicon-trash" ng-click="deleteInfo(item.product_id)"></span>
 			</div>	
