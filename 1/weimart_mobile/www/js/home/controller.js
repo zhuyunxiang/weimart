@@ -207,15 +207,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         });
 
 
-        // 保存商品信息
-        $scope.saveProductInfo = function () {
-            console.log($scope.editProductInfo);
-            $scope.editProductInfo.shop_id = $scope.myShop.shop_id;
-            Product.saveInfo($scope.editProductInfo);
-        }
-        $scope.$on('Product.saveProductInfoSuccess', function (event) {
-            $state.go('personal.marketManage');
-        })
+       
 
         // 删除商品信息
         $scope.deleteInfo = function (productId) {
@@ -230,6 +222,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
             $scope.pageTitle = '发布宝贝';
             // $scope.editProductInfo = {product_img:publicPath+'home/img/default_product.png'};
         }
+
 
         // 设置修改商品信息
         $scope.setUpdateInfo = function (info) {
@@ -382,13 +375,6 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
             $state.go('personal.marketManage');
         })
 
-        // 删除商品信息
-        $scope.deleteInfo = function (productId) {
-            if (confirm("确定要删除?不可恢复!")) {
-                Product.deleteInfo(productId); 
-                Product.getList($scope.myShop.shop_id);
-            };
-        }
 
         $scope.$watch('files', function() {
             $scope.upload_baby($scope.files);
