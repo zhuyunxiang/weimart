@@ -53,6 +53,38 @@ class ShopAPIAction extends Action
 		}
 	}
 
+	// 保存店铺头像 for app
+	public function save_shop_img_for_app()
+	{
+		if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/Uploads/shop_img/',
+                // 'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+            	$id = $_POST['now_id'];
+                $info = $upload->getUploadFileInfo();
+				$result = $info[0]['savename'];
+				// echo $info[0]['savename'];
+
+				// 判断非SAE环境
+				if(!defined('SAE_TMP_PATH')){
+					echo "http://".$_SERVER['HTTP_HOST'].'/weimart/Public/Uploads/shop_img/'.$result;
+				} else {
+					echo file_domain('Public').'/Uploads/shop_img/'.$result;
+				}
+            }
+		}
+	}
+
 	// 获得所有店铺信息
 	public function get_all()
 	{
@@ -67,13 +99,6 @@ class ShopAPIAction extends Action
 		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
 
-	// 根据用户获取店铺
-
-	public function get_shop_with_user()
-	{
-		$result = A('Shop', 'Service')->getShopWithUser();
-		$this->ajaxReturn($result, '数据获取成功!', 1);
-	}
 
 }
  ?>

@@ -200,6 +200,7 @@ services.service('Shop', ['$http', '$rootScope',
         var Shop = {};
         Shop.allList = null;
         Shop.myShop = null;
+        Shop.hasShop = null;
 
         Shop.getMyShop = function() {
             $http({
@@ -219,7 +220,6 @@ services.service('Shop', ['$http', '$rootScope',
         }
 
         Shop.getShopWithUser = function () {
-            console.log("222222222222");
             $http({
                 method: 'POST',
                 url: serverPath + '/API/ShopAPI/get_shop_with_user',
@@ -230,12 +230,54 @@ services.service('Shop', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     if (data.status == 1) {
-                        console.log(data.data);
                         Shop.hasShop = data.data;
                         $rootScope.$broadcast('Shop.getShopWithUserSuccess');
                     }
                 });
         }
+
+        Shop.getShopInfo = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/get_shop_info',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.data = data.data;
+                        $rootScope.$broadcast('Shop.getShopInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('User.getShopInfoError');
+                    }
+                });
+        }
+
+        Shop.saveShopInfo = function(shopInfo) {
+            console.log(shopInfo);
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/save_shop_info',
+                data: $.param(shopInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        Shop.getShopInfo();
+                        alert("信息保存成功!");
+                        $rootScope.$broadcast('Shop.saveShopInfoSuccess');
+                    } else {
+                        $rootScope.$broadcast('User.saveShopInfoError');
+                    }
+                });
+        }
+
+
 
         return Shop;
     }
