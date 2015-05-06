@@ -118,12 +118,12 @@ class UserAPIAction extends Action
             import("@.ORG.UploadFile");
             $config=array(
                 'savePath'=>'./Public/Uploads/head_img/',
-                // 'saveRule'=>'time',
             );
             $upload = new UploadFile($config);
             $upload->thumb=true;
             $upload->thumbMaxHeight=100;
             $upload->thumbMaxWidth=100;
+            $upload->maxSize  = 10485760 ;// 设置附件上传大小
             if (!$upload->upload()) {
                 $this->error($upload->getErrorMsg());
             } else {

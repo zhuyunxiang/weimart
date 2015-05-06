@@ -35,7 +35,6 @@ class ShopAPIAction extends Action
 		if (!empty($_FILES)) {
             import("@.ORG.UploadFile");
             $config=array(
-                'allowExts'=>array('jpg','gif','png'),
                 'savePath'=>'./Public/Uploads/shop_img/',
                 // 'saveRule'=>'time',
             );
@@ -43,6 +42,7 @@ class ShopAPIAction extends Action
             $upload->thumb=true;
             $upload->thumbMaxHeight=100;
             $upload->thumbMaxWidth=100;
+            $upload->maxSize  = 10485760 ;// 设置附件上传大小
             if (!$upload->upload()) {
                 $this->error($upload->getErrorMsg());
             } else {
@@ -59,7 +59,6 @@ class ShopAPIAction extends Action
 		if (!empty($_FILES)) {
             import("@.ORG.UploadFile");
             $config=array(
-                'allowExts'=>array('jpg','gif','png'),
                 'savePath'=>'./Public/Uploads/shop_img/',
                 // 'saveRule'=>'time',
             );
@@ -67,6 +66,7 @@ class ShopAPIAction extends Action
             $upload->thumb=true;
             $upload->thumbMaxHeight=100;
             $upload->thumbMaxWidth=100;
+            $upload->maxSize  = 10485760 ;// 设置附件上传大小
             if (!$upload->upload()) {
                 $this->error($upload->getErrorMsg());
             } else {
