@@ -30,23 +30,23 @@
 		</div>
 	</div>
 
-	<div class="row list-class common">
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='product_num'}" ng-click="setOrderType('product_num')">销量</button>
-
+	<div class="row common">
+		<div class="col-xs-3">
+			<a href="" ng-click="predicate = 'product_num'; reverse=!reverse">销量</a>
 		</div>
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='product_left'}" ng-click="setOrderType('product_left')">库存</button>
-
+		<div class="col-xs-3">
+			<a href="" ng-click="predicate = 'product_left'; reverse=!reverse">库存</a>
 		</div>
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='I'}" ng-click="setSelectType('I')">下架</button>
-
+		<div class="col-xs-3">
+			<a href="" ng-click="predicate = 'product_price'; reverse=!reverse">价格</a>
+		</div>
+		<div class="col-xs-3">
+			<a href="" ng-click="predicate = 'product_register_time'; reverse=!reverse">时间</a>
 		</div>
 	</div>
 
 	<div class="row baby-list">
-		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList|filterProduct:selectType|orderBy:selectType:true">
+		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList | orderBy:predicate:reverse">
 			<img src="{{item.product_img}}" alt="" class="col-xs-4">
 			<div class="col-xs-8">
 				<span class="span-text"><strong>名称</strong> &nbsp;&nbsp; {{item.product_name}}</span>
@@ -54,6 +54,7 @@
 				<span class="span-text"><strong>价格</strong> &nbsp;&nbsp; {{item.product_price|currency: '￥'}}</span>
 				<span class="span-text"><strong>销量</strong> &nbsp;&nbsp; {{item.product_num}}</span>
 				<span class="span-text"><strong>库存</strong> &nbsp;&nbsp; {{item.product_left}}</span>
+				<span class="span-text"><strong>时间</strong> &nbsp;&nbsp; {{item.product_register_time}}</span>
 			</div>	
 		</div>
 	</div>
