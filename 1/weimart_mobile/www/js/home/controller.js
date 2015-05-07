@@ -146,7 +146,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         }
 
         // 获取当前店铺的所有商品列表
-        
+        // $scope.ProductList = Product.list;
         $scope.$on('Product.getProductListSuccess', function (event) {
             $scope.ProductList = Product.list;
         });
@@ -191,25 +191,28 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
             }
         };
 
-         $scope.saveShopInfo = function() {
+        //保存店铺信息
+        $scope.saveShopInfo = function() {
             console.log($scope.editShopInfo);
             Shop.saveShopInfo($scope.editShopInfo);
         }
-
-         $scope.$on('User.saveShopInfoError', function (event) {
-            alert('保存店铺信息失败');
+        $scope.$on('User.saveShopInfoSuccess', function (event) {
+            alert("信息保存成功!");
+        })
+        $scope.$on('User.saveShopInfoError', function (event) {
+            alert('保存店铺信息失败...');;
         })
 
 //========================================================================
         $scope.editProductInfo = {};
 
-        // 删除商品信息
-        $scope.deleteInfo = function (productId) {
-            if (confirm("确定要删除?不可恢复!")) {
-                Product.deleteInfo(productId); 
-                Product.getList($scope.myShop.shop_id);
-            };
-        }
+        // // 删除商品信息
+        // $scope.deleteInfo = function (productId) {
+        //     if (confirm("确定要删除?不可恢复!")) {
+        //         Product.deleteInfo(productId); 
+        //         Product.getList($scope.myShop.shop_id);
+        //     };
+        // }
 
         // 设置新建内容
         $scope.setAddInfo = function () {
@@ -217,16 +220,94 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         }
 
 //=======================================================================
+
+        $scope.orderType = '-product_num';
+        $scope.setOrderType = function (orderType) {
+            $scope.orderType = orderType;
+        }
+
+
+    }
+]);
+
+controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth', 'Product',
+    function($upload, $scope, $state, Shop, Auth, Product) {
+        $scope.tempProduct = {};
+
+        // 获取店铺信息
+        $scope.$on('Shop.getShopInfoSuccess', function(event) {
+            if (!Shop.data) {
+                Shop.data = null;
+            } else {
+                $scope.editShopInfo = Shop.data;
+                $scope.myShop = Shop.data;
+                Product.getList($scope.myShop.shop_id);
+            }
+            
+        });
+
+        // 获取当前店铺的所有商品列表 
+        Product.getList($scope.myShop.shop_id);    
+        $scope.$on('Product.getProductListSuccess', function (event) {
+            $scope.ProductList = Product.list;
+        });
+
+        // 设置新建内容
+        $scope.setAddInfo = function () {
+            $scope.pageTitle = '发布宝贝';
+        }
+
+        //商品过滤
         $scope.selectType = 'A';
         $scope.setSelectType = function (selectType) {
             $scope.selectType = selectType;
-            console.log()
         }
 
-        // $scope.orderType = 'product_num';
-        $scope.setOrderType = function (orderType) {
-            $scope.selectType = orderType;
+        //商品排序
+        $scope.reverse = 'false';
+        $scope.predicate = 'product_register_time';
+       
+
+        //商品下架
+        $scope.offline = function (item) {
+            console.log(item);
+            $scope.tempProduct = item;
+            $scope.tempProduct.product_state = 'I';
+            Product.saveInfo($scope.tempProduct);
+            Product.getList($scope.myShop.shop_id);
         }
+        $scope.$on('Product.saveProductInfoSuccess', function (event) {       
+            alert("此操作已成功！");           
+        });
+
+        //商品上线
+        $scope.online = function (item) {
+            $scope.tempProduct = item;
+            $scope.tempProduct.product_state = 'A';
+            Product.saveInfo($scope.tempProduct);
+            Product.getList($scope.myShop.shop_id);
+        }
+         //商品入库
+        $scope.toStock = function (item) {
+            $scope.tempProduct = item;
+            $scope.tempProduct.product_state = 'S';
+            Product.saveInfo($scope.tempProduct);
+            Product.getList($scope.myShop.shop_id);
+        }
+
+         // 删除商品信息
+        $scope.deleteInfo = function (productId) {
+            if (confirm("确定要删除?不可恢复!")) {
+                Product.deleteInfo(productId); 
+                Product.getList($scope.myShop.shop_id);
+            };
+        }
+
+        // go Personal page
+        $scope.goPersonal = function () {
+            $state.go('personal');
+        }
+
 
 
     }
@@ -329,8 +410,6 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 
         $scope.$on('Product.setUpdateItemSuccess', function (event) {
             $scope.editProductInfo = Product.update_item;
-            alert('111');
-            console.log($scope.editProductInfo);
         });
 
         // 获取所有下拉
@@ -339,7 +418,7 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
             $scope.typeListForDrop = Product.type_drop_list;
         });
 
-        // 获取当前店铺的所有商品列表
+        // // 获取当前店铺的所有商品列表
         Product.getList($scope.myShop.shop_id);
         $scope.$on('Product.getProductListSuccess', function (event) {
             $scope.ProductList = Product.list;
@@ -352,6 +431,7 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
             Product.saveInfo($scope.editProductInfo);
         }
         $scope.$on('Product.saveProductInfoSuccess', function (event) {
+            alert("信息保存成功!");
             $state.go('personal.marketManage');
         })
 
@@ -383,6 +463,29 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
         };
     }
 ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function goBack() {
     if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 

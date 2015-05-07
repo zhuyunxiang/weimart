@@ -150,11 +150,11 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('personal.marketManage', {
             url: "/marketManage",
             templateUrl: 'tpl/home/marketManage.html',
-            controller: "personalCtrl"
+            controller: "marketManageCtrl"
         })
         //卖家中心 销售管理 发布宝贝
         .state('personal.marketManage.publish', {
-            url: "/publish/{id:^}",
+            url: "/publish/{id:[0-9]{1,4}}",
             templateUrl: 'tpl/home/publish.html',
             controller: "productCtrl"
         })
