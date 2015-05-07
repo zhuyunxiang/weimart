@@ -18,8 +18,10 @@
 			<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
 		</div>	
 	</div> -->
-	<div class="goods" ng-repeat="goodsItems in recommendList">
-		<img ng-src="{{goodsItems.product_img}}">
+	<div class="goods" ng-repeat="goodsItems in recommendProductList">
+		<div class="goods-img">
+			<img ng-src="{{goodsItems.product_img}}">
+		</div>
 		<div class="goods-desc">
 			<div class="goods-title">
 				<strong>{{goodsItems.product_name}}</strong>
@@ -28,7 +30,7 @@
 			<p class="goods-sell"><strong>{{goodsItems.product_num}}</strong></p>
 		</div>	
 	</div>
-	<div class="goods">
+	<div class="goods" ng-click="changeGoods()">
 		<p class="change">换一批试试</p>
 	</div>
 </div>
@@ -38,24 +40,24 @@
 		发现·好店
 	</div>
 
-	<div class="shop" ng-repeat="shopItem in shops">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.pic}}" class="shop-img" >
+	<div class="shop" ng-repeat="shopItem in recommendShopList">
+		<img ng-src="{{shopItem.shop_img_temp}}" class="shop-img" >
 
 		<div class="shop-info">
-			<p class="shop-name"><strong>{{shopItem.name}}</strong></p>
-			<p class="shop-goods">主营：{{shopItem.goods}}</p>
+			<p class="shop-name"><strong>{{shopItem.shop_name}}</strong></p>
+			<p class="shop-goods">主营：{{shopItem.shop_main_sell}}</p>
 		</div>
 
-		<p>{{shopItem.desc}}</p>
+		<p>{{shopItem.shop_desc}}</p>
 
 		<div class="shop-goods-imgs">
-			<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic1}}" class="shop-goods-img">
-			<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic2}}" class="shop-goods-img">
-			<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{shopItem.goodPic3}}" class="shop-goods-img">
+			<img ng-src="{{shopItem.shop_img_temp}}" class="shop-goods-img">
+			<img ng-src="{{shopItem.shop_img_temp}}" class="shop-goods-img">
+			<img ng-src="{{shopItem.shop_img_temp}}" class="shop-goods-img">
 		</div>
 	</div>
 	
-	<div class="shop">
+	<div class="shop" ng-click="changeRecommendShop()">
 		<p class="change">换一批试试</p>
 	</div>
 	

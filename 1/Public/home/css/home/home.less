@@ -476,6 +476,7 @@ html{
 						padding: 15px 15px 15px 15px;
 						margin-bottom: 0px;
 						border: 1px solid #CCCCCC;
+						overflow: hidden;
 								
 						&:hover{
 							border-color: #FF8182;
@@ -484,20 +485,22 @@ html{
 							}
 						}
 
-						img {
-							// display: inline-block;
-							width: 40%;
-							min-height: 109px;
-							margin-right: 3px;
-							// margin-top: -70px;
+						div.goods-img{
+							float: left;
+							height: 100px;
+							width: 100px;
+							img{
+								width: 100%;
+								height: 100%;
+							}
 						}
 
 						div.goods-desc {
-							display: inline-block;	
+							float: left;
+							margin-left: 20px;
 							width: 40%;
 							min-width: 110px;
 							min-height: 100px;
-							margin-left: 3px;
 							
 							div.goods-title {
 								font-size: middle;
@@ -538,6 +541,7 @@ html{
 						img.shop-img {
 							display: inline-block;
 							width: 40px;
+							height: 40px;
 							border: 1px solid red;
 							margin-top: -50px; 
 							border-radius: 20px;

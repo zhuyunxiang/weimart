@@ -11,7 +11,7 @@
 				<div class="mini-item start-prepare" ng-repeat="rowItem in typeMainItem.nodes">
 					<span class="type-name">{{rowItem.type_name}}</span>
 					<span ng-class="item.type_class" ng-repeat="item in rowItem.nodes">
-						<span ui-sref="product_list">{{item.type_name}}</span>
+						<span ui-sref="product_list({id:item.type_id})">{{item.type_name}}</span>
 					</span>
 				</div>
 			</div>

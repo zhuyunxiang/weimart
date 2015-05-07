@@ -51,7 +51,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: publicUrl + 'tpl/home/more_cheap.html',
             controller: "moreCheapCtrl"
         }).state('product_list', {
-            url: "/product_list",
+            url: "/product_list/{id:[0-9]{1,4}}",
             templateUrl: publicUrl + 'tpl/home/product_list.html',
             controller: "productListCtrl"
         }).state('register', {
