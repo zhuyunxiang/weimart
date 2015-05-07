@@ -14,23 +14,25 @@
 	</div>
 	<div class="row baby-nav">
 		<div class="col-xs-6">
-			<span>出售中（345）</span>
+			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='A'}" ng-click="setSelectType('A')">出售中</button>
 		</div>
 		<div class="col-xs-6">
-			<span>仓库中（345）</span>
+			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='S'}" ng-click="setSelectType('S')">仓库中</button>
 		</div>
 	</div>
 
 	<div class="row baby-list">
-		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList">
+		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList|filterProduct:selectType">
 			<!-- <img src="img/personal/1.jpg" alt="" class="col-xs-4"> -->
 			<img src="{{item.product_img}}" alt="" class="col-xs-4">
 			<div class="col-xs-8">
 				<span class="span-text">名称：{{item.product_name}}</span>
 				<span class="span-text">分类：{{item.types.0.type_name}}</span>
 				<span class="span-text">价格：{{item.product_price|currency:'￥'}}</span>
-				<span class="glyphicon glyphicon-pencil" ui-sref=".publish({id:item.product_id})"></span>&nbsp;&nbsp;&nbsp;
-				<span class="glyphicon glyphicon-trash" ng-click="deleteInfo(item.product_id)"></span>
+				<span class="glyphicon glyphicon-pencil" ui-sref=".publish({id:item.product_id})" title="编辑"></span>&nbsp;&nbsp;&nbsp;
+				<span class="glyphicon glyphicon-trash" ng-click="deleteInfo(item.product_id)" title="删除"></span>&nbsp;&nbsp;&nbsp;
+				<span class="glyphicon glyphicon-hand-up" ng-click="online(item.product_id)" ng-show="item.product_state == 'S'" title="发布"></span>
+				<span class="glyphicon glyphicon-hand-down" ng-click="offline(item.product_id)" ng-show="item.product_state == 'A'" title="下架"></span>
 			</div>	
 		</div>
 	</div>

@@ -3,10 +3,26 @@ var filters = angular.module('filters', []);
 filters.filter('filterProduct', function () {
 	return function (input, type) {
 		// 判断
-		if ("empty" == type) {
+		if ("A" == type) {
 			var arr = [];
 			for(var i in input) {
-				if (0 == input[i]['product_left']) {
+				if ("A" == input[i]['product_state']) {
+					arr.push(input[i]);
+				}
+			}
+			return arr;
+		} else if ("S" == type) {
+			var arr = [];
+			for(var i in input) {
+				if ("S" == input[i]['product_state']) {
+					arr.push(input[i]);
+				}
+			}
+			return arr;
+		} else if ("I" == type) {
+			var arr = [];
+			for(var i in input) {
+				if ("I" == input[i]['product_state']) {
 					arr.push(input[i]);
 				}
 			}

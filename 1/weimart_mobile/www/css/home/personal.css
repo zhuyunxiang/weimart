@@ -3,7 +3,7 @@ img{cursor:pointer;}
 div.main{padding-bottom:80px;}
 div.fore{text-align:center;background-color:#ff8485;min-height:40px;line-height:40px;}div.fore span{font-size:14px;color:white;font-weight:bold;}div.fore span.hovor{opacity:0.6;}
 div.personal-nav{margin-top:15px;margin-bottom:15px;}div.personal-nav img{width:120%;border-radius:10px;}
-div.common{border-top:solid 10px #CCCCCC;padding-top:10px;padding-bottom:10px;}
+div.common{border-top:solid 10px #CCCCCC;padding-top:10px;padding-bottom:10px;}div.common button{width:100%;}
 div.content{text-align:center;vertical-align:middle;}div.content input{width:90%;margin:10px 5% 10px 5%;}
 div.content span.shop-name{font-size:14px;font-weight:bold;display:block;margin-top:10px;}
 div.content img.shop-img{width:100%;border-radius:50%;}
@@ -18,7 +18,7 @@ div.orderManage-container div.order-list{background-color:#f5f5f5;}div.orderMana
 div.orderManage-container div.order-list div.order-item span{margin-bottom:10px;text-align:left;}
 div.baby-list{background-color:#f5f5f5;}div.baby-list div.baby-item{padding-bottom:10px;padding-top:10px;border-bottom:solid 1px #cccccc;}div.baby-list div.baby-item img{margin-bottom:10px;}
 div.baby-list div.baby-item span.span-text{display:block;margin-bottom:10px;text-align:left;height:20px;line-height:20px;overflow-x:hidden;overflow-y:hidden;}
-div.marketManage-container{padding-bottom:80px;}div.marketManage-container div.baby-nav{height:40px;line-height:40px;text-align:center;}
+div.marketManage-container{padding-bottom:80px;}div.marketManage-container div.baby-nav{height:40px;line-height:40px;text-align:center;}div.marketManage-container div.baby-nav button{width:100%;}
 div.marketManage-container div.baby-list{background-color:#f5f5f5;}div.marketManage-container div.baby-list div.baby-item{padding-bottom:10px;padding-top:10px;border-bottom:solid 1px #cccccc;}div.marketManage-container div.baby-list div.baby-item img{margin-bottom:10px;}
 div.marketManage-container div.baby-list div.baby-item span.span-text{display:block;margin-bottom:10px;text-align:left;overflow-x:hidden;}
 div.publish-container{padding-bottom:80px;}div.publish-container div.publish{text-align:center;}div.publish-container div.publish div.goods-info{vertical-align:middle;}div.publish-container div.publish div.goods-info label{text-align:right;vertical-align:middle;}
