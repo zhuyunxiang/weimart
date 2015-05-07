@@ -265,7 +265,7 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
 
         //商品排序
         $scope.reverse = 'false';
-        $scope.predicate = 'product_register_time';
+        $scope.predicate = '-product_num';
        
 
         //商品下架
