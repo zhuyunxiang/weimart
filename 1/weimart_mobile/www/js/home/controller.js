@@ -216,6 +216,18 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
             $scope.pageTitle = '发布宝贝';
         }
 
+//=======================================================================
+        $scope.selectType = 'A';
+        $scope.setSelectType = function (selectType) {
+            $scope.selectType = selectType;
+            console.log()
+        }
+
+        // $scope.orderType = 'product_num';
+        $scope.setOrderType = function (orderType) {
+            $scope.selectType = orderType;
+        }
+
 
     }
 ]);
@@ -334,10 +346,10 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
         });
 
         // 保存商品信息
-        $scope.saveProductInfo = function () {
+        $scope.saveProductInfo = function (type) {
             $scope.editProductInfo.shop_id = $scope.myShop.shop_id;
+            $scope.editProductInfo.product_state = type;
             Product.saveInfo($scope.editProductInfo);
-            console.log("11112122");
         }
         $scope.$on('Product.saveProductInfoSuccess', function (event) {
             $state.go('personal.marketManage');
