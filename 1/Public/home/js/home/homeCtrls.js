@@ -1,11 +1,11 @@
 var HomeCtrls = angular.module('HomeCtrls', ['ng.ueditor','ui.tree']);
 
 // 主页的Controller Start
-HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
-    function($scope, Product) {
-        $scope.userInfo = {
-            email: "tests@qq.com"
-        };
+HomeCtrls.controller('homeCtrl', ['$scope', 'Product','Shop',
+    function($scope, Product,Shop) {
+        Product.getTypeList();
+        Product.getRecommendList();
+        Shop.getRecommendShopInfo();
 
         $scope.tplURLs = {
             pictureShow: publicUrl + 'tpl/home/picture_show.html',
@@ -19,10 +19,15 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
-        Product.getTypeList();
-        Product.getRecommendList();
-        $scope.$on('Product.getPTypeListSuccess', function (event) {
+        $scope.changeGoods = function () {
+            Product.getRecommendList();
+        }
 
+        $scope.changeRecommendShop = function () {
+            Shop.getRecommendShopInfo();
+        }
+
+        $scope.$on('Product.getPTypeListSuccess', function (event) {
             var firstFourtypeList = [];
             var secondTwotypeList = [];
             var thirdOnetypeList = [];
@@ -64,7 +69,17 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product',
                 };
             }
 
-            $scope.recommendList = recommend_list;
+            $scope.recommendProductList = recommend_list;
+        });
+
+        $scope.$on('Shop.getRecommendShopInfoSuccess', function (event) {
+            var recommend_list= [];
+            for(var i in Shop.recommend_list){
+                if (i < 4) {
+                    recommend_list.push(Shop.recommend_list[i]);
+                };
+            }
+            $scope.recommendShopList = recommend_list;
             console.log(recommend_list);
         });
         
@@ -352,16 +367,15 @@ HomeCtrls.controller('typeCtrl', ['$scope',
 }]);
 
 // 商品列表Controller
-HomeCtrls.controller('productListCtrl', ['$scope',
-    function($scope) {
+HomeCtrls.controller('productListCtrl', ['$scope','$stateParams',
+    function($scope,$stateParams) {
+
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
-        $scope.tplURLs = {
-            
-        };
+        var type_id = $stateParams.id;
 
 
         $scope.brands = [

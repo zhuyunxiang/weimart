@@ -156,6 +156,7 @@ HomeServices.service('Shop', ['$http', '$rootScope',
     function($http, $rootScope) {
         var Shop = {};
         Shop.data = null;
+        Shop.recommend_list = null;
 
         Shop.getShopInfo = function() {
             $http({
@@ -172,6 +173,23 @@ HomeServices.service('Shop', ['$http', '$rootScope',
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
                     } else {
                         $rootScope.$broadcast('User.getShopInfoError');
+                    }
+                });
+        }
+
+        Shop.getRecommendShopInfo = function() {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ShopAPI/get_recommend',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.recommend_list = data.data;
+                        $rootScope.$broadcast('Shop.getRecommendShopInfoSuccess');
                     }
                 });
         }
