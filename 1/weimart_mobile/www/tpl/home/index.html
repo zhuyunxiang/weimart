@@ -15,8 +15,8 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="ad-pic col-xs-12">
-			<img ng-src="img/index/1.jpg" alt="">
+		<div class="ad-pic col-xs-12" ui-sref="goods({id:productFore.product_id})">
+			<img class="fore-img" ng-src="{{productFore.product_img}}" alt="{{productFore.product_name}}" title="{{productFore.product_name}}">
 		</div>
 	</div>
 	<div class="row main-class">

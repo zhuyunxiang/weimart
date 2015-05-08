@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', ['angularFileUpload']);
 // 主页
-controllers.controller('homeCtrl', ['$scope', '$state',
-    function($scope, $state) {
+controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
+    function($scope, $state, Product) {
         $scope.u = navigator.userAgent;
         $scope.swipeTo = function(direction, state) {
             switch (state.current.name) {
@@ -50,6 +50,14 @@ controllers.controller('homeCtrl', ['$scope', '$state',
         }, {
             "url": "4.jpg"
         }, ];
+
+
+        // $scope.productFore = {};
+        Product.getAll();
+        $scope.$on('Product.getAllSuccess', function () {
+            $scope.productFore = Product.all_list[3];
+            console.log($scope.productFore);
+        });
 
     }
 ]);
@@ -458,6 +466,29 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 ]);
 
 
+
+//商品详情
+controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state,$stateParams, Product, Shop) {
+
+        if ($stateParams && $stateParams.id) {
+            for(var i in Product.all_list) {
+                if (Product.all_list[i].product_id == $stateParams.id) {
+                    $scope.productInfo = Product.all_list[i];
+                    break;
+                };
+            }
+        } else {
+            $scope.productInfo = {};
+        }
+
+        Product.getAll();
+        $scope.$on('Product.getAllSuccess', function () {
+            $scope.productFore = Product.all_list[10];
+        });
+
+    }
+]);
 
 
 

@@ -4,7 +4,7 @@
 img{width:100%;cursor:pointer;}
 div.fore{background-color:#ff8485;min-height:50px;}div.fore img.ico{margin-top:10px;}
 div.fore input.search{margin-top:8px;}
-div.ad-pic{width:100%;padding:0;}div.ad-pic img{width:100%;}
+div.ad-pic{width:100%;padding:0;}div.ad-pic img{width:100%;}div.ad-pic img.fore-img{height:120px;}
 div.main-class{padding-top:10px;}div.main-class span{display:inline-block;width:100%;text-align:center;color:#ff8485;font-family:'Arial Negreta','Arial';font-size:11px;}
 div.ads{margin:10px;}div.ads img{border:solid 2px #FEBFC0;height:65px;}
 div.title{border:solid 1px #cccccc;height:30px;border-top:solid 1px #cccccc;border-bottom:solid 1px #cccccc;line-height:30px;font-size:13px;border-left:solid 10px #FF8182;padding:0;}div.title .more{background-color:red;}

@@ -295,6 +295,7 @@ services.service('Product', ['$http', '$rootScope',
         Product.type_list = null;
         Product.type_drop_list = null;
         Product.update_item = null;
+        Product.all_list = null;
 
         // 设置要修改的对象
         Product.setUpdateItem = function (data) {
@@ -392,6 +393,26 @@ services.service('Product', ['$http', '$rootScope',
                         $rootScope.$broadcast('Product.deleteProductInfoSuccess');
                     } else {
                         $rootScope.$broadcast('Product.deleteProductInfoError');
+                    }
+                });
+        }
+
+        //获取所有商品
+        Product.getAll = function () {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/get_all',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.all_list = data.data;
+                        $rootScope.$broadcast('Product.getAllSuccess');
+                    } else {
+                        $rootScope.$broadcast('Product.getAllError');
                     }
                 });
         }
