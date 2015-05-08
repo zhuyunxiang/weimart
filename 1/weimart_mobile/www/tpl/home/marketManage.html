@@ -12,20 +12,29 @@
 			<button type="button" class="btn btn-info" ng-click="setAddInfo()">发布宝贝</button>
 		</div>
 	</div>
+
+	<div class="row search-box">
+		<div class="btn-group search-group col-xs-12">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="请输入商品关键字" ng-model="searchKeyword">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">搜一搜</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
 	<div class="row baby-nav">
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='A'}" ng-click="setSelectType('A')">出售中</button>
-		</div>
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='S'}" ng-click="setSelectType('S')">仓库中</button>
-		</div>
-		<div class="col-xs-4">
-			<button type="button" class="btn btn-default" ng-class="{'active':selectType=='I'}" ng-click="setSelectType('I')">下架了</button>
+		<div class="btn-group col-xs-12" role="group" aria-label="...">
+
+			<button type="button" class="btn btn-default col-xs-4" ng-class="{'active':selectType=='A'}" ng-click="setSelectType('A')">出售中</button>
+			<button type="button" class="btn btn-default col-xs-4" ng-class="{'active':selectType=='S'}" ng-click="setSelectType('S')">仓库中</button>
+			<button type="button" class="btn btn-default col-xs-4" ng-class="{'active':selectType=='I'}" ng-click="setSelectType('I')">下架了</button>
 		</div>
 	</div>
 
 	<div class="row baby-list">
-		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList|filterProduct:selectType">
+		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList|filterProduct:selectType|filter:searchKeyword">
 			<!-- <img src="img/personal/1.jpg" alt="" class="col-xs-4"> -->
 			<img src="{{item.product_img}}" alt="" class="col-xs-4">
 			<div class="col-xs-8">

@@ -24,13 +24,21 @@
 
 	<div class="row content common">
 		<div class="col-xs-6 col-xs-offset-3" ui-sref=".shop">
-			<!-- <img ng-src="img/personal/5.png" class="shop-img"> -->
 			<img ng-src="{{myShop.shop_img}}" class="shop-img">
 			<span class="shop-name">{{myShop.shop_name}}</span>
 		</div>
 	</div>
 
 	<div class="row common">
+		<div class="btn-group search-group col-xs-12 search-box">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="请输入商品关键字" ng-model="searchKeyword" ng-keyup="setSearchKeyword()">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="setSearchKeyword()">搜一搜</button>
+				</span>
+			</div>
+		</div>
+
 		<div class="col-xs-3">
 			<a href="" ng-click="predicate = 'product_num'; reverse=!reverse">销量</a>
 		</div>
@@ -46,7 +54,7 @@
 	</div>
 
 	<div class="row baby-list">
-		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList | orderBy:predicate:reverse">
+		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList | orderBy:predicate:reverse |filter:searchKeyword">
 			<img src="{{item.product_img}}" alt="" class="col-xs-4">
 			<div class="col-xs-8">
 				<span class="span-text"><strong>名称</strong> &nbsp;&nbsp; {{item.product_name}}</span>

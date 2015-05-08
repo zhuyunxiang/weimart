@@ -11,6 +11,7 @@ div.list-class span{display:inline-block;width:100%;text-align:center;font-size:
 div.goods-item{margin-bottom:10px;}div.goods-item img{width:120%;}
 div.goods-item span{font-size:12px;padding:5px;padding-top:20px;}div.goods-item span.price{margin-top:50px;font-weight:bolder;color:#ff8485;}
 div.goods-item span.desc{font-size:12px;overflow:hidden;}div.goods-item span.desc:hover{color:#ff8485;}
+div.search-box{margin-bottom:5px;margin-top:5px;}
 div.orderManage-container{text-align:center;padding-bottom:80px;}div.orderManage-container div.order-nav div.nav-item{line-height:30px;height:30px;}div.orderManage-container div.order-nav div.nav-item span{border-bottom:solid 1px #f5f5f5;}
 div.orderManage-container div.order-nav div.search{margin-top:10px;margin-bottom:10px;}div.orderManage-container div.order-nav div.search input{margin-left:10%;width:80%;}
 div.orderManage-container div.order-nav span{display:block;}
@@ -18,7 +19,7 @@ div.orderManage-container div.order-list{background-color:#f5f5f5;}div.orderMana
 div.orderManage-container div.order-list div.order-item span{margin-bottom:10px;text-align:left;}
 div.baby-list{background-color:#f5f5f5;}div.baby-list div.baby-item{padding-bottom:10px;padding-top:10px;border-bottom:solid 1px #cccccc;}div.baby-list div.baby-item img{margin-bottom:10px;}
 div.baby-list div.baby-item span.span-text{display:block;margin-bottom:10px;text-align:left;height:20px;line-height:20px;overflow-x:hidden;overflow-y:hidden;}
-div.marketManage-container{padding-bottom:80px;}div.marketManage-container div.baby-nav{height:40px;line-height:40px;text-align:center;}div.marketManage-container div.baby-nav button{width:100%;}
+div.marketManage-container{padding-bottom:80px;}div.marketManage-container div.baby-nav{height:40px;line-height:40px;text-align:center;}
 div.marketManage-container div.baby-list{background-color:#f5f5f5;}div.marketManage-container div.baby-list div.baby-item{padding-bottom:10px;padding-top:10px;border-bottom:solid 1px #cccccc;}div.marketManage-container div.baby-list div.baby-item img{margin-bottom:10px;}
 div.marketManage-container div.baby-list div.baby-item span.span-text{display:block;margin-bottom:10px;text-align:left;overflow-x:hidden;}
 div.publish-container{padding-bottom:80px;}div.publish-container div.publish{text-align:center;}div.publish-container div.publish div.goods-info{vertical-align:middle;}div.publish-container div.publish div.goods-info label{text-align:right;vertical-align:middle;}
