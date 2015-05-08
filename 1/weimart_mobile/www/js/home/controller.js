@@ -203,29 +203,21 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
             alert('保存店铺信息失败...');;
         })
 
-//========================================================================
-        $scope.editProductInfo = {};
-
-        // // 删除商品信息
-        // $scope.deleteInfo = function (productId) {
-        //     if (confirm("确定要删除?不可恢复!")) {
-        //         Product.deleteInfo(productId); 
-        //         Product.getList($scope.myShop.shop_id);
-        //     };
-        // }
+        // $scope.editProductInfo = {};
 
         // 设置新建内容
         $scope.setAddInfo = function () {
             $scope.pageTitle = '发布宝贝';
         }
 
-//=======================================================================
+         //商品排序
+        $scope.reverse = 'true';
+        $scope.predicate = 'product_register_time';
 
-        $scope.orderType = '-product_num';
-        $scope.setOrderType = function (orderType) {
-            $scope.orderType = orderType;
+        //商品检索
+        $scope.searchKeyword = '';
+        $scope.setSearchKeyword = function () {
         }
-
 
     }
 ]);
@@ -263,9 +255,10 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
             $scope.selectType = selectType;
         }
 
-        //商品排序
-        $scope.reverse = 'false';
-        $scope.predicate = '-product_num';
+       
+
+        //商品检索
+        $scope.searchKeyword = '';
        
 
         //商品下架
