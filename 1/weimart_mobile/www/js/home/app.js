@@ -134,6 +134,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/goods.html',
             controller: "homeCtrl"
         })
+        //商品详情 
+        .state('goods', {
+            url: "/goods/{id:[0-9]{1,4}}",
+            templateUrl: 'tpl/home/goods.html',
+            controller: "goodsCtrl"
+        })
         // 我的
         .state('personal', {
             url: "/personal",

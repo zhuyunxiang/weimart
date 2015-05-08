@@ -5,13 +5,13 @@
 			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ng-click="list.classType"></span>
 		</div>
 		<div class="col-xs-10">
-			<span class="title">毛菇小象昆虫雪纺衬衫</span>
+			<span class="title">{{productInfo.product_name}}</span>
 		</div>
 	</div>
 
 	<div class="row pic">
 		<div class="col-xs-8 col-xs-offset-2">
-			<img src="img/goods/1.jpg" alt="">
+			<img src="{{productInfo.product_img}}" alt="{{productInfo.product_name}}" class="img" title="{{productInfo.product_name}}">
 		</div>
 	</div>
 
@@ -19,7 +19,7 @@
 		<div class="col-xs-12 desc">
 			<div class="col-xs-10">
 				<div class="title-text">
-					毛菇小象  2015印花雪纺白衬衫这是一场昆虫的艺术与时尚的盛宴
+					{{productInfo.product_desc}}
 				</div>
 			</div>
 			<div class="col-xs-2">
@@ -29,7 +29,7 @@
 			</div>
 
 			<div class="col-xs-12 price">
-				<span class="new">￥ 333</span>
+				<span class="new">{{productInfo.product_price|currency: '￥'}}</span>
 				<span class="old">￥ 444</span>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 				商品名称
 			</span>
 			<span class="col-xs-8 info-ctn">
-				2015印花雪纺衬衫
+				{{productInfo.product_name}}
 			</span>
 		</div>
 		<div class="col-xs-12 info-item">
@@ -105,7 +105,7 @@
 				商品编号
 			</span>
 			<span class="col-xs-8 info-ctn">
-				102300038521
+				{{productInfo.product_id}}
 			</span>
 		</div>
 	</div>
