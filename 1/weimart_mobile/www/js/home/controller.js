@@ -56,8 +56,11 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
             $scope.productFore = Product.all_list[3];
-            console.log($scope.productFore);
+            $scope.productBeaty = Product.all_list[4];
+            $scope.productNew = Product.all_list[5];
+            console.log($scope.productBeaty);
         });
+
 
     }
 ]);
@@ -343,9 +346,9 @@ controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth','Shop',
     function($scope, $state, User, Auth,Shop) {
         $scope.doLogin = function() {
             User.doLogin($scope.loginInfo);
-
             $scope.$on('User.loginSuccess', function(event) {
-               goBack();
+                console.log(Auth.getUser());
+                goBack();
             })
         }
     }
@@ -468,23 +471,24 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 
 
 //商品详情
-controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop',
-    function($upload, $scope, $state,$stateParams, Product, Shop) {
+controllers.controller('goodsCtrl', ['$upload', '$scope', '$state', '$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state, $stateParams, Product, Shop) {
+        console.log($stateParams);
 
-        if ($stateParams && $stateParams.id) {
-            for(var i in Product.all_list) {
-                if (Product.all_list[i].product_id == $stateParams.id) {
-                    $scope.productInfo = Product.all_list[i];
-                    break;
-                };
-            }
-        } else {
-            $scope.productInfo = {};
-        }
 
         Product.getAll();
-        $scope.$on('Product.getAllSuccess', function () {
+        $scope.$on('Product.getAllSuccess', function() {
             $scope.productFore = Product.all_list[10];
+            if ($stateParams && $stateParams.id) {
+                for (var i in Product.all_list) {
+                    if (Product.all_list[i].product_id == $stateParams.id) {
+                        $scope.productInfo = Product.all_list[i];
+                        break;
+                    };
+                }
+            } else {
+                $scope.productInfo = {};
+            }
         });
 
     }

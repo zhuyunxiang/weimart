@@ -56,12 +56,12 @@
 		</div>
 	</div>
 	<div class="row clothes">
-		<div class="col-xs-6 large" ui-sref=".goods">
-			<img ng-src="img/index/2.jpg" alt="">
+		<div class="col-xs-6 large" ui-sref="goods({id:productBeaty.product_id})">
+			<img ng-src="{{productBeaty.product_img}}" alt="{{productBeaty.product_name}}" title="{{productBeaty.product_name}}">
 			<span>穿出女神范</span>
 		</div>
-		<div class="col-xs-6 two-middle">
-			<img ng-src="img/index/3.jpg" alt="">
+		<div class="col-xs-6 two-middle" ui-sref="goods({id:productNew.product_id})">
+			<img ng-src="{{productNew.product_img}}" alt="{{productNew.product_name}}" title="{{productNew.product_name}}">
 			<span>新款驾到</span>
 		</div>
 	</div>
