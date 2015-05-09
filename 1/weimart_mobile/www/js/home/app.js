@@ -116,7 +116,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('home.agence', {
             url: "/agence",
             templateUrl: 'tpl/home/agence.html',
-            controller: "homeCtrl"
+            controller: "agenceCtrl"
         })
         // 首页分类
         .state('type', {

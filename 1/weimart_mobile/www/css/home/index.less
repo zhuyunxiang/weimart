@@ -9,7 +9,7 @@
 	border: solid 1px #CCCCCC;
 }
 .boder-solid-main {
-	border: solid 2px #FEBFC0;
+	border: solid 1px #FEBFC0;
 }
 
 .common-fore {
@@ -32,7 +32,26 @@ img {
 	cursor: pointer;
 }
 //=====================================
+.carousel-indicators {
+	bottom: -12px;
 
+	li {
+		width: 5px;
+		height: 5px;
+	}
+
+	.active {
+		width: 6px;
+		height: 6px;
+	}
+}
+
+span.type-class {
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+	}
+}
 
 //主页<!--
 div.fore {
@@ -90,7 +109,8 @@ div.title {
 	font-size: 13px;
 	border-left: solid 10px #FF8182;
 	padding: 0;
-	// //=============no effect===============
+	// //=============no effect===============	
+
 
 	// &:first-child {
 	// 	border-left: solid 10px #FF8182;
@@ -245,6 +265,7 @@ div.hotbaby-container {
 
 		img {
 			width: 100%;
+			height: 130px;
 			.boder-solid-main;
 		}
 	}
