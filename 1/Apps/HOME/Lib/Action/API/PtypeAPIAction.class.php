@@ -63,12 +63,20 @@ class PtypeAPIAction extends Action
 		$this->ajaxReturn($result, "数据获取成功!", 1);
 	}
 
+	// 根据ID获取商品分类信息
+	public function get_type_by_id()
+	{
+		$result = false;
+		if (isset($_POST['id'])) {
+			$result = A('Ptype', 'Service')->getTypeById($_POST['id']);
+		}
+		$this->ajaxReturn($result);
+	}
 
 	// 测试用
 	public function test($value='')
 	{
-		$condition['user_id'] = array('in', array('0',$_SESSION['user']['user_id']));
-		$result = A('Ptype', 'Service')->getAllTypesInArr($condition);
+		$result = A('Ptype', 'Service')->getTypeById(1);
 		dump($result);
 	}
 

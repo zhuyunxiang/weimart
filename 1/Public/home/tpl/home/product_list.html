@@ -12,11 +12,11 @@
 	<!-- 商品列表 # -->
 	<div class="prod-list">
 		<div class="page-flow">
-			<a href="#">首页</a> ><a href="#">潮流女装</a>  > 
+			<a href="#">首页</a> ><a href="#">{{currentTypeInfo.type_name}}</a>  > 
 		</div>
 
 		<div class="title">
-			以下为您显示“<span>潮流女装</span>”的搜索结果
+			以下为您显示“<span>{{currentTypeInfo.type_name}}</span>”的搜索结果
 		</div>
 
 		<div class="class-flow">
@@ -24,26 +24,27 @@
 		</div>
 
 		<div class="class-list">
-			<div class="classes">
+			<!-- <div class="classes">
 				<div class="heading">
 					品牌：
 				</div>
 				<div class="class-item">
 					<img ng-src="{{imageURLs.publicUrl}}img/prod-list/{{value.url}}" ng-repeat="(key, value) in brands">
 				</div>
-			</div>
-			<div class="classes">
+			</div> -->
+
+			<!-- <div class="classes">
 				<div class="heading">
 					选购热点：
 				</div>
 				<div class="class-item">
 					<span ng-repeat="(key, value) in hotSell">{{value.item}}</span>
 				</div>
-			</div>
+			</div> -->
 			
 			<!--此处数据待修改-->
 
-			<div class="classes">
+			<!-- <div class="classes">
 				<div class="heading">
 					春季流行：
 				</div>
@@ -64,37 +65,32 @@
 					<span>修身显瘦<span class="sum">(121212)</span></span>
 					
 				</div>
-			</div
+			</div> -->
 			
 			<!--此处数据待修改-->
 			<div class="classes">
-				<div class="heading">
+				<div class="heading" ng-show="currentTypeInfo.extend_types">
 					选购热点：
 				</div>
+				<div class="heading" ng-hide="currentTypeInfo.extend_types">
+					暂无分类
+				</div>
 				<div class="class-item">
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					<span>2015年春季</span>
-					
+					<span ng-repeat="item in currentTypeInfo.extend_types">
+						<a href="" ui-sref="product_list({id:item.type_id})" title="{{item.type_name}}">{{item.type_name}}</a>
+					</span>
 				</div>
 			</div>
 		</div>
 
 
 		<div class="baby-list-block">
-			<div class="baby-list" ng-repeat="item in prodBabyList">
-				<img ng-src="{{imageURLs.publicUrl}}img/prod-list/{{item.url}}" alt="">
-				<div class="price">￥ {{item.price}}</div>
-				<div class="desc">{{item.desc}}</div>
+			<div class="baby-list" ng-repeat="item in currentTypeInfo.product">
+				<img ng-src="{{item.product_img}}" alt="{{item.product_name}}">
+				<div class="price">￥ {{item.product_price}}</div>
+				<div class="desc">{{item.product_name}}</div>
 			</div>
-			
 		</div>
-		
 	</div>
 	<div class="common-bottom">
 		<img ng-src="{{imageURLs.publicUrl}}img/common-bottom.png">

@@ -367,15 +367,20 @@ HomeCtrls.controller('typeCtrl', ['$scope',
 }]);
 
 // 商品列表Controller
-HomeCtrls.controller('productListCtrl', ['$scope','$stateParams',
-    function($scope,$stateParams) {
+HomeCtrls.controller('productListCtrl', ['$scope','$stateParams','Product',
+    function($scope,$stateParams,Product) {
+        var type_id = $stateParams.id;
+
+        Product.getTypeById(type_id);
+        $scope.$on('Product.getTypeByIdSuccess', function (event) {
+            $scope.currentTypeInfo = Product.currentTypeInfo;
+        });
 
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
-        var type_id = $stateParams.id;
 
 
         $scope.brands = [
