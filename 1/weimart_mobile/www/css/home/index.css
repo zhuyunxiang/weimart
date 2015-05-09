@@ -2,9 +2,6 @@
 .boder-solid-main{border:solid 2px #FEBFC0;}
 .common-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}.common-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 img{width:100%;cursor:pointer;}
-.carousel-indicators{bottom:-12px;}.carousel-indicators li{width:5px;height:5px;}
-.carousel-indicators .active{width:6px;height:6px;}
-span.type-class{cursor:pointer;}span.type-class:hover{text-decoration:underline;}
 div.fore{background-color:#ff8485;min-height:50px;}div.fore img.ico{margin-top:10px;}
 div.fore input.search{margin-top:8px;}
 div.ad-pic{width:100%;padding:0;}div.ad-pic img{width:100%;}div.ad-pic img.fore-img{height:120px;}
@@ -59,3 +56,5 @@ div.inshop-container div.pic-show div.one-large{margin-top:20px;margin-bottom:20
 div.inshop-container div.goods-item-list{background-color:#F5F5F5;}div.inshop-container div.goods-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.inshop-container div.goods-item-list div.item img.pic{height:180px;}
 div.inshop-container div.goods-item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;height:50px;line-height:25px;overflow:hidden;}
 div.inshop-container div.goods-item-list div.item span{color:#ff8485;font-size:14px;font-weight:bolder;margin-top:5px;margin-left:10px;}
+div.agence-container{padding-bottom:80px;}div.agence-container div.operation{margin-top:10px;margin-bottom:10px;}div.agence-container div.operation span.shop-name{font-size:15px;font-weight:bold;margin-left:10px;margin-bottom:10px;margin-top:5px;}
+div.agence-container div.operation .join-us{margin-right:10px;margin-bottom:10px;}

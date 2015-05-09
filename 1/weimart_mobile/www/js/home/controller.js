@@ -524,7 +524,6 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
 
 
 
-
 function goBack() {
     console.log(1);
     if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
