@@ -120,7 +120,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         })
         // 首页分类
         .state('type', {
-            url: "/type",
+            url: "/type/{id:[0-9]{1,4}}",
             templateUrl: 'tpl/home/type.html',
             controller: "typeCtrl"
         })

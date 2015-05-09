@@ -44,7 +44,6 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
     }
 ]);
 
-
 // 用户信息
 services.service('User', ['$http', '$rootScope', 'Auth',
     function($http, $rootScope, Auth) {
@@ -236,6 +235,7 @@ services.service('Shop', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
+
                     if (data.status == 1) {
                         Shop.hasShop = data.data;
                         $rootScope.$broadcast('Shop.getShopWithUserSuccess');
@@ -253,6 +253,7 @@ services.service('Shop', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         Shop.data = data.data;
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
@@ -418,5 +419,31 @@ services.service('Product', ['$http', '$rootScope',
         }
 
         return Product;
+    }
+]);
+
+// 分类
+services.service('Ptype', ['$http', '$rootScope',
+    function($http, $rootScope) {
+        var Ptype = {};
+        Ptype.list = null;
+        
+        Ptype.getListById = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/PtypeAPI/get_type_by_id',
+                data: 'id=' + id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
+                    Ptype.list = data;
+                    $rootScope.$broadcast('Ptype.getListByIdSuccess');
+                    
+                });
+        }
+        return Ptype;
     }
 ]);

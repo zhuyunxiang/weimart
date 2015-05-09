@@ -472,8 +472,8 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 
 
 //商品详情
-controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$location','$stateParams', 'Product', 'Shop',
-    function($upload, $scope, $state, $location, $stateParams, Product, Shop) {
+controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state, $stateParams, Product, Shop) {
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function() {
             $scope.productFore = Product.all_list[10];
@@ -494,10 +494,31 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$location','
     }
 ]);
 
-//商品详情
-controllers.controller('typeCtrl', ['$upload', '$scope', '$state','$location','$stateParams', 'Product', 'Shop',
-    function($upload, $scope, $state, $location, $stateParams, Product, Shop) {
-       
+//
+controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
+    function($scope,$state, $stateParams, Ptype) {
+        if ($stateParams && $stateParams.id) {
+            Ptype.getListById($stateParams.id);
+        } else {
+            $scope.listOfType = {};
+        }
+
+        $scope.classOftype = 'col-xs-3';
+        $scope.$on('Ptype.getListByIdSuccess', function() {
+            $scope.listOfType = Ptype.list;
+            $scope.typeList = Ptype.list.extend_types;
+
+            if ($scope.typeList.length < 4) {
+                var sum =  12 / $scope.typeList.length;
+                $scope.classOftype = 'col-xs-' + sum;
+            } 
+            console.log($scope.classOftype);
+        });
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
     }
 ]);
 
