@@ -2,6 +2,9 @@
 .boder-solid-main{border:solid 2px #FEBFC0;}
 .common-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}.common-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 img{width:100%;cursor:pointer;}
+.carousel-indicators{bottom:-12px;}.carousel-indicators li{width:5px;height:5px;}
+.carousel-indicators .active{width:6px;height:6px;}
+span.type-class{cursor:pointer;}span.type-class:hover{text-decoration:underline;}
 div.fore{background-color:#ff8485;min-height:50px;}div.fore img.ico{margin-top:10px;}
 div.fore input.search{margin-top:8px;}
 div.ad-pic{width:100%;padding:0;}div.ad-pic img{width:100%;}div.ad-pic img.fore-img{height:120px;}

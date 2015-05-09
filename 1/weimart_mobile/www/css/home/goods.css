@@ -3,7 +3,6 @@ div.container{padding-bottom:80px;color:#999999;}div.container div.goods-fore{te
 div.container div.pic{background-color:#f5f5f5;}div.container div.pic img.img{height:240px;}
 div.container div.desc{padding-top:15px;border-bottom:solid 1px #cccccc;}div.container div.desc div.tabs{margin-bottom:10px;margin-top:10px;}div.container div.desc div.tabs img{display:block;width:30px;}
 div.container div.desc div.price{margin-bottom:5px;}div.container div.desc div.price span{font-size:13px;margin-right:20px;font-weight:bold;}div.container div.desc div.price span.new{color:#ff8485;}
-div.container div.desc div.price span.old{text-decoration:line-through;}
 div.container div.setment{border-bottom:solid 1px #cccccc;height:40px;line-height:40px;}div.container div.setment span{font-size:14px;font-weight:bolder;color:black;}
 div.container div.sizes{border-bottom:solid 10px #cccccc;margin-top:5px;padding-bottom:10px;}div.container div.sizes div.size-box{text-align:center;vertical-align:middle;font-size:14px;border-radius:5px;border:solid 1px black;height:40px;width:30%;line-height:40px;margin-top:7px;margin-right:2%;margin-left:1%;}div.container div.sizes div.size-box span{text-align:center;vertical-align:middle;color:black;}
 div.container div.goods-info-title{margin-top:10px;padding-bottom:10px;border-bottom:solid 1px #cccccc;}div.container div.goods-info-title div.title-box{background-color:#ff8485;color:white;text-align:center;height:35px;line-height:35px;}div.container div.goods-info-title div.title-box span{font-size:15px;font-weight:bolder;}

@@ -2,7 +2,7 @@
 <div class="container col-xs-12">
 	<div class="row goods-fore">		
 		<div class="col-xs-1">
-			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ng-click="list.classType"></span>
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ng-click="goBack()"></span>
 		</div>
 		<div class="col-xs-10">
 			<span class="title">{{productInfo.product_name}}</span>
@@ -30,7 +30,7 @@
 
 			<div class="col-xs-12 price">
 				<span class="new">{{productInfo.product_price|currency: '￥'}}</span>
-				<span class="old">￥ 444</span>
+				<span class="old">（库存：{{productInfo.product_left}}）</span>
 			</div>
 		</div>
 		<div class="col-xs-12 setment">

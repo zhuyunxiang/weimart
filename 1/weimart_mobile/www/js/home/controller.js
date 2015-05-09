@@ -55,10 +55,11 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         // $scope.productFore = {};
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
-            $scope.productFore = Product.all_list[3];
-            $scope.productBeaty = Product.all_list[4];
-            $scope.productNew = Product.all_list[5];
-            console.log($scope.productBeaty);
+            $scope.productBeaty = Product.all_list[14];
+            $scope.productNew = Product.all_list[15];
+            $scope.packageShow = Product.all_list[16];
+            $scope.shoesF = Product.all_list[17];
+            $scope.shoesM = Product.all_list[18];
         });
 
 
@@ -471,14 +472,14 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 
 
 //商品详情
-controllers.controller('goodsCtrl', ['$upload', '$scope', '$state', '$stateParams', 'Product', 'Shop',
-    function($upload, $scope, $state, $stateParams, Product, Shop) {
-        console.log($stateParams);
-
-
+controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$location','$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state, $location, $stateParams, Product, Shop) {
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function() {
             $scope.productFore = Product.all_list[10];
+            $scope.goBack = function () {
+                goBack();
+            }
             if ($stateParams && $stateParams.id) {
                 for (var i in Product.all_list) {
                     if (Product.all_list[i].product_id == $stateParams.id) {
@@ -490,32 +491,21 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state', '$stateParam
                 $scope.productInfo = {};
             }
         });
+    }
+]);
 
+//商品详情
+controllers.controller('typeCtrl', ['$upload', '$scope', '$state','$location','$stateParams', 'Product', 'Shop',
+    function($upload, $scope, $state, $location, $stateParams, Product, Shop) {
+       
     }
 ]);
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function goBack() {
+    console.log(1);
     if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
         if (history.length > 0) {
             window.history.go(-1);

@@ -118,6 +118,12 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/agence.html',
             controller: "homeCtrl"
         })
+        // 首页分类
+        .state('type', {
+            url: "/type",
+            templateUrl: 'tpl/home/type.html',
+            controller: "typeCtrl"
+        })
         // 分类
         .state('list', {
             url: "/list",
