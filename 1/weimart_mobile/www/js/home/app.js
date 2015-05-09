@@ -107,14 +107,14 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         })
         // 主页 == 热门品牌 == 品牌
         .state('home.hotbrand.brand', {
-            url: "/hotbrand",
+            url: "/brand",
             templateUrl: 'tpl/home/brand.html',
             controller: "homeCtrl"
         })
         
         //主页 == 代理服务
         .state('home.agence', {
-            url: "/hotbrand",
+            url: "/agence",
             templateUrl: 'tpl/home/agence.html',
             controller: "homeCtrl"
         })
