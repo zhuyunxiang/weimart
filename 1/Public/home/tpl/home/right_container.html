@@ -3,20 +3,18 @@
 	<div class="find-goods-title">
 		发现·好货
 	</div>
-
 	<div class="favor-diy">
 		定制我的偏好
 	</div>
-
 	<!-- <div class="goods" ng-repeat="goodsItems in goods">
-		<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{goodsItems.pic}}">
-		<div class="goods-desc">
-			<div class="goods-title">
-				<strong>{{goodsItems.title}}</strong>
-			</div>
-			<p class="goods-orig">{{goodsItems.orig}}</p>
-			<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
-		</div>	
+			<img ng-src="{{imageURLs.publicUrl}}img/main_right/{{goodsItems.pic}}">
+			<div class="goods-desc">
+					<div class="goods-title">
+							<strong>{{goodsItems.title}}</strong>
+					</div>
+					<p class="goods-orig">{{goodsItems.orig}}</p>
+					<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
+				</div>
 	</div> -->
 	<div class="goods" ng-repeat="goodsItems in recommendProductList">
 		<div class="goods-img">
@@ -26,30 +24,25 @@
 			<div class="goods-title">
 				<strong>{{goodsItems.product_name}}</strong>
 			</div>
-			<p class="goods-orig">{{goodsItems.product_desc}}</p>
+			<div class="goods-orig" ng-bind-html="goodsItems.product_desc|trustHtml"></div>
 			<p class="goods-sell"><strong>{{goodsItems.product_num}}</strong></p>
-		</div>	
+		</div>
 	</div>
 	<div class="goods" ng-click="changeGoods()">
 		<p class="change">换一批试试</p>
 	</div>
 </div>
-
 <div id="find-shop">
 	<div class="find-shop-title">
 		发现·好店
 	</div>
-
 	<div class="shop" ng-repeat="shopItem in recommendShopList">
 		<img ng-src="{{shopItem.shop_img_temp}}" class="shop-img" >
-
 		<div class="shop-info">
 			<p class="shop-name"><strong>{{shopItem.shop_name}}</strong></p>
 			<p class="shop-goods">主营：{{shopItem.shop_main_sell}}</p>
 		</div>
-
 		<p>{{shopItem.shop_desc}}</p>
-
 		<div class="shop-goods-imgs">
 			<img ng-src="{{shopItem.shop_img_temp}}" class="shop-goods-img">
 			<img ng-src="{{shopItem.shop_img_temp}}" class="shop-goods-img">

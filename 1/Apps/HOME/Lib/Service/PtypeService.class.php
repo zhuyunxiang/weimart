@@ -11,6 +11,7 @@ class PtypeService extends BaseService
 	function __construct()
 	{
 		$this->pTypeDao = M('ptype');
+		$this->pTypeRelationDao = D('Ptype');
 	}
 
 	// 根据数组生成树
@@ -52,7 +53,7 @@ class PtypeService extends BaseService
 					$rv['type_name'] = '|----'.$rv['type_name'];
 				}
 				if ($i > 1) {
-					$rv['type_name'] = '	'.$rv['type_name'];
+					$rv['type_name'] = '**'.$rv['type_name'];
 				}
 			}
 			$rv['depth'] = $depth;
@@ -114,6 +115,17 @@ class PtypeService extends BaseService
 			return array('data'=>$result, 'info'=>'数据删除失败!', 'status'=>0);
 		}
 		return array('data'=>false, 'info'=>'数据为空!', 'status'=>0);
+	}
+
+	// 根据ID获取商品类别相关信息
+	public function getTypeById($id = null)
+	{
+		$condition = array('type_id'=>$id);
+		$result = $this->pTypeRelationDao->where($condition)->relation(true)->select();
+		if (is_array($result)) {
+			return $result[0];
+		}
+		return false;
 	}
 }
  ?>

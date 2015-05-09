@@ -281,6 +281,22 @@ HomeServices.service('Product', ['$http', '$rootScope',
         Product.type_list = null;
         Product.type_drop_list = null;
         Product.recommend_list = null;
+        Product.currentTypeInfo = null;
+
+        Product.getTypeById = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/get_type_by_id',
+                data: "id="+id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    Product.currentTypeInfo = data;
+                    $rootScope.$broadcast('Product.getTypeByIdSuccess');
+                });
+        }
 
         // 获得所有商品类别列表树
         Product.getTypeList = function() {
