@@ -5,8 +5,10 @@ div.list-one{margin-bottom:10px;}div.list-one img{width:100%;height:60px;}
 div.list-one span{display:inline-block;font-size:10px;width:100%;text-align:center;}
 div.class-container{padding-bottom:80px;color:#999999;}div.class-container div.class-type-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.class-container div.class-type-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.class-container div.nav{background-color:white;border-top:solid 1px #cccccc;border-bottom:solid 1px #cccccc;height:40px;line-height:40px;text-align:center;}div.class-container div.nav span{font-size:14px;font-weight:bold;cursor:pointer;}
-div.class-container div.item-list{background-color:#F5F5F5;}div.class-container div.item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}
+div.class-container div.item-list{background-color:#F5F5F5;}div.class-container div.item-list div.foreText{margin-top:15px;margin-left:10px;margin-bottom:15px;font-weight:bolder;font-size:18px;color:#CCCCCC;}div.class-container div.item-list div.foreText span{display:block;}div.class-container div.item-list div.foreText span.second{margin-left:30px;}
+div.class-container div.item-list div.item{margin-top:10px;border:solid 1px #cccccc;background-color:white;}
 div.class-container div.item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;}
 div.class-container div.item-list div.item hr{margin-top:10px;margin-bottom:10px;margin-right:10px;margin-left:10px;}
 div.class-container div.item-list div.item img.tabs{display:inline-block;width:20%;margin-bottom:10px;margin-right:10px;margin-left:10px;}
 div.class-container div.item-list div.item span{font-size:13px;}
+div.class-container div.item-list div.item span.price{color:#ff8485;font-size:14px;font-weight:bolder;margin-top:5px;margin-left:10px;}

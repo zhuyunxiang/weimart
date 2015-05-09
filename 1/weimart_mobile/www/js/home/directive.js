@@ -113,3 +113,6 @@ directives.directive('saveDetail', ['$state', 'User', 'Auth',
         }
     }
 ]);
+
+
+
