@@ -494,7 +494,7 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams
     }
 ]);
 
-//
+//商品分类
 controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
     function($scope,$state, $stateParams, Ptype) {
         if ($stateParams && $stateParams.id) {
@@ -512,7 +512,7 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
                 var sum =  12 / $scope.typeList.length;
                 $scope.classOftype = 'col-xs-' + sum;
             } 
-            console.log($scope.classOftype);
+            console.log($scope.listOfType);
         });
 
         $scope.goBack = function() {
@@ -521,6 +521,17 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
 
     }
 ]);
+
+
+//代理服务
+controllers.controller('agenceCtrl', ['$scope', 'Auth', 'Shop'
+    function($scope, Auth, Shop) {
+        
+
+    }
+]);
+
+
 
 
 
