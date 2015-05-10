@@ -17,6 +17,7 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product','Shop',
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
+            'app': commenUrl + 'img/app.png',
         };
 
         $scope.changeGoods = function () {
