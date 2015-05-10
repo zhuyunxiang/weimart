@@ -79,7 +79,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('home.hotbaby', {
             url: "/hotbaby",
             templateUrl: 'tpl/home/hotbaby.html',
-            controller: "homeCtrl"
+            controller: "hotbabyCtrl"
         })
         .state('home.hotbaby.detail', {
             url: "/detail",
@@ -90,7 +90,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('home.hotshop', {
             url: "/hotshop",
             templateUrl: 'tpl/home/hotshop.html',
-            controller: "homeCtrl"
+            controller: "hotshopCtrl"
         })
         // 主页 == 热门卖家==详情
         .state('home.hotshop.inshop', {

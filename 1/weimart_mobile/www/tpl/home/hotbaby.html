@@ -10,69 +10,97 @@
 		</div>
 	</div>
 
-	<div class="row item-container">
+	<div class="row item-container" ng-hide="clothes.length == '0'">
 		<div class="col-xs-12">
 			<span class="item-name">诠释你不知道的潮流双肩包</span>
 		</div>
 		<div class="col-xs-12 item-desc">
-			<span>时尚界掀起一股关于新材质包包的潮流。新颖的设计打破了以往包包的形式，看似奇怪的设计理念，而成时尚界掀起一股关于新材质包包的潮流。新颖的设计打破了以往包包的形式，看似奇怪的设计理念，而成</span>
+			<span>时尚界掀起一股关于新材质包包的潮流。新颖的设计打破了以往包包的形式，看似奇怪的设计理念，而成时尚界掀起一股关于新材质包包的潮流。新颖的设计打破了以往包包的形式。</span>
 		</div>
 		<div class="col-xs-12 item-display">
 			<div class="row">
 				<div class="col-xs-4" ui-sref=".detail">
-					<img ng-src="img/hotbaby/7.jpg" alt="">
+					<img ng-src="{{clothes[0].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/5.jpg" alt="">
+					<img ng-src="{{clothes[1].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/6.jpg" alt="">
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- 数据组织方式待处理-->
-	<div class="row item-container">
-		<div class="col-xs-12">
-			<span class="item-name">盘点韩剧中走红的化妆品</span>
-		</div>
-		<div class="col-xs-12 item-desc">
-			<span>韩剧里女主角们美美的妆容，一定是众姐妹喜爱韩剧的原因之一。在韩式裸妆随韩剧热大行其道的今天，韩剧里女主角们美美的妆容，一定是众姐妹喜爱韩剧的原因之一。在韩式裸妆随韩剧热大行其道的今天，</span>
-		</div>
-		<div class="col-xs-12 item-display">
-			<div class="row">
-				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/8.jpg" alt="">
-				</div>
-				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/9.jpg" alt="">
-				</div>
-				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/10.jpg" alt="">
+					<img ng-src="{{clothes[2].product_img}}" alt="">
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="row item-container">
+	<div class="row item-container" ng-hide="makeup.length == '0'">
 		<div class="col-xs-12">
-			<span class="item-name">【潮搭饰物】质感金属饰品</span>
+			<span class="item-name">盘点韩剧中走红的化妆品</span>
 		</div>
 		<div class="col-xs-12 item-desc">
-			<span>极具质感的金属饰品特别的具有现代时尚气息，特别的时尚又个性，今年也特别的流行混搭，饰品当然也极具质感的金属饰品特别的具有现代时尚气息，特别的时尚又个性，今年也特别的流行混搭，饰品当然也</span>
+			<span>韩剧里女主角们美美的妆容，一定是众姐妹喜爱韩剧的原因之一。在韩式裸妆随韩剧热大行其道的今天，韩剧里女主角们美美的妆容，一定是众姐妹喜爱韩剧的原因之一。</span>
 		</div>
 		<div class="col-xs-12 item-display">
 			<div class="row">
 				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/14.jpg" alt="">
+					<img ng-src="{{makeup[0].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/15.jpg" alt="">
+					<img ng-src="{{makeup[0].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
-					<img ng-src="img/hotbaby/16.jpg" alt="">
+					<img ng-src="{{makeup[0].product_img}}" alt="">
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div class="row item-container" ng-hide="jewelrys.length == '0'">
+		<div class="col-xs-12">
+			<span class="item-name">【潮搭饰物】质感金属饰品</span>
+		</div>
+		<div class="col-xs-12 item-desc">
+			<span>极具质感的金属饰品特别的具有现代时尚气息，特别的时尚又个性，今年也特别的流行混搭，饰品当然也极具质感的金属饰品特别的具有现代时尚气息，特别的时尚又个性。</span>
+		</div>
+		<div class="col-xs-12 item-display">
+			<div class="row">
+				<div class="col-xs-4" >
+					<img ng-src="{{jewelrys[0].product_img}}" alt="">
+				</div>
+				<div class="col-xs-4">
+					<img ng-src="{{jewelrys[1].product_img}}" alt="">
+				</div>
+				<div class="col-xs-4">
+					<img ng-src="{{jewelrys[2].product_img}}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row item-container" ng-hide="others.length == '0'">
+		<div class="col-xs-12">
+			<span class="item-name" ui-sref="details({id:'4'})">【大杂烩喽】淘你所爱</span>
+		</div>
+		<div class="col-xs-12 item-desc" ui-sref="details({id:'4'})">
+			<span>极具质感的金属饰品特别的具有现代时尚气息，特别的时尚又个性，今年也特别的流行混搭，饰品当然也极具质感的金属饰品特</span>
+		</div>
+		<div class="col-xs-12 item-display">
+			<div class="row">
+				<div class="col-xs-4" ng-repeat="itemOthers in others">
+					<img ng-src="{{itemOthers.product_img}}" alt="{{itemOthers.product_name}}" title="{{itemOthers.product_name}}" ui-sref="goods({id:itemOthers.product_id})">
+				</div>
+				<!-- <div class="col-xs-4">
+					<img ng-src="{{others[1].product_img}}" alt="">
+				</div>
+				<div class="col-xs-4">
+					<img ng-src="{{others[2].product_img}}" alt="">
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="row item-container" ng-hide="recommend_list">
+		<div class="col-xs-12">
+			<span class="item-name">sorry, 没有热卖宝贝...</span>
 		</div>
 	</div>
 </div>

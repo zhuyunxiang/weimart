@@ -512,25 +512,19 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
         $scope.$on('Ptype.getListByIdSuccess', function() {
             $scope.listOfType = Ptype.list;
             $scope.typeList = Ptype.list.extend_types;
-            console.log($scope.typeList);
             var prod_len = Ptype.list.product.length;
-            console.log(prod_len);
             var prod_half = parseInt(prod_len / 2);
-            console.log(prod_half);
 
             if ($scope.typeList.length < 4) {
                 var sum =  12 / $scope.typeList.length;
                 $scope.classOftype = 'col-xs-' + sum;
             } 
-            console.log($scope.listOfType);
 
             for (var i = 0; i < prod_half; i++) {
                 $scope.firstHalf.push(Ptype.list.product[i]);
-                console.log($scope.firstHalf);
             };
             for (var i = prod_half; i < prod_len; i++) {
                 $scope.secondHalf.push(Ptype.list.product[i]);
-                console.log($scope.secondHalf);
             };
         });
 
@@ -542,12 +536,90 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
 ]);
 
 
+//热门宝贝
+controllers.controller('hotbabyCtrl', ['$scope', '$state', '$stateParams', 'Product',
+    function($scope,$state, $stateParams, Product) {
+        $scope.clothes = [];
+        $scope.makeup = [];
+        $scope.jewelrys = [];
+        $scope.others = [];
+
+       Product.getRecommendList();
+       $scope.$on('Product.getRecommendListSuccess', function (event) {
+            $scope.recommend_list = Product.recommend_list;
+            console.log(Product.recommend_list);
+            for(var i in Product.recommend_list){
+
+                if (1 == Product.recommend_list[i].types.type_id) {
+                    $scope.clothes.push(Product.recommend_list[i]);
+
+                } else if (4 == Product.recommend_list[i].types.type_id) {
+                    $scope.makeup.push(Product.recommend_list[i]);
+
+                } else if (36 == Product.recommend_list[i].types.type_id) {
+                    $scope.jewelrys.push(Product.recommend_list[i]);
+
+                } else {
+                    console.log(Product.recommend_list[i]);
+                    $scope.others.push(Product.recommend_list[i]);
+                };
+            }
+            console.log($scope.clothes);
+            console.log($scope.makeup);
+            console.log($scope.jewelrys);
+            console.log($scope.others);
+           
+
+        });
+
+
+
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
+    }
+]);
+
 // //代理服务
 // controllers.controller('agenceCtrl', ['$scope', 'Shop'
 //     function($scope, Shop) {
 
 //     }
 // ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
