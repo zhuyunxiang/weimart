@@ -39,6 +39,7 @@ controllers.controller('productAdminCtrl', ['$scope', 'Product',
 
         $scope.setRecommend = function (productInfo, isRecommend) {
             productInfo.is_recommend = isRecommend;
+            productInfo.type_id = productInfo.types[0].type_id;
             Product.saveInfo(productInfo);
         }
     }

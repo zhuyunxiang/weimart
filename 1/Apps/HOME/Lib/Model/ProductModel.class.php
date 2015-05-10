@@ -40,6 +40,15 @@ class ProductModel extends RelationModel
             'relation_foreign_key'=>'user_id',
             'relation_table'=>'weimart_user_visit_product'
         ),
+        // Shop info.
+        array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'Shop',
+            'mapping_name'=>'shop_info',
+            'foreign_key'=>'product_id',
+            'relation_foreign_key'=>'shop_id',
+            'relation_table'=>'weimart_shop_product'
+        ),
 
         // Visit history.
         array(

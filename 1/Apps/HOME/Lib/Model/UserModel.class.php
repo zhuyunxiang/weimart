@@ -54,6 +54,26 @@ class UserModel extends RelationModel
             'relation_table'=>'weimart_user_visit_product'
         ),
 
+        // User's Favourite Product.
+        array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'Product',
+            'mapping_name'=>'favourite_product',
+            'foreign_key'=>'user_id',
+            'relation_foreign_key'=>'product_id',
+            'relation_table'=>'weimart_user_favourite_product'
+        ),
+
+        // User's Favourite Shop.
+        array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'Shop',
+            'mapping_name'=>'favourite_shop',
+            'foreign_key'=>'user_id',
+            'relation_foreign_key'=>'shop_id',
+            'relation_table'=>'weimart_user_favourite_shop'
+        ),
+
         // User's visit history product.
         array(
             'mapping_type'=>HAS_MANY,

@@ -69,11 +69,20 @@ class ProductService extends BaseService
 		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
 
+	// 获取所有已经上架的商品信息
+	public function getAllOnlineProducts()
+	{
+		$condition = array('product_is_deleted'=>0, 'product_state'=>'A');
+		$product_list = $this->productRelationDao->where($condition)->relation('types')->select();
+
+		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
+	}
+
 	// 根据ID获取商品信息
 	public function getProductById($id)
 	{
 		$condition = array('product_is_deleted'=>0, 'product_id'=>$id);
-		$product_list = $this->productRelationDao->where($condition)->relation('types')->find();
+		$product_list = $this->productRelationDao->where($condition)->relation(array('types','shop_info'))->find();
 
 		return array('data'=>$product_list, 'info'=>'数据获取成功！', 'status'=>1);
 	}
