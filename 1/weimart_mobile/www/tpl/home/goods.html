@@ -19,7 +19,7 @@
 		<div class="col-xs-12 desc">
 			<div class="col-xs-10">
 				<div class="title-text">
-					{{productInfo.product_desc}}
+					{{productInfo.product_brif}}
 				</div>
 			</div>
 			<div class="col-xs-2">
@@ -94,10 +94,10 @@
 		</div>
 		<div class="col-xs-12 info-item">
 			<span class="col-xs-4 info-title">
-				洗涤说明
+				商品描述
 			</span>
 			<span class="col-xs-8 info-ctn">
-				最高40度手洗，不可漂白，在阴凉处平摊晾干最高40度手洗，不可漂白，在阴凉处平摊晾干最高40度手洗，不可漂白，在阴凉处平摊晾干最高40度手洗，不可漂白，在阴凉处平摊晾干
+				<div class="goods-orig" ng-bind-html="productInfo.product_desc|trustHtml"></div>
 			</span>
 		</div>
 		<div class="col-xs-12 info-item">

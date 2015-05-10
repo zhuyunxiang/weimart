@@ -21,53 +21,18 @@
 				<span>精选品质</span>
 				<span class="second">值得拥有</span>
 			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
+			<div class="item" ui-sref="goods({id:prod_left.product_id})" ng-repeat="prod_left in firstHalf">
+				<img ng-src="{{prod_left.product_img}}" alt="{{prod_left.product_name}}" title="{{prod_left.product_name}}" class="pic">
+				<div class="desc">{{prod_left.product_brif}}</div>
+				<span class="price">{{prod_left.product_price|currency:'￥'}}</span>
 			</div>
 		</div>
 
 		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
-			</div>
-			<div class="item" ui-sref=".goods">
-				<img src="img/class-type/1.png" alt="" class="pic">
-				<div class="desc">可爱少女系精美时尚淡粉色雪纺衬衫</div>
-				<span class="price">￥ 345</span>
+			<div class="item" ui-sref="goods({id:prod_right.product_id})" ng-repeat="prod_right in secondHalf">
+				<img ng-src="{{prod_right.product_img}}" alt="{{prod_right.product_name}}" title="{{prod_right.product_name}}" class="pic">
+				<div class="desc">{{prod_right.product_brif}}</div>
+				<span class="price">{{prod_right.product_price|currency:'￥'}}</span>
 			</div>
 		</div>
 		
