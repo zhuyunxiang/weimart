@@ -62,26 +62,12 @@ document.write(['<a class="qcShareQQDiv" href="http://connect.qq.com/widget/shar
 		</div>
 	</div>
 
-	<div class="row">
-		<img ng-src="img/agency/1.jpg" alt="">
+	<div class="row" ng-repeat="item in allShop">
+		<img ng-src="{{item.shop_img}}" alt="{{item.shop_name}}" title="{{item.shop_name}}">
 		<div class="operation">
-			<span class="pull-left shop-name">素巧歌女装</span>
-			<button type="button" class="btn btn-warning pull-right join-us">加入我们</button>
+			<span class="pull-left shop-name">{{item.shop_name}}</span>
+			<button type="button" class="btn btn-warning pull-right join-us" ng-click="joinUs()">加入我们</button>
 		</div>
 	</div>	
-	<div class="row">
-		<img ng-src="img/agency/2.jpg" alt="">
-		<div class="operation">
-			<span class="pull-left shop-name">素巧歌女装</span>
-			<button type="button" class="btn btn-warning pull-right join-us">加入我们</button>
-		</div>
-	</div>	
-	<div class="row">
-		<img ng-src="img/agency/3.jpg" alt="">
-		<div class="operation">
-			<span class="pull-left shop-name">素巧歌女装</span>
-			<button type="button" class="btn btn-warning pull-right join-us">加入我们</button>
-		</div>
-	</div>
 </div>
 
