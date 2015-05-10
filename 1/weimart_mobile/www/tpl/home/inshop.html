@@ -2,7 +2,7 @@
 <div class="inshop-container col-xs-12">
 	<div class="row common-fore">
 		<div class="col-xs-1">
-			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ui-sref="home.hotshop"></span>
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ng-click="goBack()"></span>
 		</div>
 		<div class="col-xs-10">
 			<input type="text" placeholder="搜索店铺内宝贝">
@@ -14,13 +14,13 @@
 	</div>
 	<div class="row shop-fore">
 		<div class="col-xs-3 shop-pic">
-			<img src="img/inshop/1.jpg" alt="">
+			<img ng-src="{{theShop.shop_img}}" alt="">
 		</div>
-		<div class="col-xs-4 shop-name">
-			<span>【ZZLADY】</span>
-			<span class="fans">58万粉丝</span>
+		<div class="col-xs-5 shop-name">
+			<span>{{theShop.shop_name}}</span>
+			<!-- <span class="fans">58万粉丝</span> -->
 		</div>
-		<div class="col-xs-3 col-xs-offset-1">
+		<div class="col-xs-3">
 			<img src="img/inshop/0.png" alt="" class="favorite">
 		</div>
 	</div>
@@ -44,47 +44,14 @@
 	</div>
 
 	<div class="row goods-item-list">
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/3.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>韩版直筒纯棉牛仔背带短裤</div>
-				<span>￥ 345</span>
+		<div class="col-xs-6" ng-repeat="item in theShop.product" ng-show="theShop.product">
+			<div class="item" ui-sref="goods({id:item.product_id})">
+				<img ng-src="{{item.product_img}}" alt="" class="pic">
+				<div class="desc">{{item.product_brif}}</div>
+				<span>{{item.product_price|currency:'￥'}}</span>
 			</div>
 		</div>
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/4.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>韩版纯色松紧腰百褶半身裙</div>
-				<span>￥ 345</span>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/5.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>印花复古褶皱A字气质伞裙</div>
-				<span>￥ 345</span>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/6.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>黑色气质修身西装长款马甲</div>
-				<span>￥ 345</span>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/7.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>欧美宽松文艺印花雪纺衫</div>
-				<span>￥ 345</span>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="item" ui-sref=".goods">
-				<img src="img/inshop/8.jpg" alt="" class="pic">
-				<div class="desc">ZZLADY 2015春季新品</br>韩版复古大花宽松衬衫</div>
-				<span>￥ 345</span>
-			</div>
-		</div>
+
+		<h4 ng-hide="theShop.product">sorry，该店铺暂无商品数据...</h4>
 	</div>
 </div>

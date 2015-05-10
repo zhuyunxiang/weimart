@@ -93,10 +93,10 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             controller: "hotshopCtrl"
         })
         // 主页 == 热门卖家==详情
-        .state('home.hotshop.inshop', {
-            url: "/inshop",
+        .state('inshop', {
+            url: "/inshop/{id:[0-9]{1,4}}",
             templateUrl: 'tpl/home/inshop.html',
-            controller: "homeCtrl"
+            controller: "inshopCtrl"
         })
         
          // 主页 == 热门品牌

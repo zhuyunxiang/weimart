@@ -8,6 +8,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: X-Requested-With');
 class ShopAPIAction extends Action
 {
+
 	// 保存
 	// 所传的数据格式如Shop表,有shop_id字段就修改,否则就插入
 	public function save_shop_info()
@@ -99,6 +100,15 @@ class ShopAPIAction extends Action
 		$this->ajaxReturn($result, '数据获取成功!', 1);
 	}
 
+	// 根据ID获取商品分类信息
+	public function get_shop_by_id()
+	{
+		$result = A('Shop', 'Service')->getShopById($_POST['id']);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 
 }
  ?>

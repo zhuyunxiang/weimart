@@ -257,7 +257,7 @@ services.service('Shop', ['$http', '$rootScope',
                         Shop.data = data.data;
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
                     } else {
-                        $rootScope.$broadcast('User.getShopInfoError');
+                        $rootScope.$broadcast('Shop.getShopInfoError');
                     }
                 });
         }
@@ -276,9 +276,44 @@ services.service('Shop', ['$http', '$rootScope',
                     console.log(data);
                     if (data.status == 1) {
                         Shop.getShopInfo();
-                        $rootScope.$broadcast('User.saveShopInfoSuccess');
+                        $rootScope.$broadcast('Shop.saveShopInfoSuccess');
                     } else {
-                        $rootScope.$broadcast('User.saveShopInfoError');
+                        $rootScope.$broadcast('Shop.saveShopInfoError');
+                    }
+                });
+        }
+
+        Shop.getRecommendShopInfo = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/get_recommend',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        console.log(data.data);
+                        Shop.recommend_list = data.data;
+                        $rootScope.$broadcast('Shop.getRecommendShopInfoSuccess');
+                    }
+                });
+        }
+
+        Shop.getShopById = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/get_shop_by_id',
+                data: 'id=' + id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.shopInfoById = data.data;
+                        $rootScope.$broadcast('Shop.getShopByIdSuccess');
                     }
                 });
         }
