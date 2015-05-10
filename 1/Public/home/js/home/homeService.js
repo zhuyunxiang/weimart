@@ -283,6 +283,7 @@ HomeServices.service('Product', ['$http', '$rootScope',
         Product.recommend_list = null;
         Product.currentTypeInfo = null;
         Product.currentCurrentProduct = null;
+        Product.recommend_list = null;
 
         Product.getTypeById = function (id) {
             $http({

@@ -253,7 +253,6 @@ services.service('Shop', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         Shop.data = data.data;
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
@@ -414,6 +413,24 @@ services.service('Product', ['$http', '$rootScope',
                         $rootScope.$broadcast('Product.getAllSuccess');
                     } else {
                         $rootScope.$broadcast('Product.getAllError');
+                    }
+                });
+        }
+
+        // 获得推荐商品列表
+        Product.getRecommendList = function() {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ProductAPI/get_recommend',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.recommend_list = data.data;
+                        $rootScope.$broadcast('Product.getRecommendListSuccess');
                     }
                 });
         }
