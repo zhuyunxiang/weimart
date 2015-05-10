@@ -55,11 +55,11 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         // $scope.productFore = {};
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
-            $scope.productBeaty = Product.all_list[14];
-            $scope.productNew = Product.all_list[15];
-            $scope.packageShow = Product.all_list[16];
-            $scope.shoesF = Product.all_list[17];
-            $scope.shoesM = Product.all_list[18];
+            $scope.productBeaty = Product.all_list[1];
+            $scope.productNew = Product.all_list[2];
+            $scope.packageShow = Product.all_list[7];
+            $scope.shoesF = Product.all_list[3];
+            $scope.shoesM = Product.all_list[4];
         });
 
 
@@ -278,17 +278,20 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
             console.log(item);
             $scope.tempProduct = item;
             $scope.tempProduct.product_state = 'I';
+            $scope.tempProduct.type_id = item.types[0].type_id;
             Product.saveInfo($scope.tempProduct);
             Product.getList($scope.myShop.shop_id);
         }
         $scope.$on('Product.saveProductInfoSuccess', function (event) {       
-            alert("此操作已成功！");           
+            alert("此操作已成功！");    
+            Product.getList($scope.myShop.shop_id);       
         });
 
         //商品上线
         $scope.online = function (item) {
             $scope.tempProduct = item;
             $scope.tempProduct.product_state = 'A';
+            $scope.tempProduct.type_id = item.types[0].type_id;
             Product.saveInfo($scope.tempProduct);
             Product.getList($scope.myShop.shop_id);
         }
@@ -296,6 +299,7 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
         $scope.toStock = function (item) {
             $scope.tempProduct = item;
             $scope.tempProduct.product_state = 'S';
+            $scope.tempProduct.type_id = item.types[0].type_id;
             Product.saveInfo($scope.tempProduct);
             Product.getList($scope.myShop.shop_id);
         }
@@ -470,7 +474,6 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 ]);
 
 
-
 //商品详情
 controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop',
     function($upload, $scope, $state, $stateParams, Product, Shop) {
@@ -504,15 +507,31 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
         }
 
         $scope.classOftype = 'col-xs-3';
+        $scope.firstHalf = [];
+        $scope.secondHalf = [];
         $scope.$on('Ptype.getListByIdSuccess', function() {
             $scope.listOfType = Ptype.list;
             $scope.typeList = Ptype.list.extend_types;
+            console.log($scope.typeList);
+            var prod_len = Ptype.list.product.length;
+            console.log(prod_len);
+            var prod_half = parseInt(prod_len / 2);
+            console.log(prod_half);
 
             if ($scope.typeList.length < 4) {
                 var sum =  12 / $scope.typeList.length;
                 $scope.classOftype = 'col-xs-' + sum;
             } 
             console.log($scope.listOfType);
+
+            for (var i = 0; i < prod_half; i++) {
+                $scope.firstHalf.push(Ptype.list.product[i]);
+                console.log($scope.firstHalf);
+            };
+            for (var i = prod_half; i < prod_len; i++) {
+                $scope.secondHalf.push(Ptype.list.product[i]);
+                console.log($scope.secondHalf);
+            };
         });
 
         $scope.goBack = function() {
@@ -523,13 +542,12 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
 ]);
 
 
-//代理服务
-controllers.controller('agenceCtrl', ['$scope', 'Auth', 'Shop'
-    function($scope, Auth, Shop) {
-        
+// //代理服务
+// controllers.controller('agenceCtrl', ['$scope', 'Shop'
+//     function($scope, Shop) {
 
-    }
-]);
+//     }
+// ]);
 
 
 

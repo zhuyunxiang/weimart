@@ -277,7 +277,7 @@ services.service('Shop', ['$http', '$rootScope',
                     console.log(data);
                     if (data.status == 1) {
                         Shop.getShopInfo();
-                        $rootScope.$broadcast('Shop.saveShopInfoSuccess');
+                        $rootScope.$broadcast('User.saveShopInfoSuccess');
                     } else {
                         $rootScope.$broadcast('User.saveShopInfoError');
                     }
