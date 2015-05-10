@@ -733,7 +733,7 @@ HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope', 'Product',
             if (node.super_type_id != '0') {
                 if (confirm("确定要删除吗?不可恢复!")) {
                     Product.removePtypeInfo(node.tyep_id);
-                };            
+                };
             } else {
                 alert("对不起,你没有权限!");
             }
@@ -742,5 +742,20 @@ HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope', 'Product',
         $scope.savePTypeInfo = function() {
             Product.savePtypeInfo($scope.editPTypeInfo);
         }
+    }
+]);
+
+// 商品详情页
+HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', 'Product',
+    function($scope, $state, $stateParams, Product) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+
+        Product.getCurrentProduct(1);
+        $scope.$on('Product.getCurrentProductSuccess', function (event) {
+            $scope.productInfo = Product.currentCurrentProduct;
+        });
     }
 ]);

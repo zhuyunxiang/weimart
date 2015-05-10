@@ -85,7 +85,7 @@
 
 
 		<div class="baby-list-block">
-			<div class="baby-list" ng-repeat="item in currentTypeInfo.product">
+			<div class="baby-list" ng-repeat="item in currentTypeInfo.product" ui-sref="product_detail({id:item.product_id})">
 				<img ng-src="{{item.product_img}}" alt="{{item.product_name}}">
 				<div class="price">￥ {{item.product_price}}</div>
 				<div class="desc">{{item.product_name}}</div>

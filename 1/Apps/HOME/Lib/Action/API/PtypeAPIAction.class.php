@@ -73,11 +73,26 @@ class PtypeAPIAction extends Action
 		$this->ajaxReturn($result);
 	}
 
+	// 根据Id溯源
+	public function get_root_by_id()
+	{
+		$result = A('Ptype', 'Service')->getInfo('pTypeDao');
+
+		if (count($result) > 1) {
+			$result = A('Ptype', 'Service')->getRoot($_POST['id']);
+			$this->ajaxReturn($result);
+		}
+	}
+
 	// 测试用
 	public function test($value='')
 	{
-		$result = A('Ptype', 'Service')->getTypeById(1);
-		dump($result);
+		$result = A('Ptype', 'Service')->getInfo('pTypeDao');
+
+		if (count($result) > 1) {
+			$result = A('Ptype', 'Service')->getRoot($result,15);
+			$this->ajaxReturn($result);
+		}
 	}
 
 }
