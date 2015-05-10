@@ -32,11 +32,43 @@
 				<div class="title">
 					{{productInfo.product_name}}
 				</div>
-				<div class="desc">
-					厚度薄，无内衬， 简约的小圆领，百搭不挑人， 穿起来露出优美的锁骨线条很凸显优 雅气质，肩部性感的露肩，迷人靓丽，短袖 袖长，随意休闲，袖口上部松紧包边形成的喇叭 袖口，俏皮可爱，减龄效果极佳，领周镂空设计， 若隐若现的美感，为夏天抹一笔浪漫迷人的色彩， 上半身蔓延到袖部的缝制条纹贴布
+				<div class="desc" title="{{productInfo.product_brif}}">
+					{{productInfo.product_brif|trimStr:100}}
+				</div>
+				<div class="price-container">
+					<div class="price">
+						<span class="title">一口价: </span>
+						<span class="price">¥{{productInfo.product_price}}</span>
+					</div>
+					<div class="price">
+						<span class="title">库存: </span>
+						<span class="left">{{productInfo.product_left}}件&nbsp;(总量:{{productInfo.product_num}}件,已售:{{productInfo.product_num-productInfo.product_left}}件)</span>
+					</div>
+					<div class="favourite-container">
+						<button class="btn contact-seller">联系卖家</button>
+						<button class="btn favourite">收藏商品</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="shop-info"></div>
+		<div class="shop-info">
+			<div class="title">
+				店铺信息
+			</div>
+			<div class="info-container">
+				<div class="shop-name">
+					<img ng-src="{{productInfo.shop_info[0].shop_img_temp}}" class="img-circle" alt="">
+					<span>{{productInfo.shop_info[0].shop_name}}</span>
+				</div>
+			</div>
+			<div class="line-info">	
+				<span class="title">主营: </span>
+				<span class="content">{{productInfo.shop_info[0].shop_brif|trimStr:20}}</span>
+			</div>
+			<div class="favourite-shop-container">	
+				<button class="btn into-shop">进入店铺</button>
+				<button class="btn favourite-shop">收藏店铺</button>
+			</div>
+		</div>
 	</div>
 </div>

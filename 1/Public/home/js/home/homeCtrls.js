@@ -305,6 +305,7 @@ HomeCtrls.controller('headCtrl', ['User', '$scope',
         $scope.$on('User.isLogin', function (event) {
             $scope.user_name = User.user_name;
             $scope.user_id = User.user_id;
+            console.log(User.detail_info);
         });
 
         $scope.$on('User.registerSuccess', function (event) {
@@ -753,9 +754,10 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
-        Product.getCurrentProduct(1);
+        Product.getCurrentProduct($stateParams.id);
         $scope.$on('Product.getCurrentProductSuccess', function (event) {
             $scope.productInfo = Product.currentCurrentProduct;
+            console.log(Product.currentCurrentProduct);
         });
     }
 ]);
