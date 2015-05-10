@@ -107,6 +107,16 @@ class ProductAPIAction extends Action
 		$this->ajaxReturn(false, '内部错误!', 0);
 	}
 
+	// 根据获取商品
+	public function get_product_by_id()
+	{
+		$result = A('Product', 'Service')->getProductById($_POST['id']);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
 	// 获取所有推荐商品列表
 	public function get_recommend()
 	{

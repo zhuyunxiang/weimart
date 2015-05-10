@@ -130,3 +130,8 @@ div.agence-main div.selected div.selected-item div.desc{display:inline-block;wid
 div.agence-main div.selected div.selected-item div.desc img{width:200px;height:50px;margin-left:80px;}
 div.agence-main div.next-selected{margin-top:20px;}div.agence-main div.next-selected img{margin-top:20px;width:990px;height:523px;}
 div.agence-setting{width:1349px;height:974px;}div.agence-setting div.location{margin-top:8px;}
+.solid-border{border:solid 1px #E8E8E8;}
+.product-detail-container{margin:30px auto;min-width:1349px;overflow:hidden;padding:0 100px;}.product-detail-container .product-info{float:left;width:880px;min-height:500px;border:solid 1px #E8E8E8;overflow:hidden;}.product-detail-container .product-info .img-container{border:solid 1px #E8E8E8;float:left;width:440px;min-height:500px;padding:20px;}.product-detail-container .product-info .img-container img{width:400px;height:400px;}
+.product-detail-container .product-info .title-container{border:solid 1px #E8E8E8;float:left;width:420px;min-height:500px;padding:20px 0px;}.product-detail-container .product-info .title-container div.title{font-size:16px;font-weight:700;line-height:21px;}
+.product-detail-container .product-info .title-container div.desc{margin-top:5px;font:12px/1.5 tahoma,arial,'Hiragino Sans GB',sans-serif;}
+.product-detail-container .shop-info{float:right;width:250px;min-height:500px;border:solid 1px #E8E8E8;}

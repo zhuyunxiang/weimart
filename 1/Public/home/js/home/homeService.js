@@ -282,6 +282,7 @@ HomeServices.service('Product', ['$http', '$rootScope',
         Product.type_drop_list = null;
         Product.recommend_list = null;
         Product.currentTypeInfo = null;
+        Product.currentCurrentProduct = null;
 
         Product.getTypeById = function (id) {
             $http({
@@ -295,6 +296,23 @@ HomeServices.service('Product', ['$http', '$rootScope',
                 .success(function(data) {
                     Product.currentTypeInfo = data;
                     $rootScope.$broadcast('Product.getTypeByIdSuccess');
+                });
+        }
+
+        Product.getCurrentProduct = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ProductAPI/get_product_by_id',
+                data: "id="+id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Product.currentCurrentProduct = data.data;
+                        $rootScope.$broadcast('Product.getCurrentProductSuccess');
+                    };
                 });
         }
 

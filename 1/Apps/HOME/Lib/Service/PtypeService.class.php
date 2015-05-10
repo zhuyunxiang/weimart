@@ -14,6 +14,30 @@ class PtypeService extends BaseService
 		$this->pTypeRelationDao = D('Ptype');
 	}
 
+	public function getRoot($data, $pid, $key = 'type_id', $pKey = 'super_type_id', $childKey = 'parent', $maxDepth = 0)
+	{
+		static $depth = 0;  
+	    $depth++;  
+	    if (intval($maxDepth) <= 0)  
+	    {  
+	        $maxDepth = count($data) * count($data);  
+	    }  
+	    if ($depth > $maxDepth)  
+	    {  
+	        exit("error recursion:max recursion depth {$maxDepth}");  
+	    }  
+	    $tree = array();  
+	    foreach ($data as $rk => $rv)  
+	    {  
+	        if ($rv[$key] == $pid)  
+	        {  
+	            $rv[$childKey] = $this->getRoot($data, $rv[$pKey], $key, $pKey, $childKey, $maxDepth);  
+	            $tree[] = $rv;  
+	        }  
+	    }  
+	    return $tree;  
+	}
+
 	// 根据数组生成树
 	function getTree($data, $pid = 0, $key = 'type_id', $pKey = 'super_type_id', $childKey = 'nodes', $maxDepth = 0){  
 	    static $depth = 0;  

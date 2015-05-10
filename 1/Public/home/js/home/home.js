@@ -54,6 +54,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/product_list/{id:[0-9]{1,4}}",
             templateUrl: publicUrl + 'tpl/home/product_list.html',
             controller: "productListCtrl"
+        }).state('product_detail', {
+            url: "/product_detail/{id:[0-9]{1,4}}",
+            templateUrl: publicUrl + 'tpl/home/product_detail.html',
+            controller: "productDetailCtrl"
         }).state('register', {
             url: "/register",
             templateUrl: publicUrl + 'tpl/home/control/register.html',
