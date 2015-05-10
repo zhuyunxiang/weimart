@@ -149,8 +149,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
         if (Auth.isLoggedIn()) {
             var user = Auth.getUser();
-            if (user.shops && user.shops.length == 0) {
-                console.log(Shop);
+            if ((!user.shops) || user.shops.length == 0) {
                 $state.go('shop');
             }
         } else {
