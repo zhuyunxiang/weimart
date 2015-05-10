@@ -20,7 +20,7 @@ div.shoes span{color:#ff8485;font-size:8px;}
 div.shoes div.shoe-item{margin-top:20px;}
 div.shoes div.text{padding:0px;display:block;color:#ff8485;font-size:10px;}div.shoes div.text span{display:block;margin-top:10%;width:100%;font-size:9px;}
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
-div.bottom img{margin-top:10px;}
+div.bottom img{margin-top:10px;height:45px;}div.bottom img.first-img{height:100px;}
 div.bottom span{color:#ff8485;font-size:12px;}
 div.hotbaby-container{padding-bottom:80px;}div.hotbaby-container div.hotbaby-fore{text-align:center;height:40px;line-height:40px;background-color:#F5F5F5;vertical-align:middle;border-bottom:solid 1px #cccccc;}div.hotbaby-container div.hotbaby-fore span.title{color:#ff8485;font-size:14px;font-weight:bolder;}
 div.hotbaby-container div.item-container{text-align:center;vertical-align:middle;margin-top:20px;}div.hotbaby-container div.item-container span{font-size:13px;}div.hotbaby-container div.item-container span.item-name{font-weight:bold;height:30px;line-height:30px;}
@@ -59,5 +59,6 @@ div.inshop-container div.pic-show div.one-large{margin-top:20px;margin-bottom:20
 div.inshop-container div.goods-item-list{background-color:#F5F5F5;}div.inshop-container div.goods-item-list div.item{margin-top:20px;border:solid 1px #cccccc;background-color:white;}div.inshop-container div.goods-item-list div.item img.pic{height:180px;}
 div.inshop-container div.goods-item-list div.item div.desc{margin-right:10px;margin-left:10px;font-size:13px;margin-top:5px;height:50px;line-height:25px;overflow:hidden;}
 div.inshop-container div.goods-item-list div.item span{color:#ff8485;font-size:14px;font-weight:bolder;margin-top:5px;margin-left:10px;}
-div.agence-container{padding-bottom:80px;}div.agence-container div.operation{margin-top:10px;margin-bottom:10px;}div.agence-container div.operation span.shop-name{font-size:15px;font-weight:bold;margin-left:10px;margin-bottom:10px;margin-top:5px;}
+div.agence-container{padding-bottom:80px;}div.agence-container img{height:200px;}
+div.agence-container div.operation{margin-top:10px;margin-bottom:10px;}div.agence-container div.operation span.shop-name{font-size:15px;font-weight:bold;margin-left:10px;margin-bottom:10px;margin-top:5px;}
 div.agence-container div.operation .join-us{margin-right:10px;margin-bottom:10px;}
