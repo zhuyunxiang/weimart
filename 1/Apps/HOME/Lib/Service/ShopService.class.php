@@ -64,5 +64,15 @@ class ShopService extends BaseService
 		shuffle($result);
 		return $result;
 	}
+
+	// 根据id获得店铺
+	public function getShopById($id)
+	{
+
+		$condition = array('shop_id'=>$id);
+		$result = $this->shopRelationDao->where($condition)->relation('product')->find();
+
+		return array('data'=>$result, 'info'=>'数据获取成功！', 'status'=>1);
+	}
 }
  ?>

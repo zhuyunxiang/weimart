@@ -10,63 +10,58 @@
 		</div>
 	</div>
 
-	<div class="row reward-box">
-		<div class="col-xs-4 col-xs-offset-4 reward">
-			<span>1/20</span>
+	<div ng-repeat="(key, value) in recommendShopList" ng-show="recommendShopList">
+		<div class="row reward-box">
+			<div class="col-xs-4 col-xs-offset-4 reward">
+				<span>{{key + 1}}</span>
+			</div>
+		</div>
+
+		<div class="row shop-info">
+
+			<div class="row shop-fore">
+				<div class="col-xs-3 shop-pic">
+					<img ng-src="{{value.shop_img}}" alt="">
+				</div>
+				<div class="col-xs-5 shop-name">
+					<span>{{value.shop_name}}</span>
+				</div>
+				<div class="col-xs-3 enshop" ui-sref="inshop({id:value.shop_id})">
+					<span>进入店铺</span>
+				</div>
+			</div>
+
+			<div class="row pic-show">
+				<div class="col-xs-4 two-little">
+					<img src="img/hotshop/0.jpg" alt="">
+					<img src="img/hotshop/2.jpg" alt="">
+				</div>
+				<div class="col-xs-8 one-large">
+					<img src="img/hotshop/3.jpg" alt="">
+				</div>
+			</div>
+
+			<div class="row text-desc-title">
+				<img src="img/hotshop/0.png" alt="" class="col-xs-8 col-xs-offset-2">
+			</div>
+
+			<div class="row text-desc-main">
+				<span class="col-xs-12 space">2006年ZZLADY女装卖家正式注册</span>
+				<span class="col-xs-12">2007年到2012年快速成长，跻身女装TOP100</span>
+				<span class="col-xs-12">2006年ZZLADY女装卖家正式注册</span>
+				<span class="col-xs-12">2007年到2012年快速成长，跻身女装TOP100</span>
+				<span class="col-xs-12 space">因为喜欢，我们带来了ZZLADY</span>
+				<span class="col-xs-12">因为时尚，我们建立了自己的设计团队</span>
+				<span class="col-xs-12">因为执着，我们有专业的制衣工厂</span>
+				<span class="col-xs-12">因为我们想做的不仅仅是服装</span>
+				<span class="col-xs-12 space tags">一个月被收藏了145873次，一定有好东西！</span>
+			</div>
+
+			<div class="row text-desc-title">
+				<img src="img/hotshop/1.png" alt="" class="col-xs-8 col-xs-offset-2">
+			</div>
 		</div>
 	</div>
-
-	<div class="row shop-info">
-
-		<div class="row shop-fore">
-			<div class="col-xs-3 shop-pic">
-				<img src="img/hotshop/1.jpg" alt="">
-			</div>
-			<div class="col-xs-3 shop-name">
-				<span>【ZZLADY】</span>
-			</div>
-			<div class="col-xs-3 col-xs-offset-2 enshop" ui-sref=".inshop">
-				<span>进入店铺</span>
-			</div>
-		</div>
-
-		<div class="row pic-show">
-			<div class="col-xs-4 two-little">
-				<img src="img/hotshop/0.jpg" alt="">
-				<img src="img/hotshop/2.jpg" alt="">
-			</div>
-			<div class="col-xs-8 one-large">
-				<img src="img/hotshop/3.jpg" alt="">
-			</div>
-		</div>
-
-		<div class="row text-desc-title">
-			<img src="img/hotshop/0.png" alt="" class="col-xs-8 col-xs-offset-2">
-		</div>
-
-		<div class="row text-desc-main">
-			<span class="col-xs-12 space">2006年ZZLADY女装卖家正式注册</span>
-			<span class="col-xs-12">2007年到2012年快速成长，跻身女装TOP100</span>
-			<span class="col-xs-12">2006年ZZLADY女装卖家正式注册</span>
-			<span class="col-xs-12">2007年到2012年快速成长，跻身女装TOP100</span>
-			<span class="col-xs-12 space">因为喜欢，我们带来了ZZLADY</span>
-			<span class="col-xs-12">因为时尚，我们建立了自己的设计团队</span>
-			<span class="col-xs-12">因为执着，我们有专业的制衣工厂</span>
-			<span class="col-xs-12">因为我们想做的不仅仅是服装</span>
-			<span class="col-xs-12 space tags">一个月被收藏了145873次，一定有好东西！</span>
-		</div>
-
-		<div class="row text-desc-title">
-			<img src="img/hotshop/1.png" alt="" class="col-xs-8 col-xs-offset-2">
-		</div>
-		
-
-		
-
-	</div>
-
-
-
-
+	<h5 ng-hide="recommendShopList">sorry，暂无推荐卖家...</h5>
 
 </div>

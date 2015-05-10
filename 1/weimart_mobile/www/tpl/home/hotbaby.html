@@ -19,15 +19,15 @@
 		</div>
 		<div class="col-xs-12 item-display">
 			<div class="row">
-				<div class="col-xs-4" ui-sref=".detail">
-					<img ng-src="{{clothes[0].product_img}}" alt="">
+				<div class="col-xs-4" ng-repeat="itemClothes in jewelrys">
+					<img ng-src="{{itemClothes.product_img}}" alt="{{itemClothes.product_name}}" title="{{itemClothes.product_name}}" ui-sref="goods({id:itemClothes.product_id})">
 				</div>
-				<div class="col-xs-4">
+				<!-- <div class="col-xs-4">
 					<img ng-src="{{clothes[1].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
 					<img ng-src="{{clothes[2].product_img}}" alt="">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -41,15 +41,15 @@
 		</div>
 		<div class="col-xs-12 item-display">
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-4" ng-repeat="itemMakeup in jewelrys">
+					<img ng-src="{{itemMakeup.product_img}}" alt="{{itemMakeup.product_name}}" title="{{itemMakeup.product_name}}" ui-sref="goods({id:itemMakeup.product_id})">
+				</div>
+				<!-- <div class="col-xs-4">
 					<img ng-src="{{makeup[0].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
 					<img ng-src="{{makeup[0].product_img}}" alt="">
-				</div>
-				<div class="col-xs-4">
-					<img ng-src="{{makeup[0].product_img}}" alt="">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -63,15 +63,15 @@
 		</div>
 		<div class="col-xs-12 item-display">
 			<div class="row">
-				<div class="col-xs-4" >
-					<img ng-src="{{jewelrys[0].product_img}}" alt="">
+				<div class="col-xs-4" ng-repeat="itemJewelrys in jewelrys">
+					<img ng-src="{{itemJewelrys.product_img}}" alt="{{itemJewelrys.product_name}}" title="{{itemJewelrys.product_name}}" ui-sref="goods({id:itemJewelrys.product_id})">
 				</div>
-				<div class="col-xs-4">
+				<!-- <div class="col-xs-4">
 					<img ng-src="{{jewelrys[1].product_img}}" alt="">
 				</div>
 				<div class="col-xs-4">
 					<img ng-src="{{jewelrys[2].product_img}}" alt="">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

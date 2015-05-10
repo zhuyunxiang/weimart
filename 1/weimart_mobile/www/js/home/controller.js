@@ -208,10 +208,10 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
             console.log($scope.editShopInfo);
             Shop.saveShopInfo($scope.editShopInfo);
         }
-        $scope.$on('User.saveShopInfoSuccess', function (event) {
+        $scope.$on('Shop.saveShopInfoSuccess', function (event) {
             alert("信息保存成功!");
         })
-        $scope.$on('User.saveShopInfoError', function (event) {
+        $scope.$on('Shop.saveShopInfoError', function (event) {
             alert('保存店铺信息失败...');;
         })
 
@@ -549,7 +549,7 @@ controllers.controller('hotbabyCtrl', ['$scope', '$state', '$stateParams', 'Prod
             $scope.recommend_list = Product.recommend_list;
             console.log(Product.recommend_list);
             for(var i in Product.recommend_list){
-
+                console.log(Product.recommend_list[i].types.type_id);
                 if (1 == Product.recommend_list[i].types.type_id) {
                     $scope.clothes.push(Product.recommend_list[i]);
 
@@ -560,7 +560,6 @@ controllers.controller('hotbabyCtrl', ['$scope', '$state', '$stateParams', 'Prod
                     $scope.jewelrys.push(Product.recommend_list[i]);
 
                 } else {
-                    console.log(Product.recommend_list[i]);
                     $scope.others.push(Product.recommend_list[i]);
                 };
             }
@@ -581,6 +580,55 @@ controllers.controller('hotbabyCtrl', ['$scope', '$state', '$stateParams', 'Prod
 
     }
 ]);
+
+
+//热门卖家
+controllers.controller('hotshopCtrl', ['$scope', '$state', '$stateParams', 'Shop',
+    function($scope,$state, $stateParams, Shop) {
+    
+        Shop.getRecommendShopInfo();
+        $scope.$on('Shop.getRecommendShopInfoSuccess', function (event) {
+            $scope.recommendShopList = Shop.recommend_list;
+            console.log(Shop.recommend_list);
+            console.log($scope.recommend_list);
+        });
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
+    }
+]);
+
+//卖家详情
+controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop',
+    function($scope,$state, $stateParams, Shop) {
+
+        if ($stateParams && $stateParams.id) {
+            Shop.getShopById($stateParams.id);
+            console.log($stateParams.id);
+        } else {
+            $scope.theShop = {};
+        }
+    
+        $scope.$on('Shop.getShopByIdSuccess', function (event) {
+            $scope.theShop = Shop.shopInfoById;
+            console.log($scope.theShop);
+        });
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
+    }
+]);
+
+
+
+
+
+
+
 
 // //代理服务
 // controllers.controller('agenceCtrl', ['$scope', 'Shop'
