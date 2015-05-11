@@ -255,6 +255,7 @@ services.service('Shop', ['$http', '$rootScope',
                 .success(function(data) {
                     if (data.status == 1) {
                         Shop.data = data.data;
+                        console.log(Shop.data);
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
                     } else {
                         $rootScope.$broadcast('Shop.getShopInfoError');
@@ -263,7 +264,6 @@ services.service('Shop', ['$http', '$rootScope',
         }
 
         Shop.saveShopInfo = function(shopInfo) {
-            console.log(shopInfo);
             $http({
                 method: 'POST',
                 url: appPath + '/API/ShopAPI/save_shop_info',
@@ -294,7 +294,6 @@ services.service('Shop', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     if (data.status == 1) {
-                        console.log(data.data);
                         Shop.recommend_list = data.data;
                         $rootScope.$broadcast('Shop.getRecommendShopInfoSuccess');
                     }
@@ -314,6 +313,23 @@ services.service('Shop', ['$http', '$rootScope',
                     if (data.status == 1) {
                         Shop.shopInfoById = data.data;
                         $rootScope.$broadcast('Shop.getShopByIdSuccess');
+                    }
+                });
+        }
+
+        Shop.getAll = function () {
+            $http({
+                method: 'POST',
+                url: appPath + '/API/ShopAPI/get_all',
+                data: null,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.allList = data.data;
+                        $rootScope.$broadcast('Shop.getAllSuccess');
                     }
                 });
         }
@@ -436,7 +452,7 @@ services.service('Product', ['$http', '$rootScope',
         Product.getAll = function () {
             $http({
                 method: 'POST',
-                url: appPath + '/API/ProductAPI/get_all',
+                url: appPath + '/API/ProductAPI/get_all_online_product',
                 data: null,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
