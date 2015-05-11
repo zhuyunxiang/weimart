@@ -150,7 +150,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         if (Auth.isLoggedIn()) {
             var user = Auth.getUser();
             if ((!user.shops) || user.shops.length == 0) {
-                $state.go('shop');
+                $state.go('personal');
             }
         } else {
             $state.go('login');
@@ -238,7 +238,7 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
         $scope.tempProduct = {};
 
         // 获取店铺信息
-        $scope.$on('Shop.getShopInfoSuccess', function(event) {
+        $scope.$on('Shop.getShopInfoSuccess', function (event) {
             if (!Shop.data) {
                 Shop.data = null;
             } else {
@@ -351,7 +351,6 @@ controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth','Shop',
         $scope.doLogin = function() {
             User.doLogin($scope.loginInfo);
             $scope.$on('User.loginSuccess', function(event) {
-                console.log(Auth.getUser());
                 goBack();
             })
         }
@@ -623,18 +622,58 @@ controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop'
 ]);
 
 
+//代理服务
+controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
+    function($scope, $state, Shop, Auth) {
+        var myShop = null;
+        var superId = null;
+
+        Shop.getAll();
+        $scope.$on('Shop.getAllSuccess', function () {
+            $scope.allShop = Shop.allList;
+        })
+
+        $scope.$on('Shop.getShopInfoSuccess', function (event) {
+            console.log(Shop.data);
+            if (!Shop.data) {
+                alert("请先注册您的店铺...");
+                $state.go('personal');              
+            } else {
+                myShop = Shop.data;
+                myShop.super_shop_id = superId;
+                myShop.delegate_state = 0;
+                Shop.saveShopInfo(myShop);
+            }
+            
+        });
+
+        $scope.joinUs = function (id) {
+            if (!Auth.isLoggedIn()) {
+                alert("请先登录...");
+                $state.go('login');
+            } else {
+                superId = id;
+                Shop.getShopInfo();
+            };
+
+
+        }
+
+
+        $scope.$on('Shop.saveShopInfoSuccess', function (event) {
+            alert("申请代理成功!");
+        })
+        $scope.$on('Shop.saveShopInfoError', function (event) {
+            alert('申请代理失败...');;
+        })
 
 
 
-
-
-
-// //代理服务
-// controllers.controller('agenceCtrl', ['$scope', 'Shop'
-//     function($scope, Shop) {
-
-//     }
-// ]);
+        $scope.goBack = function() {
+            goBack();
+        }
+    }
+]);
 
 
 
@@ -673,7 +712,6 @@ controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop'
 
 
 function goBack() {
-    console.log(1);
     if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
         if (history.length > 0) {
             window.history.go(-1);

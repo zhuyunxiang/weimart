@@ -104,5 +104,6 @@ class ProductService extends BaseService
 		$result = $this->productDao->save($data);
 		return array('data'=>$result, 'info'=>'商品删除成功！', 'status'=>1);
 	}
+
 }
  ?>
