@@ -603,7 +603,7 @@ html{
 		
 		// 底部Container #11
 		.nav-bottom-container{
-			min-height: 300px;
+			min-height: 100px;
 			img{
 				width: 100%;
 			}
@@ -758,7 +758,7 @@ div.hot-baby-main {
 
 // #zhuyunxiang 以下是 热卖品牌
 .pop-brand-main-container{
-	background-color: rgba(102, 153, 255, 0.298039215686275);
+	// background-color: rgba(102, 153, 255, 0.298039215686275);
 	.pop-brand-nav-outer{
 		min-height: 365px;
 		padding-top: 25px;
@@ -1502,11 +1502,32 @@ div.agence-setting {
 	border: solid 1px #E8E8E8;
 }
 
+.product_detail{
+	margin: 30px auto;
+	min-width: 1349px;
+	overflow: hidden;
+	padding: 0 100px;
+	.title-container{
+		.solid-border;
+		padding: 20px;
+		span{
+			font-weight: 700;
+			font-size: 20px;
+			margin-bottom: 20px;
+			display: block;
+		}
+	}
+}
+
 .product-detail-container{
 	margin: 30px auto;
 	min-width: 1349px;
 	overflow: hidden;
 	padding: 0 100px;
+	.product_detail{
+		width: 100%;
+	}
+
 	.product-info{
 		float: left;
 		width: 880px;
@@ -1514,7 +1535,6 @@ div.agence-setting {
 		border: solid 1px #E8E8E8;
 		overflow: hidden;
 		.img-container{
-			.solid-border;
 			float: left;
 			width: 440px;
 			min-height: 400px;
@@ -1525,7 +1545,6 @@ div.agence-setting {
 			}
 		}
 		.title-container{
-			.solid-border;
 			float: left;
 			width: 420px;
 			min-height: 440px;

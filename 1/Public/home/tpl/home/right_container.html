@@ -16,7 +16,7 @@
 					<p class="goods-sell"><strong>{{goodsItems.sell}}</strong></p>
 				</div>
 	</div> -->
-	<div class="goods" ng-repeat="goodsItems in recommendProductList">
+	<div class="goods" ng-repeat="goodsItems in recommendProductList" ui-sref="product_detail({id:goodsItems.product_id})">
 		<div class="goods-img">
 			<img ng-src="{{goodsItems.product_img}}">
 		</div>
@@ -24,7 +24,7 @@
 			<div class="goods-title">
 				<strong>{{goodsItems.product_name}}</strong>
 			</div>
-			<div class="goods-orig" ng-bind-html="goodsItems.product_desc|trustHtml"></div>
+			<div class="goods-orig" ng-bind-html="goodsItems.product_brif|trustHtml"></div>
 			<p class="goods-sell"><strong>{{goodsItems.product_num}}</strong></p>
 		</div>
 	</div>
