@@ -165,32 +165,57 @@ HomeCtrls.controller('hotBabyCtrl', ['$scope','HotBaby',
 // 热卖宝贝的Controller End
 
 // 热卖品牌的Controller Start
-HomeCtrls.controller('popularBrandCtrl', ['$scope','PopularBrand',
-    function($scope,PopularBrand) {
+HomeCtrls.controller('popularBrandCtrl', ['$scope', 'PopularBrand',
+    function($scope, PopularBrand) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
         $scope.tplURLs = {
-            popularBrandNav : publicUrl + 'tpl/home/popular_brand_nav.html',
-            popularBrandMain : publicUrl + 'tpl/home/popular_brand_main.html',
+            popularBrandNav: publicUrl + 'tpl/home/popular_brand_nav.html',
+            popularBrandMain: publicUrl + 'tpl/home/popular_brand_main.html',
         };
 
         PopularBrand.getBrandList();
 
-        $scope.$on('PopularBrand.brandListUpdate', function (event) {
+        $scope.$on('PopularBrand.brandListUpdate', function(event) {
             $scope.brandList = PopularBrand.brandList;
         });
 
-        $scope.item_list = [
-            {"url": "25.jpg"},
-            {"url": "26.jpg"},
-            {"url": "27.jpg"},
-            {"url": "28.jpg"},
-            {"url": "29.jpg"},
-            {"url": "30.jpg"},
-        ];
+        $scope.item_list = [{
+            "title": "迪芙斯D:FUSE女鞋",
+            "url": "25.jpg",
+            "content": "迪芙斯D:FUSE，来自欧洲的潮流女鞋。它将北欧设计中的简洁、利落、以及略带男性化的酷感十足融入到品牌设计中，为中国及亚洲女性的踝下注入一缕清新独特的北欧风潮。迪芙斯D:FUSE凭借它的欧洲设计团队和斯堪的纳维亚的文化背景，容东方文化的儒雅与西方文化的奔放于一身，为渴望与众不同，向往摩登生活的城市女性提供一场以生活为观众的时尚T台秀。"
+        }, {
+            "title": "卡雷尔CEREL VOGUE女装",
+            "url": "26.jpg",
+            "content": "CEREL VOGUE是一个关于经典而时尚的传奇。它优雅、自信、淡定从容，打造的是一种优雅自信的生活方式。 卡雷尔品牌强调女性的现代感、有品味的成熟感。服装面料、皮料均采用欧洲最时尚面料，质地精良、板型简洁、身形舒适，设计从整体上提现女性自然、浪漫的气质风范。品质生活，优雅从这一刻绽放！"
+        }, {
+            "title": "seasonwind季候风",
+            "url": "27.jpg",
+            "content": "季候风（seasonwind）以“办公室的时尚”为品牌核心，包括两个方面：一是主要适用于办公室的时尚通勤装，二是演绎白领丽人的时尚生活观念：忙碌而快乐，充实而享受，在日常工作生活中演绎属于自己的时尚。 季候风（seasonwind）目标消费群年龄定位在25-35岁之间，主要以公司职员、公务员等中等或中等以上收入阶层为主。"
+        }, {
+            "title": "妖精的口袋",
+            "url": "28.jpg",
+            "content": "无论什么样的女孩子，心里都藏着一块地方，这块地方不会因为年岁或经历被磨平和改变，因为那里住着一个妖精，天真、热情、多变、敏感、却又情绪化、孩子气、古灵精怪、叫人捉摸不透，那是原本真实的你的影子，美好的你，永远不会消失。"
+        }, {
+            "title": "迪芙斯D:FUSE女鞋",
+            "url": "29.jpg",
+            "content": "迪芙斯D:FUSE，来自欧洲的潮流女鞋。它将北欧设计中的简洁、利落、以及略带男性化的酷感十足融入到品牌设计中，为中国及亚洲女性的踝下注入一缕清新独特的北欧风潮。迪芙斯D:FUSE凭借它的欧洲设计团队和斯堪的纳维亚的文化背景，容东方文化的儒雅与西方文化的奔放于一身，为渴望与众不同，向往摩登生活的城市女性提供一场以生活为观众的时尚T台秀。"
+        }, {
+            "title": "卡雷尔CEREL VOGUE女装",
+            "url": "30.jpg",
+            "content": "CEREL VOGUE是一个关于经典而时尚的传奇。它优雅、自信、淡定从容，打造的是一种优雅自信的生活方式。 卡雷尔品牌强调女性的现代感、有品味的成熟感。服装面料、皮料均采用欧洲最时尚面料，质地精良、板型简洁、身形舒适，设计从整体上提现女性自然、浪漫的气质风范。品质生活，优雅从这一刻绽放！"
+        }, {
+            "title": "seasonwind季候风",
+            "url": "27.jpg",
+            "content": "季候风（seasonwind）以“办公室的时尚”为品牌核心，包括两个方面：一是主要适用于办公室的时尚通勤装，二是演绎白领丽人的时尚生活观念：忙碌而快乐，充实而享受，在日常工作生活中演绎属于自己的时尚。 季候风（seasonwind）目标消费群年龄定位在25-35岁之间，主要以公司职员、公务员等中等或中等以上收入阶层为主。"
+        }, {
+            "title": "妖精的口袋",
+            "url": "28.jpg",
+            "content": "无论什么样的女孩子，心里都藏着一块地方，这块地方不会因为年岁或经历被磨平和改变，因为那里住着一个妖精，天真、热情、多变、敏感、却又情绪化、孩子气、古灵精怪、叫人捉摸不透，那是原本真实的你的影子，美好的你，永远不会消失。"
+        }];
     }
 ]);
 // 热卖品牌的Controller End
