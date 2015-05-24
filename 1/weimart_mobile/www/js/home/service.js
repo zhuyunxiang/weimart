@@ -2,7 +2,12 @@ var services = angular.module('services', ['ngCookies']);
 
 services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
     function($cookieStore, ACCESS_LEVELS) {
-        var _user = $cookieStore.get('user');
+        var _user = null;
+        if (localStorage.getItem("user_info")) {
+            _user = JSON.parse(localStorage.getItem("user_info"));
+        } else {
+            // _user = $cookieStore.get('user');
+        }
 
         var setUser = function(user) {
             // if (!user.role || user.role < 0) {
@@ -11,7 +16,8 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
             // };
 
             _user = user;
-            $cookieStore.put('user', _user);
+            // $cookieStore.put('user', _user);
+            localStorage.setItem("user_info",JSON.stringify(_user));
         }
 
         return {
@@ -33,13 +39,10 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
                 return _user ? _user.token : '';
             },
             logOut: function() {
-                $cookieStore.remove('user');
+                // $cookieStore.remove('user');
+                localStorage.removeItem("user_info");//清除c的值
                 _user = null;
             },
-
-            // hasShop: function () {
-            //     //判断是否有店铺
-            // }
         };
     }
 ]);
@@ -194,35 +197,16 @@ services.service('User', ['$http', '$rootScope', 'Auth',
 ]);
 
 // 店铺信息
-services.service('Shop', ['$http', '$rootScope',
-    function($http, $rootScope) {
+services.service('Shop', ['$http', '$rootScope','Auth',
+    function($http, $rootScope,Auth) {
         var Shop = {};
         Shop.allList = null;
-        Shop.myShop = null;
         Shop.hasShop = null;
 
         Shop.clearUp = function () {
             Shop.allList = null;
-            Shop.myShop = null;
             Shop.hasShop = null;
             $rootScope.$broadcast('Shop.clearSuccess');
-        }
-
-        Shop.getMyShop = function() {
-            $http({
-                method: 'POST',
-                url: serverPath + '/API/ShopAPI/get_shop_info',
-                data: 'null',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-                .success(function(data) {
-                    if (data.status == 1) {
-                        Shop.myShop = data.data;
-                        $rootScope.$broadcast('Shop.getMyShopSuccess');
-                    }
-                });
         }
 
         Shop.getShopWithUser = function () {
@@ -244,23 +228,26 @@ services.service('Shop', ['$http', '$rootScope',
         }
 
         Shop.getShopInfo = function() {
-            $http({
-                method: 'POST',
-                url: appPath + '/API/ShopAPI/get_shop_info',
-                data: null,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-                .success(function(data) {
-                    if (data.status == 1) {
-                        Shop.data = data.data;
-                        console.log(Shop.data);
-                        $rootScope.$broadcast('Shop.getShopInfoSuccess');
-                    } else {
-                        $rootScope.$broadcast('Shop.getShopInfoError');
+            var user = Auth.getUser();
+            if (user != null) {
+                id = user.shops[0].shop_id;
+                $http({
+                    method: 'POST',
+                    url: appPath + '/API/ShopAPI/get_shop_by_id',
+                    data: 'id=' + id,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                });
+                })
+                    .success(function(data) {
+                        if (data.status == 1) {
+                            Shop.data = data.data;
+                            $rootScope.$broadcast('Shop.getShopInfoSuccess');
+                        } else {
+                            $rootScope.$broadcast('Shop.getShopInfoError');
+                        }
+                    });
+            };
         }
 
         Shop.saveShopInfo = function(shopInfo) {
@@ -411,6 +398,7 @@ services.service('Product', ['$http', '$rootScope',
 
         // 保存商品信息
         Product.saveInfo = function(info) {
+            console.log(info);
             $http({
                 method: 'POST',
                 url: appPath + '/API/ProductAPI/save_product_info',
@@ -420,6 +408,7 @@ services.service('Product', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         $rootScope.$broadcast('Product.saveProductInfoSuccess');
                         Product.getList(info['shop_id']);

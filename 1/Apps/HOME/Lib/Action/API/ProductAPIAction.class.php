@@ -64,15 +64,13 @@ class ProductAPIAction extends Action
 	// 保存商品信息
 	public function save_product_info()
 	{
-		if (isset($_SESSION['user'])) {
-			// 获取商店信息
-			$result = A('Product', 'Service')->saveProductInfo($_POST);
-			if ($result) {
-				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '保存商品信息成功 [Save Product Success ID:'.$result['data'].']');
-				$this->ajaxReturn($result['data'], $result['info'], $result['status']);
-			}
-			$this->ajaxReturn(false, '内部错误!', 0);
+		// 获取商店信息
+		$result = A('Product', 'Service')->saveProductInfo($_POST);
+		if ($result) {
+			A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '保存商品信息成功 [Save Product Success ID:'.$result['data'].']');
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 		}
+		$this->ajaxReturn(false, '内部错误!', 0);
 	}
 
 	// 根据店铺id获取店铺商品
