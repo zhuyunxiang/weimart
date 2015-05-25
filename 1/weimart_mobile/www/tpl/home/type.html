@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="row nav">
-		<div class="{{classOftype}}" ng-repeat="item in typeList">
+		<div class="{{classOftype}} nav-type" ng-repeat="item in typeList">
 			<span>{{item.type_name}}</span>
 		</div>
 	</div>
@@ -22,7 +22,9 @@
 				<span class="second">值得拥有</span>
 			</div>
 			<div class="item" ui-sref="goods({id:prod_left.product_id})" ng-repeat="prod_left in firstHalf">
-				<img ng-src="{{prod_left.product_img}}" alt="{{prod_left.product_name}}" title="{{prod_left.product_name}}" class="pic">
+				<div class="pic-container">
+					<img ng-src="{{prod_left.product_img}}" alt="{{prod_left.product_name}}" title="{{prod_left.product_name}}" class="pic">
+				</div>
 				<div class="desc">{{prod_left.product_brif}}</div>
 				<span class="price">{{prod_left.product_price|currency:'￥'}}</span>
 			</div>
@@ -30,7 +32,9 @@
 
 		<div class="col-xs-6">
 			<div class="item" ui-sref="goods({id:prod_right.product_id})" ng-repeat="prod_right in secondHalf">
-				<img ng-src="{{prod_right.product_img}}" alt="{{prod_right.product_name}}" title="{{prod_right.product_name}}" class="pic">
+				<div class="pic-container">
+					<img ng-src="{{prod_right.product_img}}" alt="{{prod_right.product_name}}" title="{{prod_right.product_name}}" class="pic">
+				</div>
 				<div class="desc">{{prod_right.product_brif}}</div>
 				<span class="price">{{prod_right.product_price|currency:'￥'}}</span>
 			</div>

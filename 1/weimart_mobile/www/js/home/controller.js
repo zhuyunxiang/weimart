@@ -502,9 +502,15 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
         $scope.classOftype = 'col-xs-3';
         $scope.firstHalf = [];
         $scope.secondHalf = [];
+        $scope.typeList = [];
         $scope.$on('Ptype.getListByIdSuccess', function() {
             $scope.listOfType = Ptype.list;
-            $scope.typeList = Ptype.list.extend_types;
+            var typeLen = Ptype.list.extend_types.length;
+            for (var i = 0; i < typeLen; i++) {
+                if (i > 3) 
+                    break;
+                $scope.typeList.push(Ptype.list.extend_types[i]);
+            };
             var prod_len = Ptype.list.product.length;
             var prod_half = parseInt(prod_len / 2);
 
