@@ -56,9 +56,9 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
             console.log(Product.all_list);
-            $scope.productBeaty = Product.all_list[1];
-            $scope.productNew = Product.all_list[2];
-            $scope.packageShow = Product.all_list[5];
+            $scope.productBeaty = Product.all_list[0];
+            $scope.productNew = Product.all_list[1];
+            $scope.packageShow = Product.all_list[2];
             $scope.shoesF = Product.all_list[3];
             $scope.shoesM = Product.all_list[4];
         });
