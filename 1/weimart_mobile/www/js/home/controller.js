@@ -55,7 +55,6 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         // $scope.productFore = {};
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
-            console.log(Product.all_list);
             $scope.productBeaty = Product.all_list[0];
             $scope.productNew = Product.all_list[1];
             $scope.packageShow = Product.all_list[2];
