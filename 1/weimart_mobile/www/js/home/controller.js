@@ -151,7 +151,7 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
         if (Auth.isLoggedIn()) {
             var user = Auth.getUser();
             if ((!user.shops) || user.shops.length == 0) {
-                $state.go('personal');
+                $state.go('personal.shop');
             }
         } else {
             $state.go('login');
@@ -172,7 +172,6 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
                 $scope.myShop = Shop.data;
                 Product.getList($scope.myShop.shop_id);
             }
-            
         });
 
         //头像
@@ -330,7 +329,6 @@ controllers.controller('confCtrl', ['$scope', '$state', 'Auth', 'Shop',
             $state.go('login');
         } else {
             $scope.userInfo = Auth.getUser();
-
             $scope.logOut = function() {
                 if (confirm("确定要退出吗?")) {
                     Auth.logOut();
@@ -361,10 +359,6 @@ controllers.controller('loginCtrl', ['$scope', '$state', 'User', 'Auth','Shop',
 // 注册页面
 controllers.controller('registerCtrl', ['$scope', '$state', '$upload', 'Auth',
     function($scope, $state, $upload, Auth) {
-        $scope.doRegister = function() {
-            console.log($scope.registerInfo);
-        }
-
         $scope.userDetailInfo = Auth.getUser();
 
         $scope.$watch('files', function() {

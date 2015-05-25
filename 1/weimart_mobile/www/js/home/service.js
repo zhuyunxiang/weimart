@@ -229,7 +229,7 @@ services.service('Shop', ['$http', '$rootScope','Auth',
 
         Shop.getShopInfo = function() {
             var user = Auth.getUser();
-            if (user != null) {
+            if (user && user.shops[0]) {
                 id = user.shops[0].shop_id;
                 $http({
                     method: 'POST',
@@ -247,7 +247,7 @@ services.service('Shop', ['$http', '$rootScope','Auth',
                             $rootScope.$broadcast('Shop.getShopInfoError');
                         }
                     });
-            };
+            }
         }
 
         Shop.saveShopInfo = function(shopInfo) {
@@ -408,7 +408,6 @@ services.service('Product', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         $rootScope.$broadcast('Product.saveProductInfoSuccess');
                         Product.getList(info['shop_id']);
