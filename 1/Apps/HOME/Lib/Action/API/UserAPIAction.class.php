@@ -80,6 +80,7 @@ class UserAPIAction extends Action
 	// Ajax
 	public function save_detail()
 	{
+		unset($_POST['user_pwd']);
 		$result = A('User', 'Service')->doSaveDetail($_POST);
 		if ($result) {
 			$_SESSION['user'] = $_POST;
