@@ -631,7 +631,11 @@ controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
         Shop.getAll();
         $scope.$on('Shop.getAllSuccess', function () {
             $scope.allShop = Shop.allList;
-        })
+
+            for (var i = Shop.allList.length - 1; i >= 0; i--) {
+                $scope.allShop[i].shop_img_local = 
+            };
+        });
 
         $scope.$on('Shop.getShopInfoSuccess', function (event) {
             console.log(Shop.data);

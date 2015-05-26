@@ -12,13 +12,14 @@ div.main-class{padding-top:10px;}div.main-class span{display:inline-block;width:
 div.ads{margin:10px;}div.ads img{border:solid 1px #FEBFC0;height:65px;}
 div.title{border:solid 1px #cccccc;height:30px;border-top:solid 1px #cccccc;border-bottom:solid 1px #cccccc;line-height:30px;font-size:13px;border-left:solid 10px #FF8182;padding:0;}div.title .more{background-color:red;}
 div.clothes div.large{position:relative;border-right:solid 1px #cccccc;}div.clothes div.large span{position:absolute;top:5px;right:10px;color:#ff8485;font-size:14px;}
-div.clothes div.large img{margin-top:18px;height:168px;}
-div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:18px;height:168px;}
+div.clothes div.large img{margin-top:18px;height:138px;}
+div.clothes div.two-middle{position:relative;}div.clothes div.two-middle img{margin-top:18px;height:138px;}
 div.clothes div.two-middle span{position:absolute;top:5px;left:10px;color:#ff8485;font-size:14px;}
-div.shoes{text-align:center;}div.shoes div.large{border-right:solid 1px #cccccc;margin-bottom:5px;}
+div.shoes{text-align:center;}div.shoes div.large{border-right:solid 1px #cccccc;margin-bottom:5px;}div.shoes div.large img{height:138px;}
 div.shoes span{color:#ff8485;font-size:8px;}
 div.shoes div.shoe-item{margin-top:20px;}
 div.shoes div.text{padding:0px;display:block;color:#ff8485;font-size:10px;}div.shoes div.text span{display:block;margin-top:10%;width:100%;font-size:9px;}
+div.shoes div.row-left{padding-left:5px;padding-right:5px;}
 div.bottom{margin-bottom:100px;}div.bottom div.first{border-right:solid 1px #cccccc;}
 div.bottom img{margin-top:10px;height:45px;}div.bottom img.first-img{height:100px;}
 div.bottom span{color:#ff8485;font-size:12px;}
