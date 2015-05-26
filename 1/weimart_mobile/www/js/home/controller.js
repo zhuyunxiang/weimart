@@ -164,13 +164,18 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
         // 获取店铺信息
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
-            if (!Shop.data) {
-                Shop.data = null;
-            } else {
-                $scope.editShopInfo = Shop.data;
-                $scope.myShop = Shop.data;
-                Product.getList($scope.myShop.shop_id);
-            }
+            $scope.editShopInfo = Shop.data;
+            $scope.myShop = Shop.data;
+            Product.getList($scope.myShop.shop_id);
+        });
+
+        // 获取店铺信息失败
+        $scope.$on('Shop.getShopInfoError', function(event) {
+            var user = Auth.getUser();
+            var shopInfo = {'user_id':user.user_id};
+            $scope.editShopInfo = shopInfo;
+            $scope.myShop = shopInfo;
+            $state.go('personal.shop');
         });
 
         //头像
@@ -203,14 +208,11 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
         //保存店铺信息
         $scope.saveShopInfo = function() {
-            console.log($scope.editShopInfo);
             Shop.saveShopInfo($scope.editShopInfo);
+            console.log($scope.editShopInfo);
         }
         $scope.$on('Shop.saveShopInfoSuccess', function (event) {
-            alert("信息保存成功!");
-        })
-        $scope.$on('Shop.saveShopInfoError', function (event) {
-            alert('保存店铺信息失败...');;
+            $state.go('personal');
         })
 
         // $scope.editProductInfo = {};
@@ -633,7 +635,7 @@ controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
             $scope.allShop = Shop.allList;
 
             for (var i = Shop.allList.length - 1; i >= 0; i--) {
-                $scope.allShop[i].shop_img_local = 
+                // $scope.allShop[i].shop_img_local = 
             };
         });
 
