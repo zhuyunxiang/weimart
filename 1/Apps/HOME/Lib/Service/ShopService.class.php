@@ -24,13 +24,24 @@ class ShopService extends BaseService
 		}
 
 		$result = $this->saveInfo('shopDao', $data, 'shop_id');
+		$shop_id = $result;
 		if (!isset($data['shop_id'])) {
-			$data = array('user_id'=>$_SESSION['user']['user_id'], 'shop_id'=>$result);
-			$result = $this->userShopDao->add($data);
+
+			if ($_SESSION['user']['user_id']) {
+				$user_id = $_SESSION['user']['user_id'];
+			} else if($data['user_id']){
+				$user_id = $data['user_id'];
+			}
+			if ($user_id) {
+				$data = array('user_id'=>$user_id, 'shop_id'=>$result);
+				$result = $this->userShopDao->add($data);
+			} else {
+				$result = false;
+			}
 		}
 
 		if ($result) {
-			return array('data'=>$result, 'info'=>'数据保存成功！', 'status'=>1);
+			return array('data'=>$shop_id, 'info'=>'数据保存成功！', 'status'=>1);
 		}
 
 		return array('data'=>false, 'info'=>'数据保存失败！', 'status'=>0);

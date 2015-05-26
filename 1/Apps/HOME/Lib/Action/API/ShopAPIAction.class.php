@@ -13,14 +13,12 @@ class ShopAPIAction extends Action
 	// 所传的数据格式如Shop表,有shop_id字段就修改,否则就插入
 	public function save_shop_info()
 	{
-		if (isset($_SESSION['user'])) {
-			$result = A('Shop', 'Service')->saveShopInfo($_POST);
-			if ($result) {
-				A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], $result['info'].' [save Shop Info ID:'.$result['data'].' Data:'.implode('', $_POST).']');
-				$this->ajaxReturn($result['data'], $result['info'], $result['status']);
-			}
-			$this->ajaxReturn(false, '内部错误!', 0);
+		$result = A('Shop', 'Service')->saveShopInfo($_POST);
+		if ($result) {
+			A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], $result['info'].' [save Shop Info ID:'.$result['data'].' Data:'.implode('', $_POST).']');
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 		}
+		$this->ajaxReturn(false, '内部错误!', 0);
 	}
 
 	// 获取店铺信息
