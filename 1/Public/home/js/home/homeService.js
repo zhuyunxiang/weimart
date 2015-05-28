@@ -284,8 +284,41 @@ HomeServices.service('Product', ['$http', '$rootScope',
         Product.currentTypeInfo = null;
         Product.currentCurrentProduct = null;
         Product.recommend_list = null;
+        Product.fatherList = null;
+
+        Product.getProductListById = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/get_child_product_by_id',
+                data: "id="+id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    Product.list = data.data;
+                    $rootScope.$broadcast('Product.getProductListByIdSuccess');
+                });
+        }
+
+        Product.getFatherListById = function (id) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/PtypeAPI/get_father_by_id',
+                data: "id="+id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    Product.fatherList = data.data;
+                    $rootScope.$broadcast('Product.getFatherListByIdSuccess');
+                });
+        }
 
         Product.getTypeById = function (id) {
+            Product.getProductListById(id);
+            Product.getFatherListById(id);
             $http({
                 method: 'POST',
                 url: appPath + 'API/PtypeAPI/get_type_by_id',
@@ -436,9 +469,12 @@ HomeServices.service('Product', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
+                    // 保存是否成功
                     if (data.status == 1) {
                         alert("信息保存成功!");
+                        // 广播事件
                         $rootScope.$broadcast('Product.saveProductInfoSuccess');
+                        // 重新获取列表
                         Product.getList(info['shop_id']);
                     } else {
                         $rootScope.$broadcast('Product.saveProductInfoError');

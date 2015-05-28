@@ -12,7 +12,11 @@
 	<!-- 商品列表 # -->
 	<div class="prod-list">
 		<div class="page-flow">
-			<a href="#">首页</a> ><a href="#">{{currentTypeInfo.type_name}}</a>  > 
+			<a href="#">首页</a>
+			 <!-- ><a href="#">{{currentTypeInfo.type_name}}</a> -->
+			 <span ng-repeat="currentTypeInfo in fatherList">
+			 	>&nbsp;<a href="#" ui-sref="product_list({id:currentTypeInfo.type_id})">{{currentTypeInfo.type_name}}</a>&nbsp;
+			 </span>
 		</div>
 
 		<div class="title">
@@ -85,7 +89,7 @@
 
 
 		<div class="baby-list-block">
-			<div class="baby-list" ng-repeat="item in currentTypeInfo.product" ui-sref="product_detail({id:item.product_id})">
+			<div class="baby-list" ng-repeat="item in list" ui-sref="product_detail({id:item.product_id})">
 				<img ng-src="{{item.product_img}}" alt="{{item.product_name}}">
 				<div class="price">￥ {{item.product_price}}</div>
 				<div class="desc">{{item.product_name}}</div>

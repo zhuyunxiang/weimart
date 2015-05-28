@@ -81,7 +81,6 @@ HomeCtrls.controller('homeCtrl', ['$scope', 'Product','Shop',
                 };
             }
             $scope.recommendShopList = recommend_list;
-            console.log(recommend_list);
         });
         
         $scope.goods = [
@@ -331,7 +330,6 @@ HomeCtrls.controller('headCtrl', ['User', '$scope',
         $scope.$on('User.isLogin', function (event) {
             $scope.user_name = User.user_name;
             $scope.user_id = User.user_id;
-            console.log(User.detail_info);
         });
 
         $scope.$on('User.registerSuccess', function (event) {
@@ -402,6 +400,16 @@ HomeCtrls.controller('productListCtrl', ['$scope','$stateParams','Product',
         $scope.$on('Product.getTypeByIdSuccess', function (event) {
             $scope.currentTypeInfo = Product.currentTypeInfo;
         });
+
+        $scope.$on('Product.getProductListByIdSuccess', function (event) {
+            $scope.list = Product.list;
+        });
+
+        $scope.$on('Product.getFatherListByIdSuccess', function (event) {
+            $scope.fatherList = Product.fatherList;
+        });
+
+
 
         $scope.imageURLs = {
             'publicUrl': publicUrl,

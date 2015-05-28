@@ -84,6 +84,51 @@ class PtypeAPIAction extends Action
 		}
 	}
 
+	// 星级：5
+	// 根据ID获取所有孩子分类的商品
+	public function get_child_product_by_id()
+	{
+		$result = A('Ptype', 'Service')->getInfo('pTypeDao');
+		$typeArr = array();
+		$data = array();
+		$id = 0;
+		// 判断是否传入ID
+		if ($_POST['id']) {
+			$id = $_POST['id'];
+		}
+		// 判断内容是否为空
+		if (count($result) > 1) {
+			$result = A('Ptype', 'Service')->getChildrenTree($result, $id);
+			foreach ($result as $key => $value) {
+				$typeArr[] = $value['type_id'];
+				$typeInfo = A('Ptype', 'Service')->getTypeById($value['type_id']);
+				if ($typeInfo['product']) {
+					// 合并数组
+					$data = array_merge_recursive($data, $typeInfo['product']);
+				}
+			}
+		}
+		$this->ajaxReturn($data, '数据获取成功！', 1);
+	}
+
+	// 根据id获取父
+	public function get_father_by_id()
+	{
+		$result = A('Ptype', 'Service')->getInfo('pTypeDao');
+		// 判断是否传入ID
+		if ($_POST['id']) {
+			$id = $_POST['id'];
+		}
+
+		if (count($result) > 1) {
+			$result = A('Ptype', 'Service')->getRoot($result, $id);
+			$result = A('Ptype', 'Service')->treeGetArrForTitle($result);
+			$this->ajaxReturn($result, '数据获取成功！', 1);
+		} else {
+			$this->ajaxReturn(false, '数据获取失败！', 1);
+		}
+	}
+
 	// 测试用
 	public function test($value='')
 	{
@@ -91,6 +136,16 @@ class PtypeAPIAction extends Action
 
 		if (count($result) > 1) {
 			$result = A('Ptype', 'Service')->getRoot($result,15);
+			$this->ajaxReturn($result);
+		}
+	}
+
+	public function tt($value='')
+	{
+		$result = A('Ptype', 'Service')->getInfo('pTypeDao');
+
+		if (count($result) > 1) {
+			$result = A('Ptype', 'Service')->getChildrenTree($result,1);
 			$this->ajaxReturn($result);
 		}
 	}
