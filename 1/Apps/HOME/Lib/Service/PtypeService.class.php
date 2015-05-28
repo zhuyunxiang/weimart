@@ -14,6 +14,7 @@ class PtypeService extends BaseService
 		$this->pTypeRelationDao = D('Ptype');
 	}
 
+	// 
 	public function getRoot($data, $pid, $key = 'type_id', $pKey = 'super_type_id', $childKey = 'parent', $maxDepth = 0)
 	{
 		static $depth = 0;  
@@ -63,12 +64,12 @@ class PtypeService extends BaseService
 	}
 
 	// 由树转成数组(由大到小)
-	public function treeGetArr($data, $arr = array(), $depth = 0)
+	public function treeGetArr($data, $key = 'nodes', $arr = array(), $depth = 0)
 	{
 		$depth++;
 		foreach ($data as $rk => $rv) {
-			if (count($rv['nodes']) > 0) {
-				$arr = $this->treeGetArr($rv['nodes'], $arr, $depth);
+			if (count($rv[$key]) > 0) {
+				$arr = $this->treeGetArr($rv[$key], $key, $arr, $depth);
 			}
 
 			// 生成多级下拉列表
@@ -81,11 +82,57 @@ class PtypeService extends BaseService
 				}
 			}
 			$rv['depth'] = $depth;
-			unset($rv['nodes']);
+			unset($rv[$key]);
 			array_unshift($arr, $rv);
 		}
 		return $arr;
 	}
+
+	// 由树转成数组(由大到小)
+	public function treeGetArrForTitle($data, $key = 'parent', $arr = array(), $depth = 0)
+	{
+		$depth++;
+		foreach ($data as $rk => $rv) {
+			if (count($rv[$key]) > 0) {
+				$arr = $this->treeGetArrForTitle($rv[$key], $key, $arr, $depth);
+			}
+
+			// 生成多级下拉列表
+			for ($i=1; $i <= $depth; $i++) { 
+				if ($i > 1) {
+					$rv['type_name'] = $rv['type_name'];
+				}
+			}
+			$rv['depth'] = $depth;
+			unset($rv[$key]);
+			array_push($arr, $rv);
+		}
+		return $arr;
+	}
+
+	// 获取所有孩子树
+	public function getChildrenTree($arrCat, $super_type_id = 0, $level = 0)
+	{
+		static $arrTree = array();//使用static代替global
+		if(empty($arrCat))
+			return FALSE;
+		$level++;
+		foreach($arrCat as $key => $value) {
+			// 加上自己
+			if ($value['type_id'] == $super_type_id) {
+				$arrTree[] = $value;
+			}
+			// 获取孩子
+			if($value['super_type_id'] == $super_type_id) {
+				$value['level'] = $level;
+				$arrTree[] = $value;
+				unset($arrCat[$key]);//注销当前节点数据，减少已无用的遍历
+				$this->getChildrenTree($arrCat, $value['type_id'], $level);
+			}
+		}
+		return$arrTree;
+	}
+
 
 	// 获取所有有分级的分类数组
 	public function getAllTypesInArr($condition = null)
