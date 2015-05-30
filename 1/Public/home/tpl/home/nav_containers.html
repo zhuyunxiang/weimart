@@ -9,7 +9,7 @@
 		<div class="type-mini-container start-prepare">
 			<div class="type-text start-prepare">
 				<div class="mini-item start-prepare" ng-repeat="rowItem in typeMainItem.nodes">
-					<span class="type-name">{{rowItem.type_name}}</span>
+					<span class="type-name" ui-sref="product_list({id:rowItem.type_id})">{{rowItem.type_name}}</span>
 					<span ng-class="item.type_class" ng-repeat="item in rowItem.nodes">
 						<span ui-sref="product_list({id:item.type_id})">{{item.type_name}}</span>
 					</span>
@@ -17,12 +17,12 @@
 			</div>
 			<div class="type-img start-prepare">
 				<!-- 小缩略图 -->
-				<img ng-src="{{imageURLs.publicUrl}}img/main_left/{{$index}}.jpg" ></img>
+				<img ng-src="{{imageURLs.publicUrl}}img/main_left/{{$index}}.jpg" >
 			</div>
 		</div>
 	</div>
 	<div class="middle-ad start-prepare">
-		<img ng-src="{{imageURLs.publicUrl}}img/7.JPG" ></img>
+		<img ng-src="{{imageURLs.publicUrl}}img/7.JPG" >
 	</div>
 	<div class="type-container start-prepare" ng-repeat="typeMainItem in secondTwotypeList">
 		<div class="title-container start-prepare">
