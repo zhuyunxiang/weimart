@@ -51,7 +51,6 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
         // $scope.productFore = {};
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
-            console.log(Product.all_list);
             $scope.productBeaty = Product.all_list[0];
             $scope.productNew = Product.all_list[1];
             $scope.packageShow = Product.all_list[2];
@@ -603,8 +602,6 @@ controllers.controller('hotshopCtrl', ['$scope', '$state', '$stateParams', 'Shop
         Shop.getRecommendShopInfo();
         $scope.$on('Shop.getRecommendShopInfoSuccess', function (event) {
             $scope.recommendShopList = Shop.recommend_list;
-            console.log(Shop.recommend_list);
-            console.log($scope.recommend_list);
         });
 
         $scope.goBack = function() {
