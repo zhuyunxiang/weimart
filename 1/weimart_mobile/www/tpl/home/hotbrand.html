@@ -11,8 +11,8 @@
 	</div>
 
 	<div class="row">
-		<div class="col-xs-12 pic-container">
-			<img src="img/hotbrand/1.jpg" alt="">
+		<div class="col-xs-2 brand-item" ng-repeat="(key, value) in brandsUrl">
+			<img src="img/hotbrand/{{value}}.jpg" alt="">
 		</div>
 	</div>
 
@@ -24,11 +24,8 @@
 
 	<div class="row item" ng-repeat="(key, value) in itemList">
 		<div class="col-xs-12 img-item" ui-sref=".brand">
-			<img ng-src="img/hotbrand/{{value.url}}" alt="">
+			<img ng-src="img/hotbrand/{{value}}.jpg" alt="">
 		</div>
-		<!-- <div class="col-xs-6 pre-item">
-			<pre>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</pre>
-		</div> -->
 	</div>
 
 </div>

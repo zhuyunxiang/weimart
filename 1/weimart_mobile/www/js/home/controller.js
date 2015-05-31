@@ -38,23 +38,20 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
 
 
         $scope.itemList = [{
-            "url": "2.jpg"
+            "url": "25.jpg"
         }, {
-            "url": "3.jpg"
+            "url": "26.jpg"
         }, {
-            "url": "4.jpg"
+            "url": "27.jpg"
         }, {
-            "url": "2.jpg"
-        }, {
-            "url": "3.jpg"
-        }, {
-            "url": "4.jpg"
+            "url": "28.jpg"
         }, ];
 
 
         // $scope.productFore = {};
         Product.getAll();
         $scope.$on('Product.getAllSuccess', function () {
+            console.log(Product.all_list);
             $scope.productBeaty = Product.all_list[0];
             $scope.productNew = Product.all_list[1];
             $scope.packageShow = Product.all_list[2];
@@ -62,6 +59,25 @@ controllers.controller('homeCtrl', ['$scope', '$state', 'Product',
             $scope.shoesM = Product.all_list[4];
         });
 
+
+    }
+]);
+
+// 热门品牌
+controllers.controller('brandCtrl', ['$scope', '$state', 'Product',
+    function($scope, $state, Product) {
+
+        //热门品牌大图片
+        $scope.itemList = [];
+        for (var i = 25; i <= 29; i++) {
+            $scope.itemList.push(i);  
+        };
+
+        //热门品牌小图片
+        $scope.brandsUrl = [];
+        for (var i = 1; i <= 24; i++) {
+            $scope.brandsUrl.push(i);  
+        };
 
     }
 ]);
@@ -164,18 +180,13 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
         // 获取店铺信息
         $scope.$on('Shop.getShopInfoSuccess', function(event) {
-            $scope.editShopInfo = Shop.data;
-            $scope.myShop = Shop.data;
-            Product.getList($scope.myShop.shop_id);
-        });
-
-        // 获取店铺信息失败
-        $scope.$on('Shop.getShopInfoError', function(event) {
-            var user = Auth.getUser();
-            var shopInfo = {'user_id':user.user_id};
-            $scope.editShopInfo = shopInfo;
-            $scope.myShop = shopInfo;
-            $state.go('personal.shop');
+            if (!Shop.data) {
+                Shop.data = null;
+            } else {
+                $scope.editShopInfo = Shop.data;
+                $scope.myShop = Shop.data;
+                Product.getList($scope.myShop.shop_id);
+            }
         });
 
         //头像
@@ -208,11 +219,14 @@ controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', '
 
         //保存店铺信息
         $scope.saveShopInfo = function() {
-            Shop.saveShopInfo($scope.editShopInfo);
             console.log($scope.editShopInfo);
+            Shop.saveShopInfo($scope.editShopInfo);
         }
         $scope.$on('Shop.saveShopInfoSuccess', function (event) {
-            $state.go('personal');
+            alert("信息保存成功!");
+        })
+        $scope.$on('Shop.saveShopInfoError', function (event) {
+            alert('保存店铺信息失败...');;
         })
 
         // $scope.editProductInfo = {};
@@ -634,9 +648,9 @@ controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
         $scope.$on('Shop.getAllSuccess', function () {
             $scope.allShop = Shop.allList;
 
-            for (var i = Shop.allList.length - 1; i >= 0; i--) {
-                // $scope.allShop[i].shop_img_local = 
-            };
+            // for (var i = Shop.allList.length - 1; i >= 0; i--) {
+            //     $scope.allShop[i].shop_img
+            // };
         });
 
         $scope.$on('Shop.getShopInfoSuccess', function (event) {
