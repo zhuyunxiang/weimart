@@ -30,7 +30,7 @@ HomeDirectives.directive('doLogin', ['$state', 'User',
                 element.bind('click', function(event) {
                     User.doLogin(scope.loginInfo);
                     scope.$on('User.loginSuccess', function(event) {
-                        $state.go('home');
+                        goBack();
                     });
 
                     scope.$on('User.loginError', function(event) {
