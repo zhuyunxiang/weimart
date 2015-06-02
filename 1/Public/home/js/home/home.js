@@ -1,3 +1,30 @@
+function goBack() {
+    if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) { // IE 
+        if (history.length > 0) {
+            window.history.go(-1);
+        } else {
+            window.opener = null;
+            window.close();
+        }
+    } else { //非IE浏览器 
+        if (navigator.userAgent.indexOf('Firefox') >= 0 ||
+            navigator.userAgent.indexOf('Opera') >= 0 ||
+            navigator.userAgent.indexOf('Safari') >= 0 ||
+            navigator.userAgent.indexOf('Chrome') >= 0 ||
+            navigator.userAgent.indexOf('WebKit') >= 0) {
+
+            if (window.history.length > 1) {
+                window.history.go(-1);
+            } else {
+                window.opener = null;
+                window.close();
+            }
+        } else { //未知的浏览器 
+            window.history.go(-1);
+        }
+    }
+}
+
 var app = angular.module('HomeApp', ['angularFileUpload', 'ui.router', 'HomeCtrls', 'filters', 'HomeDirectives', 'HomeServices']);
 
 app.run(['$rootScope', '$state', '$stateParams','User',
@@ -71,14 +98,27 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: publicUrl + 'tpl/home/control/complete_detail.html',
             controller: "completeDetailCtrl"
         }).state('sellercenter', {
+            // 卖家中心
             url: "/sellercenter",
             templateUrl: publicUrl + 'tpl/home/sellercenter/index.html',
             controller: "sellerCenterCtrl"
+        }).state('buyercenter', {
+            // 买家中心
+            url: "/buyercenter",
+            templateUrl: publicUrl + 'tpl/home/buyercenter/index.html',
+            controller: "sellerCenterCtrl"
         }).state('sellercenter.self', {
+            // 卖家中心-个人信息
+            url: "/self",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/self.html',
+            controller: "sellerCenterSelfCtrl"
+        }).state('buyercenter.self', {
+            // 买家中心-个人信息
             url: "/self",
             templateUrl: publicUrl + 'tpl/home/sellercenter/self.html',
             controller: "sellerCenterSelfCtrl"
         }).state('sellercenter.shop', {
+            
             url: "/shop",
             templateUrl: publicUrl + 'tpl/home/sellercenter/shop_info.html',
             controller: "sellerCenterShopCtrl"
