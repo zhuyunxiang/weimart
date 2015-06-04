@@ -795,3 +795,13 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         });
     }
 ]);
+
+// 店铺详情页
+HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams',
+    function($scope, $state, $stateParams) {
+        $scope.imageURLs = {
+            'publicUrl': publicUrl,
+            'logo': commenUrl + 'img/logo-mini.png',
+        };
+    }
+]);
