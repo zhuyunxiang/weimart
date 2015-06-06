@@ -8,7 +8,7 @@ HomeServices.service('User', ['$http', '$rootScope',
         User.user_id = null;
         User.error_info = null;
         User.detail_info = null;
-
+        // 检查登录情况
         User.checkLogin = function() {
             $http({
                 method: 'POST',
@@ -29,7 +29,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                     }
                 });
         }
-
+        // 检查邮箱是否已经注册
         User.getEmailIsRegistered = function(email) {
             $http({
                 method: 'POST',
@@ -48,6 +48,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 检查用户名是否已经注册
         User.getNameIsRegistered = function(username) {
             $http({
                 method: 'POST',
@@ -66,6 +67,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 注册
         User.doRegister = function(info) {
             $http({
                 method: 'POST',
@@ -86,6 +88,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 退出登录
         User.logout = function() {
             $http({
                 method: 'POST',
@@ -106,6 +109,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 登录
         User.doLogin = function(userInfo) {
             $http({
                 method: 'POST',
@@ -127,6 +131,7 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 保存用户详细信息
         User.saveDetail = function(detailInfo) {
             detailInfo.user_id = User.user_id;
             $http({
@@ -144,6 +149,22 @@ HomeServices.service('User', ['$http', '$rootScope',
                         User.error_info = data.info;
                         $rootScope.$broadcast('User.saveDetailError');
                     }
+                });
+        }
+
+        // 收藏商品
+        User.collectProduct = function (info) {
+            console.log(info);
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/save_user_collect_product',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
                 });
         }
 
