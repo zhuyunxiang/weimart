@@ -795,6 +795,7 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
             // console.log(Product.currentCurrentProduct);
         });
 
+        // 收藏商品
         $scope.collect_product = function(product_id) {
             User.checkLogin();
             if(User.user_id) {
@@ -803,7 +804,17 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
             } else {
                 alert("对不起，请先登录！");
             }
-           
+        }
+
+        // 收藏店铺
+        $scope.collect_shop = function(shop_id) {
+            User.checkLogin();
+            if(User.user_id) {
+                var info = {'user_id':User.user_id, 'shop_id':shop_id};
+                User.collectShop(info);
+            } else {
+                alert("对不起，请先登录！");
+            }
         }
     }
 ]);

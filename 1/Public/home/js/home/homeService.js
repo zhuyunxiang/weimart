@@ -154,7 +154,6 @@ HomeServices.service('User', ['$http', '$rootScope',
 
         // 收藏商品
         User.collectProduct = function (info) {
-            console.log(info);
             $http({
                 method: 'POST',
                 url: appPath + 'API/UserAPI/save_user_collect_product',
@@ -164,7 +163,22 @@ HomeServices.service('User', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    console.log(data);
+                    alert(data.info);
+                });
+        }
+
+        // 收藏店铺
+        User.collectShop = function (info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/save_user_collect_shop',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    alert(data.info);
                 });
         }
 
