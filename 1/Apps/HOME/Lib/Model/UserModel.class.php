@@ -84,7 +84,7 @@ class UserModel extends RelationModel
         ),
         array(
             'mapping_type'=>MANY_TO_MANY,
-            'class_name'=>'user_collect_shop',
+            'class_name'=>'shop',
             'mapping_name'=>'user_collect_shop',
             'foreign_key'=>'user_id',
             'relation_foreign_key'=>'shop_id',
@@ -92,7 +92,7 @@ class UserModel extends RelationModel
         )
         ,array(
             'mapping_type'=>MANY_TO_MANY,
-            'class_name'=>'user_collect_product',
+            'class_name'=>'product',
             'mapping_name'=>'user_collect_product',
             'foreign_key'=>'user_id',
             'relation_foreign_key'=>'product_id',
