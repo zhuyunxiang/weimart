@@ -790,6 +790,15 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         };
 
         Product.getCurrentProduct($stateParams.id);
+        // 监听收藏/取消收藏商品成功
+        $scope.$on('User.collectProductSuccess', function (event) {
+           User.checkLogin();
+        });
+        // 监听收藏/取消收藏店铺成功
+        $scope.$on('User.collectShopSuccess', function (event) {
+           User.checkLogin();
+        });
+
         $scope.$on('Product.getCurrentProductSuccess', function(event) {
             $scope.productInfo = Product.currentCurrentProduct;
             $scope.$on('User.isLogin', function (event) {
@@ -804,13 +813,16 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
             });
         });
 
-        $scope.productIsCollected = 0;
+        $scope.productIsCollected = '0';
+        $scope.shopIsCollected = '0';
         User.checkLogin();
 
+        $scope.$on('User.getProductIsCollectedSuccess', function (event) {
+            $scope.productIsCollected = User.productIsCollected;
+        });
 
-
-        $scope.$on('User.getProductedIsCollectedSuccess', function (event) {
-            
+        $scope.$on('User.getShopIsCollectedSuccess', function (event) {
+            $scope.shopIsCollected = User.shopIsCollected;
         });
         
 

@@ -193,8 +193,8 @@ class UserService extends BaseService
 	{
 		if ($userId) {
 			$condition = array('user_id'=>$userId);
-			$result = $this->userRelationDao->where($condition)->relation(true)->find();
-			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+			$result = $this->userRelationDao->where($condition)->relation('user_collect_shop')->find();
+			return array('info'=>'数据获取成功!', 'data'=>$result['user_collect_shop'], 'status'=>1);
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
 	}
@@ -204,8 +204,8 @@ class UserService extends BaseService
 	{
 		if ($userId) {
 			$condition = array('user_id'=>$userId);
-			$result = $this->userRelationDao->where($condition)->relation(true)->find();
-			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+			$result = $this->userRelationDao->where($condition)->relation('user_collect_product')->find();
+			return array('info'=>'数据获取成功!', 'data'=>$result['user_collect_product'], 'status'=>1);
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
 	}
@@ -213,12 +213,22 @@ class UserService extends BaseService
 	// 保存手收藏店铺信息
 	public function saveUserCollectShop($info = null)
 	{
-		if ($info) {
+		$is_exist = $this->checkShopIsCollected($info);
+		if ($info && $is_exist['data'] == 0) {
 			$result = $this->userCollectShopDao->add($info);
 			if ($result) {
 				return array('info'=>'收藏店铺成功!', 'data'=>$result, 'status'=>1);
 			} else {
 				return array('info'=>'收藏店铺失败!', 'data'=>$result, 'status'=>0);
+			}
+		}
+
+		if ($info && $is_exist['data'] > 0) {
+			$result = $this->userCollectShopDao->where($info)->delete();
+			if ($result) {
+				return array('info'=>'取消收藏店铺成功!', 'data'=>$result, 'status'=>1);
+			} else {
+				return array('info'=>'取消收藏店铺失败!', 'data'=>$result, 'status'=>0);
 			}
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
@@ -227,12 +237,22 @@ class UserService extends BaseService
 	// 保存手收藏商品信息
 	public function saveUserCollectProduct($info = null)
 	{
-		if ($info) {
+		$is_exist = $this->checkProductIsCollected($info);
+		if ($info && $is_exist['data'] == 0) {
 			$result = $this->userCollectProductDao->add($info);
 			if ($result) {
 				return array('info'=>'收藏商品成功!', 'data'=>$result, 'status'=>1);
 			} else {
 				return array('info'=>'收藏商品失败!', 'data'=>$result, 'status'=>0);
+			}
+		}
+
+		if ($info && $is_exist['data'] > 0) {
+			$result = $this->userCollectProductDao->where($info)->delete();
+			if ($result) {
+				return array('info'=>'取消收藏商品成功!', 'data'=>$result, 'status'=>1);
+			} else {
+				return array('info'=>'取消收藏商品失败!', 'data'=>$result, 'status'=>0);
 			}
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);

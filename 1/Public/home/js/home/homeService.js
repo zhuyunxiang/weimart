@@ -8,6 +8,8 @@ HomeServices.service('User', ['$http', '$rootScope',
         User.user_id = null;
         User.error_info = null;
         User.detail_info = null;
+        User.productIsCollected = null;
+        User.shopIsCollected = null;
         // 检查登录情况
         User.checkLogin = function() {
             $http({
@@ -164,6 +166,7 @@ HomeServices.service('User', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     alert(data.info);
+                    $rootScope.$broadcast('User.collectProductSuccess');
                 });
         }
 
@@ -179,6 +182,7 @@ HomeServices.service('User', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     alert(data.info);
+                    $rootScope.$broadcast('User.collectShopSuccess');
                 });
         }
 
@@ -193,8 +197,8 @@ HomeServices.service('User', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    // alert(data.info);
-                    console.log(data);
+                    User.productIsCollected = data.data;
+                    $rootScope.$broadcast('User.getProductIsCollectedSuccess');
                 });
         }
 
@@ -209,8 +213,8 @@ HomeServices.service('User', ['$http', '$rootScope',
                 }
             })
                 .success(function(data) {
-                    // alert(data.info);
-                    console.log(data);
+                    User.shopIsCollected = data.data;
+                    $rootScope.$broadcast('User.getShopIsCollectedSuccess');
                 });
         }
 
