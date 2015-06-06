@@ -792,12 +792,30 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         Product.getCurrentProduct($stateParams.id);
         $scope.$on('Product.getCurrentProductSuccess', function(event) {
             $scope.productInfo = Product.currentCurrentProduct;
-            // console.log(Product.currentCurrentProduct);
+            $scope.$on('User.isLogin', function (event) {
+                if(User.user_id) {
+                        var productInfo = {'user_id':User.user_id, 'product_id':$scope.productInfo.product_id};
+                        var info = {'user_id':User.user_id, 'shop_id':$scope.productInfo.shop_info[0].shop_id};
+                        User.getShopIsCollected(info);
+                        User.getProductIsCollected(productInfo);
+                } else {
+                    alert("对不起，请先登录！");
+                }
+            });
         });
+
+        $scope.productIsCollected = 0;
+        User.checkLogin();
+
+
+
+        $scope.$on('User.getProductedIsCollectedSuccess', function (event) {
+            
+        });
+        
 
         // 收藏商品
         $scope.collect_product = function(product_id) {
-            User.checkLogin();
             if(User.user_id) {
                 var info = {'user_id':User.user_id, 'product_id':product_id};
                 User.collectProduct(info);
@@ -808,7 +826,6 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
 
         // 收藏店铺
         $scope.collect_shop = function(shop_id) {
-            User.checkLogin();
             if(User.user_id) {
                 var info = {'user_id':User.user_id, 'shop_id':shop_id};
                 User.collectShop(info);

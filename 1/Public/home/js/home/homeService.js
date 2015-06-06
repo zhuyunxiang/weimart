@@ -182,6 +182,38 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 检查当前商品是否已经收藏
+        User.getProductIsCollected = function (info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/check_product_is_collected',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    // alert(data.info);
+                    console.log(data);
+                });
+        }
+
+        // 检查当前店铺是否已经收藏
+        User.getShopIsCollected = function (info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/check_shop_is_collected',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    // alert(data.info);
+                    console.log(data);
+                });
+        }
+
         return User;
     }
 ]);
