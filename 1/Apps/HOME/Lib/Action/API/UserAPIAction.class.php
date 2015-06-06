@@ -222,5 +222,31 @@ class UserAPIAction extends Action
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
 	}
+
+	// 检查当前店铺是否已被收藏
+	public function check_shop_is_collected()
+	{
+		// 获取客户端传来的信息
+		$collect_info = $_POST;
+		// 调用Service进行数据存储
+		$result = A('User', 'Service')->checkShopIsCollected($collect_info);
+		if ($result) {
+			$this->ajaxReturn($result['data']?1:0, $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 检查当前商品是否已被收藏
+	public function check_product_is_collected()
+	{
+		// 获取客户端传来的信息
+		$collect_info = $_POST;
+		// 调用Service进行数据存储
+		$result = A('User', 'Service')->checkProductIsCollected($collect_info);
+		if ($result) {
+			$this->ajaxReturn($result['data']?1:0, $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 }
  ?>

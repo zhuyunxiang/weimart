@@ -238,5 +238,33 @@ class UserService extends BaseService
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
 	}
 
+	// 检查当前店铺是否被收藏
+	public function checkShopIsCollected($info = null)
+	{
+		if ($info) {
+			$result = $this->getInfo('userCollectShopDao',$info);
+			if ($result) {
+				return array('info'=>'获取信息成功!', 'data'=>count($result), 'status'=>1);
+			} else {
+				return array('info'=>'获取信息失败!', 'data'=>$result, 'status'=>0);
+			}
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
+	// 检查当前商品是否被收藏
+	public function checkProductIsCollected($info = null)
+	{
+		if ($info) {
+			$result = $this->getInfo('userCollectProductDao',$info);
+			if ($result) {
+				return array('info'=>'获取信息成功!', 'data'=>count($result), 'status'=>1);
+			} else {
+				return array('info'=>'获取信息失败!', 'data'=>$result, 'status'=>0);
+			}
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
 }
  ?>
