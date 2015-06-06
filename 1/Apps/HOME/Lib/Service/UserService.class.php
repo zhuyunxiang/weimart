@@ -216,9 +216,9 @@ class UserService extends BaseService
 		if ($info) {
 			$result = $this->userCollectShopDao->add($info);
 			if ($result) {
-				return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+				return array('info'=>'收藏店铺成功!', 'data'=>$result, 'status'=>1);
 			} else {
-				return array('info'=>'数据获取失败!', 'data'=>$result, 'status'=>0);
+				return array('info'=>'收藏店铺失败!', 'data'=>$result, 'status'=>0);
 			}
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
@@ -230,9 +230,9 @@ class UserService extends BaseService
 		if ($info) {
 			$result = $this->userCollectProductDao->add($info);
 			if ($result) {
-				return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+				return array('info'=>'收藏商品成功!', 'data'=>$result, 'status'=>1);
 			} else {
-				return array('info'=>'数据获取失败!', 'data'=>$result, 'status'=>0);
+				return array('info'=>'收藏商品失败!', 'data'=>$result, 'status'=>0);
 			}
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
