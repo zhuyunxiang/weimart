@@ -46,7 +46,7 @@
 					</div>
 					<div class="favourite-container">
 						<button class="btn contact-seller">联系卖家</button>
-						<button class="btn favourite">收藏商品</button>
+						<button class="btn favourite" ng-click="collect_product(productInfo.product_id)">收藏商品</button>
 					</div>
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 			</div>
 			<div class="favourite-shop-container">
 				<button class="btn into-shop">进入店铺</button>
-				<button class="btn favourite-shop">收藏店铺</button>
+				<button class="btn favourite-shop" ng-click="collect_shop(productInfo.shop_info[0].shop_id)">收藏店铺</button>
 			</div>
 		</div>
 	</div>

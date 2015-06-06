@@ -781,18 +781,30 @@ HomeCtrls.controller('sellerCenterProductTypeCtrl', ['$scope', 'Product',
 ]);
 
 // 商品详情页
-HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', 'Product',
-    function($scope, $state, $stateParams, Product) {
+HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', 'Product', 'User',
+
+    function($scope, $state, $stateParams, Product, User) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
 
         Product.getCurrentProduct($stateParams.id);
-        $scope.$on('Product.getCurrentProductSuccess', function (event) {
+        $scope.$on('Product.getCurrentProductSuccess', function(event) {
             $scope.productInfo = Product.currentCurrentProduct;
-            console.log(Product.currentCurrentProduct);
+            // console.log(Product.currentCurrentProduct);
         });
+
+        $scope.collect_product = function(product_id) {
+            User.checkLogin();
+            if(User.user_id) {
+                var info = {'user_id':User.user_id, 'product_id':product_id};
+                User.collectProduct(info);
+            } else {
+                alert("对不起，请先登录！");
+            }
+           
+        }
     }
 ]);
 

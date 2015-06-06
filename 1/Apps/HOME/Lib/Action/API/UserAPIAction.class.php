@@ -201,7 +201,7 @@ class UserAPIAction extends Action
 	public function save_user_collect_shop()
 	{
 		// 获取客户端传来的信息
-		$collect_info = $_POST['info'];
+		$collect_info = $_POST;
 		// 调用Service进行数据存储
 		$result = A('User', 'Service')->saveUserCollectShop($collect_info);
 		if ($result) {
@@ -214,7 +214,7 @@ class UserAPIAction extends Action
 	public function save_user_collect_product()
 	{
 		// 获取客户端传来的信息
-		$collect_info = $_POST['info'];
+		$collect_info = $_POST;
 		// 调用Service进行数据存储
 		$result = A('User', 'Service')->saveUserCollectProduct($collect_info);
 		if ($result) {
