@@ -11,6 +11,8 @@ class UserService extends BaseService
 	{
 		$this->userDao = M('user');
 		$this->userRelationDao = D('User');
+		$this->userCollectShopDao = M('User_collect_shop');
+		$this->userCollectProductDao = M('User_collect_product');
 	}
 
 	// 根据用户名获取用户基本信息
@@ -182,6 +184,56 @@ class UserService extends BaseService
 		$result = $this->getInfo('userDao',$condition);
 		if ($result) {
 			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
+	// 根据用户ID获取收藏的所有店铺
+	public function getCollectShopsById($userId = null)
+	{
+		if ($userId) {
+			$condition = array('user_id'=>$userId);
+			$result = $this->userRelationDao->where($condition)->relation(true)->find();
+			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
+	// 根据用户ID获取收藏的所有商品
+	public function getCollectProductsById($userId = null)
+	{
+		if ($userId) {
+			$condition = array('user_id'=>$userId);
+			$result = $this->userRelationDao->where($condition)->relation(true)->find();
+			return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
+	// 保存手收藏店铺信息
+	public function saveUserCollectShop($info = null)
+	{
+		if ($info) {
+			$result = $this->userCollectShopDao->add($info);
+			if ($result) {
+				return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+			} else {
+				return array('info'=>'数据获取失败!', 'data'=>$result, 'status'=>0);
+			}
+		}
+		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
+	}
+
+	// 保存手收藏商品信息
+	public function saveUserCollectProduct($info = null)
+	{
+		if ($info) {
+			$result = $this->userCollectProductDao->add($info);
+			if ($result) {
+				return array('info'=>'数据获取成功!', 'data'=>$result, 'status'=>1);
+			} else {
+				return array('info'=>'数据获取失败!', 'data'=>$result, 'status'=>0);
+			}
 		}
 		return array('info'=>'输入的数据为空!', 'data'=>false, 'status'=>0);
 	}

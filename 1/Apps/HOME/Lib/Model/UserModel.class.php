@@ -82,6 +82,22 @@ class UserModel extends RelationModel
             'foreign_key'=>'user_id',
             'parent_key'=>'user_id'
         ),
+        array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'user_collect_shop',
+            'mapping_name'=>'user_collect_shop',
+            'foreign_key'=>'user_id',
+            'relation_foreign_key'=>'shop_id',
+            'relation_table'=>'weimart_user_collect_shop'
+        )
+        ,array(
+            'mapping_type'=>MANY_TO_MANY,
+            'class_name'=>'user_collect_product',
+            'mapping_name'=>'user_collect_product',
+            'foreign_key'=>'user_id',
+            'relation_foreign_key'=>'product_id',
+            'relation_table'=>'weimart_user_collect_product'
+        ),
 
     );
 

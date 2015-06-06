@@ -170,5 +170,57 @@ class UserAPIAction extends Action
 		A('Log', 'Service')->saveLog($_SESSION['user']['user_name'], '删除用户失败 [Delete User Error ID:'.$_POST['user_id'].']');
 		$this->ajaxReturn($result, '用户删除失败!', 0);
 	}
+
+	// 根据用户id获取所有收藏的店铺
+	public function get_collect_shops_by_user_id()
+	{
+		// 从客户端获取用户ID
+		$user_id = $_POST['user_id'];
+		// 调用Service进行数据层查询
+		$result = A('User', 'Service')->getCollectShopsById($user_id);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 根据用户id获取所有收藏的商品
+	public function get_collect_shops_by_user_id()
+	{
+		// 从客户端获取用户ID
+		$user_id = $_POST['user_id'];
+		// 调用Service进行数据层查询
+		$result = A('User', 'Service')->getCollectProductsById($user_id);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 保存收藏店铺信息
+	public function save_user_collect_shop()
+	{
+		// 获取客户端传来的信息
+		$collect_info = $_POST['info'];
+		// 调用Service进行数据存储
+		$result = A('User', 'Service')->saveUserCollectShop($collect_info);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
+
+	// 保存收藏商品信息
+	public function save_user_collect_product()
+	{
+		// 获取客户端传来的信息
+		$collect_info = $_POST['info'];
+		// 调用Service进行数据存储
+		$result = A('User', 'Service')->saveUserCollectProduct($collect_info);
+		if ($result) {
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '内部错误!', 0);
+	}
 }
  ?>
