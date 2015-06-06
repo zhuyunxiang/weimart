@@ -185,7 +185,7 @@ class UserAPIAction extends Action
 	}
 
 	// 根据用户id获取所有收藏的商品
-	public function get_collect_shops_by_user_id()
+	public function get_collect_products_by_user_id()
 	{
 		// 从客户端获取用户ID
 		$user_id = $_POST['user_id'];
