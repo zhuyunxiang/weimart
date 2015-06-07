@@ -192,6 +192,90 @@ services.service('User', ['$http', '$rootScope', 'Auth',
                 });
         }
 
+        User.onFavoriteShop = function(info) {
+            console.log(info);
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/save_user_collect_shop',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+            console.log(data);
+
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('User.onFavoriteShopSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.onFavoriteShopError');
+                    }
+                });
+        }
+
+        User.onFavoriteProd = function(info) {
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/save_user_collect_product',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('User.onFavoriteProdSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.onFavoriteProdError');
+                    }
+                });
+        }
+
+        User.checkShopCollected = function(info) {
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/check_shop_is_collected',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        User.collectShopState = data.data;
+                        console.log(User.collectShopState);
+                        $rootScope.$broadcast('User.checkShopCollectedSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.checkShopCollectedError');
+                    }
+                });
+        }
+
+        User.checkProdCollected = function(info) {
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/check_product_is_collected',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        User.collectProdState = data.data;
+                        $rootScope.$broadcast('User.checkProdCollectedSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.checkProdCollectedError');
+                    }
+                });
+        }
+
+
+
         return User;
     }
 ]);

@@ -18,10 +18,10 @@
 		</div>
 		<div class="col-xs-5 shop-name">
 			<span>{{theShop.shop_name}}</span>
-			<!-- <span class="fans">58万粉丝</span> -->
 		</div>
 		<div class="col-xs-3">
-			<img src="img/inshop/0.png" alt="" class="favorite">
+			<img src="img/inshop/0.png" alt="" class="favorite" ng-click="onFavoriteShop()" ng-show="shop_is_collected == '0'">
+			<img src="img/inshop/2.png" alt="" class="favorite" ng-click="onFavoriteShop()" ng-show="shop_is_collected == '1'">
 		</div>
 	</div>
 
