@@ -485,7 +485,8 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
 controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop', 'Auth', 'User',
     function($upload, $scope, $state, $stateParams, Product, Shop, Auth, User) {
         Product.getAll();
-        
+        $scope.product_is_collected = '0';
+
         $scope.$on('Product.getAllSuccess', function() {
             $scope.productFore = Product.all_list[10];
             $scope.goBack = function () {
@@ -525,8 +526,7 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams
         })
 
 
-        //检测商品是否收藏
-        $scope.product_is_collected = '0';
+        //检测商品是否收藏       
         function checkProdCollected() {
             var prod_id = $scope.productInfo.product_id; 
             console.log(prod_id);
@@ -538,10 +538,12 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams
             }
         }
 
-        $scope.$on('User.checkProdCollectedSuccess', function (event) {
+        $scope.$on('User.prodOnCollectedSuccess', function (event) {
             $scope.product_is_collected = User.collectProdState;
-            // alert("操作成功！");
-            console.log($scope.product_is_collected);
+        })
+
+        $scope.$on('User.prodOffCollectedSuccess', function (event) {
+            $scope.product_is_collected = User.collectProdState;
         })
 
     }
@@ -687,7 +689,6 @@ controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop'
         }
 
         $scope.$on('User.onFavoriteShopSuccess', function (event) {
-            alert("店铺收藏成功!");
             checkShopCollected();
             console.log($scope.shop_is_collected);
         })
@@ -705,10 +706,12 @@ controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop'
             }
         }
 
-        $scope.$on('User.checkShopCollectedSuccess', function (event) {
+        $scope.$on('User.shopOnCollectedSuccess', function (event) {
             $scope.shop_is_collected = User.collectShopState;
-            alert("cz成功!");
-            console.log($scope.shop_is_collected);
+        })
+
+        $scope.$on('User.shopOffCollectedSuccess', function (event) {
+            $scope.shop_is_collected = User.collectShopState;
         })
 
     }

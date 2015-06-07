@@ -243,13 +243,15 @@ services.service('User', ['$http', '$rootScope', 'Auth',
                 }
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         User.collectShopState = data.data;
                         console.log(User.collectShopState);
-                        $rootScope.$broadcast('User.checkShopCollectedSuccess');
+                        $rootScope.$broadcast('User.shopOnCollectedSuccess');
                     } else {
                         User.error_info = data.info;
-                        $rootScope.$broadcast('User.checkShopCollectedError');
+                        User.collectShopState = data.data;
+                        $rootScope.$broadcast('User.shopOffCollectedSuccess');
                     }
                 });
         }
@@ -264,12 +266,14 @@ services.service('User', ['$http', '$rootScope', 'Auth',
                 }
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         User.collectProdState = data.data;
-                        $rootScope.$broadcast('User.checkProdCollectedSuccess');
+                        $rootScope.$broadcast('User.prodOnCollectedSuccess');
                     } else {
                         User.error_info = data.info;
-                        $rootScope.$broadcast('User.checkProdCollectedError');
+                        User.collectProdState = data.data;
+                        $rootScope.$broadcast('User.prodOffCollectedSuccess');
                     }
                 });
         }
