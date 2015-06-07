@@ -121,8 +121,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/self",
             templateUrl: publicUrl + 'tpl/home/sellercenter/self.html',
             controller: "sellerCenterSelfCtrl"
+        }).state('buyercenter.shop', {
+            // 买家中心-收藏的店铺
+            url: "/collect_shops",
+            templateUrl: publicUrl + 'tpl/home/buyercenter/collect_shops.html',
+            controller: "buyerCenterCollectShopCtrl"
+        }).state('buyercenter.product', {
+            // 买家中心-收藏的商品
+            url: "/collect_products",
+            templateUrl: publicUrl + 'tpl/home/buyercenter/collect_products.html',
+            controller: "buyerCenterCollectProductCtrl"
         }).state('sellercenter.shop', {
-            
             url: "/shop",
             templateUrl: publicUrl + 'tpl/home/sellercenter/shop_info.html',
             controller: "sellerCenterShopCtrl"
@@ -134,6 +143,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: "/type",
             templateUrl: publicUrl + 'tpl/home/sellercenter/product_type.html',
             controller: "sellerCenterProductTypeCtrl"
+        }).state('sellercenter.delegate', {
+            url: "/delegate",
+            templateUrl: publicUrl + 'tpl/home/sellercenter/delegate.html',
+            controller: "sellerCenterDelegateCtrl"
         }).state('sellercenter.punish', {
             url: "/punish",
             templateUrl: publicUrl + 'tpl/home/sellercenter/punish.html',

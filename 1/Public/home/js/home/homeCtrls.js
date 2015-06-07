@@ -857,3 +857,64 @@ HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams',
         };
     }
 ]);
+
+// 收藏的店铺
+HomeCtrls.controller('buyerCenterCollectShopCtrl', ['$scope', '$state', '$stateParams', 'User',
+    function($scope, $state, $stateParams, User) {
+        User.checkLogin();
+        $scope.$on('User.isLogin', function (event) {
+            User.getCollectedShops(User.user_id);
+        });
+
+        // 监听获取后台数据
+        $scope.$on('User.getCollectedShopsSuccess', function (event) {
+            $scope.collectShops = User.collectShops;
+        });
+
+        // 删除收藏的店铺
+        $scope.deleteCollect = function (shop_id) {
+            if (confirm("确定要删除吗?不可恢复！")) {
+                var info = {'user_id':User.user_id, 'shop_id':shop_id};
+                User.collectShop(info);
+            };
+        }
+
+        $scope.$on('User.collectShopSuccess', function (event) {
+           User.checkLogin();
+        });
+    }
+]);
+
+// 收藏的商品
+HomeCtrls.controller('buyerCenterCollectProductCtrl', ['$scope', '$state', '$stateParams', 'User',
+    function($scope, $state, $stateParams, User) {
+        User.checkLogin();
+        $scope.$on('User.isLogin', function (event) {
+            User.getCollectedProducts(User.user_id);
+        });
+
+        // 监听获取后台数据
+        $scope.$on('User.getCollectedProductsSuccess', function (event) {
+            $scope.collectProducts = User.collectProducts;
+        });
+
+        // 删除收藏的店铺
+        $scope.deleteCollect = function (product_id) {
+            if (confirm("确定要删除吗?不可恢复！")) {
+                var info = {'user_id':User.user_id, 'product_id':product_id};
+                User.collectProduct(info);
+            };
+        }
+
+        $scope.$on('User.collectProductSuccess', function (event) {
+           User.checkLogin();
+        });
+    }
+]);
+
+// 代理管理
+HomeCtrls.controller('sellerCenterDelegateCtrl', ['$scope', '$state', '$stateParams', 'User',
+    function($scope, $state, $stateParams, User) {
+
+    }
+])
