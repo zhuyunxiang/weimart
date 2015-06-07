@@ -1,0 +1,23 @@
+<div class="right">
+	<div class="product-table-container">
+		<table class="table table-hover" ng-show="collectProducts">
+			<tr>
+				<th>序号</th>
+				<th>商品名称</th>
+				<th>商品简介</th>
+				<th>商品价格</th>
+				<th>查看</th>
+				<th>删除</th>
+			</tr>
+			<tr ng-repeat="item in collectProducts">
+				<td>{{$index + 1}}</td>
+				<td>{{item.product_name|trimStr:10}}</td>
+				<td>{{item.product_brif|trimStr:10}}</td>
+				<td>{{item.product_price}}</td>
+				<td><a href="" title="" target="_blank" ui-sref="product_detail({id:item.product_id})">进入查看</a></td>
+				<td><a href="" title="" ng-click="deleteCollect(item.product_id)">删除收藏</a></td>
+			</tr>
+		</table>
+		<h4 ng-hide="collectProducts">对不起,暂无收藏的店铺!</h4>
+	</div>
+</div>

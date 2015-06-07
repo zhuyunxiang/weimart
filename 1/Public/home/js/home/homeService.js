@@ -10,6 +10,8 @@ HomeServices.service('User', ['$http', '$rootScope',
         User.detail_info = null;
         User.productIsCollected = null;
         User.shopIsCollected = null;
+        User.collectShops = null;
+        User.collectProducts = null;
         // 检查登录情况
         User.checkLogin = function() {
             $http({
@@ -215,6 +217,40 @@ HomeServices.service('User', ['$http', '$rootScope',
                 .success(function(data) {
                     User.shopIsCollected = data.data;
                     $rootScope.$broadcast('User.getShopIsCollectedSuccess');
+                });
+        }
+
+        // 获取所有收藏的店铺
+        User.getCollectedShops = function (user_id) {
+            var info = {'user_id': user_id};
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/get_collect_shops_by_user_id',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    User.collectShops = data.data;
+                    $rootScope.$broadcast('User.getCollectedShopsSuccess');
+                });
+        }
+
+        // 获取所有收藏的商品
+        User.getCollectedProducts = function (user_id) {
+            var info = {'user_id': user_id};
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/get_collect_products_by_user_id',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    User.collectProducts = data.data;
+                    $rootScope.$broadcast('User.getCollectedProductsSuccess');
                 });
         }
 

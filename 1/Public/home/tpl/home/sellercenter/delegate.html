@@ -1,0 +1,85 @@
+<div class="right">
+	<div class="row">
+		<div class="btn-group search-group col-xs-3">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="请输入商品关键字" ng-model="searchKeyword">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button">搜索</button>
+				</span>
+			</div>
+		</div>
+		<div class="btn-group order-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='time'}" ng-click="setOrderType('time')">已同意</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='sellNum'}" ng-click="setOrderType('sellNum')">申请中</button>
+			<button type="button" class="btn btn-default" ng-class="{'active':orderType=='stock'}" ng-click="setOrderType('stock')">已拒绝</button>
+		</div>
+
+		<button class="btn btn-primary" data-toggle="modal" data-target="#editProductModal" ng-click="setAddInfo()">招代理</button>
+	</div>
+	<div class="product-table-container">
+		<table class="table table-hover" ng-show="ProductList">
+			<tr>
+				<th>商品名称</th>
+				<th>价格</th>
+				<th>总数量</th>
+				<th>库存</th>
+				<th>已售</th>
+				<th>分类</th>
+				<th>更新时间</th>
+				<th>操作</th>
+			</tr>
+			<tr ng-repeat="item in ProductList|filterProduct:orderType|orderBy:orderType:true|filter:searchKeyword">
+				<td>{{item.product_name}}</td>
+				<td>{{item.product_price}}</td>
+				<td>{{item.product_num}}</td>
+				<td>{{item.product_left}}</td>
+				<td>{{item.product_num - item.product_left}}</td>
+				<td>{{item.types.0.type_name}}</td>
+				<td>{{item.product_register_time}}</td>
+				<td>
+					<a href="" data-toggle="modal" data-target="#editProductModal" ng-click="setUpdateInfo(item)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</a>
+					&nbsp;&nbsp;
+					<a href="" ng-click="deleteInfo(item.product_id)">
+						<span class="glyphicon glyphicon-trash"></span>
+					</a>
+				</td>
+			</tr>
+		</table>
+		<h4 ng-hide="ProductList">对不起,暂无数据!</h4>
+	</div>
+	<div class="modal fade" id="editProductModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" ng-init="modalTitle='发布代理信息'">{{modalTitle}}</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="delegate-desc" class="col-sm-2 control-label">代理描述</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="delegate-desc" placeholder="代理描述"></div>
+						</div>
+						<div class="img-container temp">
+							<div class="img">
+								<img ng-src="{{editProductInfo.product_img}}" alt="上传代理图片">
+							</div>
+							<div class="button">
+								<button class="btn btn-primary" ng-file-select ng-file-change="upload($files)">上传代理图片</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveProductInfo()">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
