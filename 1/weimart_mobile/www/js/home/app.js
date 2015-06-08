@@ -199,6 +199,18 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/conf.html',
             controller: "confCtrl",
         })
+        // 收藏的店铺
+        .state('conf.shopCollected', {
+            url: "/shopCollected",
+            templateUrl: 'tpl/home/shopCollected.html',
+            controller: "shopCollectedCtrl",
+        })
+        // 收藏的商品
+        .state('conf.prodCollected', {
+            url: "/prodCollected",
+            templateUrl: 'tpl/home/prodCollected.html',
+            controller: "prodCollectedCtrl",
+        })
         // 登陆页面
         .state('login', {
             url: "/login",

@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="css/home/personal.css">
+<div class="marketManage-container col-xs-12">
+	<div class="row common-fore">		
+		<div class="col-xs-1">
+			<span class="glyphicon glyphicon-menu-left" aria-hidden="true" ng-click="goBack()"></span>
+		</div>
+		<div class="col-xs-10">
+			<span class="title">收藏的商品</span>
+		</div>
+	</div>
+
+	<div class="row baby-list" ng-show="prodCollected">
+		<div class="col-xs-12 baby-item" ng-repeat="item in prodCollected">
+			<img ng-src="{{item.product_img}}" alt="" class="col-xs-4" ui-sref="goods({id:item.product_id})">
+			<div class="col-xs-8">
+				<span class="span-text">名称：{{item.product_name}}</span>
+				<span class="span-text">分类：{{item.types.0.type_name}}</span>
+				<span class="span-text">价格：{{item.product_price|currency:'￥'}}</span>
+				<span class="glyphicon glyphicon-remove" title="取消收藏" ng-click="onFavoriteProd(item.product_id)"></span>
+			</div>	
+		</div>
+	</div>
+	<h5 ng-hide="prodCollected">sorry，暂无数据...</h5>
+</div>

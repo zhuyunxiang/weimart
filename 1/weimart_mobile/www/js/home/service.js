@@ -55,6 +55,10 @@ services.service('User', ['$http', '$rootScope', 'Auth',
         User.user_id = null;
         User.error_info = null;
         User.detail_info = null;
+        User.shopsOnCollected = {};
+        User.prodsOnCollected = {};
+        User.collectShopState = null;
+        User.collectProdState = null;
 
         User.checkLogin = function() {
             $http({
@@ -203,8 +207,6 @@ services.service('User', ['$http', '$rootScope', 'Auth',
                 }
             })
                 .success(function(data) {
-            console.log(data);
-
                     if (data.status == 1) {
                         $rootScope.$broadcast('User.onFavoriteShopSuccess');
                     } else {
@@ -266,7 +268,6 @@ services.service('User', ['$http', '$rootScope', 'Auth',
                 }
             })
                 .success(function(data) {
-                    console.log(data);
                     if (data.status == 1) {
                         User.collectProdState = data.data;
                         $rootScope.$broadcast('User.prodOnCollectedSuccess');
@@ -279,6 +280,53 @@ services.service('User', ['$http', '$rootScope', 'Auth',
         }
 
 
+        User.getAllProdCollected = function (user_id) {
+            var info = {'user_id':user_id};
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/get_collect_products_by_user_id',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        User.prodsOnCollected = data.data;
+                        User.prodsOnCollectedSum = data.data.length;
+                        // console.log(User.prodsOnCollectedSum);
+                        $rootScope.$broadcast('User.getAllProdCollectedSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.getAllProdCollectedError');
+                    }
+                });
+        }
+
+        User.getAllShopCollected = function (user_id) {
+            var info = {'user_id':user_id};
+            $http({
+                method: 'POST',
+                url: serverPath + '/API/UserAPI/get_collect_shops_by_user_id',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        User.shopsOnCollected = data.data;
+                        User.shopsOnCollectedSum = User.shopsOnCollected.length;
+                        console.log(User.shopsOnCollectedSum);
+                        $rootScope.$broadcast('User.getAllShopCollectedSuccess');
+                    } else {
+                        User.error_info = data.info;
+                        $rootScope.$broadcast('User.getAllShopCollectedError');
+                    }
+                });
+        }
 
         return User;
     }

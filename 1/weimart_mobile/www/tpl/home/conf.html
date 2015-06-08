@@ -1,15 +1,7 @@
 <link rel="stylesheet" href="css/home/conf.css">
-<div class="content-container col-xs-12">
-	<!-- 头部 -->
-	<!-- <div class="row title">
-		<div class="col-xs-2">
-		</div>
-		<div class="col-xs-8 center">
-			我的卖盟
-		</div>
-		<div class="col-xs-2">
-		</div>
-	</div> -->
+<div ui-view ng-show="$state.curret.name !== 'conf'"></div>
+<div class="content-container col-xs-12" ng-show="$state.current.name == 'conf'">
+	
 	<!-- 个人信息栏 -->
 	<div class="row user-info">
 		<div class="col-xs-9 user-text">
@@ -21,17 +13,17 @@
 		</div>
 	</div>
 	<div class="row history-container">
-		<div class="col-xs-4">
+		<div class="col-xs-4 item" ui-sref=".prodCollected">
 			<div class="num">
-				4
+				{{prodCollectedSum}}
 			</div>
 			<div class="text">
 				收藏的宝贝
 			</div>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-4" ui-sref=".shopCollected">
 			<div class="num">
-				10
+				{{shopCollectedSum}}
 			</div>
 			<div class="text">
 				收藏的店铺
