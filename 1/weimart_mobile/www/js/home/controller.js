@@ -336,8 +336,8 @@ controllers.controller('marketManageCtrl', ['$upload', '$scope', '$state', 'Shop
 ]);
 
 // 设置
-controllers.controller('confCtrl', ['$scope', '$state', 'Auth', 'Shop',
-    function($scope, $state, Auth, Shop) {
+controllers.controller('confCtrl', ['$scope', '$state', 'Auth', 'Shop', 'User',
+    function($scope, $state, Auth, Shop, User) {
         // 判断是否已经登陆
         if (!Auth.isLoggedIn()) {
             $state.go('login');
@@ -355,6 +355,143 @@ controllers.controller('confCtrl', ['$scope', '$state', 'Auth', 'Shop',
         $scope.$on('Shop.clearSuccess', function (event) {
             $state.go('login');
         });
+
+        //信息显示
+        $scope.shopCollectedSum = 0;
+        $scope.prodCollectedSum = 0;
+        $scope.trackSum = 0;
+
+        //收藏的店铺数量
+        User.getAllShopCollected(Auth.getId());
+        $scope.$on('User.getAllShopCollectedSuccess', function (event) {
+            $scope.shopCollectedSum = User.shopsOnCollectedSum;
+        })
+
+        //收藏的商品数量
+        User.getAllProdCollected(Auth.getId());
+        $scope.$on('User.getAllProdCollectedSuccess', function (event) {
+            $scope.prodCollectedSum = User.prodsOnCollectedSum;
+        })
+
+    }
+]);
+
+// 收藏的店铺
+controllers.controller('shopCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop', 'User',
+    function($scope, $state, Auth, Shop, User) {
+        
+        //收藏的店铺
+        $scope.shopCollected = {};
+        User.getAllShopCollected(Auth.getId());
+        $scope.$on('User.getAllShopCollectedSuccess', function (event) {
+            $scope.shopCollected = User.shopsOnCollected;
+            console.log($scope.shopCollected);
+        })
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
+                //保存收藏店铺信息
+        $scope.onFavoriteShop = function (shop_id) {
+            if (Auth.isLoggedIn()) {
+                console.log(2);
+                var info = {'shop_id':shop_id, 'user_id':Auth.getId()};
+                User.onFavoriteShop(info);
+            } else {
+                $state.go('login');
+            } 
+        }
+
+        $scope.$on('User.onFavoriteShopSuccess', function (event) {
+            checkShopCollected();
+            console.log($scope.shop_is_collected);
+            User.getAllShopCollected(Auth.getId());
+        })
+
+        //检测店铺是否收藏
+        $scope.shop_is_collected = '0';
+        function checkShopCollected() {
+            var shop_id = $scope.theShop.shop_id; 
+            console.log(shop_id);
+            if (Auth.isLoggedIn()) {
+                var info = {'shop_id':shop_id, 'user_id':Auth.getId()};
+                User.checkShopCollected(info);
+            } else {
+                $state.go('login');
+            }
+        }
+
+        $scope.$on('User.shopOnCollectedSuccess', function (event) {
+            $scope.shop_is_collected = User.collectShopState;
+        })
+
+        $scope.$on('User.shopOffCollectedSuccess', function (event) {
+            $scope.shop_is_collected = User.collectShopState;
+        })
+
+    }
+]);
+
+// 收藏的商品
+controllers.controller('prodCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop', 'User',
+    function($scope, $state, Auth, Shop, User) {
+
+        //收藏的商品
+        $scope.prodCollected = {};
+        User.getAllProdCollected(Auth.getId());
+
+        $scope.$on('User.getAllProdCollectedSuccess', function (event) {
+            $scope.prodCollected = User.prodsOnCollected;
+            console.log($scope.prodCollected);
+        })
+
+        $scope.goBack = function() {
+            goBack();
+        }
+
+         //保存收藏
+        $scope.onFavoriteProd = function (prod_id) {
+            var info = [];
+            var prod_id = $scope.productInfo.product_id; 
+            console.log(prod_id);
+            if (Auth.isLoggedIn()) {
+                var info = {'product_id':prod_id, 'user_id':Auth.getId()};
+                User.onFavoriteProd(info);
+            } else {
+                $state.go('login');
+            }
+
+        }
+
+        $scope.$on('User.onFavoriteProdSuccess', function (event) {
+            // alert("宝贝收藏成功!");
+            checkProdCollected();
+            User.getAllProdCollected(Auth.getId());
+        })
+
+
+        //检测商品是否收藏       
+        function checkProdCollected() {
+            var prod_id = $scope.productInfo.product_id; 
+            console.log(prod_id);
+            if (Auth.isLoggedIn()) {
+                var info = {'product_id':prod_id, 'user_id':Auth.getId()};
+                User.checkProdCollected(info);
+            } else {
+                $state.go('login');
+            }
+        }
+
+        $scope.$on('User.prodOnCollectedSuccess', function (event) {
+            $scope.product_is_collected = User.collectProdState;
+        })
+
+        $scope.$on('User.prodOffCollectedSuccess', function (event) {
+            $scope.product_is_collected = User.collectProdState;
+        })
+
+
     }
 ]);
 
@@ -716,7 +853,6 @@ controllers.controller('inshopCtrl', ['$scope', '$state', '$stateParams', 'Shop'
 
     }
 ]);
-
 
 //代理服务
 controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',

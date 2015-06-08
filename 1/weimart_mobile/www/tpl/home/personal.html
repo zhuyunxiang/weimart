@@ -55,7 +55,7 @@
 
 	<div class="row baby-list" ng-show="ProductList">
 		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList | orderBy:predicate:reverse |filter:searchKeyword">
-			<img ng-src="{{item.product_img}}" alt="" class="col-xs-4">
+			<img ng-src="{{item.product_img}}" alt="" class="col-xs-4" ui-sref="goods({id:item.product_id})">
 			<div class="col-xs-8">
 				<span class="span-text"><strong>名称</strong> &nbsp;&nbsp; {{item.product_name}}</span>
 				<span class="span-text"><strong>简介</strong> &nbsp;&nbsp; {{item.product_brif}}</span>
