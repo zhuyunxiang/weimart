@@ -849,12 +849,20 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
 ]);
 
 // 店铺详情页
-HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams',
-    function($scope, $state, $stateParams) {
+HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams', 'Shop',
+    function($scope, $state, $stateParams, Shop) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
         };
+
+        var shop_id = $stateParams.id;
+        Shop.getShopInfoById(shop_id);
+
+        // 监听HTTP请求成功事件
+        $scope.$on('Shop.getShopInfoByIdSuccess', function (event) {
+            $scope.shopInfo = Shop.data;
+        });
     }
 ]);
 
@@ -913,8 +921,122 @@ HomeCtrls.controller('buyerCenterCollectProductCtrl', ['$scope', '$state', '$sta
 ]);
 
 // 代理管理
-HomeCtrls.controller('sellerCenterDelegateCtrl', ['$scope', '$state', '$stateParams', 'User',
-    function($scope, $state, $stateParams, User) {
+HomeCtrls.controller('sellerCenterDelegateCtrl', ['$scope', '$state', '$stateParams', '$upload', 'User', 'Shop',
+    function($scope, $state, $stateParams, $upload, User, Shop) {
+        // 获取当前时间
+        function CurentTime() {
+            var now = new Date();
+            var year = now.getFullYear(); //年
+            var month = now.getMonth() + 1; //月
+            var day = now.getDate(); //日
+            var hh = now.getHours(); //时
+            var mm = now.getMinutes(); //分
+            var ss = now.getSeconds(); //秒
+            var clock = year + "-";
+            if (month < 10)
+                clock += "0";
+            clock += month + "-";
+            if (day < 10)
+                clock += "0";
+            clock += day + " ";
+            if (hh < 10)
+                clock += "0";
+            clock += hh + ":";
+            if (mm < 10) clock += '0';
+            clock += mm + ":";
+            if (ss < 10) clock += '0';
+            clock += ss;
+            return (clock);
+        }
 
+        $scope._simpleConfig = {
+            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+            toolbars: [
+                ["bold", "italic", "underline", "insertunorderedlist", "insertorderedlist", "simpleupload", "removeformat", "forecolor", "backcolor", "link", "scrawl"]
+            ],
+            initialFrameHeight: 280,
+            initialFrameWidth: 440
+        }
+
+        $scope.$watch('files', function() {
+            $scope.upload($scope.files);
+        });
+
+        $scope.editDelegateInfo = {};
+
+        $scope.setFilterType = function(type) {
+            $scope.filterType = type;
+        }
+
+        // 保存代理信息
+        $scope.saveDelegateInfo = function() {
+            Shop.saveShopInfo($scope.editDelegateInfo);
+        }
+
+        // 获取店铺信息
+        Shop.getShopInfo();
+        $scope.$on('Shop.getShopInfoSuccess', function(event) {
+            $scope.shopInfo = Shop.data;
+            if (!$scope.shopInfo) {
+                alert("对不起,请先注册店铺!");
+                $state.go('sellercenter.shop');
+            } else {
+                $scope.editDelegateInfo = $scope.shopInfo;
+                Shop.getShopInfoById($scope.shopInfo.shop_id);
+            }
+        });
+
+        $scope.$on('Shop.handlerDelegateSuccess', function(event) {
+            Shop.getShopInfoById($scope.shopInfo.shop_id);
+        });
+        // 同意加入代理
+        $scope.approveDelegate = function(shop_id) {
+            var info = {
+                'shop_id': shop_id,
+                'shop_super_delegate_state': 'approve',
+                'shop_delegate_time': CurentTime()
+            };
+            Shop.handlerDelegate(info);
+        }
+        // 拒绝加入代理
+        $scope.refuseDelegate = function(shop_id) {
+            var info = {
+                'shop_id': shop_id,
+                'shop_super_delegate_state': 'refuse',
+                'shop_delegate_time': CurentTime()
+            };
+            Shop.handlerDelegate(info);
+        }
+
+        // 监听获取店铺信息
+        $scope.$on('Shop.getShopInfoByIdSuccess', function(event) {
+            console.log(Shop.data);
+            $scope.delegateList = Shop.data.delegate_shops;
+        });
+
+        $scope.selectStates = ['开启招代理', '关闭招代理'];
+
+        // 上传图片
+        $scope.upload = function(files) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    $upload.upload({
+                        url: appPath + 'API/ProductAPI/save_product_img',
+                        headers: {
+                            'Content-Type': file.type
+                        },
+                        method: 'POST',
+                        data: file,
+                        file: file,
+                    }).progress(function(evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    }).success(function(data, status, headers, config) {
+                        $scope.editDelegateInfo.shop_delegate_img = uploadPath + 'product_img/' + data;
+                        $scope.editDelegateInfo.shop_delegate_img_temp = uploadPath + 'product_img/thumb_' + data;
+                    });
+                }
+            }
+        };
     }
-])
+]);

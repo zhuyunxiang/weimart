@@ -2,7 +2,7 @@
 <div class="container home-container">
 	<!-- 头部 Container(Logo和搜索框) #2 -->
 	<div class="start-prepare header-container">
-		<img ng-src="{{imageURLs.logo}}" class="start-prepare logo" alt="微店">
+		<img ng-src="{{imageURLs.logo}}" class="start-prepare logo" ui-sref="home()" alt="微店">
 		<!-- 搜索Container #3 -->
 		<div class="search-container">
 			<input type="text" placeholder="请输入关键字" />
@@ -24,6 +24,33 @@
 		</div>
 	</div>
 	<div class="shop-detail-container">
-		店铺详情
+		<div class="shop-info-container">
+			<img class="shop-img" alt="店铺头像" ng-src="{{shopInfo.shop_img}}"></img>
+			<div class="str-label">
+				<span>{{shopInfo.shop_name}}</span>
+			</div>
+			<div class="desc">
+				{{shopInfo.shop_desc}}
+			</div>
+		</div>
+	</div>
+
+	<div class="shop-product-list">
+		<div class="tab-label">
+			商品列表
+		</div>
+		<div class="product-info-container" ng-repeat="productInfo in shopInfo.product" ui-sref="product_detail({id:productInfo.product_id})">
+			<div class="img-container">
+				<img ng-src="{{productInfo.product_img}}" alt="商品图片">
+			</div>
+			<div class="str-container">
+				<div class="price">
+					¥{{productInfo.product_price}}
+				</div>
+				<div class="product-name">
+					{{productInfo.product_name}}
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

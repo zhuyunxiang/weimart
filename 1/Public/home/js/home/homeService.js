@@ -265,6 +265,7 @@ HomeServices.service('Shop', ['$http', '$rootScope',
         Shop.data = null;
         Shop.recommend_list = null;
 
+        // 获取当前SESSION中的店铺信息
         Shop.getShopInfo = function() {
             $http({
                 method: 'POST',
@@ -279,11 +280,12 @@ HomeServices.service('Shop', ['$http', '$rootScope',
                         Shop.data = data.data;
                         $rootScope.$broadcast('Shop.getShopInfoSuccess');
                     } else {
-                        $rootScope.$broadcast('User.getShopInfoError');
+                        $rootScope.$broadcast('Shop.getShopInfoError');
                     }
                 });
         }
 
+        // 获取推荐店铺列表
         Shop.getRecommendShopInfo = function() {
             $http({
                 method: 'POST',
@@ -301,6 +303,7 @@ HomeServices.service('Shop', ['$http', '$rootScope',
                 });
         }
 
+        // 保存店铺信息
         Shop.saveShopInfo = function(shopInfo) {
             $http({
                 method: 'POST',
@@ -316,7 +319,47 @@ HomeServices.service('Shop', ['$http', '$rootScope',
                         alert("信息保存成功!");
                         $rootScope.$broadcast('Shop.saveShopInfoSuccess');
                     } else {
-                        $rootScope.$broadcast('User.saveShopInfoError');
+                        $rootScope.$broadcast('Shop.saveShopInfoError');
+                    }
+                });
+        }
+
+        // 处理代理
+        Shop.handlerDelegate = function (info) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ShopAPI/save_shop_info',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        $rootScope.$broadcast('Shop.handlerDelegateSuccess');
+                    } else {
+                        $rootScope.$broadcast('Shop.handlerDelegateError');
+                    }
+                });
+        }
+
+        // 根据ID获取店铺信息
+        Shop.getShopInfoById = function(shopid) {
+            var shopInfo = {'id': shopid};
+            $http({
+                method: 'POST',
+                url: appPath + 'API/ShopAPI/get_shop_by_id',
+                data: $.param(shopInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    if (data.status == 1) {
+                        Shop.data = data.data;
+                        $rootScope.$broadcast('Shop.getShopInfoByIdSuccess');
+                    } else {
+                        $rootScope.$broadcast('Shop.getShopInfoByIdError');
                     }
                 });
         }
