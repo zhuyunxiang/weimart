@@ -64,6 +64,7 @@ class Text_data
 	// 返回图文消息
 	public function mediaMsgHand($result = null)
 	{
+		// 素材不为空
 		if (!empty($result)) {
 			$reply = array();
 			$third_news_list = array();
@@ -71,7 +72,7 @@ class Text_data
 			$m = M('wechat_media_list');
 			$condition = array('media_msg_id'=>$result['msg_id']);
 			$data = $m->where($condition)->order('order_index ASC')->select();
-
+			// 组装图文消息
 			foreach ($data as $key => $value) {
 				$short = strip_tags($value['media_content']);
 				$short_str = substr($short,0,15)."......";

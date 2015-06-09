@@ -156,6 +156,21 @@ HomeServices.service('User', ['$http', '$rootScope',
                 });
         }
 
+        // 修改密码
+        User.savePassword = function (pwdInfo) {
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/save_password',
+                data: $.param(pwdInfo),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    alert(data.info);
+                });
+        }
+
         // 收藏商品
         User.collectProduct = function (info) {
             $http({

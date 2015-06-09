@@ -54,6 +54,17 @@ class UserAPIAction extends Action
 		$this->ajaxReturn(false, '对不起,你还没有登陆!', 0);
 	}
 
+	// 修改密码
+	public function save_password()
+	{
+		$info = $_POST;
+		if (!empty($info)) {
+			$result = A('User', 'Service')->savePassword($info);
+			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
+		}
+		$this->ajaxReturn(false, '未传递参数!', 0);
+	}
+
 	// 退出登陆
 	// Ajax
 	public function do_logout()
@@ -83,7 +94,8 @@ class UserAPIAction extends Action
 		unset($_POST['user_pwd']);
 		$result = A('User', 'Service')->doSaveDetail($_POST);
 		if ($result) {
-			$_SESSION['user'] = $_POST;
+			$userInfo = A('User', 'Service')->getUserBasicInfoById($_POST['user_id']);
+			$_SESSION['user'] = $userInfo[0];
 			$this->ajaxReturn($result['data'], $result['info'], $result['status']);
 		}
 		$this->ajaxReturn(false, '内部错误!', 0);
@@ -139,12 +151,6 @@ class UserAPIAction extends Action
 				}
             }
 		}
-	}
-
-	public function test()
-	{
-		$arr=C();
-		dump($arr);
 	}
 
 	// 获取所有用户信息

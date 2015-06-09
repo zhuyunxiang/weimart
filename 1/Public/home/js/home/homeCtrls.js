@@ -532,16 +532,29 @@ HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'Use
             alert("数据保存成功!");
         });
 
+        // 保存个人信息
         $scope.saveSelfInfo = function () {
             User.saveDetail($scope.detailInfo);
         }
 
+        $scope.savePassword = function () {
+            if ($scope.pwdInfo.new_pwd == $scope.pwdInfo.re_pwd) {
+                $scope.pwdInfo.user_id = $scope.user_id;
+                User.savePassword($scope.pwdInfo);
+                $("#updatePwdModal").modal('hide');
+            } else {
+                alert("对不起，两次新密码不一致!");
+            }
+        }
+
         $scope.detailInfo = {user_header_img: publicPath + 'home/img/default_head.png'};
 
+        // 文件
         $scope.$watch('files', function() {
             $scope.upload($scope.files);
         });
 
+        // 上传图片
         $scope.upload = function(files) {
             if (files && files.length) {
                 for (var i = 0; i < files.length; i++) {
