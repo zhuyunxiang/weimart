@@ -39,16 +39,18 @@
 		<div class="tab-label">
 			商品列表
 		</div>
-		<div class="product-info-container" ng-repeat="productInfo in shopInfo.product" ui-sref="product_detail({id:productInfo.product_id})">
-			<div class="img-container">
-				<img ng-src="{{productInfo.product_img}}" alt="商品图片">
-			</div>
-			<div class="str-container">
-				<div class="price">
-					¥{{productInfo.product_price}}
+		<div class="product-container">
+			<div class="product-info-container" ng-repeat="productInfo in shopInfo.product" ui-sref="product_detail({id:productInfo.product_id})">
+				<div class="img-container">
+					<img ng-src="{{productInfo.product_img}}" alt="商品图片">
 				</div>
-				<div class="product-name">
-					{{productInfo.product_name}}
+				<div class="str-container">
+					<div class="price">
+						¥{{productInfo.product_price}}
+					</div>
+					<div class="product-name">
+						{{productInfo.product_name}}
+					</div>
 				</div>
 			</div>
 		</div>

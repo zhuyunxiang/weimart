@@ -1690,7 +1690,6 @@ div.shop-detail-container{
 	img{
 		width: 120px;
 		height: 140px;
-		border: solid 1px;
 		margin: 15px;
 	}
 	.str-label{
@@ -1700,11 +1699,13 @@ div.shop-detail-container{
 		span{
 		  	color: rgb(130, 130, 203);
 		  	font-family: "黑体";
-		  	font-size: -webkit-xxx-large;
+		  	  font-size: 53px;
 		}
 	}
 	.desc{
 		margin: 0px 15px 5px 15px;
+		color: orange;
+  		font-weight: 700;
 	}
 }
 
@@ -1714,11 +1715,11 @@ div.shop-product-list{
 	border-color: rgb(202, 197, 197);
 	max-width: 1170px;
 	margin: 0 auto;
-
+	overflow: hidden;
 	.product-info-container{
 		border: solid 1px;
 		border-color: rgb(202, 197, 197);
-		display: inline-block;
+		float: left;
 		width: 200px;
 		height: 350px;
 		margin: 10px 15px;
@@ -1727,14 +1728,13 @@ div.shop-product-list{
 			cursor: pointer;
 		}
 		.img-container{
-			margin: 0 auto;
+			margin: 10px auto;
 			width: 180px;
 			height: 240px;
 			padding: 5px;
 			img{
 				width: 170px;
 				max-height: 230px;
-				vertical-align:middle; 
 			}
 		}
 
@@ -1757,5 +1757,15 @@ div.shop-product-list{
 		font-size: x-large;
 		font-family: "黑体";
 		color: rgb(192, 88, 88);
+	}
+}
+
+.share-btn-container{
+	margin: 25px 0;
+	.share-ico{
+		cursor: pointer;
+		width: 25px;
+		height: 25px;
+		margin-right: 10px;
 	}
 }

@@ -49,6 +49,12 @@
 						<button class="btn favourite" ng-show="productIsCollected == 0" ng-click="collect_product(productInfo.product_id)">收藏商品</button>
 						<button class="btn favourite" ng-show="productIsCollected != 0" ng-click="collect_product(productInfo.product_id)">取消收藏</button>
 					</div>
+					<div class="share-btn-container">
+						分享到：
+						<img ng-click="shareClick('qq')" ng-src="{{imageURLs.qq}}" class="share-ico">
+						<img ng-click="shareClick('qqweibo')" ng-src="{{imageURLs.qqweibo}}" class="share-ico">
+						<img ng-click="shareClick('weibo')" ng-src="{{imageURLs.weibo}}" class="share-ico">
+					</div>
 				</div>
 			</div>
 		</div>
