@@ -13,10 +13,16 @@ class Event_data
 			Cache_data::position_update($data);
 			$reply = array("你现在所在的位置\n纬度是：".$data['Latitude']."\n经度是：".$data['Longitude']."\n精度是：".$data['Precision'],'text');
 		}
+
+		// 关注事件
+		if($data['Event']=="subscribe"){
+			$key = $data['Event'];
+			$reply = array("欢迎关注卖盟微点购物管理平台微信端！更多精彩请<a href='http://weimart.sinaapp.com/weimart_mobile/www/'>点击这里</a>",'text');
+		}
 		
+		// 自定义菜单事件
 		if ($data['Event']=="CLICK") {	
             $key = $data['EventKey'];
-
 			// 点击事件
             $reply = $this->clickEventHandler($key);
 			return $reply;

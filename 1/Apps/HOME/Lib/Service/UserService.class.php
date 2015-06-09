@@ -88,6 +88,25 @@ class UserService extends BaseService
 		return false;
 	}
 
+	// 修改密码
+	public function savePassword($data = null)
+	{
+		if ($data) {
+			$userInfo = $this->getUserBasicInfoById($data['user_id']);
+
+			if ($userInfo[0]['user_pwd'] == md5($data['old_pwd'])) {
+				$updateData = array('user_id'=>$data['user_id'], 'user_pwd'=>md5($data['new_pwd']));
+				$result = $this->saveInfo('userDao', $updateData, 'user_id');
+				if ($result) {
+					return array('data'=>$result, 'info'=>'密码修改成功!', 'status'=>1);
+				}
+				return array('data'=>$result, 'info'=>'密码修改失败!', 'status'=>0);
+			}
+			return array('data'=>$result, 'info'=>'旧密码不正确!', 'status'=>0);
+		}
+		return array('data'=>false, 'info'=>'内部错误!', 'status'=>0);
+	}
+
 	// 删除用户基本信息(软删除)
 	public function removeUserBasicInfoById($user_id = null)
 	{
