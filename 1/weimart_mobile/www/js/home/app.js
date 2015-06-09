@@ -174,7 +174,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
         .state('personal.clientManage', {
             url: "/clientManage",
             templateUrl: 'tpl/home/clientManage.html',
-            controller: "personalCtrl"
+            controller: "agenceManageCtrl"
         })
         //卖家中心 收入管理
         .state('personal.incomeManage', {

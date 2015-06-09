@@ -34,7 +34,7 @@
 
 	<div class="row baby-list" ng-show="ProductList">
 		<div class="col-xs-12 baby-item" ng-repeat="item in ProductList|filterProduct:selectType|filter:searchKeyword">
-			<img src="{{item.product_img}}" alt="" class="col-xs-4">
+			<img ng-src="{{item.product_img}}" alt="" class="col-xs-4">
 			<div class="col-xs-8">
 				<span class="span-text">名称：{{item.product_name}}</span>
 				<span class="span-text">分类：{{item.types.0.type_name}}</span>
