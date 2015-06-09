@@ -81,7 +81,7 @@ class ShopService extends BaseService
 	{
 
 		$condition = array('shop_id'=>$id);
-		$result = $this->shopRelationDao->where($condition)->relation('product')->find();
+		$result = $this->shopRelationDao->where($condition)->relation(array('product','delegate_shops'))->find();
 
 		return array('data'=>$result, 'info'=>'数据获取成功！', 'status'=>1);
 	}

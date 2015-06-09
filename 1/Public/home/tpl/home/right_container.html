@@ -36,7 +36,7 @@
 	<div class="find-shop-title">
 		发现·好店
 	</div>
-	<div class="shop" ng-repeat="shopItem in recommendShopList">
+	<div class="shop" ng-repeat="shopItem in recommendShopList" ui-sref="shop_detail({id:shopItem.shop_id})">
 		<img ng-src="{{shopItem.shop_img_temp}}" class="shop-img" >
 		<div class="shop-info">
 			<p class="shop-name"><strong>{{shopItem.shop_name}}</strong></p>

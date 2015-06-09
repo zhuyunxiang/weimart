@@ -2,7 +2,7 @@
 <div class="container home-container">
 	<!-- 头部 Container(Logo和搜索框) #2 -->
 	<div class="start-prepare header-container">
-		<img ng-src="{{imageURLs.logo}}" class="start-prepare logo" alt="微店">
+		<img ng-src="{{imageURLs.logo}}" class="start-prepare logo" alt="微店" ui-sref="home()">
 		<!-- 搜索Container #3 -->
 		<div class="search-container">
 			<input type="text" placeholder="请输入关键字" />
@@ -67,7 +67,7 @@
 				<span class="content">{{productInfo.shop_info[0].shop_brif|trimStr:20}}</span>
 			</div>
 			<div class="favourite-shop-container">
-				<button class="btn into-shop">进入店铺</button>
+				<button class="btn into-shop" ui-sref="shop_detail({id:productInfo.shop_info[0].shop_id})">进入店铺</button>
 				<button class="btn favourite-shop" ng-show="shopIsCollected == 0" ng-click="collect_shop(productInfo.shop_info[0].shop_id)">收藏店铺</button>
 				<button class="btn favourite-shop" ng-show="shopIsCollected != 0" ng-click="collect_shop(productInfo.shop_info[0].shop_id)">取消收藏</button>
 			</div>
