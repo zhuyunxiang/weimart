@@ -10,11 +10,7 @@ services.factory('Auth', ['$cookieStore', 'ACCESS_LEVELS',
         }
 
         var setUser = function(user) {
-            // if (!user.role || user.role < 0) {
-            // 	console.log('aaa');
-            // 	user.role = ACCESS_LEVELS.pub;
-            // };
-
+            
             _user = user;
             // $cookieStore.put('user', _user);
             localStorage.setItem("user_info",JSON.stringify(_user));

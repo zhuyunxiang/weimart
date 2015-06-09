@@ -11,7 +11,7 @@
 
 	<div class="row baby-list" ng-show="shopCollected">
 		<div class="col-xs-12 baby-item" ng-repeat="item in shopCollected">
-			<img src="{{item.shop_img}}" alt="" class="col-xs-4"  ui-sref="inshop({id:item.shop_id})">
+			<img ng-src="{{item.shop_img}}" alt="" class="col-xs-4"  ui-sref="inshop({id:item.shop_id})">
 			<div class="col-xs-8">
 				<span class="span-text">名称：{{item.shop_name}}</span>
 				<span class="span-text">简述：{{item.shop_brif}}</span>

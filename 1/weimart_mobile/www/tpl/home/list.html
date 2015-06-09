@@ -2,52 +2,82 @@
 <div ui-view ng-show="$state.current.name !== 'list'"></div>
 <div class="content-container col-xs-12 main" ng-show="$state.current.name == 'list'">	
 	<div class="col-xs-12 title">
-		女装
+		女装&男装
 	</div>
 	<div class="row col-xs-12">
-		<div class="col-xs-3 list-one" ng-repeat="(key, value) in women"  ui-sref=".classType">
+		<div class="col-xs-3 list-one" ng-repeat="(key, value) in cloth"  ui-sref=".classType">
 			<img ng-src="img/list/{{key+1}}.jpg" alt="">
 			<span>{{value.name}}</span>
 		</div>
 	</div>
 
 	<div class="col-xs-12 title">
-		女鞋
+		鞋靴&箱包
 	</div>
 	<div class="row col-xs-12">
-		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in womenShoes"  ui-sref=".classType">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in shoesAndPack"  ui-sref=".classType">
 			<img ng-src="img/list/{{key+14}}.jpg" alt="">
 			<span>{{value.name}}</span>
 		</div>
 	</div>
 
 	<div class="col-xs-12 title">
-		男装
+		运动户外
 	</div>
 	<div class="row col-xs-12">
-		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in men"  ui-sref=".classType">
-			<img ng-src="img/list/{{key+18}}.jpg" alt="">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in sport"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+50}}.jpg" alt="">
 			<span>{{value.name}}</span>
 		</div>
 	</div>
 
 	<div class="col-xs-12 title">
-		男鞋
+		护肤彩妆
 	</div>
 	<div class="row col-xs-12">
-		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in menShoes"  ui-sref=".classType">
-			<img ng-src="img/list/{{key+26}}.jpg" alt="">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in skinCare"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+54}}.jpg" alt="">
 			<span>{{value.name}}</span>
 		</div>
 	</div>
 
 
 	<div class="col-xs-12 title">
-		箱包
+		手机数码
 	</div>
 	<div class="row col-xs-12">
-		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in pkage"  ui-sref=".classType">
-			<img ng-src="img/list/{{key+30}}.jpg" alt="">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in phone"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+58}}.jpg" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		家用办公
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in homeWork"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+62}}.jpg" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		珠宝配饰
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in jades"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+66}}.jpg" alt="">
+			<span>{{value.name}}</span>
+		</div>
+	</div>
+
+	<div class="col-xs-12 title">
+		汇吃美食
+	</div>
+	<div class="row col-xs-12">
+		<div class="col-xs-3 list-one"  ng-repeat="(key, value) in foods"  ui-sref=".classType">
+			<img ng-src="img/list/{{key+70}}.jpg" alt="">
 			<span>{{value.name}}</span>
 		</div>
 	</div>

@@ -84,18 +84,16 @@ controllers.controller('brandCtrl', ['$scope', '$state', 'Product',
 controllers.controller('listCtrl', ['$scope',
     function($scope) {
 
-        $scope.women = [{
+        $scope.cloth = [{
             "name": "T恤"
         }, {
             "name": "衬衫"
         }, {
             "name": "外套"
         }, {
-            "name": "衬衫"
-        }, {
             "name": "毛衣"
         }, {
-            "name": "家居"
+            "name": "背心"
         }, {
             "name": "上装"
         }, {
@@ -103,57 +101,91 @@ controllers.controller('listCtrl', ['$scope',
         }, {
             "name": "裙装"
         }, {
-            "name": "T恤"
+            "name": "正装"
         }, {
-            "name": "T恤"
+            "name": "牛仔"
+        }, {
+            "name": "哈伦"
         }, {
             "name": "休闲"
         }, ];
-        $scope.womenShoes = [{
+        $scope.shoesAndPack = [{
             "name": "商务鞋"
         }, {
             "name": "单鞋"
         }, {
-            "name": "商务鞋"
+            "name": "运动鞋"
         }, {
-            "name": "单鞋"
-        }, ];
-        $scope.men = [{
-            "name": "短袖"
+            "name": "凉鞋"
         }, {
-            "name": "2袖"
-        }, {
-            "name": "短袖"
-        }, {
-            "name": "短袖"
-        }, {
-            "name": "短袖"
-        }, {
-            "name": "短袖"
-        }, {
-            "name": "短袖"
-        }, {
-            "name": "短袖"
-        }, ];
-        $scope.menShoes = [{
-            "name": "皮鞋"
-        }, {
-            "name": "商务鞋"
-        }, {
-            "name": "皮鞋"
-        }, {
-            "name": "商务鞋"
-        }, ];
-        $scope.pkage = [{
             "name": "女包"
         }, {
             "name": "男包"
         }, {
-            "name": "钱包"
+            "name": "箱子"
         }, {
-            "name": "女包"
+            "name": "皮夹"
+        }, ];
+        $scope.sport = [{
+            "name": "运动鞋"
+        }, {
+            "name": "运动服"
+        }, {
+            "name": "护具"
+        }, {
+            "name": "运动包"
+        }, ];
+        $scope.skinCare = [{
+            "name": "护肤"
+        }, {
+            "name": "彩妆"
+        }, {
+            "name": "精油"
+        }, {
+            "name": "瘦身"
         }, ];
 
+        $scope.phone = [{
+            "name": "手机"
+        }, {
+            "name": "平板"
+        }, {
+            "name": "电脑"
+        }, {
+            "name": "相机"
+        }, ];
+
+        $scope.homeWork = [{
+            "name": "大家电"
+        }, {
+            "name": "厨房"
+        }, {
+            "name": "生活"
+        }, {
+            "name": "个护"
+        }, ];
+       
+
+        $scope.jades = [{
+            "name": "首饰"
+        }, {
+            "name": "饰品"
+        }, {
+            "name": "手表"
+        }, {
+            "name": "眼镜"
+        }, ];
+            
+
+        $scope.foods = [{
+            "name": "鲜果"
+        }, {
+            "name": "肉类"
+        }, {
+            "name": "零食"
+        }, {
+            "name": "酒水"
+        }, ];
     }
 ]);
 // 我的
@@ -392,10 +424,9 @@ controllers.controller('shopCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop',
             goBack();
         }
 
-                //保存收藏店铺信息
+        //保存收藏店铺信息
         $scope.onFavoriteShop = function (shop_id) {
             if (Auth.isLoggedIn()) {
-                console.log(2);
                 var info = {'shop_id':shop_id, 'user_id':Auth.getId()};
                 User.onFavoriteShop(info);
             } else {
@@ -403,31 +434,14 @@ controllers.controller('shopCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop',
             } 
         }
 
-        $scope.$on('User.onFavoriteShopSuccess', function (event) {
-            checkShopCollected();
-            console.log($scope.shop_is_collected);
+        $scope.$on('User.shopOffCollectedSuccess', function (event) {
+            alert(11);
             User.getAllShopCollected(Auth.getId());
         })
 
-        //检测店铺是否收藏
-        $scope.shop_is_collected = '0';
-        function checkShopCollected() {
-            var shop_id = $scope.theShop.shop_id; 
-            console.log(shop_id);
-            if (Auth.isLoggedIn()) {
-                var info = {'shop_id':shop_id, 'user_id':Auth.getId()};
-                User.checkShopCollected(info);
-            } else {
-                $state.go('login');
-            }
-        }
-
         $scope.$on('User.shopOnCollectedSuccess', function (event) {
-            $scope.shop_is_collected = User.collectShopState;
-        })
-
-        $scope.$on('User.shopOffCollectedSuccess', function (event) {
-            $scope.shop_is_collected = User.collectShopState;
+            alert(22);
+            User.getAllShopCollected(Auth.getId());
         })
 
     }
@@ -450,11 +464,10 @@ controllers.controller('prodCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop',
             goBack();
         }
 
-         //保存收藏
+         //取消收藏
         $scope.onFavoriteProd = function (prod_id) {
             var info = [];
-            var prod_id = $scope.productInfo.product_id; 
-            console.log(prod_id);
+            // console.log(prod_id);
             if (Auth.isLoggedIn()) {
                 var info = {'product_id':prod_id, 'user_id':Auth.getId()};
                 User.onFavoriteProd(info);
@@ -464,31 +477,14 @@ controllers.controller('prodCollectedCtrl', ['$scope', '$state', 'Auth', 'Shop',
 
         }
 
-        $scope.$on('User.onFavoriteProdSuccess', function (event) {
-            // alert("宝贝收藏成功!");
-            checkProdCollected();
+        $scope.$on('User.prodOffCollectedSuccess', function (event) {
+            console.log("ZYX");
             User.getAllProdCollected(Auth.getId());
         })
 
-
-        //检测商品是否收藏       
-        function checkProdCollected() {
-            var prod_id = $scope.productInfo.product_id; 
-            console.log(prod_id);
-            if (Auth.isLoggedIn()) {
-                var info = {'product_id':prod_id, 'user_id':Auth.getId()};
-                User.checkProdCollected(info);
-            } else {
-                $state.go('login');
-            }
-        }
-
-        $scope.$on('User.prodOnCollectedSuccess', function (event) {
-            $scope.product_is_collected = User.collectProdState;
-        })
-
-        $scope.$on('User.prodOffCollectedSuccess', function (event) {
-            $scope.product_is_collected = User.collectProdState;
+         $scope.$on('User.prodOnCollectedSuccess', function (event) {
+            console.log("MTH");
+            User.getAllProdCollected(Auth.getId());
         })
 
 
@@ -906,6 +902,13 @@ controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
         }
     }
 ]);
+
+//代理管理
+// controllers.controller('agenceManageCtrl', ['$scope', '$state', 'Shop','Auth',
+//     function($scope, $state, Shop, Auth) {
+
+
+// ]);
 
 
 
