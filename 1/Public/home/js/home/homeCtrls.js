@@ -494,6 +494,7 @@ HomeCtrls.controller('productListCtrl', ['$scope','$stateParams','Product',
     }
 ]);
 
+// 卖家中心主控
 HomeCtrls.controller('sellerCenterCtrl', ['$scope','$state',
     function($scope,$state) {
         // $scope.stateStr = $state.current.name;
@@ -512,6 +513,7 @@ HomeCtrls.controller('sellerCenterCtrl', ['$scope','$state',
     }
 ]);
 
+// 卖家中心个人信息
 HomeCtrls.controller('sellerCenterSelfCtrl', ['$scope', '$state','$upload', 'User',
     function($scope, $state,$upload, User) {
         User.checkLogin();
