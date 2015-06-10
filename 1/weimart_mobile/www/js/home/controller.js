@@ -192,7 +192,9 @@ controllers.controller('listCtrl', ['$scope',
 controllers.controller('personalCtrl', ['$upload', '$scope', '$state', 'Shop', 'Auth', 'Product',
     function($upload, $scope, $state, Shop, Auth, Product) {
         $scope.myShop = {};
+        $scope.editShopInfo = [];
         Shop.getShopInfo();
+
 
         if (Auth.isLoggedIn()) {
             var user = Auth.getUser();
@@ -613,7 +615,6 @@ controllers.controller('productCtrl', ['$upload', '$scope', '$state','$statePara
     }
 ]);
 
-
 //商品详情
 controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams', 'Product', 'Shop', 'Auth', 'User',
     function($upload, $scope, $state, $stateParams, Product, Shop, Auth, User) {
@@ -648,6 +649,7 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams
                 var info = {'product_id':prod_id, 'user_id':Auth.getId()};
                 User.onFavoriteProd(info);
             } else {
+                alert("请先登录......");
                 $state.go('login');
             }
 
@@ -663,12 +665,12 @@ controllers.controller('goodsCtrl', ['$upload', '$scope', '$state','$stateParams
         function checkProdCollected() {
             var prod_id = $scope.productInfo.product_id; 
             console.log(prod_id);
-            if (Auth.isLoggedIn()) {
+            // if (Auth.isLoggedIn()) {
                 var info = {'product_id':prod_id, 'user_id':Auth.getId()};
                 User.checkProdCollected(info);
-            } else {
-                $state.go('login');
-            }
+            // } else {
+            //     $state.go('login');
+            // }
         }
 
         $scope.$on('User.prodOnCollectedSuccess', function (event) {
@@ -695,6 +697,7 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
         $scope.firstHalf = [];
         $scope.secondHalf = [];
         $scope.typeList = [];
+        $scope.allProds = [];
         $scope.$on('Ptype.getListByIdSuccess', function() {
             $scope.listOfType = Ptype.list;
             var typeLen = Ptype.list.extend_types.length;
@@ -705,6 +708,8 @@ controllers.controller('typeCtrl', ['$scope', '$state', '$stateParams', 'Ptype',
             };
             var prod_len = Ptype.list.product.length;
             var prod_half = parseInt(prod_len / 2);
+            $scope.allProds = Ptype.list.product;
+
 
             if ($scope.typeList.length < 4) {
                 var sum =  12 / $scope.typeList.length;
@@ -906,7 +911,6 @@ controllers.controller('agenceCtrl', ['$scope', '$state', 'Shop','Auth',
 //代理管理
 // controllers.controller('agenceManageCtrl', ['$scope', '$state', 'Shop','Auth',
 //     function($scope, $state, Shop, Auth) {
-
 
 // ]);
 
