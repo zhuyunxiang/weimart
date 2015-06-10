@@ -825,6 +825,7 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         }
 
         var share1 = new ShareTip();  
+        // 分享到社交平台
         $scope.shareClick = function (type) {
             var str = "大家快来看看我在卖盟上看中的宝贝吧！";
             var url = "http://weimart.sinaapp.com/index.php/Index/home#/product_detail/"+$scope.productInfo.product_id;
@@ -851,7 +852,12 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         $scope.$on('User.collectShopSuccess', function (event) {
            User.checkLogin();
         });
+        // 监听获取买家信息
+        $scope.$on('User.getSellerInfoSuccess', function (event) {
+            $scope.sellerInfo = User.sellerInfo;
+        });
 
+        // 获取当前商品信息
         $scope.$on('Product.getCurrentProductSuccess', function(event) {
             $scope.productInfo = Product.currentCurrentProduct;
             $scope.$on('User.isLogin', function (event) {
@@ -860,6 +866,7 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
                         var info = {'user_id':User.user_id, 'shop_id':$scope.productInfo.shop_info[0].shop_id};
                         User.getShopIsCollected(info);
                         User.getProductIsCollected(productInfo);
+                        User.getSellerInfo(User.user_id);
                 } else {
                     alert("对不起，请先登录！");
                 }
@@ -870,15 +877,16 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
         $scope.shopIsCollected = '0';
         User.checkLogin();
 
+        // 监听收藏状态
         $scope.$on('User.getProductIsCollectedSuccess', function (event) {
             $scope.productIsCollected = User.productIsCollected;
         });
 
+        // 监听收藏状态
         $scope.$on('User.getShopIsCollectedSuccess', function (event) {
             $scope.shopIsCollected = User.shopIsCollected;
         });
         
-
         // 收藏商品
         $scope.collect_product = function(product_id) {
             if(User.user_id) {
@@ -898,12 +906,21 @@ HomeCtrls.controller('productDetailCtrl', ['$scope', '$state', '$stateParams', '
                 alert("对不起，请先登录！");
             }
         }
+
+        // 联系卖家
+        $scope.contactSeller = function () {
+            if(User.user_id) {
+                $('#sellerInfoModal').modal('show');
+            } else {
+                alert("对不起，请先登录！");
+            }
+        }
     }
 ]);
 
 // 店铺详情页
-HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams', 'Shop',
-    function($scope, $state, $stateParams, Shop) {
+HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams', 'Shop', 'User',
+    function($scope, $state, $stateParams, Shop, User) {
         $scope.imageURLs = {
             'publicUrl': publicUrl,
             'logo': commenUrl + 'img/logo-mini.png',
@@ -916,6 +933,30 @@ HomeCtrls.controller('shopDetailCtrl', ['$scope', '$state', '$stateParams', 'Sho
         $scope.$on('Shop.getShopInfoByIdSuccess', function (event) {
             $scope.shopInfo = Shop.data;
         });
+
+        $scope.$on('User.isLogin', function (event) {
+            $scope.shop_id = User.detail_info.shops[0].shop_id;
+        });
+
+        // 成为他的代理
+        $scope.toBeDelegate = function () {
+            if (User.detail_info) {
+                if (User.detail_info.shops && User.detail_info.shops[0]) {
+
+                    if ($scope.shopInfo.super_shop_id) {
+                        alert("对不起，你已经有上级代理了！");
+                        return;
+                    };
+                    var info = {'super_shop_id': $scope.shopInfo.shop_id, 'shop_id':$scope.shop_id};
+                    console.log(info);
+                } else {
+                    alert("对不起,请先注册店铺!");
+                    $state.go('sellercenter.shop');
+                }
+            } else {
+                alert("对不起，请先登录！");
+            }
+        }
     }
 ]);
 

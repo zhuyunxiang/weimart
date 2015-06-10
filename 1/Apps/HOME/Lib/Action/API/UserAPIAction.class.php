@@ -124,6 +124,17 @@ class UserAPIAction extends Action
 		}
 	}
 
+	// 根据ID获取用户信息
+	public function get_user_by_id()
+	{
+		$info = $_POST['user_id'];
+		if (!empty($info)) {
+			$result = A('User', 'Service')->getUserBasicInfoById($info);
+			$this->ajaxReturn($result[0], "用户信息获取成功", 1);
+		}
+		$this->ajaxReturn(false, '未传递参数!', 0);
+	}
+
 	// 保存头像For APP
 	public function save_head_img_for_app()
 	{
