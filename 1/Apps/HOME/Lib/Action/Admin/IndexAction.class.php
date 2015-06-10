@@ -8,6 +8,19 @@ class IndexAction extends Action {
       $this->display('index');
   }
 
+  public function checkLogin()
+  {
+    if (!$_SESSION['user']) {
+      $this->error("对不起，请先登录！", "__URL__/index");
+    }
+  }
+
+  public function log_out()
+  {
+    unset($_SESSION);
+    $this->display('index');
+  }
+
   // 登陆
   public function do_login()
   {
@@ -24,23 +37,27 @@ class IndexAction extends Action {
 
   public function home()
   {
+    $this->checkLogin();
     $this->display('home');
   }
 
   public function main()
   {
+    $this->checkLogin();
     $this->display('main');
   }
 
   // 显示自定义菜单设置页
   public function wechat_menu_conf()
   {
+    $this->checkLogin();
     $this->display('wechat_menu_conf');
   }
 
   // 显示公众账号设置页
   public function set_wechat_info()
   {
+    $this->checkLogin();
     $this->display('set_wechat_info');
   }
 
@@ -60,6 +77,7 @@ class IndexAction extends Action {
   // 显示图文菜单编辑页面
   public function mulTuwen()
   {
+    $this->checkLogin();
     $this->display('mulTuwen');
   }
 

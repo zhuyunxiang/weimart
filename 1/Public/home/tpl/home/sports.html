@@ -5,8 +5,8 @@
 		<img ng-src="{{imageURLs.logo}}" class="start-prepare logo" ui-sref="home()" alt="微店">
 		<!-- 搜索Container #3 -->
 		<div class="search-container">
-			<input type="text" placeholder="请输入关键字" />
-			<button class="btn-search">搜索</button>
+			<input type="text" placeholder="请输入关键字" ng-init="keyword=''" ng-model="keyword"/>
+			<button class="btn-search" search-key keyword="keyword">搜索</button>
 		</div>
 	</div>
 	<!-- Nav Container #4 -->

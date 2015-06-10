@@ -12,6 +12,7 @@ HomeServices.service('User', ['$http', '$rootScope',
         User.shopIsCollected = null;
         User.collectShops = null;
         User.collectProducts = null;
+        User.sellerInfo = null;
         // 检查登录情况
         User.checkLogin = function() {
             $http({
@@ -104,8 +105,14 @@ HomeServices.service('User', ['$http', '$rootScope',
             })
                 .success(function(data) {
                     if (data.status == 1) {
-                        User.user_name = false;
-                        User.user_id = false;
+                        User.user_name = null;
+                        User.user_id = null;
+                        User.error_info = null;
+                        User.detail_info = null;
+                        User.productIsCollected = null;
+                        User.shopIsCollected = null;
+                        User.collectShops = null;
+                        User.collectProducts = null;
                         $rootScope.$broadcast('User.logoutSuccess');
                     } else {
                         alert(data.info);
@@ -266,6 +273,23 @@ HomeServices.service('User', ['$http', '$rootScope',
                 .success(function(data) {
                     User.collectProducts = data.data;
                     $rootScope.$broadcast('User.getCollectedProductsSuccess');
+                });
+        }
+        
+        // 获取买家信息
+        User.getSellerInfo = function (user_id) {
+            var info = {'user_id': user_id};
+            $http({
+                method: 'POST',
+                url: appPath + 'API/UserAPI/get_user_by_id',
+                data: $.param(info),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .success(function(data) {
+                    User.sellerInfo = data.data;
+                    $rootScope.$broadcast('User.getSellerInfoSuccess');
                 });
         }
 

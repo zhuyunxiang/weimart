@@ -151,6 +151,7 @@ div.agence-setting{width:1349px;height:974px;}div.agence-setting div.location{ma
 div.shop-detail-container{border:solid 1px;border-width:0 1px 1px 1px;border-color:#cac5c5;max-width:1170px;margin:0 auto;min-height:200px;}div.shop-detail-container img{width:120px;height:140px;margin:15px;}
 div.shop-detail-container .str-label{width:900px;display:inline-block;text-align:center;}div.shop-detail-container .str-label span{color:#8282cb;font-family:"黑体";font-size:53px;}
 div.shop-detail-container .desc{margin:0px 15px 5px 15px;color:orange;font-weight:700;}
+div.shop-detail-container .delegate-container{margin:0px 15px 5px 15px;font-weight:700;position:relative;right:-1024px;}
 div.shop-product-list{border:solid 1px;border-width:0 1px 1px 1px;border-color:#cac5c5;max-width:1170px;margin:0 auto;overflow:hidden;}div.shop-product-list .product-info-container{border:solid 1px;border-color:#cac5c5;float:left;width:200px;height:350px;margin:10px 15px;}div.shop-product-list .product-info-container:hover{border-color:orange;cursor:pointer;}
 div.shop-product-list .product-info-container .img-container{margin:10px auto;width:180px;height:240px;padding:5px;}div.shop-product-list .product-info-container .img-container img{width:170px;max-height:230px;}
 div.shop-product-list .product-info-container .str-container{margin:0 auto;width:180px;padding:5px;}div.shop-product-list .product-info-container .str-container .price{color:orange;font-size:large;}

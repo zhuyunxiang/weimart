@@ -17,6 +17,24 @@ HomeDirectives.directive('logOut', ['User',
     }
 ]);
 
+// 退出登陆
+HomeDirectives.directive('searchKey', ['$state',
+    function($state) {
+        return {
+            restirect: 'AE',
+            scope: {
+                keyword: '=keyword'
+            },
+            link: function(scope, element, attributes) {
+                element.bind('click', function(event) {
+                    console.log(scope.keyword);
+                    $state.go('hot_baby');
+                });
+            }
+        }
+    }
+]);
+
 // 登陆
 HomeDirectives.directive('doLogin', ['$state', 'User',
     function($state, User) {
