@@ -188,11 +188,11 @@ app.config(['$stateProvider', '$urlRouterProvider', 'ACCESS_LEVELS',
             templateUrl: 'tpl/home/shop2.html',
             controller: "personalCtrl"
         })
-        .state('shop', {
-            url: "/shop",
-            templateUrl: 'tpl/home/shop.html',
-            controller: "personalCtrl"
-        })
+        // .state('shop', {
+        //     url: "/shop",
+        //     templateUrl: 'tpl/home/shop.html',
+        //     controller: "personalCtrl"
+        // })
         // 设置
         .state('conf', {
             url: "/conf",

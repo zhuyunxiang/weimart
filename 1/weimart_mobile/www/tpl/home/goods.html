@@ -54,16 +54,6 @@
 				{{productInfo.product_name}}
 			</span>
 		</div>
-		
-		
-		<div class="col-xs-12 info-item">
-			<span class="col-xs-4 info-title">
-				商品描述
-			</span>
-			<span class="col-xs-8 info-ctn">
-				<div class="goods-orig" ng-bind-html="productInfo.product_desc|trustHtml"></div>
-			</span>
-		</div>
 		<div class="col-xs-12 info-item">
 			<span class="col-xs-4 info-title">
 				注册时间
@@ -80,5 +70,15 @@
 				{{productInfo.product_id}}
 			</span>
 		</div>
+		
+		<div class="col-xs-12 info-item">
+			<span class="col-xs-4 info-title">
+				商品描述
+			</span>
+			<span class="col-xs-8 info-ctn">
+				<div class="goods-orig" ng-bind-html="productInfo.product_desc|trustHtml"></div>
+			</span>
+		</div>
+		
 	</div>
 </div>

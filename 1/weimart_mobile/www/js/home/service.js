@@ -385,6 +385,7 @@ services.service('Shop', ['$http', '$rootScope','Auth',
         }
 
         Shop.saveShopInfo = function(shopInfo) {
+            console.log(shopInfo);
             $http({
                 method: 'POST',
                 url: appPath + '/API/ShopAPI/save_shop_info',
@@ -394,6 +395,7 @@ services.service('Shop', ['$http', '$rootScope','Auth',
                 }
             })
                 .success(function(data) {
+                    console.log(data);
                     if (data.status == 1) {
                         var user = Auth.getUser();
                         shopInfo.shop_id = data.data;
@@ -534,7 +536,7 @@ services.service('Product', ['$http', '$rootScope',
                 });
         }
 
-        // 保存商品信息
+        // 数据保存失败商品信息
         Product.saveInfo = function(info) {
             console.log(info);
             $http({
